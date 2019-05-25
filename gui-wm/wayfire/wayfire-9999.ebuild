@@ -16,7 +16,6 @@ IUSE="+wfshell wfsoundcontrol"
 
 DEPEND="
 		=gui-libs/wlroots-9999
-		=gui-libs/wf-config-9999
 		media-libs/glm
 		x11-libs/gtk3
 		x11-libs/cairo
@@ -25,6 +24,7 @@ DEPEND="
 		media-libs/libjpeg-turbo
 		media-libs/libpng
 		"
+#		=gui-libs/wf-config-9999
 #		wfshell? (gui-libs/wf-shell-9999)
 #		wfsoundcontrol? (gui-libs/wf-soundcontrol-9999)
 #		"
