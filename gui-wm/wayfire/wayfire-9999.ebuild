@@ -17,7 +17,7 @@ IUSE="+wfshell wfsoundcontrol"
 DEPEND="
 		=gui-libs/wlroots-9999
 		media-libs/glm
-		x11-libs/gtk3
+		x11-libs/gtk+
 		x11-libs/cairo
 		x11-libs/libxkbcommon
 		x11-libs/pixman
