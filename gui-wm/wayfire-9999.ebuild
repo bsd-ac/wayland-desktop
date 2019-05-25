@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson eutils
+inherit fcaps meson eutils
 
 DESCRIPTION="A compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -12,19 +12,43 @@ EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+wfshell wfsoundcontrol"
+REQUIRED_USE="?? (elogind systemd)"
 
 DEPEND="
-		>=gui-libs/wlroots-0.4.1
-		dev-libs/libevdev
+		=gui-libs/wlroots-9999
+		=gui-libs/wf-config-9999
+		media-libs/glm
+		x11-libs/gtk3
+		x11-libs/cairo
+		x11-libs/libxkbcommon
+		x11-libs/pixman
+		media-libs/libjpeg-turbo
+		media-libs/libpng
 		"
+#		wfshell? (gui-libs/wf-shell-9999)
+#		wfsoundcontrol? (gui-libs/wf-soundcontrol-9999)
+#		"
 RDEPEND="${DEPEND}"
 BDEPEND="
 		dev-util/meson
 		dev-util/ninja
+		dev-util/cmake
+		virtual/pkgconfig
+		>=dev-libs/wayland-protocols-9999
 		"
+
+FILECAPS=( cap_sys_admin usr/bin/wayfire )
+
 src_configure() {
-		local emesonargs=(
-				
-		)
+		meson_src_configure
 }
+
+src_install() {
+		meson_src_install
+		newdoc wayfire.ini.default wayfire.ini
+}
+
+#srs_postinst() {
+#
+#}
