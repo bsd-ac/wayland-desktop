@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+wfshell wfsoundcontrol"
 
 S="${WORKDIR}"
+echo $S
 
 DEPEND="
 		=gui-libs/wlroots-9999
