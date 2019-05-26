@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+wfshell wfsoundcontrol"
 
+S="${WORKDIR}"
+
 DEPEND="
 		=gui-libs/wlroots-9999
 		media-libs/glm
