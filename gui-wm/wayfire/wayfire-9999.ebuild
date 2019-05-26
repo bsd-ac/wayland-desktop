@@ -11,11 +11,10 @@ EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="+wfshell wfsoundcontrol"
 
 S="${WORKDIR}"
-echo $S
 
 DEPEND="
 		=gui-libs/wlroots-9999
@@ -47,6 +46,9 @@ src_configure() {
 }
 
 src_install() {
+		echo "we are configuring"
+		echo $S
+		ls
 		meson_src_install
 		newdoc wayfire.ini.default wayfire.ini
 }
