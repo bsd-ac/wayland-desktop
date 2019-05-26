@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="+wfshell wfsoundcontrol"
 
-S="${WORKDIR}"
-
 DEPEND="
 		=gui-libs/wlroots-9999
 		media-libs/glm
@@ -46,9 +44,6 @@ src_configure() {
 }
 
 src_install() {
-		echo "we are configuring"
-		echo $S
-		ls
 		meson_src_install
 		newdoc wayfire.ini.default wayfire.ini
 }
