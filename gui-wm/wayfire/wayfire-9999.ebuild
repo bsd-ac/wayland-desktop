@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="+wfshell wfsoundcontrol"
+IUSE="+elogind systemd"
 
 DEPEND="
 		=gui-libs/wlroots-9999
@@ -23,12 +23,10 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
+		elogind? ( >=sys-auth/elogind-239 )
+		systemd? ( >=sys-apps/systemd-239 )
 		"
-#		=gui-libs/wf-config-9999
-#		wfshell? (gui-libs/wf-shell-9999)
-#		wfsoundcontrol? (gui-libs/wf-soundcontrol-9999)
-#		"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND} x11-misc/xkeyboard-config"
 BDEPEND="
 		dev-util/meson
 		dev-util/ninja
@@ -37,17 +35,22 @@ BDEPEND="
 		>=dev-libs/wayland-protocols-9999
 		"
 
-FILECAPS=( cap_sys_admin usr/bin/wayfire )
 
 src_configure() {
 		meson_src_configure
 }
+
+
+pkg_preinst() {
+	if ! use systemd && ! use elogind; then
+		fowners root:0 /usr/bin/wayfire
+		fperms 4511 /usr/bin/wayfire
+	fi
+}
+
 
 src_install() {
 		meson_src_install
 		newdoc wayfire.ini.default wayfire.ini
 }
 
-#srs_postinst() {
-#
-#}
