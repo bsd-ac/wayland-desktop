@@ -51,6 +51,5 @@ pkg_preinst() {
 
 src_install() {
 		meson_src_install
-		newdoc wayfire.ini.default wayfire.ini
 }
 
