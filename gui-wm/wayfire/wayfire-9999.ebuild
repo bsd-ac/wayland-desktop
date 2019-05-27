@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 fcaps meson eutils
+inherit git-r3 meson eutils
 
 DESCRIPTION="A compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
