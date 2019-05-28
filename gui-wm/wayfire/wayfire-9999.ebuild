@@ -12,6 +12,7 @@ EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
 LICENSE="MIT"
 SLOT="0"
 IUSE="+elogind systemd"
+KEYWORDS=""
 
 DEPEND="
 		=gui-libs/wlroots-9999
