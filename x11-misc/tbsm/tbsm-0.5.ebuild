@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A pure bash session or application launcher. Inspired by cdm, tdm and krunner"
 HOMEPAGE="https://loh-tar.github.io/tbsm/"
-SRC_URI="https://github.com/loh-tar/tbsm/archive/v0.5.tar.gz"
+SRC_URI="https://github.com/loh-tar/tbsm/archive/v0.5.tar.gz -> ${P}.tar.gz"
 
 LICENSE=""
 SLOT="0"
