@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 meson eutils
+inherit git-r3 meson
 
 DESCRIPTION="A compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -11,7 +11,6 @@ EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="+elogind systemd"
 
 DEPEND="
@@ -28,17 +27,9 @@ DEPEND="
 		"
 RDEPEND="${DEPEND} x11-misc/xkeyboard-config"
 BDEPEND="
-		dev-util/meson
-		dev-util/ninja
-		dev-util/cmake
 		virtual/pkgconfig
 		>=dev-libs/wayland-protocols-9999
 		"
-
-
-src_configure() {
-		meson_src_configure
-}
 
 
 pkg_preinst() {
@@ -47,9 +38,3 @@ pkg_preinst() {
 		fperms 4511 /usr/bin/wayfire
 	fi
 }
-
-
-src_install() {
-		meson_src_install
-}
-
