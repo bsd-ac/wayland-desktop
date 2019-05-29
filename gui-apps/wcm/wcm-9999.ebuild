@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson
+inherit git-r3 meson
 
 DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
