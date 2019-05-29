@@ -17,7 +17,7 @@ and put the following text in the file:
 ```
     [wayfire-desktop]
 
-    location = /usr/local/portage/sakaki-tools
+    location = /usr/local/portage/wayfire-desktop
     sync-type = git
     sync-uri = https://github.com/epsilon-0/wayfire-desktop.git
     priority = 50
