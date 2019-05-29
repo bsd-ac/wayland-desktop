@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+elogind systemd"
+IUSE="+wcm +wfshell wfrecorder +elogind systemd"
 KEYWORDS=""
 
 DEPEND="
@@ -23,13 +23,16 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
+		wcm? ( =gui-apps/wcm-9999 )
+		wfshell? ( =gui-apps/wf-shell-9999 )
+		wfrecorder? ( =gui-apps/wf-recorder-9999 )
 		elogind? ( >=sys-auth/elogind-239 )
 		systemd? ( >=sys-apps/systemd-239 )
 		"
 RDEPEND="${DEPEND} x11-misc/xkeyboard-config"
 BDEPEND="
 		virtual/pkgconfig
-		>=dev-libs/wayland-protocols-9999
+		=dev-libs/wayland-protocols-9999
 		"
 
 

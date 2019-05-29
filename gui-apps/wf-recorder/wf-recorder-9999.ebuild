@@ -5,9 +5,9 @@ EAPI=7
 
 inherit git-r3 meson
 
-DESCRIPTION="A compiz like 3D wayland compositor"
-HOMEPAGE="https://github.com/WayfireWM/wf-shell"
-EGIT_REPO_URI="https://github.com/WayfireWM/wf-shell.git"
+DESCRIPTION="A program for screen recording of wlroots-based compositors"
+HOMEPAGE="https://github.com/ammen99/wf-recorder"
+EGIT_REPO_URI="https://github.com/ammen99/wf-recorder.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -15,7 +15,8 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-		=gui-wm/wayfire-9999
+		media-video/ffmpeg
+		dev-libs/wayland
 		"
 RDEPEND="${DEPEND}"
 BDEPEND="
