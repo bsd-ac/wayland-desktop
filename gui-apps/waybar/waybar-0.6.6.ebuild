@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="Highly customizable Wayland Polybar like bar"
+DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors."
 HOMEPAGE="https://github.com/Alexays/Waybar"
 SRC_URI="https://github.com/Alexays/Waybar/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
