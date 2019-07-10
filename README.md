@@ -3,7 +3,16 @@ gentoo overlay for wayfire ebuilds and other wayfire apps
 
 ## Installation
 
-As of version >= 2.2.16 of Portage, **wayfire-desktop** is best installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
+### Method 1 (via layman)
+Read this to get familiar with layman: https://docs.ansible.com/ansible/latest/modules/layman_module.html, https://wiki.gentoo.org/wiki/Layman
+
+```
+    $ layman -a wayfire-desktop
+```
+
+### Method 2 (manual)
+
+As of version >= 2.2.16 of Portage, **wayfire-desktop** is can be installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
 
 The following are short form instructions. If you haven't already installed **git**(1), do so first:
 ```
