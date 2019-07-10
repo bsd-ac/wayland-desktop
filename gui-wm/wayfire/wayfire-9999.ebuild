@@ -3,19 +3,25 @@
 
 EAPI=7
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="A compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
-EGIT_REPO_URI="https://github.com/WayfireWM/wayfire.git"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/WayfireWM/releases/download/v${PN}/${P}.tar.xz -> ${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="+wcm +wfshell wfrecorder +elogind systemd"
-KEYWORDS=""
 
 DEPEND="
-		=gui-libs/wlroots-9999
 		media-libs/glm
 		x11-libs/gtk+
 		x11-libs/cairo
@@ -29,12 +35,21 @@ DEPEND="
 		elogind? ( >=sys-auth/elogind-239 )
 		systemd? ( >=sys-apps/systemd-239 )
 		"
-RDEPEND="${DEPEND} x11-misc/xkeyboard-config"
 BDEPEND="
 		virtual/pkgconfig
 		=dev-libs/wayland-protocols-9999
 		"
 
+if [[ ${PV} == 9999 ]]; then
+	DEPEND+="=gui-libs/wlroots-9999[elogind=,systemd=,X]"
+else
+	DEPEND+=">=gui-libs/wlroots-0.6.0[elogind=,systemd=]"
+fi
+
+RDEPEND="
+	x11-misc/xkeyboard-config
+	${DEPEND}
+"
 
 pkg_preinst() {
 	if ! use systemd && ! use elogind; then
