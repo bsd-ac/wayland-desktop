@@ -11,6 +11,8 @@ gentoo overlay for wayfire ebuilds and other wayfire apps
 
 `gui-apps/wf-shell`	: A GTK3-based panel for wayfire
 
+`gui-apps/numbernine`	: \[WIP\] "Desktop" Environment 
+
 `gui-wm/wayfire`	: A compiz like 3D wayland compositor
 
 `x11-misc/tbsm`		: A pure bash session or application launcher. Inspired by cdm, tdm and krunner
