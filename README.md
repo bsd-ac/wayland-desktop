@@ -11,7 +11,7 @@ gentoo overlay for wayfire ebuilds and other wayfire apps
 
 `gui-apps/wf-shell`	: A GTK3-based panel for wayfire
 
-`gui-apps/numbernine`	: \[WIP\] "Desktop" Environment 
+`gui-apps/numbernine`	: \[WIP\] desktop "environment"
 
 `gui-wm/wayfire`	: A compiz like 3D wayland compositor
 
