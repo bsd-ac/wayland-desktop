@@ -14,6 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Alexays/Waybar.git"
 else
 	SRC_URI="https://github.com/Alexays/Waybar/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	S=${WORKDIR}/Waybar-${PV}
 fi
 
 LICENSE="MIT"
@@ -45,7 +46,6 @@ DEPEND="${RDEPEND}
 		dev-libs/wayland-protocols
 "
 
-S=${WORKDIR}/Waybar-${PV}
 
 
 src_configure() {
