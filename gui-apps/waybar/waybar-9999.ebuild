@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature network libnl)
+		$(meson_feature netlink libnl)
 		$(meson_feature udev libudev)
 		$(meson_feature pulseaudio)
 		$(meson_feature tray dbusmenu-gtk)
