@@ -19,12 +19,14 @@ fi
 LICENSE="UNLICENSE"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE=""
+IUSE="dmd +ldc"
 
 RDEPEND="
 		=gui-wm/wayfire-9999
 		dev-libs/flatbuffers
-		dev-libs/pugixml
+		dev-libs/pugixml 
+		dmd? ( dev-lang/dmd )
+		ldc? ( dev-lang/ldc )
 "
 
 DEPEND="${RDEPEND}
