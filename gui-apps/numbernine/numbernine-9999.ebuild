@@ -24,9 +24,9 @@ IUSE="dmd +ldc"
 RDEPEND="
 		=gui-wm/wayfire-9999
 		dev-libs/flatbuffers
-		dev-libs/pugixml 
+		dev-libs/pugixml
 		dmd? ( dev-lang/dmd )
-		ldc? ( dev-lang/ldc )
+		ldc? ( dev-lang/ldc2 )
 "
 
 DEPEND="${RDEPEND}
