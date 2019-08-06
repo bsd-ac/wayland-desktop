@@ -29,7 +29,6 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		dev-cpp/gtkmm[3]	
 		wcm? ( =gui-apps/wcm-9999 )
 		wfshell? ( =gui-apps/wf-shell-9999 )
 		wfrecorder? ( =gui-apps/wf-recorder-9999 )
