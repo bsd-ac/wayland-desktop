@@ -16,6 +16,7 @@ IUSE=""
 
 DEPEND="
 		=gui-wm/wayfire-9999
+		dev-cpp/gtkmm:3.0
 		"
 RDEPEND="${DEPEND}"
 BDEPEND="
