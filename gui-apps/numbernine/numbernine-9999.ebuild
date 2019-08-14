@@ -19,16 +19,17 @@ fi
 LICENSE="UNLICENSE"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="dmd +ldc"
+IUSE=""
 
 RDEPEND="
-		=gui-wm/wayfire-9999
-		dev-libs/flatbuffers
-		dev-libs/pugixml
-		dmd? ( dev-lang/dmd )
-		ldc? ( dev-lang/ldc2 )
+	=gui-wm/wayfire-9999
+	dev-libs/flatbuffers
+	dev-libs/pugixml
+	dev-libs/gtkd
+	dev-libs/libhandy
+	dev-libs/libfmt
 "
 
 DEPEND="${RDEPEND}
-		dev-libs/wayland-protocols
+	dev-libs/wayland-protocols
 "
