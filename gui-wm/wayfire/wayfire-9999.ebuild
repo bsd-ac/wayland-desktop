@@ -33,7 +33,7 @@ DEPEND="
 		wfshell? ( =gui-apps/wf-shell-9999 )
 		wfrecorder? ( =gui-apps/wf-recorder-9999 )
 		wf-sound-control? ( =gui-apps/wf-sound-control-9999 )
-		wf-osk? ( =gui-apps/wf-osk )
+		wf-osk? ( =gui-apps/wf-osk-9999 )
 		elogind? ( >=sys-auth/elogind-239 )
 		systemd? ( >=sys-apps/systemd-239 )
 		"
