@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>mathgeniusabhinav@gmail.com</email>
+  <name>Abhinav Tamaskar</name>
+</maintainer>
+<use>
+  <flag name='wcm'>Pulls in wayfire config manager.</flag>
+  <flag name='wf-shell'>Pulls in wf-shell (recommended, until a full fledged DE is made).</flag>
+  <flag name='wf-recorder'>Pulls in wf-recorder, a simple video recording program.</flag>
+  <flag name='wf-sound-control'>Pulls in wf-sound-control, a simple GUI sound control utility.</flag>
+  <flag name='wf-osk'>Pulls in wf-osk (on screen keyboard).</flag>
+</use>
+</pkgmetadata>

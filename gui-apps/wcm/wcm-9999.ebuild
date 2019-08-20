@@ -9,7 +9,7 @@ DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
 EGIT_REPO_URI="https://github.com/WayfireWM/wcm.git"
 
-LICENSE=""
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""

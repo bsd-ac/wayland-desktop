@@ -19,7 +19,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wfshell +wfrecorder +wf-sound-control +wf-osk +elogind systemd"
+IUSE="+wcm +wf-shell +wf-recorder +wf-sound-control +wf-osk +elogind systemd"
 
 DEPEND="
 		media-libs/glm
@@ -30,8 +30,8 @@ DEPEND="
 		media-libs/libjpeg-turbo
 		media-libs/libpng
 		wcm? ( =gui-apps/wcm-9999 )
-		wfshell? ( =gui-apps/wf-shell-9999 )
-		wfrecorder? ( =gui-apps/wf-recorder-9999 )
+		wf-shell? ( =gui-apps/wf-shell-9999 )
+		wf-recorder? ( =gui-apps/wf-recorder-9999 )
 		wf-sound-control? ( =gui-apps/wf-sound-control-9999 )
 		wf-osk? ( =gui-apps/wf-osk-9999 )
 		elogind? ( >=sys-auth/elogind-239 )
