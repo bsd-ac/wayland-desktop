@@ -16,6 +16,7 @@ IUSE=""
 
 DEPEND="
 		media-video/ffmpeg
+		media-sound/pulseaudio
 		dev-libs/wayland
 		"
 RDEPEND="${DEPEND}"
