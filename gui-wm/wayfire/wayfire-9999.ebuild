@@ -29,7 +29,7 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		=dev-libs/gtk-layer-shell-999
+		=dev-libs/gtk-layer-shell-9999
 		wcm? ( =gui-apps/wcm-9999 )
 		wf-shell? ( =gui-apps/wf-shell-9999 )
 		wf-recorder? ( =gui-apps/wf-recorder-9999 )
