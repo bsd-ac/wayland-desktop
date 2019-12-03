@@ -58,3 +58,10 @@ pkg_preinst() {
 		fperms 4511 /usr/bin/wayfire
 	fi
 }
+
+src_install() {
+  default;
+  insinto "/usr/share/wayland-sessions/";
+  insopts -m644;
+  doins wayfire.desktop;
+}
