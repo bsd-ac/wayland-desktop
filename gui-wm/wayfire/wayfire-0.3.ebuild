@@ -60,7 +60,7 @@ pkg_preinst() {
 	fi
 }
 
-pkg_postinst() {
+src_install() {
   default;
   insinto "/usr/share/wayland-sessions/";
   insopts -m644;
