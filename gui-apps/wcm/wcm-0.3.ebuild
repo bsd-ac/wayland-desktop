@@ -7,7 +7,6 @@ inherit git-r3 meson
 
 DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
-EGIT_REPO_URI="https://github.compu/WayfireWM/wcm.git"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,7 +23,7 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-libs/libxml2
-        dev-cpp/gtkmm[wayland]
+        dev-cpp/gtkmm:3.0[wayland]
         >=gui-apps/wf-config-0.3
         "
 RDEPEND="${DEPEND}"
