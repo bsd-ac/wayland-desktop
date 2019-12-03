@@ -26,7 +26,6 @@ DEPEND="
 		media-video/ffmpeg
 		media-sound/pulseaudio
 		"
-RDEPEND="${DEPEND}"
 BDEPEND="
 		virtual/pkgconfig
 		dev-libs/wayland-protocols

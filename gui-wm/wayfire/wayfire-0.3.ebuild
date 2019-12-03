@@ -51,7 +51,6 @@ fi
 
 RDEPEND="
 	x11-misc/xkeyboard-config
-	${DEPEND}
 "
 
 pkg_preinst() {

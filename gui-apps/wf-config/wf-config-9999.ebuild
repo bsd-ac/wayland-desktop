@@ -24,6 +24,4 @@ IUSE=""
 
 DEPEND="dev-libs/libevdev
         >=gui-libs/wlroots-0.8"
-RDEPEND="${DEPEND}
-        dev-libs/wayland-protocols"
-BDEPEND=""
+BDEPEND="dev-libs/wayland-protocols"

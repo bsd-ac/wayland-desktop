@@ -22,5 +22,4 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-shells/bash:0"
-RDEPEND="${DEPEND}"
 BDEPEND=""

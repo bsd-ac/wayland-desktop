@@ -26,7 +26,6 @@ DEPEND=">=gui-apps/wf-config-0.3
         dev-cpp/gtkmm:3.0[wayland]
         >=dev-libs/gtk-layer-shell-0.1
 		    "
-RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig
          dev-libs/wayland-protocols
          dev-libs/gobject-introspection

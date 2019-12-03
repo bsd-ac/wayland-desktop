@@ -22,7 +22,6 @@ DEPEND="dev-libs/libxml2
         dev-cpp/gtkmm:3.0[wayland]
         >=gui-apps/wf-config-0.3
         "
-RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig
          dev-libs/wayland-protocols
 		     "
