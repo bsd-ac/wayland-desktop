@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-libs/libevedev
+DEPEND="dev-libs/libevdev
         >=gui-libs/wlroots-0.8"
 RDEPEND="${DEPEND}
         dev-libs/wayland-protocols"
