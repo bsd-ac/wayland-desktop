@@ -9,13 +9,11 @@ DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
 
 inherit git-r3
-EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
-EGIT_COMMIT="v0.3"
+SRC_URI="https://github.com/WayfireWM/wcm/archive/v0.3.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-libs/libxml2

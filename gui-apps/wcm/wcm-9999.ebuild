@@ -20,7 +20,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-libs/libxml2
