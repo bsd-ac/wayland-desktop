@@ -3,9 +3,13 @@ gentoo overlay for wayfire ebuilds and other wayfire apps
 
 ## Included packages
 
-`gui-apps/waybar`	: Highly customizable Wayland bar for Sway and Wlroots based compositors.
+`dev-libs/gtk-layer-shell`   : A library to create panels and other desktop components for Wayland
+
+`gui-apps/carbonshell`    : The default shell of carbonOS
 
 `gui-apps/wcm`		: Wayfire Config Manager
+
+`gui-apps/wf-config`	: A library for managing configuration files, written for wayfire
 
 `gui-apps/wf-recorder`	: A program for screen recording of wlroots-based compositors
 

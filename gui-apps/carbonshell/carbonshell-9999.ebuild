@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="[WIP] desktop 'environment'"
+DESCRIPTION="The default shell of carbonOS"
 HOMEPAGE="https://bitbucket.org/carbonOS/carbonshell"
 
 
