@@ -25,7 +25,7 @@ IUSE=""
 
 DEPEND="dev-libs/libxml2
         dev-cpp/gtkmm[wayland]
-        =gui-apps/wf-config-9999
+        >=gui-apps/wf-config-0.3
         "
 RDEPEND="${DEPEND}"
 BDEPEND="
