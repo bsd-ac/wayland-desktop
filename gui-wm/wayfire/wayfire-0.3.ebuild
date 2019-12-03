@@ -13,13 +13,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/WayfireWM/wayfire/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wf-shell +wf-recorder +wf-sound-control +wf-osk +elogind systemd"
+IUSE="+wcm +wf-shell +wf-recorder +elogind systemd"
 
 DEPEND="
 		media-libs/glm
@@ -29,23 +29,23 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		wcm? ( =gui-apps/wcm-9999 )
-		wf-shell? ( =gui-apps/wf-shell-9999 )
-		wf-recorder? ( =gui-apps/wf-recorder-9999 )
-		wf-sound-control? ( =gui-apps/wf-sound-control-9999 )
-		wf-osk? ( =gui-apps/wf-osk-9999 )
-		elogind? ( >=sys-auth/elogind-239 )
-		systemd? ( >=sys-apps/systemd-239 )
+		>=dev-libs/gtk-layer-shell-0.1
+    >=gui-apps/wf-config-0.3
+		wcm? ( >=gui-apps/wcm-0.3 )
+		wf-shell? ( >=gui-apps/wf-shell-0.3 )
+		wf-recorder? ( >=gui-apps/wf-recorder-0.2 )
+		elogind? ( sys-auth/elogind )
+		systemd? ( sys-apps/systemd )
 		"
 BDEPEND="
 		virtual/pkgconfig
-		=dev-libs/wayland-protocols-9999
+		=dev-libs/wayland-protocols-1.18
 		"
 
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+="=gui-libs/wlroots-9999[elogind=,systemd=,X]"
 else
-	DEPEND+=">=gui-libs/wlroots-0.6.0[elogind=,systemd=]"
+	DEPEND+=">=gui-libs/wlroots-0.8.0[elogind=,systemd=]"
 fi
 
 RDEPEND="
