@@ -65,3 +65,11 @@ src_install() {
   insopts -m644;
   doins wayfire.desktop;
 }
+
+pkg_postinst() {
+  echo "Wayfire has been installed but the session cannot be used"
+  echo "until you install a configuration file. The default config"
+  echo "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
+  echo "To install the file execute"
+  echo "\$ mkdir -p ~/.config && cp /usr/share/doc/${P}/wayfire.ini.default ~/.config/wayfire.ini"
+}
