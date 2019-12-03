@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="A program for screen recording of wlroots-based compositors"
 HOMEPAGE="https://github.com/ammen99/wf-recorder"

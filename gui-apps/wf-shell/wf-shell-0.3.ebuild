@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="A compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wf-shell"
