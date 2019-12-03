@@ -64,5 +64,5 @@ src_install() {
   default;
   insinto "/usr/share/wayland-sessions/";
   insopts -m644;
-  doins wayfire.session;
+  doins wayfire.desktop;
 }
