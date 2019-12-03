@@ -8,14 +8,10 @@ inherit git-r3 meson
 DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
-fi
+inherit git-r3
+EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
+EGIT_COMMIT="v0.3"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,7 +23,6 @@ DEPEND="dev-libs/libxml2
         >=gui-apps/wf-config-0.3
         "
 RDEPEND="${DEPEND}"
-BDEPEND="
-		virtual/pkgconfig
-		dev-libs/wayland-protocols
-		"
+BDEPEND="virtual/pkgconfig
+         dev-libs/wayland-protocols
+		     "
