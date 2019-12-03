@@ -5,7 +5,7 @@ EAPI=7
 
 inherit git-r3 meson
 
-DESCRIPTION="A library to create panels and other desktop components for Wayland using the Layer Shell protocol"
+DESCRIPTION="A library to create panels and other desktop components for Wayland"
 HOMEPAGE="https://github.com/wmww/gtk-layer-shell"
 
 if [[ ${PV} == 9999 ]]; then
