@@ -21,7 +21,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="docs examples"
 
 DEPEND="
 	>=x11-libs/gtk+-3.24.1:3[introspection,wayland]
@@ -33,3 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
 "
+
+src_configure() {
+  local emesonargs = (
+        -Ddocs=(usex docs enabled disabled)
+        -Dexamples=(usex examples enabled disabled)
+  )
+}
