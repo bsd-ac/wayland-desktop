@@ -30,5 +30,5 @@ DEPEND="dev-libs/libxml2
 RDEPEND="${DEPEND}"
 BDEPEND="
 		virtual/pkgconfig
-		>=dev-libs/wayland-protocols-1.18
+		dev-libs/wayland-protocols
 		"

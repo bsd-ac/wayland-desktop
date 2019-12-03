@@ -39,7 +39,7 @@ DEPEND="
 		"
 BDEPEND="
 		virtual/pkgconfig
-		>=dev-libs/wayland-protocols-1.18
+		dev-libs/wayland-protocols
 		"
 
 if [[ ${PV} == 9999 ]]; then

@@ -25,5 +25,5 @@ IUSE=""
 DEPEND="dev-libs/libevedev
         >=gui-libs/wlroots-0.8"
 RDEPEND="${DEPEND}
-        >=dev-libs/wayland-protocols-1.18"
+        dev-libs/wayland-protocols"
 BDEPEND=""

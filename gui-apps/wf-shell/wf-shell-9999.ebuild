@@ -28,6 +28,6 @@ DEPEND="=gui-apps/wf-config-9999
 		    "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig
-         >=dev-libs/wayland-protocols-1.18
+         dev-libs/wayland-protocols
          dev-libs/gobject-introspection
 		     "
