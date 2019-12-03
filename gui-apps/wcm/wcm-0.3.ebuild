@@ -24,7 +24,7 @@ IUSE=""
 
 DEPEND="dev-libs/libxml2
         dev-cpp/gtkmm:3.0[wayland]
-        ~gui-apps/wf-config-9999
+        >=gui-apps/wf-config-0.3
         "
 BDEPEND="
 		virtual/pkgconfig
