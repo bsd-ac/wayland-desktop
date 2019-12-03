@@ -13,7 +13,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
+  # small typo in release site, where the project version link has an extra 0 at the end
+	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/0.3.0/${P}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
