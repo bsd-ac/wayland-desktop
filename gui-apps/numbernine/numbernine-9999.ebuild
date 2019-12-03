@@ -22,7 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND="
-	=gui-wm/wayfire-9999
+	~gui-wm/wayfire-9999
 	dev-libs/flatbuffers
 	dev-libs/pugixml
 	dev-libs/gtkd
