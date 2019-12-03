@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="A library to create panels and other desktop components for Wayland"
 HOMEPAGE="https://github.com/wmww/gtk-layer-shell"
