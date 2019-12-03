@@ -44,7 +44,7 @@ BDEPEND="
 		"
 
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="=gui-libs/wlroots-9999[elogind=,systemd=,X]"
+	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X]"
 else
 	DEPEND+=">=gui-libs/wlroots-0.8.0[elogind=,systemd=]"
 fi
@@ -58,4 +58,11 @@ pkg_preinst() {
 		fowners root:0 /usr/bin/wayfire
 		fperms 4511 /usr/bin/wayfire
 	fi
+}
+
+pkg_postinst() {
+  default;
+  insinto "/usr/share/wayland-sessions/";
+  insopts -m644;
+  doins wayfire.session;
 }
