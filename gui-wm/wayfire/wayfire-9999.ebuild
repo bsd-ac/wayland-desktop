@@ -23,7 +23,7 @@ IUSE="+wcm +wf-shell +wf-recorder +elogind systemd"
 
 DEPEND="
 		media-libs/glm
-		x11-libs/gtk+
+		x11-libs/gtk+:3
 		x11-libs/cairo
 		x11-libs/libxkbcommon
 		x11-libs/pixman
