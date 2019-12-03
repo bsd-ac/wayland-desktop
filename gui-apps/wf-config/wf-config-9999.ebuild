@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="A library for managing configuration files, written for wayfire"
 HOMEPAGE="https://github.com/WayfireWM/wf-config"
