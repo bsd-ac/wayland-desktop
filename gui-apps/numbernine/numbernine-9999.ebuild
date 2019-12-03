@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/gtkd
 	dev-libs/libhandy
 	dev-libs/libfmt
-	=dev-libs/gtk-layer-shell-9999
+	~dev-libs/gtk-layer-shell-9999
 "
 
 DEPEND="${RDEPEND}
