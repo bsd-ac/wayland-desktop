@@ -61,9 +61,14 @@ pkg_preinst() {
 
 src_install() {
   default;
+  
   insinto "/usr/share/wayland-sessions/";
   insopts -m644;
   doins wayfire.desktop;
+
+  insinto "/usr/share/doc/${P}/";
+  insopts -m644;
+  doins wayfire.ini.default;
 }
 
 pkg_postinst() {
