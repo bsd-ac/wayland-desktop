@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="=gui-wm/wayfire-9999"
+DEPEND=" =gui-apps/wf-config-9999
+         =gui-wm/wayfire-9999"
 RDEPEND="${DEPEND}"
 BDEPEND=""
