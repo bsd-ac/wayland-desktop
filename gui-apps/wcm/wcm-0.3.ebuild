@@ -3,14 +3,20 @@
 
 EAPI=7
 
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="Wayfire Config Manager"
 HOMEPAGE="https://github.com/WayfireWM/wcm"
+EGIT_REPO_URI="https://github.compu/WayfireWM/wcm.git"
 
-inherit git-r3
-SRC_URI="https://github.com/WayfireWM/wcm/archive/v0.3.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm64 ~x86"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,8 +24,9 @@ IUSE=""
 
 DEPEND="dev-libs/libxml2
         dev-cpp/gtkmm:3.0[wayland]
-        >=gui-apps/wf-config-0.3
+        ~gui-apps/wf-config-9999
         "
-BDEPEND="virtual/pkgconfig
-         dev-libs/wayland-protocols
-		     "
+BDEPEND="
+		virtual/pkgconfig
+		dev-libs/wayland-protocols
+		"
