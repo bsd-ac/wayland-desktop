@@ -35,8 +35,9 @@ BDEPEND="
 "
 
 src_configure() {
-  local emesonargs = (
-        -Ddocs=(usex docs enabled disabled)
-        -Dexamples=(usex examples enabled disabled)
+  local emesonargs=(
+        -Ddocs=$(usex docs enabled disabled)
+        -Dexamples=$(usex examples enabled disabled)
   )
+  meson_src_configure
 }
