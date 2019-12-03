@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="=gui-apps/wf-config-9999
+DEPEND="~gui-apps/wf-config-9999
         dev-cpp/gtkmm:3.0[wayland]
         >=dev-libs/gtk-layer-shell-0.1
 		    "

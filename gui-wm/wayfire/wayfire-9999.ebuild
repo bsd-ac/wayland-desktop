@@ -30,10 +30,10 @@ DEPEND="
 		media-libs/libjpeg-turbo
 		media-libs/libpng
 		>=dev-libs/gtk-layer-shell-0.1
-    =gui-apps/wf-config-9999
-		wcm? ( =gui-apps/wcm-9999 )
-		wf-shell? ( =gui-apps/wf-shell-9999 )
-		wf-recorder? ( =gui-apps/wf-recorder-9999 )
+    ~gui-apps/wf-config-9999
+		wcm? ( ~gui-apps/wcm-9999 )
+		wf-shell? ( ~gui-apps/wf-shell-9999 )
+		wf-recorder? ( ~gui-apps/wf-recorder-9999 )
 		elogind? ( sys-auth/elogind )
 		systemd? ( sys-apps/systemd )
 		"
@@ -43,7 +43,7 @@ BDEPEND="
 		"
 
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="=gui-libs/wlroots-9999[elogind=,systemd=,X]"
+	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X]"
 else
 	DEPEND+=">=gui-libs/wlroots-0.8.0[elogind=,systemd=]"
 fi
