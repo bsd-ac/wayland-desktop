@@ -68,7 +68,7 @@ src_install() {
 
   insinto "/usr/share/doc/${P}/";
   insopts -m644;
-  newins wayfire.ini.default;
+  newins wayfire.ini.default wayfire.ini;
 }
 
 pkg_postinst() {
@@ -76,5 +76,5 @@ pkg_postinst() {
   echo "until you install a configuration file. The default config"
   echo "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
   echo "To install the file execute"
-  echo "\$ mkdir -p ~/.config && cp /usr/share/doc/${P}/wayfire.ini.default ~/.config/wayfire.ini"
+  echo "\$ mkdir -p ~/.config && cp /usr/share/doc/${P}/wayfire.ini ~/.config/wayfire.ini"
 }
