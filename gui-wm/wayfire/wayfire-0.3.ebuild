@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-  # small typo in release site, where the project version link has an extra 0 at the end
+	# small typo in release site, where the project version link has an extra 0 at the end
 	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/0.3.0/${P}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
@@ -31,7 +31,7 @@ DEPEND="
 		media-libs/libjpeg-turbo
 		media-libs/libpng
 		>=dev-libs/gtk-layer-shell-0.1
-    >=gui-apps/wf-config-0.3
+		>=gui-apps/wf-config-0.3
 		wcm? ( >=gui-apps/wcm-0.3 )
 		wf-shell? ( >=gui-apps/wf-shell-0.3 )
 		wf-recorder? ( >=gui-apps/wf-recorder-0.2 )
@@ -61,21 +61,21 @@ pkg_preinst() {
 }
 
 src_install() {
-  default;
+	default;
 
-  insinto "/usr/share/wayland-sessions/";
-  insopts -m644;
-  doins wayfire.desktop;
+	insinto "/usr/share/wayland-sessions/";
+	insopts -m644;
+	doins wayfire.desktop;
 
-  insinto "/usr/share/doc/${P}/";
-  insopts -m644;
-  doins wayfire.ini.default;
+	insinto "/usr/share/doc/${P}/";
+	insopts -m644;
+	doins wayfire.ini.default;
 }
 
 pkg_postinst() {
-  echo "Wayfire has been installed but the session cannot be used"
-  echo "until you install a configuration file. The default config"
-  echo "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
-  echo "To install the file execute"
-  echo "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
+	elog "Wayfire has been installed but the session cannot be used"
+	elog "until you install a configuration file. The default config"
+	elog "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
+	elog "To install the file execute"
+	elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
 }

@@ -30,7 +30,7 @@ DEPEND="
 		media-libs/libjpeg-turbo
 		media-libs/libpng
 		>=dev-libs/gtk-layer-shell-0.1
-    ~gui-apps/wf-config-9999
+		~gui-apps/wf-config-9999
 		wcm? ( ~gui-apps/wcm-9999 )
 		wf-shell? ( ~gui-apps/wf-shell-9999 )
 		wf-recorder? ( ~gui-apps/wf-recorder-9999 )
@@ -49,7 +49,7 @@ else
 fi
 
 RDEPEND="
-	x11-misc/xkeyboard-config
+		x11-misc/xkeyboard-config
 "
 
 pkg_preinst() {
@@ -60,21 +60,21 @@ pkg_preinst() {
 }
 
 src_install() {
-  default;
-  
-  insinto "/usr/share/wayland-sessions/";
-  insopts -m644;
-  doins wayfire.desktop;
+	default;
 
-  insinto "/usr/share/doc/${P}/";
-  insopts -m644;
-  newins wayfire.ini.default wayfire.ini;
+	insinto "/usr/share/wayland-sessions/";
+	insopts -m644;
+	doins wayfire.desktop;
+
+	insinto "/usr/share/doc/${P}/";
+	insopts -m644;
+	newins wayfire.ini.default wayfire.ini;
 }
 
 pkg_postinst() {
-  echo "Wayfire has been installed but the session cannot be used"
-  echo "until you install a configuration file. The default config"
-  echo "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
-  echo "To install the file execute"
-  echo "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
+	elog "Wayfire has been installed but the session cannot be used"
+	elog "until you install a configuration file. The default config"
+	elog "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
+	elog "To install the file execute"
+	elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
 }
