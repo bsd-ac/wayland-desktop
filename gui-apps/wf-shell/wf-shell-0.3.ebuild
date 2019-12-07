@@ -22,10 +22,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=gui-apps/wf-config-0.3
-        dev-cpp/gtkmm:3.0[wayland]
-        >=dev-libs/gtk-layer-shell-0.1
-		    "
+		dev-cpp/gtkmm:3.0[wayland]
+		>=dev-libs/gtk-layer-shell-0.1
+			"
 BDEPEND="virtual/pkgconfig
-         dev-libs/wayland-protocols
-         dev-libs/gobject-introspection
-		     "
+		dev-libs/wayland-protocols
+		dev-libs/gobject-introspection
+		"
