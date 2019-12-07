@@ -22,5 +22,5 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-libs/libevdev
-        >=gui-libs/wlroots-0.8"
+		>=gui-libs/wlroots-0.8"
 BDEPEND="dev-libs/wayland-protocols"
