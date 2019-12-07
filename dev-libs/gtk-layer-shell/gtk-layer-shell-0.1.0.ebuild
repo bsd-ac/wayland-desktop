@@ -23,17 +23,17 @@ IUSE="docs examples"
 
 DEPEND="
 	>=x11-libs/gtk+-3.24.1:3[introspection,wayland]
-"
+	"
 
 BDEPEND="
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
-"
+	"
 
 src_configure() {
-  local emesonargs=(
-        -Ddocs=$(usex docs true false)
-        -Dexamples=$(usex examples true false)
-  )
-  meson_src_configure
+	local emesonargs=(
+		-Ddocs=$(usex docs true false)
+		-Dexamples=$(usex examples true false)
+	)
+	meson_src_configure
 }
