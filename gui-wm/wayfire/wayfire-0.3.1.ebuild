@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	KEYWORDS=""
 else
 	# small typo in release site, where the project version link has an extra 0 at the end
-	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
