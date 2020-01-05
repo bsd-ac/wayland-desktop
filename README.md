@@ -56,6 +56,8 @@ Then run:
 ```
     $ emaint sync --repo wayfire-desktop
 ```
+
+## Using packages from the overlay
 If you are running on the stable branch by default, allow **~amd64** keyword files from this repository. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then issue:
 ```
     $ echo "*/*::wayfire-desktop ~amd64" >> /etc/portage/package.accept_keywords/wayfire-desktop
