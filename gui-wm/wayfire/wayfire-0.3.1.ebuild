@@ -62,6 +62,7 @@ pkg_preinst() {
 
 src_install() {
 	default;
+	meson_src_install;
 
 	insinto "/usr/share/wayland-sessions/";
 	insopts -m644;
