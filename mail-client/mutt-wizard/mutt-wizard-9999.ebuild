@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="A system for automatically configuring mutt and isync with a simple interface and safe passwords"
+DESCRIPTION="A system for automatically configuring mutt and isync"
 HOMEPAGE="https://github.com/LukeSmithxyz/mutt-wizard"
 
 if [[ ${PV} == 9999 ]]; then
@@ -17,17 +17,20 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="notmuch "
+IUSE="+notmuch +links w3m lynx +libnotify +abook +gpg +cron +imagemagick"
 
-DEPEND="mail-client/neomutt
+DEPEND="mail-client/neomutt:=[notmuch=]
 		net-mail/isync
 		mail-mta/msmtp
 		app-admin/pass
-		notmuch ? (net-mail/notmuch)
-		lynx ? (www-client/lynx)
-		libnotify ? (x11-libs/libnotify)
-		abook ? (app-misc/abook)
-		gpg ? (app-crypt/gnupg)
+		cron? ( virtual/cron )
+		imagemagick? ( media-gfx/imagemagick )
+		lynx? ( www-client/lynx )
+		links? ( www-client/links )
+		w3m? ( www-client/w3m )
+		libnotify? ( x11-libs/libnotify )
+		abook? ( app-misc/abook )
+		gpg? ( app-crypt/gnupg )
 		"
 BDEPEND="net-mail/isync
 		app-admin/pass
