@@ -32,6 +32,12 @@ DEPEND="mail-client/neomutt:=[notmuch=]
 		abook? ( app-misc/abook )
 		gpg? ( app-crypt/gnupg )
 		"
+
 BDEPEND="net-mail/isync
 		app-admin/pass
 		"
+
+src_install() {
+	emake PREFIX="${EPREFIX}" install
+	einstalldocs
+}
