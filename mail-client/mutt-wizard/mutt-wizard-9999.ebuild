@@ -38,5 +38,6 @@ BDEPEND="net-mail/isync
 		"
 
 src_prepare() {
+	default
 	sed -i -e 's/PREFIX\ =\ \/usr\/local/PREFIX\ =\ \/usr/g' Makefile
 }
