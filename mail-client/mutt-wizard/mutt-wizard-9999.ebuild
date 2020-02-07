@@ -37,10 +37,10 @@ BDEPEND="net-mail/isync
 		app-admin/pass
 		"
 
-src_prepare() {
-	default
-	sed -i -e 's/PREFIX\ =\ \/usr\/local/PREFIX\ =\ \/usr/g' Makefile
-}
+#src_prepare() {
+#	default
+#	sed -i -e 's/PREFIX\ =\ \/usr\/local/PREFIX\ =\ \/usr/g' Makefile
+#}
 
 src_install() {
 	emake PREFIX="/usr" DESTDIR="${D}" install
