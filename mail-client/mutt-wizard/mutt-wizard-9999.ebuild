@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+notmuch +links w3m lynx +libnotify +abook +gpg +cron +imagemagick"
+IUSE="+notmuch links +w3m lynx +libnotify +abook +gpg +cron +imagemagick"
 
 DEPEND="mail-client/neomutt:=[notmuch=]
 		net-mail/isync
