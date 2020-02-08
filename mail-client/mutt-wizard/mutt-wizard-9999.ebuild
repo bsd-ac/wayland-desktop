@@ -41,6 +41,7 @@ src_prepare() {
 	default
 	elog "creating the patching the files"
 	elog "the folger is ${D}"
+	elog "the second folder is ${DESTDIR}"
 	sed -i -e "s@PREFIX\ =\ \/usr\/local@PREFIX\ =\ \/usr@g" Makefile
 	sed -i -e "s@\$\{DESTDIR\}@${D}@g" Makefile
 }
