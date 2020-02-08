@@ -40,7 +40,7 @@ BDEPEND="net-mail/isync
 src_prepare() {
 	default
 	elog "creating the patching the files"
-	elog ${D}
+	elog "the folger is ${D}"
 	sed -i -e "s@PREFIX\ =\ \/usr\/local@PREFIX\ =\ \/usr@g" Makefile
 	sed -i -e "s@\$\{DESTDIR\}@${D}@g" Makefile
 }
