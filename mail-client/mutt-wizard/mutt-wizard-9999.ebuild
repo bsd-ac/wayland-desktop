@@ -41,8 +41,8 @@ src_prepare() {
 	default
 	elog "creating the patching the files"
 	elog ${D}
-	sed -i -e "s/PREFIX\ =\ \/usr\/local/PREFIX\ =\ \/usr/g" Makefile
-	sed -i -e "s/\$\{DESTDIR\}/${D}/g" Makefile
+	sed -i -e "s@PREFIX\ =\ \/usr\/local@PREFIX\ =\ \/usr@g" Makefile
+	sed -i -e "s@\$\{DESTDIR\}@${D}@g" Makefile
 }
 
 src_install() {
