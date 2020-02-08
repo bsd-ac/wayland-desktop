@@ -46,7 +46,9 @@ BDEPEND="net-mail/isync
 #	sed -i -e "s@\$\{DESTDIR\}@${D}@g" Makefile
 #}
 
-src_compile() {}
+src_compile() {
+
+}
 
 src_install() {
 	emake PREFIX="/usr" DESTDIR="${D}" install
