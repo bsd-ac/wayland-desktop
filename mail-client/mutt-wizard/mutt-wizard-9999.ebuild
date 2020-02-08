@@ -47,7 +47,7 @@ BDEPEND="net-mail/isync
 #}
 
 src_compile() {
-
+	return 0;
 }
 
 src_install() {
