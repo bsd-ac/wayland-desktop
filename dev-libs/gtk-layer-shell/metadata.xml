@@ -5,9 +5,9 @@
         <email>mathgeniusabhinav@gmail.com</email>
         <name>Abhinav Tamaskar</name>
     </maintainer>
-    <maintainer <type></type>"project">
-		    <email><proxy-maint></proxy-maint>@gentoo.org</email>
-		    <name>Proxy <Maintainers></Maintainers>/name>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
     </maintainer>
     <use>
         <flag name='docs'>Add the internal documentation, not needed for non-developers.</flag>
