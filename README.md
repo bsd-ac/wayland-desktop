@@ -1,27 +1,12 @@
 # wayfire-desktop
 gentoo overlay for wayfire ebuilds and other wayfire apps
 
-## Included packages
-
-`dev-libs/gtk-layer-shell`   : A library to create panels and other desktop components for Wayland
-
-`gui-apps/carbonshell`    : The default shell of carbonOS
-
-`gui-apps/wcm`		: Wayfire Config Manager
-
-`gui-apps/wf-config`	: A library for managing configuration files, written for wayfire
-
-`gui-apps/wf-recorder`	: A program for screen recording of wlroots-based compositors
-
-`gui-apps/wf-shell`	: A GTK3-based panel for wayfire
-
-`gui-apps/numbernine`	: \[WIP\] desktop "environment"
-
-`gui-wm/wayfire`	: A compiz like 3D wayland compositor
-
-`x11-misc/tbsm`		: A pure bash session or application launcher. Inspired by cdm, tdm and krunner
+## Overview
+This repository contains a lot of ebuilds for the wayland desktop environment and window manager `wayfire`. There are also quite a few utilities included to help work with this environment.
 
 ## Installation
+
+It is generally a good idea to use one of the two following methods for all overlays and stick with it, unless you want to specifically mix and match, causing a mess of files.
 
 ### Method 1 (via layman)
 Read this to get familiar with layman: https://docs.ansible.com/ansible/latest/modules/layman_module.html, https://wiki.gentoo.org/wiki/Layman
@@ -67,4 +52,4 @@ Now you can install packages from the overlay. For example:
     # emerge --ask --verbose gui-wm/wayfire
 ```
 
-credit: [sakaki-tools](https://github.com/sakaki-/sakaki-tools)
+credit (for installation methods): [sakaki-tools](https://github.com/sakaki-/sakaki-tools)
