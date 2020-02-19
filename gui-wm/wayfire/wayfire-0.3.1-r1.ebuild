@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -29,7 +29,7 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		~dev-libs/gtk-layer-shell-0.1
+		~dev-libs/gtk-layer-shell-0.1.0
 		wcm? ( ~gui-apps/wcm-0.3.1 )
 		wf-shell? ( ~gui-apps/wf-shell-0.3 )
 		wf-recorder? ( ~gui-apps/wf-recorder-0.2 )
