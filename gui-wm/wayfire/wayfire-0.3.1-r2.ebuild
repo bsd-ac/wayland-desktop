@@ -55,7 +55,7 @@ src_configure(){
 		-Duse_system_wlroots=$(usex wlroots true false)
 	)
 	if use debug; then
-		emesonars+=(
+		emesonargs+=(
 			"--buildtype=debug"
 			"-Denable_debug_output=true"
 			"-Denable_graphics_debug=true"
