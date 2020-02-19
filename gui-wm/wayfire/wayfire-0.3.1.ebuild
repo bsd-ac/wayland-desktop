@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wf-shell +wf-recorder +elogind systemd"
+IUSE="+wcm +wf-shell +wf-recorder +elogind systemd +wlroots debug"
 
 DEPEND="
 		media-libs/glm
@@ -46,7 +46,7 @@ BDEPEND="
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X]"
 else
-	DEPEND+=">=gui-libs/wlroots-0.8.0[elogind=,systemd=]"
+	DEPEND+=">=gui-libs/wlroots-0.9.1[elogind=,systemd=,X]"
 fi
 
 RDEPEND="
@@ -58,6 +58,22 @@ pkg_preinst() {
 		fowners root:0 /usr/bin/wayfire
 		fperms 4511 /usr/bin/wayfire
 	fi
+}
+
+src_configure(){
+	local emsonargs=(
+		-Duse_system_wfconfig=$(usex wf-config true false)
+		-Duse_system_wlroots=$(usex wlroots true false)
+	)
+	if use debug; then
+		emesonars+=(
+			"--build-type=debug"
+			"-Denable_debug_output=true"
+			"-Denable_graphics_debug=true"
+			"-Db_sanitize=address,undefined"
+		)
+	fi
+	meson_src_configure
 }
 
 src_install() {
