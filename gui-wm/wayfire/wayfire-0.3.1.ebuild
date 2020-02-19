@@ -46,7 +46,10 @@ BDEPEND="
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X]"
 else
-	DEPEND+=">=gui-libs/wlroots-0.9.1[elogind=,systemd=,X]"
+	DEPEND+="
+		>=gui-libs/wlroots-0.9.1[elogind=,systemd=,X]
+		<gui-libs/wlroots-0.10.0[elogind=,systemd=,X]
+	"
 fi
 
 RDEPEND="
