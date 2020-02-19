@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/${PV}/${P}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -22,5 +22,14 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-libs/libevdev
-		>=gui-libs/wlroots-0.8"
-BDEPEND="dev-libs/wayland-protocols"
+	media-libs/glm
+	~gui-libs/wlroots-0.9.1
+"
+
+RDEPEND="
+	${DEPEND}
+"
+
+BDEPEND="virtual/pkgconfig
+	dev-libs/wayland-protocols
+"
