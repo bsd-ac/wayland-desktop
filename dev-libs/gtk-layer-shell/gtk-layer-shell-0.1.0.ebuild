@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,12 +23,12 @@ IUSE="docs examples"
 
 DEPEND="
 	>=x11-libs/gtk+-3.24.1:3[introspection,wayland]
-	"
+"
 
 BDEPEND="
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
-	"
+"
 
 src_configure() {
 	local emesonargs=(
