@@ -62,15 +62,19 @@ pkg_preinst() {
 
 src_configure(){
 	local emsonargs=(
-		-Duse_system_wfconfig=$(usex wf-config true false)
+#		-Duse_system_wfconfig=$(usex wf-config true false)
 		-Duse_system_wlroots=$(usex wlroots true false)
 	)
 	if use debug; then
 		emesonars+=(
-			"--build-type=debug"
+			"--buildtype=debug"
 			"-Denable_debug_output=true"
 			"-Denable_graphics_debug=true"
 			"-Db_sanitize=address,undefined"
+		)
+	else
+		emesonargs+=(
+			"--buildtype=release"
 		)
 	fi
 	meson_src_configure
