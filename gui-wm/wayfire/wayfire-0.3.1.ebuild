@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wf-shell +wf-recorder +elogind systemd +wlroots debug"
+IUSE="+wcm +wf-shell +wf-recorder +elogind systemd +wlroots +debug"
 
 DEPEND="
 		media-libs/glm
@@ -63,7 +63,7 @@ pkg_preinst() {
 src_configure(){
 	local emsonargs=(
 #		-Duse_system_wfconfig=$(usex wf-config true false)
-		-Duse_system_wlroots=$(usex wlroots true false)
+#		-Duse_system_wlroots=$(usex wlroots true false)
 	)
 	if use debug; then
 		emesonars+=(
