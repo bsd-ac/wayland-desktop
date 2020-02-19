@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wmww/gtk-layer-shell.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/wmww/gtk-layer-shell/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/wmww/gtk-layer-shell/archive/v${PV}/${P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
