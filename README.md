@@ -1,6 +1,6 @@
 # wayfire-desktop
 gentoo overlay for wayfire ebuilds and other wayfire apps
-test
+
 ## Overview
 This repository contains a lot of ebuilds for the wayland desktop environment and window manager `wayfire`. There are also quite a few utilities included to help work with this environment.
 
