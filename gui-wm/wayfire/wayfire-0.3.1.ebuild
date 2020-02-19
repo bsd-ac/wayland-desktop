@@ -13,14 +13,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-	# small typo in release site, where the project version link has an extra 0 at the end
 	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wf-shell +wf-recorder +elogind systemd +wlroots +debug"
+IUSE="+wcm +wf-recorder +wf-shell +wf-config +wlroots +elogind systemd debug"
 
 DEPEND="
 		media-libs/glm
@@ -30,43 +29,30 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		>=dev-libs/gtk-layer-shell-0.1
-		>=gui-apps/wf-config-0.3
-		wcm? ( >=gui-apps/wcm-0.3.1 )
-		wf-shell? ( >=gui-apps/wf-shell-0.3 )
-		wf-recorder? ( >=gui-apps/wf-recorder-0.2 )
+		~dev-libs/gtk-layer-shell-0.1
+		wcm? ( ~gui-apps/wcm-0.3.1 )
+		wf-shell? ( ~gui-apps/wf-shell-0.3 )
+		wf-recorder? ( ~gui-apps/wf-recorder-0.2 )
+		wf-config? ( ~gui-apps/wf-config-0.3 )
+		wlroots? ( ~gui-libs/wlroots-0.9.1[elogind=,systemd=,X] )
 		elogind? ( sys-auth/elogind )
 		systemd? ( sys-apps/systemd )
-		"
-BDEPEND="
-		virtual/pkgconfig
-		dev-libs/wayland-protocols
-		"
-
-if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X]"
-else
-	DEPEND+="
-		>=gui-libs/wlroots-0.9.1[elogind=,systemd=,X]
-		<gui-libs/wlroots-0.10.0[elogind=,systemd=,X]
-	"
-fi
-
-RDEPEND="
-	x11-misc/xkeyboard-config
 "
 
-pkg_preinst() {
-	if ! use systemd && ! use elogind; then
-		fowners root:0 /usr/bin/wayfire
-		fperms 4511 /usr/bin/wayfire
-	fi
-}
+RDEPEND="
+		${DEPEND}
+		x11-misc/xkeyboard-config
+"
+
+BDEPEND+="
+		virtual/pkgconfig
+		dev-libs/wayland-protocols
+"
 
 src_configure(){
 	local emsonargs=(
-		-Duse_system_wfconfig=true #$(usex wf-config true false)
-		-Duse_system_wlroots=true #$(usex wlroots true false)
+		-Duse_system_wfconfig=$(usex wf-config true false)
+		-Duse_system_wlroots=$(usex wlroots true false)
 	)
 	if use debug; then
 		emesonars+=(
@@ -81,6 +67,13 @@ src_configure(){
 		)
 	fi
 	meson_src_configure
+}
+
+pkg_preinst() {
+	if ! use systemd && ! use elogind; then
+		fowners root:0 /usr/bin/wayfire
+		fperms 4511 /usr/bin/wayfire
+	fi
 }
 
 src_install() {
@@ -99,7 +92,7 @@ src_install() {
 pkg_postinst() {
 	elog "Wayfire has been installed but the session cannot be used"
 	elog "until you install a configuration file. The default config"
-	elog "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini\""
+	elog "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini.bz2\""
 	elog "To install the file execute"
-	elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
+	elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.default.bz2 > ~/.config/wayfire.ini"
 }
