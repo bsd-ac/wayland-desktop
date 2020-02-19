@@ -3,39 +3,39 @@
 
 EAPI=7
 
+inherit git-r3
+
 DESCRIPTION="A system for automatically configuring mutt and isync"
 HOMEPAGE="https://github.com/LukeSmithxyz/mutt-wizard"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/LukeSmithxyz/${PN}.git"
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/LukeSmithxyz/${PN}/archive/${PV}.tar.xz -> ${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
-fi
+EGIT_REPO_URI="https://github.com/LukeSmithxyz/${PN}.git"
+KEYWORDS=""
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+notmuch links +w3m lynx +libnotify +abook +gpg +cron +imagemagick"
 
 DEPEND="mail-client/neomutt:=[notmuch=]
-		net-mail/isync
-		mail-mta/msmtp
-		app-admin/pass
-		cron? ( virtual/cron )
-		imagemagick? ( media-gfx/imagemagick )
-		lynx? ( www-client/lynx )
-		links? ( www-client/links )
-		w3m? ( www-client/w3m )
-		libnotify? ( x11-libs/libnotify )
-		abook? ( app-misc/abook )
-		gpg? ( app-crypt/gnupg )
-		"
+	net-mail/isync
+	mail-mta/msmtp
+	app-admin/pass
+	cron? ( virtual/cron )
+	imagemagick? ( media-gfx/imagemagick )
+	lynx? ( www-client/lynx )
+	links? ( www-client/links )
+	w3m? ( www-client/w3m )
+	libnotify? ( x11-libs/libnotify )
+	abook? ( app-misc/abook )
+	gpg? ( app-crypt/gnupg )
+"
+
+RDEPEND="
+	${DEPEND}
+"
 
 BDEPEND="net-mail/isync
-		app-admin/pass
-		"
+	app-admin/pass
+"
 
 src_compile() {
 	return 0;

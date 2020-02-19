@@ -10,11 +10,11 @@ HOMEPAGE="https://github.com/LukeSmithxyz/mutt-wizard"
 
 EGIT_REPO_URI="https://github.com/LukeSmithxyz/${PN}.git"
 COMMIT=d8f57b57f6e4f7d07969a26775686b45b0e2b565
-KEYWORDS="~amd64 ~arm64 ~x86 ~ppc64"
+KEYWORDS="amd64 x86"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+notmuch -links w3m lynx +libnotify +abook +gpg +cron +imagemagick"
+IUSE="+notmuch links +w3m lynx +libnotify +abook +gpg +cron +imagemagick"
 
 DEPEND="mail-client/neomutt:=[notmuch=]
 	net-mail/isync

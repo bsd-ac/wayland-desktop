@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>mathgeniusabhinav@gmail.com</email>
-  <name>Abhinav Tamaskar</name>
-</maintainer>
-<use>
-  <flag name='notmuch'>Pulls in notmuch (thin frontend on xapian)</flag>
-  <flag name='lynx'>Uses lynx to view html emails in mutt</flag>
-  <flag name='abook'>Command line address book for mutt</flag>
-  <flag name='gpg'>Enables using gpg for email signing and encryption</flag>
-  <flag name='cron'>Enables periodic syncing of email</flag>
-  <flag name='links'>Uses links to view html emails in mutt</flag>
-  <flag name='w3m'>Uses w3m to view html emails in mutt</flag>
-  <flag name='libnotify'>Try to sens desktop notifications for new mail</flag>
-</use>
+    <maintainer type="person">
+        <email>gentoo@aisha.cc</email>
+        <name>Aisha Tammy</name>
+    </maintainer>
+    <use>
+        <flag name='notmuch'>Pulls in notmuch (thin frontend on xapian)</flag>
+        <flag name='lynx'>Uses lynx to view html emails in mutt</flag>
+        <flag name='abook'>Command line address book for mutt</flag>
+        <flag name='gpg'>Enables using gpg for email signing and encryption</flag>
+        <flag name='cron'>Enables periodic syncing of email</flag>
+        <flag name='links'>Uses links to view html emails in mutt</flag>
+        <flag name='w3m'>Uses w3m to view html emails in mutt</flag>
+        <flag name='libnotify'>Try to sens desktop notifications for new mail</flag>
+    </use>
 </pkgmetadata>
