@@ -23,6 +23,7 @@ IUSE="debug"
 
 DEPEND="dev-libs/libevdev
 	media-libs/glm
+	dev-libs/libxml2
 	>=gui-libs/wlroots-0.9.1
 "
 
