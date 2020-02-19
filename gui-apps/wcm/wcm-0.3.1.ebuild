@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/WayfireWM/${PN}/archive/v${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -23,10 +23,10 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-libs/libxml2
-		dev-cpp/gtkmm:3.0[wayland]
-		>=gui-apps/wf-config-0.3
-		"
-BDEPEND="
-		virtual/pkgconfig
-		dev-libs/wayland-protocols
-		"
+	dev-cpp/gtkmm:3.0[wayland]
+	~gui-apps/wf-config-0.3
+"
+
+BDEPEND="virtual/pkgconfig
+	dev-libs/wayland-protocols
+"
