@@ -34,17 +34,3 @@ RDEPEND="
 BDEPEND="virtual/pkgconfig
 	dev-libs/wayland-protocols
 "
-
-src_configure() {
-	if use debug; then
-		emesonargs+=(
-			"--buildtype=debug"
-			"-Db_sanitize=address,undefined"
-		)
-	else
-		emesonargs+=(
-			"--buildtype=release"
-		)
-	fi
-	meson_src_configure
-}
