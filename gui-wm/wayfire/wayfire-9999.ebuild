@@ -30,11 +30,11 @@ DEPEND="
 		media-libs/libjpeg-turbo
 		media-libs/libpng
 		>=dev-libs/gtk-layer-shell-0.1.0
-		wcm? ( >=gui-apps/wcm-0.3.1 )
-		wf-shell? ( >=gui-apps/wf-shell-0.3 )
-		wf-recorder? ( >=gui-apps/wf-recorder-0.2 )
-		wf-config? ( >=gui-apps/wf-config-0.3 )
-		wlroots? ( >=gui-libs/wlroots-0.9.1[elogind=,systemd=,X] )
+		wcm? ( ~gui-apps/wcm-9999 )
+		wf-shell? ( ~gui-apps/wf-shell-9999 )
+		wf-recorder? ( ~gui-apps/wf-recorder-9999 )
+		wf-config? ( ~gui-apps/wf-config-9999 )
+		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 		elogind? ( sys-auth/elogind )
 		systemd? ( sys-apps/systemd )
 "
