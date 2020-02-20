@@ -25,6 +25,7 @@ IUSE=""
 DEPEND="dev-libs/libxml2
 	dev-cpp/gtkmm:3.0[wayland]
 	~gui-apps/wf-config-0.3
+	~gui-wm/wayfire-0.3.1
 "
 
 RDEPEND="
@@ -34,17 +35,3 @@ RDEPEND="
 BDEPEND="virtual/pkgconfig
 	dev-libs/wayland-protocols
 "
-
-src_configure() {
-	if use debug; then
-		emesonargs+=(
-			"--buildtype=debug"
-			"-Db_sanitize=address,undefined"
-		)
-	else
-		emesonargs+=(
-			"--buildtype=release"
-		)
-	fi
-	meson_src_configure
-}
