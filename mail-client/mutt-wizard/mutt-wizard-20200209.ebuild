@@ -10,6 +10,8 @@ COMMIT=d8f57b57f6e4f7d07969a26775686b45b0e2b565
 SRC_URI="https://github.com/LukeSmithxyz/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
+S="${WORKDIR}/${PN}-${COMMIT}"
+
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+notmuch links +w3m lynx +libnotify +abook +gpg +cron +imagemagick"
