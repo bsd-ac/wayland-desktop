@@ -19,6 +19,10 @@ DEPEND="mail-client/neomutt:=[notmuch=]
 	net-mail/isync
 	mail-mta/msmtp
 	app-admin/pass
+"
+
+RDEPEND="
+	${DEPEND}
 	cron? ( virtual/cron )
 	imagemagick? ( media-gfx/imagemagick )
 	lynx? ( www-client/lynx )
@@ -27,10 +31,6 @@ DEPEND="mail-client/neomutt:=[notmuch=]
 	libnotify? ( x11-libs/libnotify )
 	abook? ( app-misc/abook )
 	gpg? ( app-crypt/gnupg )
-"
-
-RDEPEND="
-	${DEPEND}
 "
 
 BDEPEND="net-mail/isync

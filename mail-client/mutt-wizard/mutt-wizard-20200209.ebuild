@@ -3,14 +3,12 @@
 
 EAPI=7
 
-inherit git-r3
-
 DESCRIPTION="A system for automatically configuring mutt and isync"
 HOMEPAGE="https://github.com/LukeSmithxyz/mutt-wizard"
 
-EGIT_REPO_URI="https://github.com/LukeSmithxyz/${PN}.git"
 COMMIT=d8f57b57f6e4f7d07969a26775686b45b0e2b565
-KEYWORDS="amd64 x86"
+SRC_URI="https://github.com/LukeSmithxyz/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,6 +18,10 @@ DEPEND="mail-client/neomutt:=[notmuch=]
 	net-mail/isync
 	mail-mta/msmtp
 	app-admin/pass
+"
+
+RDEPEND="
+	${DEPEND}
 	cron? ( virtual/cron )
 	imagemagick? ( media-gfx/imagemagick )
 	lynx? ( www-client/lynx )
@@ -28,10 +30,6 @@ DEPEND="mail-client/neomutt:=[notmuch=]
 	libnotify? ( x11-libs/libnotify )
 	abook? ( app-misc/abook )
 	gpg? ( app-crypt/gnupg )
-"
-
-RDEPEND="
-	${DEPEND}
 "
 
 BDEPEND="net-mail/isync
