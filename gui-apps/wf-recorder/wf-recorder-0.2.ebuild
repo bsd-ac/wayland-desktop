@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ammen99/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/ammen99/${PN}/releases/download/v${PV}/${P}.tar.xz -> ${P}.tar.xz"
+	SRC_URI="https://github.com/ammen99/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -21,11 +21,9 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="
-		media-video/ffmpeg
-		media-sound/pulseaudio
-		"
-BDEPEND="
-		virtual/pkgconfig
-		dev-libs/wayland-protocols
-		"
+DEPEND="media-video/ffmpeg
+	media-sound/pulseaudio
+"
+BDEPEND="virtual/pkgconfig
+	dev-libs/wayland-protocols
+"
