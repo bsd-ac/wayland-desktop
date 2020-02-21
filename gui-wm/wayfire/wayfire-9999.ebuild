@@ -56,14 +56,9 @@ src_configure(){
 	)
 	if use debug; then
 		emesonargs+=(
-			"--buildtype=debug"
 			"-Denable_debug_output=true"
 			"-Denable_graphics_debug=true"
 			"-Db_sanitize=address,undefined"
-		)
-	else
-		emesonargs+=(
-			"--buildtype=release"
 		)
 	fi
 	meson_src_configure
