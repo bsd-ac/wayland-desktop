@@ -81,7 +81,7 @@ src_install() {
 
 	insinto "/usr/share/doc/${P}/";
 	insopts -m644;
-	doins wayfire.ini.default;
+	doins wayfire.ini;
 }
 
 pkg_postinst() {
