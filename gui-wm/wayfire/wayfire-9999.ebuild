@@ -29,22 +29,29 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		>=dev-libs/gtk-layer-shell-0.1.0
-		wcm? ( ~gui-apps/wcm-9999 )
-		wf-shell? ( ~gui-apps/wf-shell-9999 )
-		wf-recorder? ( ~gui-apps/wf-recorder-9999 )
+		media-libs/freetype
+		x11-libs/libdrm
+		dev-libs/libevdev
+		media-libs/mesa
+		dev-libs/libinput
+		x11-libs/pixman
+		dev-libs/gtk-layer-shell
 		wf-config? ( ~gui-apps/wf-config-9999 )
 		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
-		elogind? ( sys-auth/elogind )
-		systemd? ( sys-apps/systemd )
 "
 
 RDEPEND="
 		${DEPEND}
+		wcm? ( ~gui-apps/wcm-9999 )
+		wf-recorder? ( ~gui-apps/wf-recorder-9999 )
+		wf-shell? ( ~gui-apps/wf-shell-9999 )
+		elogind? ( sys-auth/elogind )
+		systemd? ( sys-apps/systemd )
 		x11-misc/xkeyboard-config
 "
 
-BDEPEND+="
+BDEPEND="
+		${DEPEND}
 		virtual/pkgconfig
 		dev-libs/wayland-protocols
 "
@@ -56,8 +63,6 @@ src_configure(){
 	)
 	if use debug; then
 		emesonargs+=(
-			"-Denable_debug_output=true"
-			"-Denable_graphics_debug=true"
 			"-Db_sanitize=address,undefined"
 		)
 	fi
