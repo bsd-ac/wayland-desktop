@@ -54,8 +54,8 @@ BDEPEND="
 
 src_configure(){
 	local emesonargs=(
-		-Duse_system_wfconfig=$(usex wf-config true false)
-		-Duse_system_wlroots=$(usex wlroots true false)
+		-Duse_system_wfconfig=$(usex wf-config enabled disabled)
+		-Duse_system_wlroots=$(usex wlroots enabled disabled)
 	)
 	if use debug; then
 		emesonargs+=(
