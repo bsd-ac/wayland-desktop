@@ -80,8 +80,6 @@ src_install() {
 	insinto "/usr/share/wayland-sessions/";
 	insopts -m644;
 	doins wayfire.desktop;
-
-	dodoc wayfire.ini;
 }
 
 pkg_postinst() {
