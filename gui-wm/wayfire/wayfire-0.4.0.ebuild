@@ -30,7 +30,7 @@ DEPEND="
 		media-libs/libpng
 		media-libs/freetype:=[X]
 		x11-libs/libdrm
-		x11-libs/gtk+:3=[gtk,wayland,X]
+		x11-libs/gtk+:3=[wayland,X]
 		x11-libs/cairo:=[X,svg]
 		x11-libs/libxkbcommon:=[X]
 		x11-libs/pixman
@@ -55,7 +55,7 @@ BDEPEND="
 "
 
 src_configure(){
-	local emsonargs=(
+	local emesonargs=(
 		-Duse_system_wfconfig=$(usex wf-config true false)
 		-Duse_system_wlroots=$(usex wlroots true false)
 	)
