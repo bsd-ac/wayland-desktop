@@ -29,7 +29,6 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	~gui-wm/wayfire-${PV}
 "
 
 BDEPEND="
