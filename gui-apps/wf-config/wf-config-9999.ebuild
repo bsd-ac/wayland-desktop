@@ -19,18 +19,21 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="debug"
 
-DEPEND="dev-libs/libevdev
+DEPEND="
+	dev-libs/libevdev
 	media-libs/glm
 	dev-libs/libxml2
-	>=gui-libs/wlroots-0.9.1
+	>=gui-libs/wlroots-0.10.0
 "
 
 RDEPEND="
 	${DEPEND}
+	~gui-wm/wayfire-9999
 "
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	${DEPEND}
+	virtual/pkgconfig
 	dev-libs/wayland-protocols
 "
