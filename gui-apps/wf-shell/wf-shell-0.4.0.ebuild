@@ -41,7 +41,7 @@ BDEPEND="
 
 src_configure () {
 	local emesonargs=(
-  	"-Dpulse=(usex pulseaudio true false)
+		"-Dpulse=(usex pulseaudio true false)"
 	)
 	meson_src_configure
 }
