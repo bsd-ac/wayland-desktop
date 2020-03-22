@@ -19,23 +19,22 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wf-recorder +wf-shell +wf-config +wlroots +elogind systemd debug"
+IUSE="+wcm +wf-shell +wf-config +wlroots +elogind systemd debug"
 
 DEPEND="
+		dev-libs/libevdev
+		dev-libs/libinput
 		media-libs/glm
-		x11-libs/gtk+:3
-		x11-libs/cairo
-		x11-libs/libxkbcommon
-		x11-libs/pixman
+		media-libs/mesa:=[gles2,wayland,X]
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		media-libs/freetype
+		media-libs/freetype:=[X]
 		x11-libs/libdrm
-		dev-libs/libevdev
-		media-libs/mesa
-		dev-libs/libinput
+		x11-libs/gtk+:3:=[gtk,wayland,X]
+		x11-libs/cairo:=[X,svg]
+		x11-libs/libxkbcommon:=[X]
 		x11-libs/pixman
-		gui-libs/gtk-layer-shell
+		dev-libs/gtk-layer-shell
 		wf-config? ( ~gui-apps/wf-config-${PV} )
 		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 "
@@ -78,6 +77,7 @@ pkg_preinst() {
 src_install() {
 	default;
 	meson_src_install;
+	einstalldocs;
 
 	insinto "/usr/share/wayland-sessions/";
 	insopts -m644;
@@ -91,7 +91,7 @@ src_install() {
 pkg_postinst() {
 	elog "Wayfire has been installed but the session cannot be used"
 	elog "until you install a configuration file. The default config"
-	elog "file is installed at \"/usr/share/doc/${P}/wayfire.default.ini.bz2\""
+	elog "file is installed at \"/usr/share/doc/${P}/wayfire.ini.bz2\""
 	elog "To install the file execute"
-	elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.default.bz2 > ~/.config/wayfire.ini"
+	elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${P}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
 }
