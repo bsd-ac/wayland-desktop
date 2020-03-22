@@ -41,8 +41,6 @@ DEPEND="
 
 RDEPEND="
 		${DEPEND}
-		wcm? ( ~gui-apps/wcm-${PV} )
-		wf-shell? ( ~gui-apps/wf-shell-${PV} )
 		elogind? ( sys-auth/elogind )
 		systemd? ( sys-apps/systemd )
 		x11-misc/xkeyboard-config
