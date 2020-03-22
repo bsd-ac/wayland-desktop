@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=unpack
+DEPEND=app-shells/bash:0
+DESCRIPTION=A pure bash session or application launcher. Inspired by cdm, tdm and krunner
+EAPI=7
+HOMEPAGE=https://loh-tar.github.io/tbsm/
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=app-shells/bash:0
+SLOT=0
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
+_md5_=50668470dcf8f74ba164d6556b7c6d0c
