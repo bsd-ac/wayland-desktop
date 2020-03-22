@@ -35,7 +35,7 @@ DEPEND="
 		media-libs/mesa
 		dev-libs/libinput
 		x11-libs/pixman
-		dev-libs/gtk-layer-shell
+		gui-libs/gtk-layer-shell
 		wf-config? ( ~gui-apps/wf-config-${PV} )
 		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 "
