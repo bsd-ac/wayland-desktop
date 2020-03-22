@@ -19,21 +19,21 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE=""
 
 DEPEND="
-	~gui-apps/wf-config-0.4.0
-	dev-cpp/gtkmm:3.0:=[wayland]
+	~gui-apps/wf-config-${PV}
+	dev-cpp/gtkmm:3.0=[wayland]
 	dev-libs/gobject-introspection
-	>=dev-libs/gtk-layer-shell-0.1
+	>=gui-libs/gtk-layer-shell-0.1
 "
 
 RDEPEND="
 	${DEPEND}
-	~gui-wm/wayfire-0.4.0
+	~gui-wm/wayfire-${PV}
 "
 
 BDEPEND="
-	${DEPEND}
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
 "

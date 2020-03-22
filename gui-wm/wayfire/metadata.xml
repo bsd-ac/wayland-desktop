@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>mathgeniusabhinav@gmail.com</email>
-  <name>Abhinav Tamaskar</name>
-</maintainer>
-<use>
-  <flag name='wcm'>Pulls in wayfire config manager.</flag>
-  <flag name='wf-shell'>Pulls in wf-shell (recommended, until a full fledged DE is made).</flag>
-  <flag name='wf-recorder'>Pulls in wf-recorder, a simple video recording program.</flag>
-  <flag name='wf-config'>Makes wayfire use the system-wide wf-config, else builds it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
-  <flag name='wlroots'>Makes wayfire use the system wide wlroots, else builds it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
-</use>
+    <maintainer type="person">
+        <email>gentoo@aisha.cc</email>
+        <name>Aisha Tammy</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+      <flag name='wcm'>Pulls in wayfire config manager.</flag>
+      <flag name='wf-shell'>Pulls in wf-shell (recommended, until a full fledged DE is made).</flag>
+      <flag name='wf-config'>Makes wayfire use the system-wide wf-config, else builds it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
+      <flag name='wlroots'>Makes wayfire use the system wide wlroots, else builds it as a submodule. DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.</flag>
+      <flag name='debug'>Adds debugging symbols for error reporting. ENABLE ALL USE FLAGS BEFORE REPORTING BUGS.</flag>
+    </use>
 </pkgmetadata>

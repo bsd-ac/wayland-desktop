@@ -30,11 +30,11 @@ DEPEND="
 		media-libs/libpng
 		media-libs/freetype:=[X]
 		x11-libs/libdrm
-		x11-libs/gtk+:3:=[gtk,wayland,X]
+		x11-libs/gtk+:3=[gtk,wayland,X]
 		x11-libs/cairo:=[X,svg]
 		x11-libs/libxkbcommon:=[X]
 		x11-libs/pixman
-		dev-libs/gtk-layer-shell
+		gui-libs/gtk-layer-shell
 		wf-config? ( ~gui-apps/wf-config-${PV} )
 		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 "
@@ -55,7 +55,7 @@ BDEPEND="
 "
 
 src_configure(){
-	local emesonargs=(
+	local emsonargs=(
 		-Duse_system_wfconfig=$(usex wf-config true false)
 		-Duse_system_wlroots=$(usex wlroots true false)
 	)

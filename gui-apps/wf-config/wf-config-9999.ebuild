@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/WayfireWM/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
@@ -29,7 +29,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	~gui-wm/wayfire-9999
+	~gui-wm/wayfire-${PV}
 "
 
 BDEPEND="
