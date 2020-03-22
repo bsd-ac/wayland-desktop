@@ -19,7 +19,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wcm +wf-shell +wf-config +wlroots +elogind systemd debug"
+IUSE="+wf-config +wlroots +elogind systemd debug"
 
 DEPEND="
 		dev-libs/libevdev
