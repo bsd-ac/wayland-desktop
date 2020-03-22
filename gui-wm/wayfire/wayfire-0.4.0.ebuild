@@ -29,35 +29,39 @@ DEPEND="
 		x11-libs/pixman
 		media-libs/libjpeg-turbo
 		media-libs/libpng
-		~dev-libs/gtk-layer-shell-0.1.0
-		wcm? ( ~gui-apps/wcm-0.3.1 )
-		wf-shell? ( ~gui-apps/wf-shell-0.3 )
-		wf-recorder? ( ~gui-apps/wf-recorder-0.2 )
-		wf-config? ( ~gui-apps/wf-config-0.3 )
-		wlroots? ( ~gui-libs/wlroots-0.9.1[elogind=,systemd=,X] )
-		elogind? ( sys-auth/elogind )
-		systemd? ( sys-apps/systemd )
+		media-libs/freetype
+		x11-libs/libdrm
+		dev-libs/libevdev
+		media-libs/mesa
+		dev-libs/libinput
+		x11-libs/pixman
+		dev-libs/gtk-layer-shell
+		wf-config? ( ~gui-apps/wf-config-${PV} )
+		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 "
 
 RDEPEND="
 		${DEPEND}
+		wcm? ( ~gui-apps/wcm-${PV} )
+		wf-shell? ( ~gui-apps/wf-shell-${PV} )
+		elogind? ( sys-auth/elogind )
+		systemd? ( sys-apps/systemd )
 		x11-misc/xkeyboard-config
 "
 
-BDEPEND+="
+BDEPEND="
+		${DEPEND}
 		virtual/pkgconfig
-		dev-libs/wayland-protocols
+		>=dev-libs/wayland-protocols-1.14
 "
 
 src_configure(){
-	local emsonargs=(
+	local emesonargs=(
 		-Duse_system_wfconfig=$(usex wf-config true false)
 		-Duse_system_wlroots=$(usex wlroots true false)
 	)
 	if use debug; then
 		emesonargs+=(
-			"-Denable_debug_output=true"
-			"-Denable_graphics_debug=true"
 			"-Db_sanitize=address,undefined"
 		)
 	fi
@@ -81,7 +85,7 @@ src_install() {
 
 	insinto "/usr/share/doc/${P}/";
 	insopts -m644;
-	doins wayfire.ini.default;
+	doins wayfire.ini;
 }
 
 pkg_postinst() {

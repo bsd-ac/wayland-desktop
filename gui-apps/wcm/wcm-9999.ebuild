@@ -22,15 +22,20 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-libs/libxml2
+DEPEND="
+	dev-libs/libevdev
+	dev-libs/libxml2
 	dev-cpp/gtkmm:3.0[wayland]
-	>=gui-apps/wf-config-0.3
+	~gui-apps/wf-config-${PV}
+	~gui-wm/wayfire-${PV}
 "
 
 RDEPEND="
 	${DEPEND}
 "
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	${DEPEND}
+	virtual/pkgconfig
 	dev-libs/wayland-protocols
 "

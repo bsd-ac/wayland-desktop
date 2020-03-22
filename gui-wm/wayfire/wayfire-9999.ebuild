@@ -36,15 +36,14 @@ DEPEND="
 		dev-libs/libinput
 		x11-libs/pixman
 		dev-libs/gtk-layer-shell
-		wf-config? ( ~gui-apps/wf-config-9999 )
+		wf-config? ( ~gui-apps/wf-config-${PV} )
 		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 "
 
 RDEPEND="
 		${DEPEND}
-		wcm? ( ~gui-apps/wcm-9999 )
-		wf-recorder? ( ~gui-apps/wf-recorder-9999 )
-		wf-shell? ( ~gui-apps/wf-shell-9999 )
+		wcm? ( ~gui-apps/wcm-${PV} )
+		wf-shell? ( ~gui-apps/wf-shell-${PV} )
 		elogind? ( sys-auth/elogind )
 		systemd? ( sys-apps/systemd )
 		x11-misc/xkeyboard-config
@@ -53,11 +52,11 @@ RDEPEND="
 BDEPEND="
 		${DEPEND}
 		virtual/pkgconfig
-		dev-libs/wayland-protocols
+		>=dev-libs/wayland-protocols-1.14
 "
 
 src_configure(){
-	local emsonargs=(
+	local emesonargs=(
 		-Duse_system_wfconfig=$(usex wf-config true false)
 		-Duse_system_wlroots=$(usex wlroots true false)
 	)
