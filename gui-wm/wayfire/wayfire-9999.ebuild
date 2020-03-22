@@ -73,15 +73,15 @@ pkg_preinst() {
 }
 
 src_install() {
-	default;
-	meson_src_install;
-	einstalldocs;
+	default
+	meson_src_install
+	einstalldocs
 
-	insinto "/usr/share/wayland-sessions/";
-	insopts -m644;
-	doins wayfire.desktop;
+	insinto "/usr/share/wayland-sessions/"
+	insopts -m644
+	doins wayfire.desktop
 
-	dodoc wayfire.ini;
+	dodoc wayfire.ini
 }
 
 pkg_postinst() {
