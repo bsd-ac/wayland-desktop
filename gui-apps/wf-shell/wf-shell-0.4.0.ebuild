@@ -25,6 +25,7 @@ DEPEND="
 	~gui-apps/wf-config-${PV}
 	dev-cpp/gtkmm:3.0=[wayland]
 	dev-libs/gobject-introspection
+	media-sound/pulseaudio
 	~gui-wm/wayfire-${PV}
 	>=gui-libs/gtk-layer-shell-0.1
 "
