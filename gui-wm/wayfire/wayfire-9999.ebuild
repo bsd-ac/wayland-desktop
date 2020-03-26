@@ -49,7 +49,7 @@ RDEPEND="
 BDEPEND="
 		${DEPEND}
 		virtual/pkgconfig
-		>=dev-libs/wayland-protocols-1.14
+		>=dev-libs/wayland-protocols-1.18
 "
 
 src_configure(){
