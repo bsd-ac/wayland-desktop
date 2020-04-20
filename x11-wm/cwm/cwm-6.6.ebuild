@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs desktop
+inherit eutils desktop
 
 DESCRIPTION="OpenBSD fork of calmwm, a clean and lightweight window manager"
 HOMEPAGE="https://www.openbsd.org/cgi-bin/cvsweb/xenocara/app/cwm/
