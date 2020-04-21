@@ -31,7 +31,7 @@ BDEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-Makefile.patch"
+	"${FILESDIR}/${PN}-Makefile.patch"
 )
 
 src_compile() {
