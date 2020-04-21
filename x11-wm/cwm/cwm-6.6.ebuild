@@ -35,7 +35,7 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -D_GNU_SOURCE" CC="$(tc-getCC)" PKG_CONFIG="${tc-getPKG_CONFIG}"
+	emake CFLAGS="${CFLAGS} -D_GNU_SOURCE" CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install() {
