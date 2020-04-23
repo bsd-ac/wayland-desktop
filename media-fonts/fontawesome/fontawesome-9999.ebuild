@@ -15,6 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/FortAwesome/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
 LICENSE="CC-BY-4.0 OFL-1.1"
@@ -22,8 +23,6 @@ SLOT="0/5"
 IUSE="+otf +ttf"
 
 REQUIRED_USE="|| ( otf ttf )"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	if use otf; then
