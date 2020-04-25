@@ -39,14 +39,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
-#src_configure() {
-#  cmake_src_configure
-#  cd ${WORKDIR}/python
-#
-#}
-
-#src_install() {
-#	cmake_src_install
-#	cd ${BUILD_DIR}
-#  
-#}
+src_install() {
+	cmake_src_install
+	cd python
+	distutils-r1_python_install
+}
