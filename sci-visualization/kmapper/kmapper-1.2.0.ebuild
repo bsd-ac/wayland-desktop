@@ -26,5 +26,5 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 src_install() {
-	python_foreach_impl python_domodule
+	python_foreach_impl python_domodule *
 }
