@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 BDEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-python_CMakeLists.patch"
+	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
 #src_configure() {
