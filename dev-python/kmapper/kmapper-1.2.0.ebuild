@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-r1
+inherit distutils-r1
 
 DESCRIPTION="Python implementation of Mapper algorithm for Topological Data Analysis"
 HOMEPAGE="https://kepler-mapper.scikit-tda.org"
