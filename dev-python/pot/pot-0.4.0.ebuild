@@ -27,5 +27,6 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/POT-${PV}"
 
 src_install() {
-	python_foreach_impl python_domodule *
+	python_foreach_impl run_in_build_dir default
+	einstalldocs
 }
