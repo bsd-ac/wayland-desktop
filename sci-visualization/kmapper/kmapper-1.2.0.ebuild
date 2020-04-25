@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit python-r1
 
 DESCRIPTION="Python implementation of Mapper algorithm for Topological Data Analysis"
 HOMEPAGE="https://kepler-mapper.scikit-tda.org"
@@ -14,3 +14,17 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
+	dev-python/numpy[${PYTHON_USEDEP}]
+	sci-libs/scikits_learn[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/plotly[${PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}"
+
+src_install() {
+	python_foreach_impl python_domodule
+}
