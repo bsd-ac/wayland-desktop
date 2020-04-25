@@ -1,4 +1,4 @@
-metadata/
+metadata/*
 
 CMakeCache.txt
 CMakeFiles
