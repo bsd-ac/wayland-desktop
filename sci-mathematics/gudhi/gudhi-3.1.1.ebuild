@@ -35,6 +35,9 @@ RDEPEND="${PYTHON_DEPS}
 "
 BDEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
-)
+src_configure() {
+	local mycmakeargs=(
+		-DWITH_GUDHI_PYTHON=false
+	)
+  cmake_src_configure
+}
