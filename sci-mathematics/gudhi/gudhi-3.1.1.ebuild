@@ -41,6 +41,8 @@ PATCHES=(
 
 src_install() {
 	cmake_src_install
+
 	cd python
-	python_install
+	python_foreach_impl run_in_build_dir default
+	einstalldocs
 }
