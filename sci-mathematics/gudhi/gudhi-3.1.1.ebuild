@@ -39,6 +39,29 @@ PATCHES=(
 	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
+src_prepare() {
+	default
+	eautoreconf
+	cmake_src_prepare
+	python_copy_sources
+}
+
+src_configure() {
+	default
+	cmake_src_configure
+
+	cd python
+	python_foreach_impl run_in_build_dir default
+}
+
+src_compile() {
+	default
+  cmake_src_compile
+
+  cd python                                                   
+  python_foreach_impl run_in_build_dir default                                                                                                         
+}
+
 src_install() {
 	cmake_src_install
 
