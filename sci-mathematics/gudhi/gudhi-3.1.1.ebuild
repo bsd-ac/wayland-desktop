@@ -26,7 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-cpp/eigen
+	dev-cpp/eigen:3
 	sci-mathematics/cgal
 	dev-libs/boost[python,${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
