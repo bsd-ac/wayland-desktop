@@ -1,4 +1,4 @@
-metadata/*
+metadata/md5-cache
 
 CMakeCache.txt
 CMakeFiles
