@@ -24,6 +24,8 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 
+S="POT-${PV}"
+
 src_install() {
 	python_foreach_impl python_domodule *
 }
