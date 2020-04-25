@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-r1
+inherit distutils-r1
 
 DESCRIPTION="Python Optimal Transport Library"
 HOMEPAGE="https://github.com/PythonOT/POT"
@@ -25,8 +25,3 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/POT-${PV}"
-
-src_install() {
-	python_foreach_impl run_in_build_dir default
-	einstalldocs
-}
