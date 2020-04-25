@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
-inherit python-r1 distutils-r1
+PYTHON_COMPAT=( python3_{6,7,8} )
+inherit cmake 
 
 DESCRIPTION="An open source C++, python library for Topological Data Analysis"
 HOMEPAGE="https://gudhi.inria.fr/"
@@ -31,5 +31,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost[python,${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
   dev-python/pot[${PYTHON_USEDEP}]
+	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
