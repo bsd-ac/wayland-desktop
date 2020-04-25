@@ -22,6 +22,7 @@ RDEPEND="${PYTHON_DEPS}
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/plotly[${PYTHON_USEDEP}]
+  dev-python/joblib[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
