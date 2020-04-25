@@ -34,3 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
+)
