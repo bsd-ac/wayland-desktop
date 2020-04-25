@@ -2,12 +2,11 @@ diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
 index b558d4c..5b3d2d6 100644
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -230,7 +230,7 @@ endif(CGAL_FOUND)
+@@ -230,7 +230,6 @@ endif(CGAL_FOUND)
      add_custom_target(python ALL DEPENDS gudhi.so
                        COMMENT "Do not forget to add ${CMAKE_CURRENT_BINARY_DIR}/ to your PYTHONPATH before using examples or tests")
  
 -    install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/setup.py install)")
-+    install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/setup.py install --home=${CMAKE_INSTALL_PREFIX})")
  
      # Test examples
      if (NOT CGAL_WITH_EIGEN3_VERSION VERSION_LESS 4.11.0)
