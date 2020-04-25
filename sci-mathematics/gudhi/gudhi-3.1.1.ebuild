@@ -33,7 +33,3 @@ RDEPEND="${PYTHON_DEPS}
   dev-python/pot[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
-
-src_configure() {
-	
-}
