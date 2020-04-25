@@ -29,5 +29,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-cpp/eigen
 	sci-mathematics/cgal
 	dev-libs/boost[python,${PYTHON_USEDEP}]
+	dev-python/matplotlib[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
