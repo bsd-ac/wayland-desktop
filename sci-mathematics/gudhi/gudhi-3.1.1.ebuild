@@ -30,5 +30,10 @@ RDEPEND="${PYTHON_DEPS}
 	sci-mathematics/cgal
 	dev-libs/boost[python,${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
+  dev-python/pot[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}"
+
+src_configure() {
+	
+}
