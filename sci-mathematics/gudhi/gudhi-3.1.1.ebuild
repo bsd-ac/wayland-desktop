@@ -42,5 +42,5 @@ PATCHES=(
 src_install() {
 	cmake_src_install
 	cd python
-	distutils-r1_python_install
+	python_install
 }
