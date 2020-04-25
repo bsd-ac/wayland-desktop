@@ -16,6 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/GUDHI/gudhi-devel/releases/download/tags/gudhi-release-${PV}/${PN}.${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
+  S="${PN}.${PV}"
 fi
 
 LICENSE="MIT"
