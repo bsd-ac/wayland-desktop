@@ -42,6 +42,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
+	cd python
 	python_copy_sources
 }
 
