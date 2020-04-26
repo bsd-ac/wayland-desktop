@@ -42,30 +42,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
-src_prepare() {
-	cmake_src_prepare
-}
-
-src_configure() {
-	default
-	cmake_src_configure
-
-	cd python
-	python_foreach_impl run_in_build_dir default
-}
-
-src_compile() {
-	default
-  cmake_src_compile
-
-  cd python                                                   
-  python_foreach_impl run_in_build_dir default                                                                                                         
-}
 
 src_install() {
 	cmake_src_install
 
 	cd python
-	python_foreach_impl run_in_build_dir default
+	distutils-r1_python_install_all
 	einstalldocs
 }
