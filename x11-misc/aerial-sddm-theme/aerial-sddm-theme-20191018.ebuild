@@ -26,7 +26,6 @@ RDEPEND="
 	media-libs/gst-plugins-good
 	dev-qt/qtmultimedia:=[alsa,gstreamer,qml,widgets]
 	dev-qt/qtgraphicaleffects
-	dev-qt/qtquickcontrols2
 	dev-qt/qtquickcontrols
 "
 BDEPEND=""
