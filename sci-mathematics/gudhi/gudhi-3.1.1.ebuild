@@ -46,7 +46,7 @@ PATCHES=(
 src_install() {
 	cmake_src_install
 
-	cd python
+	cd ${BUILD_DIR}/python
 	distutils-r1_python_install_all
 	einstalldocs
 }
