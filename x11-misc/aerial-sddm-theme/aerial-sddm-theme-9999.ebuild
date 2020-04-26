@@ -32,6 +32,6 @@ RDEPEND="
 BDEPEND=""
 
 src_install() {
-	insinto /usr/share/sddm/themes
+	insinto /usr/share/sddm/themes/aerial
 	doins -r components playlists screens Main.qml theme.conf theme.conf.user
 }
