@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit autotools
 
 DESCRIPTION="Universal configuration library parser"
 HOMEPAGE="https://github.com/vstakhov/libucl"
