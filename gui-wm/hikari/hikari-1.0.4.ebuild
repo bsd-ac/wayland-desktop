@@ -55,7 +55,7 @@ BDEPEND="
 "
 
 src_compile() {
-  bmake WITH_POSIX_C_SOURCE=YES
+	bmake WITH_POSIX_C_SOURCE=YES
 }
 
 src_install() {
