@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+#inherit eutils
 
 DESCRIPTION="wayland compositor inspired by CWM"
 HOMEPAGE="https://hikari.acmelabs.space/"
