@@ -49,9 +49,18 @@ RDEPEND="
 
 BDEPEND="
 		${DEPEND}
+    sys-devel/bmake
 		virtual/pkgconfig
 		>=dev-libs/wayland-protocols-1.14
 "
+
+src_compile() {
+  bmake WITH_POSIX_C_SOURCE=YES
+}
+
+src_install() {
+  bmake PREFIX=${D}/usr ETC_PREFIX=${D}/etc install
+}
 
 pkg_preinst() {
 	#if ! use systemd && ! use elogind; then
