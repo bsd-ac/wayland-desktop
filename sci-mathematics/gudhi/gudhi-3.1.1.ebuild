@@ -24,6 +24,8 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+DISTUTILS_IN_SOURCE_BUILD=1
+
 RDEPEND="${PYTHON_DEPS}
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-cpp/eigen:3
@@ -41,9 +43,6 @@ PATCHES=(
 
 src_prepare() {
 	cmake_src_prepare
-
-	cd python
-	python_copy_sources
 }
 
 src_configure() {
