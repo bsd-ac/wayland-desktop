@@ -65,6 +65,6 @@ src_install() {
 pkg_preinst() {
 	#if ! use systemd && ! use elogind; then
 		fowners root:0 /usr/bin/hikari{,-unlocker}
-		fperms 4511 /usr/bin/wayfire
+		fperms 4511 /usr/bin/hikari{,-unlocker}
 	#fi
 }
