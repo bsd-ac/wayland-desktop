@@ -47,6 +47,7 @@ src_configure() {
 src_install() {
 	default
 	use lua && DOCS+=( doc/lua_api.md )
+	einstalldocs
 	# no .a's it seems
 	use static-libs || find "${ED}" -name "*.la" -delete
 }
