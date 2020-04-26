@@ -32,6 +32,6 @@ RDEPEND="
 BDEPEND=""
 
 src_install() {
-	insinto ${ED}/usr/share/sddm/themes
+	insinto /usr/share/sddm/themes
 	doins -r components playlists screens Main.qml theme.conf theme.conf.user
 }
