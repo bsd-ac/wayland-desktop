@@ -21,7 +21,14 @@ SLOT="0"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="
+	media-libs/phonon:=[gstreamer]
+	media-libs/gst-plugins-good
+	dev-qt/qtmultimedia:=[alsa,gsteamer,qml,widgets]
+	dev-qt/qtgraphicaleffects
+	dev-qt/qtquickcontrols2
+	dev-qt/qtquickcontrols
+"
 BDEPEND=""
 
 src_install() {
