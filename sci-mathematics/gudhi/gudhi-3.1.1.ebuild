@@ -41,8 +41,8 @@ PATCHES=(
 
 src_prepare() {
 	default
-	eautoreconf
 	cmake_src_prepare
+
 	python_copy_sources
 }
 
