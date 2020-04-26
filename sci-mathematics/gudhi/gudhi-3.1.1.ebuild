@@ -40,7 +40,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
 	cmake_src_prepare
 
 	python_copy_sources
