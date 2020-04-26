@@ -1,7 +1,7 @@
-diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
 index 055d5b23..527da0e1 100644
---- a/src/python/CMakeLists.txt
-+++ b/src/python/CMakeLists.txt
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
 @@ -240,7 +240,7 @@ if(PYTHONINTERP_FOUND)
      add_custom_target(python ALL DEPENDS gudhi.so
                        COMMENT "Do not forget to add ${CMAKE_CURRENT_BINARY_DIR}/ to your PYTHONPATH before using examples or tests")
