@@ -9,22 +9,15 @@ inherit distutils-r1 cmake
 DESCRIPTION="An open source C++, python library for Topological Data Analysis"
 HOMEPAGE="https://gudhi.inria.fr/"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/GUDHI/gudhi-devel.git"
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/GUDHI/gudhi-devel/releases/download/tags/gudhi-release-${PV}/${PN}.${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}.${PV}"
-fi
+SRC_URI="https://github.com/GUDHI/gudhi-devel/releases/download/tags/gudhi-release-${PV}/${PN}.${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64"
+S="${WORKDIR}/${PN}.${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DISTUTILS_IN_SOURCE_BUILD=1
 CMAKE_IN_SOURCE_BUILD=1
 
 RDEPEND="${PYTHON_DEPS}
@@ -42,11 +35,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
-
 src_install() {
+	einstalldocs
 	cmake_src_install
 
-	cd ${BUILD_DIR}/python
-	distutils-r1_python_install_all
-	einstalldocs
+	cd "${BUILD_DIR}/python"
+	distutils-r1_src_install
 }
