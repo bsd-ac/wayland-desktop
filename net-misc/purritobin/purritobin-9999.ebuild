@@ -23,8 +23,3 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 BDEPEND=""
-
-src_install() {
-	emake PREFIX="/usr/bin/" DESTDIR="${D}" install
-  einstalldocs
-}
