@@ -20,7 +20,12 @@ LICENSE="BSD"
 SLOT="0"
 
 IUSE=""
-DEPEND="dev-cpp/glog:=[gflags]"
+DEPEND="dev-cpp/glog:=[gflags]
+	dev-cpp/gtest
+	dev-libs/libevent
+	dev-libs/boost
+	dev-python/thrift
+"
 BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
 
