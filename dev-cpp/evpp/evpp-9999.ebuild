@@ -12,7 +12,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Qihoo360/evpp.git"
 else
-	SRC_URI="https://github.com/Qihoo360/evpp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	COMMIT="86764566277574c2b73f300479ca46709385b2bb"
+	SRC_URI="https://github.com/Qihoo360/evpp/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
