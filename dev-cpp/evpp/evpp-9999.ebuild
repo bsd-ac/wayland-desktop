@@ -30,3 +30,7 @@ BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
 
 DOCS=( readme.md docs/quick_start.md)
+
+PATCHES=(
+	${FILESDIR}/evpp-benchmark_throughput_asio_from_chenshuo_handler_allocator.cpp
+)
