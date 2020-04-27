@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/PurritoBin/PurritoBin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
-  S="PurritoBin-${PV}"
+  S="${WORKDIR}/PurritoBin-${PV}"
 fi
 
 LICENSE="GPL-2"
