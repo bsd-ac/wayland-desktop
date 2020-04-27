@@ -20,7 +20,7 @@ LICENSE="BSD"
 SLOT="0"
 
 IUSE=""
-DEPEND="dev-libs/glog"
+DEPEND="dev-cpp/glog"
 BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
 
