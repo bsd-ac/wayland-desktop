@@ -20,8 +20,8 @@ LICENSE="BSD"
 SLOT="0"
 
 IUSE=""
-DEPEND=""
-BDEPEND=""
-RDEPEND=""
+DEPEND="dev-libs/glog"
+BDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}"
 
 DOCS=( readme.md docs/quick_start.md)
