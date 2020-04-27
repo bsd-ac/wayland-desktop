@@ -19,7 +19,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-IUSE=""
+IUSE="tests"
 DEPEND="dev-cpp/glog:=[gflags]
 	dev-cpp/gtest
 	dev-libs/libevent
@@ -34,3 +34,8 @@ DOCS=( readme.md docs/quick_start.md)
 PATCHES=(
 	${FILESDIR}/evpp-benchmark_throughput_asio_from_chenshuo_handler_allocator.cpp
 )
+
+src_configure(){
+	local mycmakeargs=( "-DEVPP_VCPKG_BUILD" )
+	cmake_src_configure
+}
