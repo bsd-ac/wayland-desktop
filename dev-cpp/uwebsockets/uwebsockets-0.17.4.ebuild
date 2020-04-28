@@ -22,6 +22,10 @@ DEPEND=""
 RDEPEND=""
 BDEPEND=""
 
+src_compile() {
+	return 0
+}
+
 src_install() {
 	insinto /usr/include/uwebsockets/
 	doins -r src/*
