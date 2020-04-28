@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools multilib
 
 DESCRIPTION="Simple, secure & standards compliant web I/O for the most demanding of applications"
 HOMEPAGE="https://github.com/uNetworking/uSockets"
@@ -44,6 +44,6 @@ src_compile() {
 }
 
 src_install() {
-	emake prefix="/usr" DESTDIR="${D}" install
+	emake libdir="$(getlibdir)" prefix="/usr" DESTDIR="${D}" install
 	einstalldocs
 }
