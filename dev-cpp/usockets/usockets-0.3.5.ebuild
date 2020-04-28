@@ -42,3 +42,8 @@ src_compile() {
 	)
 	emake
 }
+
+src_install() {
+	einstalldocs
+	emake prefix=/usr DESTDIR="${D}" install
+}
