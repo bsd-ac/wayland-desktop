@@ -31,7 +31,7 @@ index fa6e2ff..d7d7bb3 100644
 +install: default
 +	# install the library first, while making sure that the symlink is updated
 +	$(INSTALL) -m 755 $(LIBTARGET) "$(libdir)/$(LIBTARGET).$(VERSION)"
-+	@ln -snf "$(libdir)/$(LIBRGET)" "$(libir)/libusockets.so"
++	@ln -snf "$(libdir)/$(LIBRGET)" "$(libdir)/libusockets.so"
 +	# we also install all the header files
 +	$(INSTALL) -m 644 src/*.h "$(includedir)/"
 +	$(INSTALL) -m 644 src/internal/*.h "$(includedir)/internal/"
