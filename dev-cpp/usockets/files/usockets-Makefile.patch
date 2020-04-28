@@ -2,11 +2,12 @@ diff --git a/Makefile b/Makefile
 index fa6e2ff..8301a44 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -41,6 +41,12 @@ default:
+@@ -41,6 +41,13 @@ default:
  	$(CC) $(CFLAGS) -flto -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
  	$(AR) rvs uSockets.a *.o
  
 +LIBRARY_TARGET = libusockets.so
++
 +shared:
 +  rm -f *.o
 +  $(CC) $(CFLAGS) $(CPPFLAGS) -fpic -c src/*.c src/eventing/*.c src/crypto/*.c
