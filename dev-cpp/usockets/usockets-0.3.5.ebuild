@@ -44,6 +44,6 @@ src_compile() {
 }
 
 src_install() {
-	emake libdir="$(get_libdir)" prefix="/usr" DESTDIR="${D}" install
+	emake libdir="/$(get_libdir)" prefix="/usr" DESTDIR="${D}" install
 	einstalldocs
 }
