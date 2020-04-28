@@ -35,7 +35,7 @@ index fa6e2ff..9fdcf47 100644
 +	"$(DESTDIR)$(includedir)/internal/networking"
 +	# install the library first, while making sure that the symlink is updated
 +	install -m 755 $(LIBTARGET) -T "$(DESTDIR)$(libdir)/$(LIBTARGET).$(VERSION)"
-+	@ln -snf "$(DESTDIR)$(libdir)/$(LIBRGET)" "$(DESTDIR)$(libdir)/libusockets.so"
++	@ cd "$(DESTDIR)$(libdir) && ln -snf $(LIBTARGET)" "libusockets.so"
 +	# we also install all the header files
 +	install  src/*.h "$(DESTDIR)$(includedir)/"
 +	install -m 644 src/internal/*.h "$(DESTDIR)$(includedir)/internal/"
