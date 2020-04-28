@@ -19,12 +19,20 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+ssl +libuv debug"
-DEPEND="ssl? ( >=dev-libs/openssl-1.1.0 )
+IUSE="+ssl +libuv libressl debug"
+DEPEND="ssl? (
+				!libressl? ( >=dev-libs/openssl-1.1.0 )
+				libressl? ( >=dev-libs/libressl-3.0.0 )
+			 )
 	libuv? ( dev-libs/libuv )
+	sys-libs/zlib
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/usockets-Makefile.patch"
+)
 
 src_compile() {
 	local myemakeargs=(
