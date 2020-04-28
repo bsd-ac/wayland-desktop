@@ -19,10 +19,9 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+ssl +libuv gcd debug"
+IUSE="+ssl +libuv debug"
 DEPEND="ssl? ( >=dev-libs/openssl-1.1.0 )
 	libuv? ( dev-libs/libuv )
-	gcd? ( dev-libs/libdispatch )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
@@ -31,7 +30,7 @@ src_compile() {
 	local myemakeargs=(
 		"WITH_OPENSSL=$(usex ssl 1 0)"
 		"WITH_LIBUV=$(usex libuv 1 0)"
-		"WITH_GCD=$(usex gcd 1 0)"
+		"WITH_ASAN=$(usex debug 1 0)"
 	)
 
 	emake "${myemakeargs}"
