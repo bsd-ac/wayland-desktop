@@ -30,13 +30,13 @@ index fa6e2ff..d7d7bb3 100644
 +
 +install: default
 +	# install the library first, while making sure that the symlink is updated
-+	$(INSTALL) -m 755 $(LIBTARGET) "$(libdir)/$(LIBTARGET).$(VERSION)"
++	install -m 755 $(LIBTARGET) "$(libdir)/$(LIBTARGET).$(VERSION)"
 +	@ln -snf "$(libdir)/$(LIBRGET)" "$(libdir)/libusockets.so"
 +	# we also install all the header files
-+	$(INSTALL) -m 644 src/*.h "$(includedir)/"
-+	$(INSTALL) -m 644 src/internal/*.h "$(includedir)/internal/"
-+	$(INSTALL) -m 644 src/internal/eventing/*.h "$(includedir)/internal/eventing/"
-+	$(INSTALL) -m 644 src/internal/networking/*.h "$(includedir)/internal/networking/"
++	install  src/*.h "$(includedir)/"
++	install -m 644 src/internal/*.h "$(includedir)/internal/"
++	install -m 644 src/internal/eventing/*.h "$(includedir)/internal/eventing/"
++	install -m 644 src/internal/networking/*.h "$(includedir)/internal/networking/"
 +
 +static:
  	rm -f *.o
