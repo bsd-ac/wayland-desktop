@@ -27,12 +27,10 @@ DEPEND="ssl? ( >=dev-libs/openssl-1.1.0 )
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
-src_configure() {
-	local myeconfargs=(
+src_compile() {
+	emake \
 		"$(use_with ssl openssl)" \
 		"$(use_with libuv)" \
 		"$(use_with gcd)" \
 		"$(use_with debug asan)"
-	)
-	econf
 }
