@@ -34,5 +34,5 @@ src_configure() {
 		"$(use_with gcd)" \
 		"$(use_with debug asan)"
 	)
-	autotools-utils_src_configure
+	econf
 }
