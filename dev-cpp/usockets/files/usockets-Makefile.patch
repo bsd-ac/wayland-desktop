@@ -11,7 +11,7 @@ index fa6e2ff..8301a44 100644
 +shared:
 +	rm -f *.o
 +	$(CC) $(CFLAGS) $(CPPFLAGS) -fpic -c src/*.c src/eventing/*.c src/crypto/*.c
-+	$(CC) -shared -soname=usockets -o $(LIBRARY_TARGET) *.o
++	$(CC) -shared -Wl,-soname,usockets -o $(LIBRARY_TARGET) *.o
 +
  # Builds all examples
  .PHONY: examples
