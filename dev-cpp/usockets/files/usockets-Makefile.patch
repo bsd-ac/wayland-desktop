@@ -7,8 +7,8 @@ index fa6e2ff..d7d7bb3 100644
 +
 +prefix ?= "${DESTDIR}/usr/local"
 +exec_prefix	?=	"$(prefix)"
-+libdir ?=	"$(prefix)/lib"
-+includedir?=	"$(prefix)/include"
++libdir ?=	"$(exec_prefix)/lib"
++includedir?=	"$(exec_prefix)/include"
 +
 +VERSION = 0.3.5
 +LIBTARGET = libusockets.so
