@@ -28,9 +28,22 @@ RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 src_compile() {
-	emake \
-		"$(use_with ssl openssl)" \
-		"$(use_with libuv)" \
-		"$(use_with gcd)" \
-		"$(use_with debug asan)"
+	local myemakeargs=""
+	if use ssl; then
+		myemakeargs+=(
+			"-WITH_OPENSSL=1"
+		)
+	fi
+	if use libuv; then
+		myemakeargs+=(
+			"-WITH_LIBUV=1"
+		)
+	fi
+	if use gcd; then
+		myemakeargs+=(
+			"-WITH_GCD=1"
+		)
+	fi
+
+	emake "${myemakeargs}"
 }
