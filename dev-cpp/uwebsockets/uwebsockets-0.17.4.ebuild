@@ -18,17 +18,12 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-DEPEND=""
-RDEPEND=""
-BDEPEND=""
+RDEPEND="~dev-cpp/usockets-0.3.5"
 
 src_compile() {
 	return 0
 }
 
 src_install() {
-	insinto /usr/include/uwebsockets/
-	doins -r src/*
-
-	rm "${D}/usr/include/uwebsockets/f2/LICENSE.txt"
+	doheader -r src/*
 }
