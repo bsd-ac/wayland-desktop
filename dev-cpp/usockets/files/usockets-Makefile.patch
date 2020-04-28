@@ -46,5 +46,5 @@ index fa6e2ff..d7d7bb3 100644
  clean:
  	rm -f *.o
  	rm -f *.a
-+  rm -f *.so
++	rm -f *.so
  	rm -rf .certs
