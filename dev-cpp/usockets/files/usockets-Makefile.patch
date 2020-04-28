@@ -1,18 +1,50 @@
 diff --git a/Makefile b/Makefile
-index fa6e2ff..8301a44 100644
+index fa6e2ff..d7d7bb3 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -41,6 +41,13 @@ default:
- 	$(CC) $(CFLAGS) -flto -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
- 	$(AR) rvs uSockets.a *.o
- 
-+LIBRARY_TARGET = libusockets.so
+@@ -1,3 +1,14 @@
++DESTDIR ?=
 +
-+shared:
++prefix ?= "${DESTDIR}/usr/local"
++exec_prefix	?=	"$(prefix)"
++libdir ?=	"$(prefix)/lib"
++includedir?=	"$(prefix)/include"
++
++VERSION = 0.3.5
++LIBTARGET = libusockets.so
++
++
+ # WITH_OPENSSL=1 enables OpenSSL 1.1+ support
+ ifeq ($(WITH_OPENSSL),1)
+ 	override CFLAGS += -DLIBUS_USE_OPENSSL
+@@ -35,8 +46,23 @@ endif
+ override CFLAGS += -std=c11 -Isrc
+ override LDFLAGS += uSockets.a
+ 
+-# By default we build the uSockets.a static library
++# By default we build the libusockets.so shared library
+ default:
 +	rm -f *.o
 +	$(CC) $(CFLAGS) $(CPPFLAGS) -fpic -c src/*.c src/eventing/*.c src/crypto/*.c
-+	$(CC) -shared -Wl,-soname,libusockets.so -o $(LIBRARY_TARGET) *.o
++	$(CC) -shared -Wl,-soname,libusockets.so -o $(LIBTARGET) *.o
 +
- # Builds all examples
- .PHONY: examples
- examples: default
++install: default
++	# install the library first, while making sure that the symlink is updated
++	$(INSTALL) -m 755 $(LIBTARGET) "$(libdir)/$(LIBTARGET).$(VERSION)"
++	@ln -snf "$(libdir)/$(LIBRGET)" "$(libir)/libusockets.so"
++	# we also install all the header files
++	$(INSTALL) -m 644 src/*.h "$(includedir)/"
++	$(INSTALL) -m 644 src/internal/*.h "$(includedir)/internal/"
++	$(INSTALL) -m 644 src/internal/eventing/*.h "$(includedir)/internal/eventing/"
++	$(INSTALL) -m 644 src/internal/networking/*.h "$(includedir)/internal/networking/"
++
++static:
+ 	rm -f *.o
+ 	$(CC) $(CFLAGS) -flto -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
+ 	$(AR) rvs uSockets.a *.o
+@@ -52,4 +78,5 @@ swift_examples:
+ clean:
+ 	rm -f *.o
+ 	rm -f *.a
++  rm -f *.so
+ 	rm -rf .certs
