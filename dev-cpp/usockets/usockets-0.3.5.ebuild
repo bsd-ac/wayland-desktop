@@ -25,6 +25,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 src_install() {
-	instinto /usr/include/
+	insinto /usr/include/
 	doins src/*
 }
