@@ -30,5 +30,5 @@ src_install() {
 	insinto /usr/include/uwebsockets/
 	doins -r src/*
 
-	rm /usr/include/uwebsockets/f2/LICENSE.txt
+	rm "${D}/usr/include/uwebsockets/f2/LICENSE.txt"
 }
