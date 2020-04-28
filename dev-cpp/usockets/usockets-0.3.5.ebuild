@@ -40,7 +40,7 @@ src_compile() {
 		"WITH_LIBUV=$(usex libuv 1 0)"
 		"WITH_ASAN=$(usex debug 1 0)"
 	)
-	"${mymakeargs}" emake shared
+	emake "${myemakeargs}" shared
 }
 
 src_install() {
