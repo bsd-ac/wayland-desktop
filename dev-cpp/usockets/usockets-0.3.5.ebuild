@@ -28,22 +28,11 @@ RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 src_compile() {
-	local myemakeargs=""
-	if use ssl; then
-		myemakeargs+=(
-			"-WITH_OPENSSL=1"
-		)
-	fi
-	if use libuv; then
-		myemakeargs+=(
-			"-WITH_LIBUV=1"
-		)
-	fi
-	if use gcd; then
-		myemakeargs+=(
-			"-WITH_GCD=1"
-		)
-	fi
+	local myemakeargs=(
+		"WITH_OPENSSL=$(usex ssl 0 1)"
+		"WITH_LIBUV=$(usex libuv 0 1)"
+		"WITH_GCD=$(usex gcd 0 1)"
+	)
 
 	emake "${myemakeargs}"
 }
