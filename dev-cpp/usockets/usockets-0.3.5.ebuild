@@ -29,9 +29,9 @@ BDEPEND="${DEPEND}"
 
 src_compile() {
 	local myemakeargs=(
-		"WITH_OPENSSL=$(usex ssl 0 1)"
-		"WITH_LIBUV=$(usex libuv 0 1)"
-		"WITH_GCD=$(usex gcd 0 1)"
+		"WITH_OPENSSL=$(usex ssl 1 0)"
+		"WITH_LIBUV=$(usex libuv 1 0)"
+		"WITH_GCD=$(usex gcd 1 0)"
 	)
 
 	emake "${myemakeargs}"
