@@ -19,12 +19,32 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
-DEPEND=""
-RDEPEND="${DEPEND}"
+IUSE="libuv +ssl libressl debug"
+
+DEPEND="ssl? (
+			  libressl? ( >=dev-libs/libressl-3.0.0 )
+			  !libressl? ( >=dev-libs/openssl-1.1.0 )
+			  )
+	libuv? ( dev-libs/libuv )
+"
 BDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/usockets-Makefile.patch"
+)
+
+src_compile() {
+	local mymakeargs=(
+		"WITH_OPENSSL=$(usex ssl 1 0)"
+		"WITH_LIBUV=$(usex libuv 1 0)"
+		"WITH_ASAN=$(usex debug 1 0)"
+	)
+	"$(mymageargs)" emake shared
+}
 
 src_install() {
-	insinto /usr/include/
-	doins src/*
+	dolib.so libusockets.so
+	doheader -r src/*
+	einstalldocs
 }

@@ -1,13 +1,17 @@
 diff --git a/Makefile b/Makefile
-index fa6e2ff..5bde133 100644
+index fa6e2ff..8301a44 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -38,7 +38,7 @@ override LDFLAGS += uSockets.a
- # By default we build the uSockets.a static library
- default:
- 	rm -f *.o
--	$(CC) $(CFLAGS) -flto -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
-+	$(CC) $(CFLAGS) -c src/*.c src/eventing/*.c src/crypto/*.c
+@@ -41,6 +41,12 @@ default:
+ 	$(CC) $(CFLAGS) -flto -O3 -c src/*.c src/eventing/*.c src/crypto/*.c
  	$(AR) rvs uSockets.a *.o
  
++LIBRARY_TARGET = libusockets.so
++shared:
++  rm -f *.o
++  $(CC) $(CFLAGS) $(CPPFLAGS) -fpic -c src/*.c src/eventing/*.c src/crypto/*.c
++  $(CC) -shared -o $(LIBRARY_TARGET) *.o
++
  # Builds all examples
+ .PHONY: examples
+ examples: default
