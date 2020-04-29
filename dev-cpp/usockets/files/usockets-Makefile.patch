@@ -34,10 +34,10 @@ index fa6e2ff..9fdcf47 100644
 +	"$(DESTDIR)$(includedir)/internal/eventing" \
 +	"$(DESTDIR)$(includedir)/internal/networking"
 +	# install the library first, while making sure that the symlink is updated
-+	install -m 755 $(LIBTARGET) -T "$(DESTDIR)$(libdir)/$(LIBTARGET).$(VERSION)"
++	install -m 755 $(LIBTARGET) "$(DESTDIR)$(libdir)/$(LIBTARGET).$(VERSION)"
 +	@ cd "$(DESTDIR)$(libdir)" && ln -snf "$(LIBTARGET).$(VERSION)" "$(LIBTARGET)"
 +	# we also install all the header files
-+	install  src/*.h "$(DESTDIR)$(includedir)/"
++	install -m 644 src/*.h "$(DESTDIR)$(includedir)/"
 +	install -m 644 src/internal/*.h "$(DESTDIR)$(includedir)/internal/"
 +	install -m 644 src/internal/eventing/*.h "$(DESTDIR)$(includedir)/internal/eventing/"
 +	install -m 644 src/internal/networking/*.h "$(DESTDIR)$(includedir)/internal/networking/"
