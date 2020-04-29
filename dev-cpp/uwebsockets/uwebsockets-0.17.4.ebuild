@@ -21,7 +21,7 @@ IUSE=""
 RDEPEND="~dev-cpp/usockets-0.3.5"
 
 PATCHES=(
-	"${FILESFIR}/${PN}-Makefile.patch"
+	"${FILESDIR}/${PN}-Makefile.patch"
 )
 
 src_compile() {
