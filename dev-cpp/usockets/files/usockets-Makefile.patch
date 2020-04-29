@@ -8,7 +8,7 @@ index fa6e2ff..9fdcf47 100644
 +prefix ?= "/usr/local"
 +exec_prefix	?=	"$(prefix)"
 +libdir ?=	"$(exec_prefix)/lib"
-+includedir?=	"$(exec_prefix)/include"
++includedir?=	"$(exec_prefix)/include/uSockets"
 +
 +VERSION = 0.3.5
 +LIBTARGET = libusockets.so
