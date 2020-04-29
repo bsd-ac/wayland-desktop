@@ -20,10 +20,14 @@ SLOT="0"
 IUSE=""
 RDEPEND="~dev-cpp/usockets-0.3.5"
 
+PATCHES=(
+	"${FILESFIR}/${PN}-Makefile.patch"
+)
+
 src_compile() {
 	return 0
 }
 
 src_install() {
-	doheader -r src/*
+	emake prefix="/usr" DESTDIR="${D}" install
 }
