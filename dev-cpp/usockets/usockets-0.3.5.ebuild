@@ -40,7 +40,7 @@ src_compile() {
 		"-DWITH_LIBUV=$(usex libuv 1 0)"
 		"-DWITH_ASAN=$(usex debug 1 0)"
 	)
-	emake "${myemakeargs}" default
+	emake "${mymakeargs}" default
 }
 
 src_install() {
