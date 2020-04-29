@@ -20,9 +20,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
-BDEPEND=""
+DEPEND=">=dev-cpp/usockets-0.3.5
+	>=dev-cpp/uwebsockets-0.17.4
+"
+RDEPEND="${DEPEND}"
+BDEPEND="${DEPEND}"
 
 src_install() {
 	emake prefix="/usr" DESTDIR="${D}" install
