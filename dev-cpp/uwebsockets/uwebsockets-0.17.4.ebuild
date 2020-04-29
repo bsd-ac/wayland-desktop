@@ -22,6 +22,7 @@ RDEPEND="~dev-cpp/usockets-0.3.5"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-Makefile.patch"
+	"${FILESDIR}/${PN}-src_Loop.h.patch"
 )
 
 src_compile() {
