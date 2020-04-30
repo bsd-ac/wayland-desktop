@@ -17,7 +17,9 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="urlinclude">Enable URLs fetch</flag>
-    <flag name="urlsign">Enable signatures check</flag>
+    <flag name="regex">Enable regex support</flag>
+    <flag name="sign">Enable signatures check</flag>
+    <flag name="urls">Enable URLs fetch</flag>
+    <flag name="utils">Install utils for checking other configs</flag>
   </use>
 </pkgmetadata>
