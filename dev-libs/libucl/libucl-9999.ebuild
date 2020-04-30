@@ -39,7 +39,7 @@ src_configure() {
 		"-DENABLE_LUAJIT=$(usex luajit ON OFF)"
 		"-DENABLE_URL_INCLUDE=$(usex urlinclude ON OFF)"
 		"-DENABLE_URL_SIGN=$(usex urlsign ON OFF)"
-		"-DBUILD_SHARED=ON"
+		"-DBUILD_SHARED_LIBS=ON"
 	)
 	cmake_src_configure
 }
