@@ -18,15 +18,19 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="libuv"
 
-DEPEND=">=dev-cpp/usockets-0.3.5
+DEPEND=">=dev-cpp/usockets-0.3.5:=[libuv?]
 	>=dev-cpp/uwebsockets-0.17.4
+	libuv? ( >=dev-libs/libuv-1.35.0 )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 src_install() {
-	emake prefix="/usr" DESTDIR="${D}" install
+	if use libuv; then
+		emake prefix="/usr" DESTDIR="${D}" WITH_LIBUV install
+	else
+		emake prefix="/usr" DESTDIR="${D}" install
 	einstalldocs
 }
