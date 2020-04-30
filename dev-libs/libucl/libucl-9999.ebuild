@@ -33,11 +33,6 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/api.md )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
 	local mycmakeargs=(
 		"-DENABLE_LUA=$(usex lua ON OFF)"
