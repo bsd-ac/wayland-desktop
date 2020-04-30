@@ -19,7 +19,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="lua luajit urlinclude urlsign "
+IUSE="+lua +luajit +urlinclude +urlsign static"
 REQUIRED_USE="luajit? ( lua )"
 
 DEPEND="!!dev-libs/ucl
@@ -39,6 +39,7 @@ src_configure() {
 		"-DENABLE_LUAJIT=$(usex luajit ON OFF)"
 		"-DENABLE_URL_INCLUDE=$(usex urlinclude ON OFF)"
 		"-DENABLE_URL_SIGN=$(usex urlsign ON OFF)"
+		"-DBUILD_SHARED=ON"
 	)
 	cmake_src_configure
 }
@@ -48,5 +49,5 @@ src_install() {
 	use lua && DOCS+=( doc/lua_api.md )
 	einstalldocs
 	# no .a's it seems
-	use static-libs || find "${ED}" -name "*.la" -delete
+	use static || find "${ED}" -name "*.la" -delete
 }
