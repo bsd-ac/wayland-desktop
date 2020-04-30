@@ -28,7 +28,9 @@ DEPEND="!!dev-libs/ucl
 	urlinclude? ( net-misc/curl )
 	urlsign? ( dev-libs/openssl:0 )
 "
-BDEPEND="${DEPEND}"
+BDEPEND="${DEPEND}
+	virtual/pkgconfig
+"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/api.md )
