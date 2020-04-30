@@ -35,12 +35,7 @@ PATCHES=(
 )
 
 src_compile() {
-	local mymakeargs=(
-		"WITH_OPENSSL=$(usex ssl 1 0)"
-		"WITH_LIBUV=$(usex libuv 1 0)"
-		"WITH_ASAN=$(usex debug 1 0)"
-	)
-	emake "-e ${mymakeargs}" default
+	emake WITH_OPENSSL=$(usex ssl 1 0) WITH_LIBUV=$(usex libuv 1 0) WITH_ASAN=$(usex debug 1 0) default
 }
 
 src_install() {
