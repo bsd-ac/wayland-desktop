@@ -19,7 +19,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="+lua +luajit +urlinclude +urlsign static"
+IUSE="+lua luajit urlinclude urlsign static"
 REQUIRED_USE="luajit? ( lua )"
 
 DEPEND="!!dev-libs/ucl
