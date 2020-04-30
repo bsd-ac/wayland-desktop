@@ -29,7 +29,7 @@ BDEPEND="${DEPEND}"
 
 src_install() {
 	if use libuv; then
-		emake prefix="/usr" DESTDIR="${D}" WITH_LIBUV install
+		emake prefix="/usr" DESTDIR="${D}" WITH_LIBUV=1 install
 	else
 		emake prefix="/usr" DESTDIR="${D}" install
 	fi
