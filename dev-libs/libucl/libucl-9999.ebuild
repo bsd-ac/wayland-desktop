@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconf=(
+	local mycmakeargs=(
 		$(cmake_use_with lua)
 		$(cmake_use_with luajit)
 		$(cmake_use_with urlinclude url_include)
