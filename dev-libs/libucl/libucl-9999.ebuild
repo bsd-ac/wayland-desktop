@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit cmake
 
 DESCRIPTION="Universal configuration library parser"
 HOMEPAGE="https://github.com/vstakhov/libucl"
@@ -19,29 +19,33 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="lua +regex signatures static-libs urlfetch utils"
+IUSE="lua luajit urlinclude urlsign "
+REQUIRED_USE="luajit? ( lua )"
+
 DEPEND="!!dev-libs/ucl
 	lua? ( >=dev-lang/lua-5.1:= )
-	signatures? ( dev-libs/openssl:0 )
-	urlfetch? ( net-misc/curl )"
+	luajit? ( dev-lang/luajit )
+	urlinclude? ( net-misc/curl )
+	urlsign? ( dev-libs/openssl:0 )
+"
+BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/api.md )
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_configure() {
-	local myeconf=""
-	use urlfetch && myeconf="--with-urls"
-	econf \
-		$(use_enable lua) \
-		$(use_enable regex) \
-		$(use_enable signatures) \
-		$(use_enable utils) \
-		${myeconf}
+	local myeconf=(
+		$(cmake_use_enable lua)
+		$(cmake_use_enable luajit)
+		$(cmake_use_enable urlinclude url_include)
+		$(cmake_use_enable urlsign url_sign )
+	)
+	cmake_src_configure
 }
 
 src_install() {

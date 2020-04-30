@@ -17,11 +17,7 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
-    <flag name="regex">Enable regex checking for schema</flag>
-    <flag name="signatures">Enable signatures check</flag>
-    <flag name="urlfetch">Enable URLs fetch</flag>
-
-    <!-- in v0.8.0, also the ucl-tool utility -->
-    <flag name="utils">Install the chargen and objdump utilities</flag>
+    <flag name="urlinclude">Enable URLs fetch</flag>
+    <flag name="urlsign">Enable signatures check</flag>
   </use>
 </pkgmetadata>

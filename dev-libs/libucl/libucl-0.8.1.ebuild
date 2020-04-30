@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}"
 DOCS=( README.md doc/api.md )
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
