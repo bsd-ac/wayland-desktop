@@ -40,10 +40,10 @@ src_prepare() {
 
 src_configure() {
 	local myeconf=(
-		$(cmake_use_enable lua)
-		$(cmake_use_enable luajit)
-		$(cmake_use_enable urlinclude url_include)
-		$(cmake_use_enable urlsign url_sign )
+		$(cmake_use_with lua)
+		$(cmake_use_with luajit)
+		$(cmake_use_with urlinclude url_include)
+		$(cmake_use_with urlsign url_sign )
 	)
 	cmake_src_configure
 }
