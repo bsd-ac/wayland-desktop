@@ -3,30 +3,23 @@
 
 EAPI=7
 
-inherit cmake
+inherit autotools
 
 DESCRIPTION="Universal configuration library parser"
 HOMEPAGE="https://github.com/vstakhov/libucl"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/vstakhov/libucl.git"
-else
-	SRC_URI="https://github.com/vstakhov/libucl/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/vstakhov/libucl/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="+lua luajit urlinclude urlsign static"
-REQUIRED_USE="luajit? ( lua )"
+IUSE="lua +regex sign urls +utils"
 
 DEPEND="!!dev-libs/ucl
 	lua? ( >=dev-lang/lua-5.1:= )
-	luajit? ( dev-lang/luajit )
-	urlinclude? ( net-misc/curl )
-	urlsign? ( dev-libs/openssl:0 )
+	urls? ( net-misc/curl )
+	sign? ( dev-libs/openssl:0 )
 "
 BDEPEND="${DEPEND}
 	virtual/pkgconfig
@@ -35,15 +28,20 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/api.md )
 
+src_prepare() {
+	eapply_user
+	eautoreconf
+}
+
 src_configure() {
-	local mycmakeargs=(
-		"-DENABLE_LUA=$(usex lua ON OFF)"
-		"-DENABLE_LUAJIT=$(usex luajit ON OFF)"
-		"-DENABLE_URL_INCLUDE=$(usex urlinclude ON OFF)"
-		"-DENABLE_URL_SIGN=$(usex urlsign ON OFF)"
-		"-DBUILD_SHARED_LIBS=ON"
+	local myeconfargs=(
+		"$(use_enable lua)"
+		"$(use_enable regex)"
+		"$(use_enable sign signatures)"
+		"$(use_enable urls)"
+		"$(use_enable utils)"
 	)
-	cmake_src_configure
+	econf "${myeconfargs}"
 }
 
 src_install() {
