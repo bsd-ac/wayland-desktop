@@ -19,7 +19,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="lua +regex sign urls +utils"
+IUSE="lua +regex sign urls +utils static"
 
 DEPEND="!!dev-libs/ucl
 	lua? ( >=dev-lang/lua-5.1:= )
