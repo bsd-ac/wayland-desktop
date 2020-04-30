@@ -35,7 +35,11 @@ PATCHES=(
 )
 
 src_compile() {
-	emake WITH_OPENSSL=$(usex ssl 1 0) WITH_LIBUV=$(usex libuv 1 0) WITH_ASAN=$(usex debug 1 0) default
+	# the Makefile uses environment variables
+	emake WITH_OPENSSL=$(usex ssl 1 0) \
+		  WITH_LIBUV=$(usex libuv 1 0) \
+		  WITH_ASAN=$(usex debug 1 0) \
+		  default
 }
 
 src_install() {
