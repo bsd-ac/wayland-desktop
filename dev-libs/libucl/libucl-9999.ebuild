@@ -40,10 +40,10 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_with lua)
-		$(cmake_use_with luajit)
-		$(cmake_use_with urlinclude url_include)
-		$(cmake_use_with urlsign url_sign )
+		"-DENABLE_LUA=$(usex lua ON OFF)"
+		"-DENABLE_LUAJIT=$(usex luajit ON OFF)"
+		"-DENABLE_URL_INCLUDE=$(usex urlinclude ON OFF)"
+		"-DENABLE_URL_SIGN=$(usex urlsign ON OFF)"
 	)
 	cmake_src_configure
 }
