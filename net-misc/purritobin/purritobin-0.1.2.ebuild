@@ -32,5 +32,6 @@ src_install() {
 		emake prefix="/usr" DESTDIR="${D}" WITH_LIBUV install
 	else
 		emake prefix="/usr" DESTDIR="${D}" install
+	fi
 	einstalldocs
 }
