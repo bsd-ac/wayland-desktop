@@ -36,11 +36,11 @@ PATCHES=(
 
 src_compile() {
 	local mymakeargs=(
-		"-DWITH_OPENSSL=$(usex ssl 1 0)"
-		"-DWITH_LIBUV=$(usex libuv 1 0)"
-		"-DWITH_ASAN=$(usex debug 1 0)"
+		"WITH_OPENSSL=$(usex ssl 1 0)"
+		"WITH_LIBUV=$(usex libuv 1 0)"
+		"WITH_ASAN=$(usex debug 1 0)"
 	)
-	emake "${mymakeargs}" default
+	emake "-e ${mymakeargs}" default
 }
 
 src_install() {
