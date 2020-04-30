@@ -19,29 +19,34 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-IUSE="lua +regex signatures static-libs urlfetch utils"
+IUSE="lua +regex sign urls +utils static"
+
 DEPEND="!!dev-libs/ucl
 	lua? ( >=dev-lang/lua-5.1:= )
-	signatures? ( dev-libs/openssl:0 )
-	urlfetch? ( net-misc/curl )"
+	urls? ( net-misc/curl )
+	sign? ( dev-libs/openssl:0 )
+"
+BDEPEND="${DEPEND}
+	virtual/pkgconfig
+"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/api.md )
 
 src_prepare() {
-	default
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
-	local myeconf=""
-	use urlfetch && myeconf="--with-urls"
-	econf \
-		$(use_enable lua) \
-		$(use_enable regex) \
-		$(use_enable signatures) \
-		$(use_enable utils) \
-		${myeconf}
+	local myeconfargs=(
+		"$(use_enable lua)"
+		"$(use_enable regex)"
+		"$(use_enable sign signatures)"
+		"$(use_enable urls)"
+		"$(use_enable utils)"
+	)
+	econf "${myeconfargs}"
 }
 
 src_install() {
@@ -49,5 +54,5 @@ src_install() {
 	use lua && DOCS+=( doc/lua_api.md )
 	einstalldocs
 	# no .a's it seems
-	use static-libs || find "${ED}" -name "*.la" -delete
+	use static || find "${ED}" -name "*.la" -delete
 }
