@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind systemd"
+IUSE=""
 
 DEPEND="
 		dev-libs/glib
@@ -42,29 +42,20 @@ DEPEND="
 
 RDEPEND="
 		${DEPEND}
-		elogind? ( sys-auth/elogind )
-		systemd? ( sys-apps/systemd )
 		x11-misc/xkeyboard-config
 "
 
 BDEPEND="
 		${DEPEND}
-	sys-devel/bmake
-		virtual/pkgconfig
 		>=dev-libs/wayland-protocols-1.14
+		sys-devel/bmake
+		virtual/pkgconfig
 "
 
 src_compile() {
-	bmake CFLAGS="${CFLAGS} -I/usr/include" WITH_POSIX_C_SOURCE=YES
+	bmake WITH_POSIX_C_SOURCE=YES
 }
 
 src_install() {
-  bmake CFLAGS="${CFLAGS} -I/usr/include" PREFIX=${D}/usr ETC_PREFIX=${D}/etc install
-}
-
-pkg_preinst() {
-	#if ! use systemd && ! use elogind; then
-		fowners root:0 /usr/bin/hikari{,-unlocker}
-		fperms 4511 /usr/bin/hikari{,-unlocker}
-	#fi
+	bmake PREFIX=${D}/usr ETC_PREFIX=${D}/etc install
 }
