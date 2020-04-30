@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib
+inherit multilib
 
 DESCRIPTION="Simple, secure & standards compliant web I/O for the most demanding of applications"
 HOMEPAGE="https://github.com/uNetworking/uSockets"
