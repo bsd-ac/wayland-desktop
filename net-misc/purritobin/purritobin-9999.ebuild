@@ -27,11 +27,15 @@ DEPEND=">=dev-cpp/usockets-0.3.5:=[libuv?]
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
-src_install() {
+src_compile() {
 	if use libuv; then
-		emake prefix="/usr" DESTDIR="${D}" WITH_LIBUV=1 install
+		WITH_LIBUV=1 emake all
 	else
-		emake prefix="/usr" DESTDIR="${D}" install
+		emake all
 	fi
+}
+
+src_install() {
+	emake prefix="/usr" DESTDIR="${D}" install
 	einstalldocs
 }
