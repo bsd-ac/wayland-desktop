@@ -38,7 +38,7 @@ PATCHES=(
 
 src_configure() {
 	cd "${BUILD_DIR}/python"
-	python_foreach_impl python-single-r1_pkg_setup
+	python_foreach_impl python_pkg_setup
 }
 
 src_install() {
