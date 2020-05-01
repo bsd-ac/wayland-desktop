@@ -36,6 +36,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
+src_compile() {
+	return 0
+}
+
 src_install() {
 	einstalldocs
 	#cmake_src_install
