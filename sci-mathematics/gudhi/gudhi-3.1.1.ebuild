@@ -45,5 +45,5 @@ src_install() {
 	einstalldocs
 	cmake_src_install
 	cd "${BUILD_DIR}/python"
-	distutils-r1_python_install
+	python_foreach_impl python_install
 }
