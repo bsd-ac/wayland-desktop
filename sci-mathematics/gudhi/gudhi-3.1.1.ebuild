@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 cmake
+inherit python-r1 cmake
 
 DESCRIPTION="An open source C++, python library for Topological Data Analysis"
 HOMEPAGE="https://gudhi.inria.fr/"
@@ -38,7 +38,7 @@ PATCHES=(
 
 src_install() {
 	einstalldocs
-	cmake_src_install
+	#cmake_src_install
 	cd "${BUILD_DIR}/python"
 	python_foreach_impl python_install
 }
