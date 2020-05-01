@@ -36,6 +36,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
 )
 
+src_configure() {
+	cd "${BUILD_DIR}/python"
+	python_foreach_impl python-single-r1_pkg_setup
+}
+
 src_install() {
 	einstalldocs
 	cmake_src_install
