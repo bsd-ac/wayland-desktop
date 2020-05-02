@@ -46,5 +46,5 @@ src_install() {
 
 	distutils-r1_src_prepare
 	cd "${BUILD_DIR}/python"
-	distutils-r1_src_install
+	distutils-r1_python_install
 }
