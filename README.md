@@ -12,7 +12,7 @@ It is generally a good idea to use one of the two following methods for all over
 Read this to get familiar with layman: https://docs.ansible.com/ansible/latest/modules/layman_module.html, https://wiki.gentoo.org/wiki/Layman
 
 ```
-    $ layman -a wayfire-desktop
+    $ layman -a wayland-desktop
 ```
 
 ### Method 2 (manual)
@@ -28,7 +28,7 @@ The following are short form instructions. If you haven't already installed **gi
 Next, create a custom `/etc/portage/repos.conf` entry for the **wayfire-desktop** overlay, so Portage knows what to do. Make sure that `/etc/portage/repos.conf` exists, and is a directory. Then, fire up your favourite editor:
 
 ```
-    $ vim /etc/portage/repos.conf/wayfire-desktop.conf
+    $ vim /etc/portage/repos.conf/wayland-desktop.conf
 ```
 
 and put the following text in the file:
@@ -36,9 +36,9 @@ and put the following text in the file:
 ```
     [wayfire-desktop]
 
-    location = /usr/local/portage/wayfire-desktop
+    location = /usr/local/portage/wayland-desktop
     sync-type = git
-    sync-uri = https://github.com/epsilon-0/wayfire-desktop.git
+    sync-uri = https://github.com/epsilon-0/wayland-desktop.git
     priority = 50
     auto-sync = yes
 ```
@@ -46,14 +46,14 @@ and put the following text in the file:
 Then run:
 
 ```
-    $ emaint sync --repo wayfire-desktop
+    $ emaint sync --repo wayland-desktop
 ```
 
 ## Using packages from the overlay
 If you are running on the stable branch by default, allow **~amd64** keyword files from this repository. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then issue:
 
 ```
-    $ echo "*/*::wayfire-desktop ~amd64" >> /etc/portage/package.accept_keywords/wayfire-desktop
+    $ echo "*/*::wayland-desktop ~amd64" >> /etc/portage/package.accept_keywords/wayland-desktop
 ```
 
 Now you can install packages from the overlay. For example:
