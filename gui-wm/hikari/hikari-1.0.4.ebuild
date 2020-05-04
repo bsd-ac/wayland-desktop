@@ -3,22 +3,15 @@
 
 EAPI=7
 
-#inherit eutils
-
 DESCRIPTION="wayland compositor inspired by CWM"
 HOMEPAGE="https://hikari.acmelabs.space/"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit darcs
-	EDARCS_REPOSITORY="https://hub.darcs.net/raichoo/${PN}"
-else
-	SRC_URI="https://hikari.acmelabs.space/releases/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://hikari.acmelabs.space/releases/${P}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="+gamma +layershell +screencopy +X"
 
 DEPEND="
 		dev-libs/glib
@@ -53,7 +46,11 @@ BDEPEND="
 "
 
 src_compile() {
-	bmake WITH_POSIX_C_SOURCE=YES
+	bmake WITH_POSIX_C_SOURCE=YES \
+		  WITH_GAMMACONTROL=$(usex gamma YES NO) \
+		  WITH_LAYERSHELL=$(usex layershell YES NO) \
+		  WITH_SCREENCOPY=$(usex screencopy YES NO) \
+		  WITH_XWAYLAND=$(usex X YES NO)
 }
 
 src_install() {
