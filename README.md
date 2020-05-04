@@ -1,4 +1,4 @@
-# wayfire-desktop
+# wayland-desktop
 gentoo overlay for wayfire ebuilds and other wayfire apps
 
 ## Overview
