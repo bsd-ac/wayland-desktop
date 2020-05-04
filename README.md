@@ -2,7 +2,7 @@
 gentoo overlay for wayland related ebuilds
 
 ## Overview
-This repository contains a lot of ebuilds for the wayland desktop environment and window manager `wayfire`. There are also quite a few utilities included to help work with this environment.
+This repository contains a lot of ebuilds for the wayland desktop environment and window managers. There are also quite a few utilities included to help work with this environment.
 
 ## Installation
 
@@ -17,7 +17,7 @@ Read this to get familiar with layman: https://docs.ansible.com/ansible/latest/m
 
 ### Method 2 (manual)
 
-As of version >= 2.2.16 of Portage, **wayfire-desktop** is can be installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
+As of version >= 2.2.16 of Portage, **wayland-desktop** is can be installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
 
 The following are short form instructions. If you haven't already installed **git**(1), do so first:
 
@@ -25,7 +25,7 @@ The following are short form instructions. If you haven't already installed **gi
     $ emerge --ask --verbose dev-vcs/git 
 ```
 
-Next, create a custom `/etc/portage/repos.conf` entry for the **wayfire-desktop** overlay, so Portage knows what to do. Make sure that `/etc/portage/repos.conf` exists, and is a directory. Then, fire up your favourite editor:
+Next, create a custom `/etc/portage/repos.conf` entry for the **wayland-desktop** overlay, so Portage knows what to do. Make sure that `/etc/portage/repos.conf` exists, and is a directory. Then, fire up your favourite editor:
 
 ```
     $ vim /etc/portage/repos.conf/wayland-desktop.conf
@@ -34,7 +34,7 @@ Next, create a custom `/etc/portage/repos.conf` entry for the **wayfire-desktop*
 and put the following text in the file:
 
 ```
-    [wayfire-desktop]
+    [wayland-desktop]
 
     location = /usr/local/portage/wayland-desktop
     sync-type = git
