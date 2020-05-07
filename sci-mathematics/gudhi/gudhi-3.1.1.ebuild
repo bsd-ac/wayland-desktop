@@ -4,14 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
+
 inherit distutils-r1 cmake
 
 DESCRIPTION="An open source C++, python library for Topological Data Analysis"
 HOMEPAGE="https://gudhi.inria.fr/"
 
 SRC_URI="https://github.com/GUDHI/gudhi-devel/releases/download/tags/gudhi-release-${PV}/${PN}.${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
 S="${WORKDIR}/${PN}.${PV}"
+
+KEYWORDS="~amd64"
 
 LICENSE="MIT"
 SLOT="0"
@@ -29,6 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pot[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
+	x11-misc/libQGLViewer
 "
 BDEPEND="${RDEPEND}"
 
@@ -37,12 +40,15 @@ PATCHES=(
 )
 
 src_compile() {
-	return 0
+	cmake_src_compile
+
+	cd "${BUILD_DIR}/python"
+	python_foreach_impl distutils-r1_python_compile
 }
 
 src_install() {
 	einstalldocs
-	#cmake_src_install
+	cmake_src_install
 
 	cd "${BUILD_DIR}/python"
 	python_foreach_impl distutils-r1_python_install
