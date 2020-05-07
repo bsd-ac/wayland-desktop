@@ -31,6 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pot[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
+	sci-libs/scikits_learn[${PYTHON_USEDEP}]
 	x11-libs/libQGLViewer
 "
 BDEPEND="${RDEPEND}"
