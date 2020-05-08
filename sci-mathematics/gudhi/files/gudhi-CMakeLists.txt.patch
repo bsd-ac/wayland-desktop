@@ -1,14 +1,13 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 561aa04..4691bb5 100644
+index 561aa04..d086a23 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -17,9 +17,6 @@ include(GUDHI_third_party_libraries NO_POLICY_SCOPE)
+@@ -57,8 +57,6 @@ foreach(GUDHI_MODULE ${GUDHI_MODULES})
+   endforeach()
+ endforeach()
  
- include(GUDHI_compilation_flags)
- 
--# Add your new module in the list, order is not important
--include(GUDHI_modules)
+-add_subdirectory(GudhUI)
 -
- add_gudhi_module(common)
- add_gudhi_module(Alpha_complex)
- add_gudhi_module(Bitmap_cubical_complex)
+ if (WITH_GUDHI_PYTHON)
+   # specific for cython module
+   add_subdirectory(${GUDHI_PYTHON_PATH})
