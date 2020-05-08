@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="viewer"
+IUSE="threads"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -32,7 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/pot[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
-	viewer? ( x11-libs/libQGLViewer )
+	threads? ( dev-cpp/tbb )
 "
 BDEPEND="${RDEPEND}"
 
