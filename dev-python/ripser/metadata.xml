@@ -9,8 +9,4 @@
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
-    <use>
-      <flag name="progress">print progress of calculations in console</flag>
-      <flag name="sparsehash">use google sparsehash for storage</flag>
-    </use>
 </pkgmetadata>
