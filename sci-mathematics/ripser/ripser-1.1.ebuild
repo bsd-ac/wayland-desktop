@@ -4,9 +4,7 @@
 EAPI=7
 
 DESCRIPTION="efficient computation of Vietoris–Rips persistence barcodes"
-
 HOMEPAGE="https://ripser.org"
-
 SRC_URI="https://github.com/Ripser/ripser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64"
@@ -17,10 +15,6 @@ IUSE="debug progress sparsehash"
 
 BDEPEND="
 	sparsehash? ( dev-cpp/sparsehash )
-
-"
-
-RDEPEND="
 "
 
 PATCHES=(
