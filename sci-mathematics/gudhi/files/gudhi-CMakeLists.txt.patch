@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 561aa04..4691bb5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,9 +17,6 @@ include(GUDHI_third_party_libraries NO_POLICY_SCOPE)
+ 
+ include(GUDHI_compilation_flags)
+ 
+-# Add your new module in the list, order is not important
+-include(GUDHI_modules)
+-
+ add_gudhi_module(common)
+ add_gudhi_module(Alpha_complex)
+ add_gudhi_module(Bitmap_cubical_complex)

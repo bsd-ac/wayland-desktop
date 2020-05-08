@@ -36,8 +36,11 @@ RDEPEND="${PYTHON_DEPS}
 "
 BDEPEND="${RDEPEND}"
 
+# (1) remove qgl viewer cuz gudhi uses old broken
+# (2) remove python setup.py from cmake call
 PATCHES=(
-	"${FILESDIR}/${PN}-python_CMakeLists.txt.patch"
+	"${FILESDIR}/gudhi-CMakeLists.txt.patch"
+	"${FILESDIR}/gudhi-python_CMakeLists.txt.patch"
 )
 
 src_compile() {
