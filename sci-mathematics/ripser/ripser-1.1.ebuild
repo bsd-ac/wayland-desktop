@@ -27,3 +27,7 @@ src_compile() {
 		  NDEBUG=$(usex debug 0 1)\
 		  all
 }
+
+src_install() {
+	emake prefix="/usr" DESTDIR="${D}" install
+}
