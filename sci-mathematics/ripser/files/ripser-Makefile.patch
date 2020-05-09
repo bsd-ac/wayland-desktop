@@ -2,7 +2,7 @@ diff --git a/Makefile b/Makefile
 index ab410bd..cb0a1c1 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,15 +1,34 @@
+@@ -1,15 +1,35 @@
 -build: ripser
 +TARGET	=	ripser
 
@@ -43,6 +43,7 @@ index ab410bd..cb0a1c1 100644
 +	$(CXX) $(CFLAGS) $(CXXFLAGS) -D USE_COEFFICIENTS ripser.cpp -o ripser-coeff
 
 +install: all
++	install -d ${DESTDIR}${bindir}
 +	install -m 755 ripser ripser-coeff ${DESTDIR}$(bindir)
 
  clean:
