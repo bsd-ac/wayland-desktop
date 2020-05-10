@@ -24,7 +24,7 @@ python_compile() {
 }
 
 python_test() {
-	"${EPYTHON}" tests/test_ecodes.py
-	"${EPYTHON}" tests/test_events.py
-	"${EPYTHON}" tests/test_uinput.py
+	pytest tests/test_ecodes.py || die "ecodes test failed for ${EPYTHON}"
+	pytest tests/test_events.py || die "events test failed for ${EPYTHON}"
+	pytest tests/test_uinput.py || die "uinput test failed foe ${EPYTHON}"
 }
