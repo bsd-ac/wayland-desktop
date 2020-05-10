@@ -3,6 +3,8 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 # upstream hasn't tested python 3.8 fully
 PYTHON_COMPAT=( python3_{6,7} )
 
@@ -19,10 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
 distutils_enable_tests pytest
 
+# upstream authoritative dependencies
+# https://github.com/bokeh/bokeh/blob/master/conda.recipe/meta.yaml
 DEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
@@ -35,14 +37,12 @@ DEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=www-servers/tornado-5[${PYTHON_USEDEP}]
-	>=net-libs/nodejs-12[npm]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${DEPEND}
+	sys-apps/ripgrep[pcre]
 	test? (
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/boto[${PYTHON_USEDEP}]
@@ -52,10 +52,11 @@ BDEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/selenium[${PYTHON_USEDEP}]
+		>=net-libs/nodejs-12[npm]
+		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
 "
 
@@ -64,7 +65,8 @@ python_compile() {
 }
 
 python_test() {
-	pytest -m 'not (examples or integration)' -vv || die
+	pytest tests/unit -vv || die "unit tests fail with ${EPYTHON}"
+	pytest tests/test_bokehjs.py -vv || die "bokehjs tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
@@ -72,4 +74,10 @@ python_install_all() {
 		dodoc -r examples
 	fi
 	distutils-r1_python_install_all
+}
+
+pkg_postinst() {
+	optfeature "integration with amazon services" dev-python/boto
+	optfeature "pypi integration for publishing bokeh build packages" dev-python/twine
+	optfeature "using the js library for integration project integration" net-libs/nodejs
 }
