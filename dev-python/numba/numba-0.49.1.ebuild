@@ -28,7 +28,6 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-util/nvidia-cuda-toolkit
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
 "
