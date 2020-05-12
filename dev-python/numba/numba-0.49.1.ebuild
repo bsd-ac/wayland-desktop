@@ -20,13 +20,17 @@ IUSE="examples openmp threads"
 distutils_enable_tests pytest
 
 RDEPEND="
-	>=dev-python/llvmlite-0.31.0[${PYTHON_USEDEP}]
+	>=dev-python/llvmlite-0.32.0[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	threads? ( dev-cpp/tbb )
 	openmp? ( virtual/mpi[cxx] )
 "
 BDEPEND="
 	${RDEPEND}
+	test? (
+		dev-util/nvidia-cuda-toolkit
+		sci-libs/scipy[${PYTHON_USEDEP}]
+	)
 "
 
 PATCHES=(
@@ -35,13 +39,11 @@ PATCHES=(
 )
 
 python_test() {
-	cd "${BUILD_DIR}/lib" || die
 	${EPYTHON} -m numba.runtests -vv || die
 }
 
 # upstream authoritative install documentation
 # https://numba.pydata.org/numba-doc/latest/user/installing.html
-
 python_install_all() {
 	if use examples; then
 		dodoc -r examples
@@ -54,4 +56,9 @@ python_compile() {
 	TBBROOT="${SYSROOT}/usr/include" \
 	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	distutils-r1_python_compile -j 1
+}
+
+pkg_postinst() {
+	optfeature "support for linear algebra" sci-libs/scipy
+	optfeature "compile cuda code" dev-util/nvidia-cuda-sdk
 }
