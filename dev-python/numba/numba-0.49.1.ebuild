@@ -50,11 +50,8 @@ python_install_all() {
 }
 
 python_compile() {
-	if ! use threads; then
-		export NUMBA_NO_TBB=1
-	else
-		export TBBROOT=${SYSROOT}/usr/
-	fi
-
-	distutils-r1_python_compile -j1
+	NUMBA_NO_TBB=$(usex threads 0 1) \
+	TBBROOT="${SYSROOT}/usr/include" \
+	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
+	distutils-r1_python_compile -j 1
 }
