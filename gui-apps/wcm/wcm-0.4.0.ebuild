@@ -18,12 +18,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="debug"
 
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libxml2
 	dev-cpp/gtkmm:3.0[wayland]
-	~gui-wm/wayfire-${PV}
+	~gui-wm/wayfire-${PV}[debug=]
 "
 
 RDEPEND="${DEPEND}"
