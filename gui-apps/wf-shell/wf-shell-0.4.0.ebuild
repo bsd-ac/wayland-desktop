@@ -24,7 +24,6 @@ IUSE="+pulseaudio"
 DEPEND="
 	dev-cpp/gtkmm:3.0=[wayland]
 	dev-libs/gobject-introspection
-	~gui-libs/wf-config-${PV}
 	~gui-wm/wayfire-${PV}
 	>=gui-libs/gtk-layer-shell-0.1
 	pulseaudio? ( media-sound/pulseaudio )
