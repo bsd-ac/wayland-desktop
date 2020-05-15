@@ -35,7 +35,7 @@ DEPEND="
 		x11-libs/libxkbcommon:=[X]
 		x11-libs/pixman
 		gui-libs/gtk-layer-shell
-		wf-config? ( ~gui-apps/wf-config-${PV} )
+		wf-config? ( ~gui-libs/wf-config-${PV} )
 		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
 "
 
