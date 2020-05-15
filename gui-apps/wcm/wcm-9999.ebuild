@@ -34,3 +34,13 @@ BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
 "
+
+src_configure() {
+	local emseonargs=""
+	if use debug; then
+		emesonargs+=(
+			"-Db_sanitize=address,undefined"
+		)
+	fi
+	meson_src_configure
+}
