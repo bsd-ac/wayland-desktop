@@ -18,6 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="debug"
 
 DEPEND="
 	dev-libs/libevdev
@@ -33,3 +34,13 @@ BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
 "
+
+src_configure () {
+	local emesonargs=""
+	if use debug; then
+		emesonargs+=(
+			"-Db_sanitize=address,undefined"
+		)
+	fi
+	meson_src_configure
+}
