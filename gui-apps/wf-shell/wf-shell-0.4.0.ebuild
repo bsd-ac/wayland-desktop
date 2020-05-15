@@ -19,29 +19,28 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="pulseaudio"
+IUSE="+pulseaudio"
 
 DEPEND="
-	~gui-apps/wf-config-${PV}
 	dev-cpp/gtkmm:3.0=[wayland]
 	dev-libs/gobject-introspection
-	pulseaudio? ( media-sound/pulseaudio )
+	~gui-libs/wf-config-${PV}
 	~gui-wm/wayfire-${PV}
 	>=gui-libs/gtk-layer-shell-0.1
+	pulseaudio? ( media-sound/pulseaudio )
 "
 
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
 
 BDEPEND="
-	virtual/pkgconfig
+	${DEPEND}
 	dev-libs/wayland-protocols
+	virtual/pkgconfig
 "
 
 src_configure () {
 	local emesonargs=(
-		"-Dpulse=$(usex pulseaudio enabled disabled)"
+		"$(meson_feature pulseaudio pulse)"
 	)
 	meson_src_configure
 }
