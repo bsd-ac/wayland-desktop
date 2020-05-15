@@ -23,7 +23,6 @@ DEPEND="
 	dev-libs/libevdev
 	dev-libs/libxml2
 	dev-cpp/gtkmm:3.0[wayland]
-	~gui-libs/wf-config-${PV}
 	~gui-wm/wayfire-${PV}
 "
 
