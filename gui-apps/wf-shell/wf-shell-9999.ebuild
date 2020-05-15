@@ -19,7 +19,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+pulseaudio"
+IUSE="+pulseaudio debug"
 
 DEPEND="
 	dev-cpp/gtkmm:3.0=[wayland]
@@ -41,5 +41,10 @@ src_configure () {
 	local emesonargs=(
 		"$(meson_feature pulseaudio pulse)"
 	)
+	if use debug; then
+		emesonargs+=(
+			"-Db_sanitize=address,undefined"
+		)
+	fi
 	meson_src_configure
 }
