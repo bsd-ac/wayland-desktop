@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="A compiz like 3D wayland compositor"
+DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
 
 if [[ ${PV} == 9999 ]]; then
@@ -19,24 +19,27 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+wf-config +wlroots +elogind systemd debug"
+IUSE="+gles2 +wf-config +wlroots +elogind systemd debug"
 
 DEPEND="
-		dev-libs/libevdev
-		dev-libs/libinput
-		media-libs/glm
-		media-libs/mesa:=[gles2,wayland,X]
-		media-libs/libjpeg-turbo
-		media-libs/libpng
-		media-libs/freetype:=[X]
-		x11-libs/libdrm
-		x11-libs/gtk+:3=[wayland,X]
-		x11-libs/cairo:=[X,svg]
-		x11-libs/libxkbcommon:=[X]
-		x11-libs/pixman
-		gui-libs/gtk-layer-shell
-		wf-config? ( ~gui-libs/wf-config-${PV} )
-		wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
+	dev-libs/libevdev
+	dev-libs/libinput
+	gui-libs/gtk-layer-shell
+	media-libs/glm
+	media-libs/mesa:=[gles2,wayland,X]
+	media-libs/libjpeg-turbo
+	media-libs/libpng
+	media-libs/freetype:=[X]
+	x11-libs/libdrm
+	x11-libs/gtk+:3=[wayland,X]
+	x11-libs/cairo:=[X,svg]
+	x11-libs/libxkbcommon:=[X]
+	x11-libs/pixman
+	gles2? ( media-libs/libglvnd[X] )
+	wf-config? ( ~gui-libs/wf-config-${PV} )
+	!wf-config? ( !gui-libs/wf-config )
+	wlroots? ( >=gui-libs/wlroots-0.10.0[elogind=,systemd=,X] )
+	!wlroots? ( !gui-libs/wlroots )
 "
 
 RDEPEND="
@@ -54,8 +57,9 @@ BDEPEND="
 
 src_configure(){
 	local emesonargs=(
-		-Duse_system_wfconfig=$(usex wf-config enabled disabled)
-		-Duse_system_wlroots=$(usex wlroots enabled disabled)
+		$(meson_feature wf-config use_system_wfconfig)
+		$(meson_feature wlroots use_system_wlroots)
+		$(meson_use gles2 enable_gles32)
 	)
 	if use debug; then
 		emesonargs+=(
