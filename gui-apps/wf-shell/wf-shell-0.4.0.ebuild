@@ -37,7 +37,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_configure () {
+src_compile () {
 	local emesonargs=(
 		"$(meson_feature pulseaudio pulse)"
 	)
@@ -46,5 +46,5 @@ src_configure () {
 			"-Db_sanitize=address,undefined"
 		)
 	fi
-	meson_src_configure
+	meson_src_compile
 }
