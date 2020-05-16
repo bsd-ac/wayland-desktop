@@ -1,8 +1,20 @@
-port hikari to gnu make
-index 22c6a12..61e9609 100644
+explain steps to guide future me and other patchers
+(1) define common variables on top
+(2) remove conditions for doc and others to define VERSION
+(3) replace all ${*} by $(*)
+(4) replace pkg-config by $(PKG_CONFIG)
+(6) remove .PATH: src
+(5) remove main.c from OBJS because it is in different directory
+    - we will define a separate target for it
+(6) add $(OBJS) target + main.o target and add then to the end
+    of dependencies for hikari
+(7) add main.o to be cleaned-up
+(8) reorder the library orders in the $(CC) steps because gcc
+diff --git a/Makefile b/Makefile
+index 11fc449..04f7594 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,27 +1,25 @@
+@@ -1,24 +1,22 @@
 -.ifmake doc || dist
 -.ifndef VERSION
 -.error please specify VERSION
@@ -43,12 +55,8 @@ index 22c6a12..61e9609 100644
 -.endif
 
  OBJS = \
--	action_config.o \
-+	action_config.o	\
- 	border.o \
- 	command.o \
- 	completion.o \
-@@ -40,7 +38,6 @@ OBJS = \
+ 	action.o \
+@@ -45,7 +43,6 @@ OBJS = \
  	layout.o \
  	layout_config.o \
  	layout_select_mode.o \
@@ -56,7 +64,7 @@ index 22c6a12..61e9609 100644
  	mark.o \
  	mark_assign_mode.o \
  	mark_select_mode.o \
-@@ -67,99 +64,104 @@ OBJS = \
+@@ -72,106 +69,111 @@ OBJS = \
  	xwayland_unmanaged_view.o \
  	xwayland_view.o
 
@@ -65,46 +73,52 @@ index 22c6a12..61e9609 100644
 
 -.PHONY: distclean clean clean-doc doc dist install uninstall
 -.PATH: src
+-
+-.ifdef DEBUG
+-CFLAGS += -g -O0 -fsanitize=address
+-.else
+-CFLAGS += -DNDEBUG
+-.endif
 +ifeq ($(DEBUG),1)
 +	CFLAGS += -g -O0 -fsanitize=address
 +else
 +	CFLAGS += -DNDEBUG
 +endif
 
--.ifdef DEBUG
--CFLAGS += -g -O0 -fsanitize=address
--.else
--CFLAGS += -DNDEBUG
+-.ifdef WITH_POSIX_C_SOURCE
+-CFLAGS += -D_POSIX_C_SOURCE=200809L
 -.endif
 +ifeq ($(WITH_POSIX_C_SOURCE),1)
 +	CFLAGS += -D_POSIX_C_SOURCE=200809L
 +endif
 
--.ifdef WITH_POSIX_C_SOURCE
--CFLAGS += -D_POSIX_C_SOURCE=200809L
+-.ifdef WITH_XWAYLAND
+-CFLAGS += -DHAVE_XWAYLAND=1
 -.endif
 +ifeq ($(WITH_XWAYLAND),1)
 +	CFLAGS += -DHAVE_XWAYLAND=1
 +endif
 
--.ifdef WITH_XWAYLAND
--CFLAGS += -DHAVE_XWAYLAND=1
+-.ifdef WITH_GAMMACONTROL
+-CFLAGS += -DHAVE_GAMMACONTROL=1
 -.endif
 +ifeq ($(WITH_GAMMACONTROL),1)
 +	CFLAGS += -DHAVE_GAMMACONTROL=1
 +endif
 
--.ifdef WITH_GAMMACONTROL
--CFLAGS += -DHAVE_GAMMACONTROL=1
+-.ifdef WITH_SCREENCOPY
+-CFLAGS += -DHAVE_SCREENCOPY=1
 -.endif
 +ifeq ($(WITH_SCREENCOPY),1)
 +	CFLAGS += -DHAVE_SCREENCOPY=1
 +endif
 
--.ifdef WITH_SCREENCOPY
--CFLAGS += -DHAVE_SCREENCOPY=1
+-.ifdef WITH_LAYERSHELL
+-CFLAGS += -DHAVE_LAYERSHELL=1
 -.endif
-+.PHONY: distclean clean clean-doc doc dist install uninstall
++ifeq ($(WITH_LAYERSHELL),1)
++	CFLAGS += -DHAVE_LAYERSHELL=1
++endif
 
  CFLAGS += -Wall -I. -Iinclude
 
@@ -194,6 +208,8 @@ index 22c6a12..61e9609 100644
 +	$(WAYLAND_LIBS) \
 +	$(LIBINPUT_LIBS) \
 +	$(UCL_LIBS)
++
++.PHONY: distclean clean clean-doc doc dist install uninstall
 
  all: hikari hikari-unlocker
 
@@ -207,27 +223,32 @@ index 22c6a12..61e9609 100644
 +main.o:
 +	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(LIBS) -c main.c -o main.o
 
--hikari: version.h xdg-shell-protocol.h ${OBJS}
+-hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h ${OBJS}
 -	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} ${LIBS} ${OBJS} -o ${.TARGET}
-+hikari: version.h xdg-shell-protocol.h $(OBJS) main.o
++hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h $(OBJS) main.o
 +	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(OBJS) main.o $(LIBS) -o $(TARGET)
 
  xdg-shell-protocol.h:
 -	wayland-scanner server-header ${WAYLAND_PROTOCOLS}/stable/xdg-shell/xdg-shell.xml ${.TARGET}
 +	wayland-scanner server-header $(WAYLAND_PROTOCOLS)/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.h
 
+ wlr-layer-shell-unstable-v1-protocol.h:
+-	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml ${.TARGET}
++	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml wlr-layer-shell-unstable-v1-protocol.h
+
  hikari-unlocker: hikari_unlocker.c
 -	${CC} -lpam hikari_unlocker.c -o hikari-unlocker
-+	$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) -lpam hikari_unlocker.c -o hikari-unlocker
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) hikari_unlocker.c -lpam $(LIBS) -o hikari-unlocker
 
  clean-doc:
  	@test -e _darcs && echo "cleaning manpage" ||:
-@@ -170,20 +172,20 @@ clean: clean-doc
- 	@test -e _darcs && rm version.h ||:
+@@ -183,20 +185,21 @@ clean: clean-doc
  	@rm xdg-shell-protocol.h 2> /dev/null ||:
+ 	@rm wlr-layer-shell-unstable-v1-protocol.h 2> /dev/null ||:
  	@echo "cleaning object files"
 -	@rm ${OBJS} 2> /dev/null ||:
 +	@rm $(OBJS) 2> /dev/null ||:
++	@rm main.o 2> /dev/null ||:
  	@echo "cleaning executables"
  	@rm hikari 2> /dev/null ||:
  	@rm hikari-unlocker 2> /dev/null ||:
@@ -247,7 +268,7 @@ index 22c6a12..61e9609 100644
  		version.h \
  		main.c \
  		hikari_unlocker.c \
-@@ -201,22 +203,22 @@ distclean: clean-doc
+@@ -215,22 +218,22 @@ distclean: clean-doc
  	@test -e _darcs && echo "cleaning version.h" ||:
  	@test -e _darcs && rm version.h ||:
 

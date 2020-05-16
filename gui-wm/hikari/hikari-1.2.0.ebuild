@@ -11,7 +11,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gamma layershell screencopy X"
+IUSE="+gamma +layershell +screencopy +X"
 
 DEPEND="
 		dev-libs/glib
