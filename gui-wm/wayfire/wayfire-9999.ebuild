@@ -55,7 +55,7 @@ BDEPEND="
 		>=dev-libs/wayland-protocols-1.18
 "
 
-src_configure(){
+src_compile(){
 	local emesonargs=(
 		$(meson_feature wf-config use_system_wfconfig)
 		$(meson_feature wlroots use_system_wlroots)
@@ -66,7 +66,7 @@ src_configure(){
 			"-Db_sanitize=address,undefined"
 		)
 	fi
-	meson_src_configure
+	meson_src_compile
 }
 
 pkg_preinst() {
