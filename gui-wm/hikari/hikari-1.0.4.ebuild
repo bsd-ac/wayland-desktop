@@ -11,7 +11,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gamma +layershell +screencopy +X"
+IUSE="gamma layershell screencopy X"
 
 DEPEND="
 		dev-libs/glib
@@ -49,7 +49,7 @@ PATCHES=(
 )
 
 src_compile() {
-	emake -j1 WITH_POSIX_C_SOURCE=YES \
+	emake WITH_POSIX_C_SOURCE=1 \
 		  WITH_GAMMACONTROL=$(usex gamma 1 0) \
 		  WITH_LAYERSHELL=$(usex layershell 1 0) \
 		  WITH_SCREENCOPY=$(usex screencopy 1 0) \
