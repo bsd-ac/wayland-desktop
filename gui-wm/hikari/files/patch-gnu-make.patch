@@ -1,0 +1,156 @@
+diff --git a/Makefile.orig b/Makefile
+index 22c6a12..178fcb3 100644
+--- a/Makefile.orig
++++ b/Makefile
+@@ -1,24 +1,22 @@
+-.ifmake doc || dist
+-.ifndef VERSION
+-.error please specify VERSION
+-.endif
+-.endif
+-
+-VERSION ?= "darcs"
+-
+-.ifmake install || uninstall
+-.ifndef PREFIX
+-.error please specify PREFIX
+-.endif
++TARGET =	hikari
++
++DESTDIR	?=
++
++prefix ?=	/usr/local
++exec_prefix ?=	$(prefix)
++bindir ?=	$(exec_prefix)/bin
++sysconfdir ?=	$(prefix)/etc
++
++PKG_CONFIG ?=	pkg-config
++
++VERSION ?=	"darcs"
++
++### Upstream variables
++PREFIX ?=	$(prefix)
++ETC_PREFIX ?=	$(sysconfdir)
++
+ OS != uname
+ INSTALL_GROUP != id -gn
+-.endif
+-
+-.ifmake install || uninstall
+-.ifndef ETC_PREFIX
+-.error please specify ETC_PREFIX
+-.endif
+-.endif
+ 
+ OBJS = \
+ 	action_config.o \
+@@ -67,63 +65,60 @@ OBJS = \
+ 	xwayland_unmanaged_view.o \
+ 	xwayland_view.o
+ 
+-WAYLAND_PROTOCOLS != pkg-config --variable pkgdatadir wayland-protocols
++WAYLAND_PROTOCOLS != $(PKG_CONFIG) --variable pkgdatadir wayland-protocols
+ 
+-.PHONY: distclean clean clean-doc doc dist install uninstall
+-.PATH: src
+-
+-.ifdef DEBUG
+-CFLAGS += -g -O0 -fsanitize=address
+-.else
+-CFLAGS += -DNDEBUG
+-.endif
++ifeq($(DEBUG),1)
++	CFLAGS += -g -O0 -fsanitize=address
++else
++	CFLAGS += -DNDEBUG
++endif
+ 
+-.ifdef WITH_POSIX_C_SOURCE
+-CFLAGS += -D_POSIX_C_SOURCE=200809L
+-.endif
++ifeq($(WITH_POSIX_C_SOURCE),1)
++	CFLAGS += -D_POSIX_C_SOURCE=200809L
++endif
+ 
+-.ifdef WITH_XWAYLAND
+-CFLAGS += -DHAVE_XWAYLAND=1
+-.endif
++ifeq($(WITH_XWAYLAND),1)
++	CFLAGS += -DHAVE_XWAYLAND=1
++endif
+ 
+-.ifdef WITH_GAMMACONTROL
+-CFLAGS += -DHAVE_GAMMACONTROL=1
+-.endif
++ifeq($(WITH_GAMMACONTROL),1)
++	CFLAGS += -DHAVE_GAMMACONTROL=1
++endif
+ 
+-.ifdef WITH_SCREENCOPY
+-CFLAGS += -DHAVE_SCREENCOPY=1
+-.endif
++ifeq($(WITH_SCREENCOPY),1)
++	CFLAGS += -DHAVE_SCREENCOPY=1
++endif
+ 
+ CFLAGS += -Wall -I. -Iinclude
+ 
+-WLROOTS_CFLAGS != pkg-config --cflags wlroots
+-WLROOTS_LIBS != pkg-config --libs wlroots
++WLROOTS_CFLAGS != $(PKG_CONFIG) --cflags wlroots
++WLROOTS_LIBS != $(PKG_CONFIG) --libs wlroots
+ 
+ WLROOTS_CFLAGS += -DWLR_USE_UNSTABLE=1
+ 
+-PANGO_CFLAGS != pkg-config --cflags pangocairo
+-PANGO_LIBS != pkg-config --libs pangocairo
++PANGO_CFLAGS != $(PKG_CONFIG) --cflags pangocairo
++PANGO_LIBS != $(PKG_CONFIG) --libs pangocairo
+ 
+-CAIRO_CFLAGS != pkg-config --cflags cairo
+-CAIRO_LIBS != pkg-config --libs cairo
++CAIRO_CFLAGS != $(PKG_CONFIG) --cflags cairo
++CAIRO_LIBS != $(PKG_CONFIG) --libs cairo
+ 
+-GLIB_CFLAGS != pkg-config --cflags glib-2.0
+-GLIB_LIBS != pkg-config --libs glib-2.0
++GLIB_CFLAGS != $(PKG_CONFIG) --cflags glib-2.0
++GLIB_LIBS != $(PKG_CONFIG) --libs glib-2.0
+ 
+-PIXMAN_CFLAGS != pkg-config --cflags pixman-1
+-PIXMAN_LIBS != pkg-config --libs pixman-1
++PIXMAN_CFLAGS != $(PKG_CONFIG) --cflags pixman-1
++PIXMAN_LIBS != $(PKG_CONFIG) --libs pixman-1
+ 
+-XKBCOMMON_CFLAGS != pkg-config --cflags xkbcommon
+-XKBCOMMON_LIBS != pkg-config --libs xkbcommon
++XKBCOMMON_CFLAGS != $(PKG_CONFIG) --cflags xkbcommon
++XKBCOMMON_LIBS != $(PKG_CONFIG) --libs xkbcommon
+ 
+-WAYLAND_CFLAGS != pkg-config --cflags wayland-server
+-WAYLAND_LIBS != pkg-config --libs wayland-server
++WAYLAND_CFLAGS != $(PKG_CONFIG) --cflags wayland-server
++WAYLAND_LIBS != $(PKG_CONFIG) --libs wayland-server
+ 
+-LIBINPUT_CFLAGS != pkg-config --cflags libinput
+-LIBINPUT_LIBS != pkg-config --libs libinput
++LIBINPUT_CFLAGS != $(PKG_CONFIG) --cflags libinput
++LIBINPUT_LIBS != $(PKG_CONFIG) --libs libinput
+ 
+-UCL_CFLAGS != pkg-config --cflags libucl
+-UCL_LIBS != pkg-config --libs libucl
++UCL_CFLAGS != $(PKG_CONFIG) --cflags libucl
++UCL_LIBS != $(PKG_CONFIG) --libs libucl
+ 
+ CFLAGS += \
+ 	${WLROOTS_CFLAGS} \
+@@ -147,6 +142,9 @@ LIBS = \
+ 	${LIBINPUT_LIBS} \
+ 	${UCL_LIBS}
+ 
++.PHONY: distclean clean clean-doc doc dist install uninstall
++.PATH: src
++
+ all: hikari hikari-unlocker
+ 
+ version.h:

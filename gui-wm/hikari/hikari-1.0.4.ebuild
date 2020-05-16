@@ -41,12 +41,15 @@ RDEPEND="
 BDEPEND="
 		${DEPEND}
 		>=dev-libs/wayland-protocols-1.14
-		sys-devel/bmake
 		virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/patch-gnu-make.patch"
+)
+
 src_compile() {
-	bmake WITH_POSIX_C_SOURCE=YES \
+	emake WITH_POSIX_C_SOURCE=YES \
 		  WITH_GAMMACONTROL=$(usex gamma YES NO) \
 		  WITH_LAYERSHELL=$(usex layershell YES NO) \
 		  WITH_SCREENCOPY=$(usex screencopy YES NO) \
@@ -54,5 +57,5 @@ src_compile() {
 }
 
 src_install() {
-	bmake PREFIX=${D}/usr ETC_PREFIX=${D}/etc install
+	emake PREFIX=${D}/usr ETC_PREFIX=${D}/etc install
 }
