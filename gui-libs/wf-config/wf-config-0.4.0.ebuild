@@ -35,12 +35,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_configure () {
+src_compile () {
 	local emesonargs=""
 	if use debug; then
 		emesonargs+=(
 			"-Db_sanitize=address,undefined"
 		)
 	fi
-	meson_src_configure
+	meson_src_compile
 }
