@@ -44,6 +44,7 @@ BDEPEND="
 		virtual/pkgconfig
 "
 
+# keep this as others OS's are using this as reference
 PATCHES=(
 	"${FILESDIR}/patch-gnu-make.patch"
 )
