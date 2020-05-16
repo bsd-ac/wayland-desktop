@@ -49,11 +49,12 @@ PATCHES=(
 )
 
 src_compile() {
-	emake WITH_POSIX_C_SOURCE=YES \
-		  WITH_GAMMACONTROL=$(usex gamma YES NO) \
-		  WITH_LAYERSHELL=$(usex layershell YES NO) \
-		  WITH_SCREENCOPY=$(usex screencopy YES NO) \
-		  WITH_XWAYLAND=$(usex X YES NO)
+	emake -j1 WITH_POSIX_C_SOURCE=YES \
+		  WITH_GAMMACONTROL=$(usex gamma 1 0) \
+		  WITH_LAYERSHELL=$(usex layershell 1 0) \
+		  WITH_SCREENCOPY=$(usex screencopy 1 0) \
+		  WITH_XWAYLAND=$(usex X 1 0) \
+		  all
 }
 
 src_install() {
