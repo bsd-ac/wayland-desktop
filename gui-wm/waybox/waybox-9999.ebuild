@@ -1,0 +1,31 @@
+# Copyright 2019-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+DESCRIPTION="openbox clone on wayland"
+HOMEPAGE="https://github.com/wizbright/waybox"
+
+inherit meson
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/wizbright/waybox.git"
+else
+	SRC_URI="https://github.com/wizbright/waybox/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
+
+LICENSE="MIT"
+SLOT="0"
+
+RDEPEND="
+	gui-libs/wlroots
+	x11-libs/libxkbcommon:=[X]
+"
+
+BDEPEND="
+	${RDEPEND}
+	>=dev-libs/wayland-protocols-1.14
+	virtual/pkgconfig
+"
