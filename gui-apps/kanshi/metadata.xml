@@ -2,11 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <longdescription>
-        Minimalistic and simple launcher for Wayland.
-        It serves a single purpose: Letting the user
-        execute shell commands by clicking on icons on
-        a dynamically sized bar, placed at one of the
-        screen edges.
+        kanshi allows you to define output profiles that
+        are automatically enabled and disabled on hotplug.
+        For instance, this can be used to turn a laptop's
+        internal screen off when docked.
     </longdescription>
     <maintainer type="person">
         <email>gentoo@aisha.cc</email>
