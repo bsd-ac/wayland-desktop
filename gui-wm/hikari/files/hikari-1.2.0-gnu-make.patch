@@ -11,7 +11,7 @@ explain steps to guide future me and other patchers
 (7) add main.o to be cleaned-up
 (8) reorder the library orders in the $(CC) steps because gcc
 diff --git a/Makefile b/Makefile
-index 11fc449..04f7594 100644
+index 11fc449..e644bf4 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,24 +1,22 @@
@@ -218,10 +218,10 @@ index 11fc449..04f7594 100644
 +	echo "#define HIKARI_VERSION \"$(VERSION)\"" >> version.h
 +
 +$(OBJS): %.o: src/%.c
-+	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(LIBS) -c $< -o $@
++	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 +
 +main.o:
-+	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(LIBS) -c main.c -o main.o
++	$(CC) $(CFLAGS) $(INCLUDES) -c main.c -o main.o
 
 -hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h ${OBJS}
 -	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} ${LIBS} ${OBJS} -o ${.TARGET}

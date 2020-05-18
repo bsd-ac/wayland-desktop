@@ -46,7 +46,7 @@ BDEPEND="
 
 # keep this as others OS's are using this as reference
 PATCHES=(
-	"${FILESDIR}/patch-gnu-make.patch"
+	"${FILESDIR}/${P}-gnu-make.patch"
 )
 
 src_compile() {
