@@ -11,7 +11,7 @@ explain steps to guide future me and other patchers
 (7) add main.o to be cleaned-up
 (8) reorder the library orders in the $(CC) steps because gcc
 diff --git a/Makefile b/Makefile
-index 11fc449..e644bf4 100644
+index 11fc449..d73c4e0 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,24 +1,22 @@
@@ -64,16 +64,16 @@ index 11fc449..e644bf4 100644
  	mark.o \
  	mark_assign_mode.o \
  	mark_select_mode.o \
-@@ -72,106 +69,111 @@ OBJS = \
+@@ -72,106 +69,117 @@ OBJS = \
  	xwayland_unmanaged_view.o \
  	xwayland_view.o
 
 -WAYLAND_PROTOCOLS != pkg-config --variable pkgdatadir wayland-protocols
-+WAYLAND_PROTOCOLS != $(PKG_CONFIG) --variable pkgdatadir wayland-protocols
-
+-
 -.PHONY: distclean clean clean-doc doc dist install uninstall
 -.PATH: src
--
++WAYLAND_PROTOCOLS != $(PKG_CONFIG) --variable pkgdatadir wayland-protocols
+
 -.ifdef DEBUG
 -CFLAGS += -g -O0 -fsanitize=address
 -.else
@@ -199,6 +199,8 @@ index 11fc449..e644bf4 100644
 -	${WAYLAND_LIBS} \
 -	${LIBINPUT_LIBS} \
 -	${UCL_LIBS}
+-
+-all: hikari hikari-unlocker
 +	$(WLROOTS_LIBS) \
 +	$(PANGO_LIBS) \
 +	$(CAIRO_LIBS) \
@@ -210,23 +212,20 @@ index 11fc449..e644bf4 100644
 +	$(UCL_LIBS)
 +
 +.PHONY: distclean clean clean-doc doc dist install uninstall
-
- all: hikari hikari-unlocker
++
++all: hikari hikari-unlocker doc
 
  version.h:
 -	echo "#define HIKARI_VERSION \"${VERSION}\"" >> version.h
 +	echo "#define HIKARI_VERSION \"$(VERSION)\"" >> version.h
-+
+
+-hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h ${OBJS}
+-	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} ${LIBS} ${OBJS} -o ${.TARGET}
 +$(OBJS): %.o: src/%.c
 +	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 +
 +main.o:
 +	$(CC) $(CFLAGS) $(INCLUDES) -c main.c -o main.o
-
--hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h ${OBJS}
--	${CC} ${LDFLAGS} ${CFLAGS} ${INCLUDES} ${LIBS} ${OBJS} -o ${.TARGET}
-+hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h $(OBJS) main.o
-+	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(OBJS) main.o $(LIBS) -o $(TARGET)
 
  xdg-shell-protocol.h:
 -	wayland-scanner server-header ${WAYLAND_PROTOCOLS}/stable/xdg-shell/xdg-shell.xml ${.TARGET}
@@ -235,14 +234,23 @@ index 11fc449..e644bf4 100644
  wlr-layer-shell-unstable-v1-protocol.h:
 -	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml ${.TARGET}
 +	wayland-scanner server-header protocol/wlr-layer-shell-unstable-v1.xml wlr-layer-shell-unstable-v1-protocol.h
++
++hikari: version.h xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h $(OBJS) main.o
++	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) $(OBJS) main.o $(LIBS) -o $(TARGET)
 
  hikari-unlocker: hikari_unlocker.c
 -	${CC} -lpam hikari_unlocker.c -o hikari-unlocker
 +	$(CC) $(LDFLAGS) $(CFLAGS) $(INCLUDES) hikari_unlocker.c -lpam $(LIBS) -o hikari-unlocker
++
++share/man/man1/hikari.1:
++	pandoc -M title:"HIKARI(1) $(VERSION) | hikari - Wayland Compositor" -s \
++		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
++
++doc: share/man/man1/hikari.1
 
  clean-doc:
  	@test -e _darcs && echo "cleaning manpage" ||:
-@@ -183,20 +185,21 @@ clean: clean-doc
+@@ -183,20 +191,15 @@ clean: clean-doc
  	@rm xdg-shell-protocol.h 2> /dev/null ||:
  	@rm wlr-layer-shell-unstable-v1-protocol.h 2> /dev/null ||:
  	@echo "cleaning object files"
@@ -253,13 +261,12 @@ index 11fc449..e644bf4 100644
  	@rm hikari 2> /dev/null ||:
  	@rm hikari-unlocker 2> /dev/null ||:
 
- share/man/man1/hikari.1:
+-share/man/man1/hikari.1:
 -	pandoc -M title:"HIKARI(1) ${VERSION} | hikari - Wayland Compositor" -s \
-+	pandoc -M title:"HIKARI(1) $(VERSION) | hikari - Wayland Compositor" -s \
- 		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
-
- doc: share/man/man1/hikari.1
-
+-		--to man -o share/man/man1/hikari.1 share/man/man1/hikari.md
+-
+-doc: share/man/man1/hikari.1
+-
 -hikari-${VERSION}.tar.gz: version.h share/man/man1/hikari.1
 +hikari-$(VERSION).tar.gz: version.h share/man/man1/hikari.1
  	@darcs revert
