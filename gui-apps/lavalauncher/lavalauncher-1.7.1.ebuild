@@ -13,6 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EHG_REPO_URI="https://git.sr.ht/~leon_plickat/lavalauncher"
 else
 	SRC_URI="https://git.sr.ht/~leon_plickat/lavalauncher/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${PN}-v${PV}"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
