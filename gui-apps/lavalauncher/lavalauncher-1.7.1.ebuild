@@ -5,7 +5,7 @@ EAPI=7
 
 inherit meson
 
-DESCRIPTION="A program for screen recording of wlroots-based compositors"
+DESCRIPTION="simple launcher for wayland"
 HOMEPAGE="https://git.sr.ht/~leon_plickat/lavalauncher"
 
 if [[ ${PV} == 9999 ]]; then
