@@ -38,4 +38,5 @@ src_configure() {
 		$(meson_feature man man-pages)
 		$(meson_feature opencl)
 	)
+	meson_src_configure
 }
