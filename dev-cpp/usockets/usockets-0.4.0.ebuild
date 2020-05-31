@@ -22,9 +22,9 @@ SLOT="0"
 IUSE="libuv +ssl libressl debug"
 
 DEPEND="ssl? (
-			  libressl? ( >=dev-libs/libressl-3.0.0 )
-			  !libressl? ( >=dev-libs/openssl-1.1.0 )
-			  )
+		libressl? ( >=dev-libs/libressl-3.0.0 )
+		!libressl? ( >=dev-libs/openssl-1.1.0 )
+	)
 	libuv? ( dev-libs/libuv )
 "
 BDEPEND="${DEPEND}"
@@ -36,13 +36,19 @@ PATCHES=(
 
 src_compile() {
 	# the Makefile uses environment variables
-	emake WITH_OPENSSL=$(usex ssl 1 0) \
+	emake -j1 \
+		  LIBusockets_VERSION=${PV} \
+		  WITH_OPENSSL=$(usex ssl 1 0) \
 		  WITH_LIBUV=$(usex libuv 1 0) \
 		  WITH_ASAN=$(usex debug 1 0) \
 		  default
 }
 
 src_install() {
-	emake libdir="/usr/$(get_libdir)" prefix="/usr" DESTDIR="${D}" install
+	emake -j1 \
+		  libdir="/usr/$(get_libdir)" \
+		  prefix="/usr" DESTDIR="${D}" \
+		  LIBusockets_VERSION=${PV} \
+		  install
 	einstalldocs
 }
