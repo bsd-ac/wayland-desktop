@@ -19,13 +19,13 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="libuv +ssl libressl debug"
+IUSE="libuv +ssl libressl debug static-libs"
 
 DEPEND="ssl? (
-		libressl? ( >=dev-libs/libressl-3.0.0 )
-		!libressl? ( >=dev-libs/openssl-1.1.0 )
+		libressl? ( >=dev-libs/libressl-3.0.0:=[static-libs?] )
+		!libressl? ( >=dev-libs/openssl-1.1.0:=[static-libs?] )
 	)
-	libuv? ( dev-libs/libuv )
+	libuv? ( dev-libs/libuv[static-libs?] )
 "
 BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
@@ -51,4 +51,7 @@ src_install() {
 		  LIBusockets_VERSION=${PV} \
 		  install
 	einstalldocs
+	if ! use static-libs; then
+		rm "${D}/usr/$(get_libdir)/libusockets.a"
+	fi
 }
