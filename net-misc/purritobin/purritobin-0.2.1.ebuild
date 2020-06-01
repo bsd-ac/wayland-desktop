@@ -18,11 +18,11 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="libuv"
+IUSE="libuv static-libs"
 
-DEPEND="dev-cpp/usockets:=[libuv?]
+DEPEND="dev-cpp/usockets:=[libuv?,static-libs?]
 	dev-cpp/uwebsockets
-	libuv? ( >=dev-libs/libuv-1.35.0 )
+	libuv? ( >=dev-libs/libuv-1.35.0[static-libs?] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
@@ -36,13 +36,16 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex libuv -DUSE_DLIBUV '' ) all
+	emake $(usex libuv -DUSE_DLIBUV '') \
+		  $(usex static-libs -DUSE_STATIC '') \
+		  all
 }
 
 src_install() {
 	emake prefix="/usr" \
 		  DESTDIR="${D}" \
 		  $(usex libuv -DUSE_LIBUV '') \
+		  $(usex static-libs -DUSE_STATIC '') \
 		  install
 	einstalldocs
 }
