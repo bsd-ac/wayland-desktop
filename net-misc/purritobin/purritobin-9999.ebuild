@@ -20,22 +20,22 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="libuv"
 
-DEPEND=">=dev-cpp/usockets-0.3.5:=[libuv?]
-	>=dev-cpp/uwebsockets-0.17.4
+DEPEND=">=dev-cpp/usockets:=[libuv?,static-libs]
+	>=dev-cpp/uwebsockets
 	libuv? ( >=dev-libs/libuv-1.35.0 )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 src_compile() {
-	if use libuv; then
-		WITH_LIBUV=1 emake all
-	else
-		emake all
-	fi
+	emake WITH_LIBUV=$(usex libuv 1 0)\
+		  all
 }
 
 src_install() {
-	emake prefix="/usr" DESTDIR="${D}" install
+	emake prefix="/usr" \
+		  DESTDIR="${D}" \
+		  WITH_LIBUV=$(usex libuv 1 0) \
+		  install
 	einstalldocs
 }
