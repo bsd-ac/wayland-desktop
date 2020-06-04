@@ -49,6 +49,7 @@ python_compile() {
 
 python_test() {
 	distutils_install_for_testing
+	${EPYTHON} setup.py build_ext --inplace || die
 	${EPYTHON} -m numba.runtests -vv || die
 }
 
