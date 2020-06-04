@@ -59,6 +59,9 @@ python_install_all() {
 	if use examples; then
 		dodoc -r examples
 	fi
+	NUMBA_NO_TBB=$(usex threads 0 1) \
+	TBBROOT="${SYSROOT}/usr/include" \
+	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	distutils-r1_python_install_all
 }
 
