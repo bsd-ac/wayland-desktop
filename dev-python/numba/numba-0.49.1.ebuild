@@ -32,6 +32,7 @@ BDEPEND="
 	)
 "
 
+DISTUTILS_IN_SOURCE_BUILD=1
 distutils_enable_tests unittest
 
 #"${FILESDIR}/numba-skip-tests.patch"
