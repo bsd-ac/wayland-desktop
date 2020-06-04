@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples openmp threads"
 
-distutils_enable_tests pytest
+distutils_enable_tests unittest
 
 RDEPEND="
 	>=dev-python/llvmlite-0.32.0[${PYTHON_USEDEP}]
@@ -38,15 +38,15 @@ PATCHES=(
 	"${FILESDIR}/numba-0.49.1-tbb-check.patch"
 )
 
-python_test() {
-	${EPYTHON} -m numba.runtests -vv || die
-}
-
 python_compile() {
 	NUMBA_NO_TBB=$(usex threads 0 1) \
 	TBBROOT="${SYSROOT}/usr/include" \
 	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	distutils-r1_python_compile -j 1
+}
+
+python_test() {
+	${EPYTHON} -m numba.runtests -vv || die
 }
 
 # upstream authoritative install documentation
