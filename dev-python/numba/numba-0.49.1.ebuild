@@ -16,7 +16,7 @@ SRC_URI="https://github.com/numba/numba/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples openmp threads test"
+IUSE="examples openmp threads"
 
 DEPEND="
 	>=dev-python/llvmlite-0.32.0[${PYTHON_USEDEP}]
