@@ -33,8 +33,8 @@ BDEPEND="
 	)
 "
 
+#"${FILESDIR}/numba-skip-tests.patch"
 PATCHES=(
-	"${FILESDIR}/numba-skip-tests.patch"
 	"${FILESDIR}/numba-0.49.1-tbb-check.patch"
 )
 
