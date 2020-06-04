@@ -23,7 +23,7 @@ distutils_enable_tests unittest
 RDEPEND="
 	>=dev-python/llvmlite-0.32.0[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	openmp? ( virtual/mpi[cxx] )
+	openmp? ( virtual/mpi[cxx,threads?] )
 	threads? ( dev-cpp/tbb )
 "
 BDEPEND="
