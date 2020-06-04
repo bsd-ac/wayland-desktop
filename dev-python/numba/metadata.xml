@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!--maintainer-needed-->
   <longdescription lang="en">
   Numba is a NumPy-aware optimizing compiler for Python. It uses the LLVM
   compiler infrastructure to compile Python syntax to machine code.
@@ -9,7 +8,15 @@
   speed-up code using NumPy arrays. Other, less well-typed code will be
   translated to Python C-API calls effectively removing the
   "interpreter" but not removing the dynamic indirection.
-</longdescription>
+  </longdescription>
+  <maintainer type="person">
+    <email>gentoo@aisha.cc</email>
+    <name>Aisha Tammy</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">numba</remote-id>
     <remote-id type="github">numba/numba</remote-id>
