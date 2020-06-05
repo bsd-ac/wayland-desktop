@@ -52,7 +52,7 @@ python_compile() {
 python_test() {
 	distutils_install_for_testing
 	${EPYTHON} setup.py build_ext --inplace || die
-	${EPYTHON} runtests.py || die
+	${EPYTHON} runtests.py -m || die
 }
 
 # upstream authoritative install documentation
