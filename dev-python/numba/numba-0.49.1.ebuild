@@ -22,11 +22,13 @@ DEPEND="
 	>=dev-python/llvmlite-0.32.0[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	openmp? ( virtual/mpi[cxx,threads?] )
+	threads? ( dev-cpp/tbb )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	${DEPEND}
-	threads? ( dev-cpp/tbb )
 	test? (
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
