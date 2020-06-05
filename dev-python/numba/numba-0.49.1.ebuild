@@ -6,7 +6,7 @@ EAPI=7
 # enable 3.8 when llvmlite gets 3.8.
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="NumPy aware dynamic Python compiler using LLVM"
 HOMEPAGE="https://numba.pydata.org/
