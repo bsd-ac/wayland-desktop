@@ -8,14 +8,10 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 eutils
 
-MY_PV="0.50.0rc1"
-
 DESCRIPTION="NumPy aware dynamic Python compiler using LLVM"
 HOMEPAGE="https://numba.pydata.org/
 	https://github.com/numba"
 SRC_URI="https://github.com/numba/numba/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -42,7 +38,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 distutils_enable_tests unittest
 
 PATCHES=(
-	"${FILESDIR}/numba-0.50.0-tbb-check.patch"
+	"${FILESDIR}/numba-0.49.1-tbb-check.patch"
 )
 
 python_compile() {

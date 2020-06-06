@@ -10,27 +10,17 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gamma +layershell +screencopy +X"
+IUSE="gamma layershell screencopy +X"
 
 DEPEND="
 	dev-libs/glib
-	dev-libs/libevdev
-	dev-libs/libinput
+	dev-libs/libinput:=
 	dev-libs/libucl
-	gui-libs/gtk-layer-shell
 	gui-libs/wlroots
-	media-libs/glm
-	media-libs/mesa:=[gles2,wayland,X]
-	media-libs/libjpeg-turbo
-	media-libs/libpng
-	media-libs/freetype:=[X]
-	sys-libs/pam
-	x11-libs/libdrm
-	x11-libs/gtk+:3=[wayland,X]
 	x11-libs/cairo:=[X,svg]
-	x11-libs/libxkbcommon:=[X]
 	x11-libs/pango:=[X]
 	x11-libs/pixman
+	x11-libs/libxkbcommon:=[X]
 "
 
 RDEPEND="
