@@ -11,7 +11,7 @@ inherit distutils-r1 eutils
 DESCRIPTION="NumPy aware dynamic Python compiler using LLVM"
 HOMEPAGE="https://numba.pydata.org/
 	https://github.com/numba"
-SRC_URI="https://github.com/numba/numba/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/numba/numba/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,15 +20,14 @@ IUSE="examples openmp threads"
 
 DEPEND="
 	>=dev-python/llvmlite-0.32.0[${PYTHON_USEDEP}]
+	<=dev-python/llvmlite-0.33.0
 	dev-python/numpy[${PYTHON_USEDEP}]
-	openmp? ( virtual/mpi[cxx,threads?] )
 	threads? ( dev-cpp/tbb )
 "
 RDEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	${DEPEND}
 	test? (
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
@@ -41,6 +40,11 @@ PATCHES=(
 	"${FILESDIR}/numba-0.49.1-tbb-check.patch"
 )
 
+python_prepare_all() {
+	rm numba/tests/test_typedlist.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile() {
 	NUMBA_NO_TBB=$(usex threads 0 1) \
 	TBBROOT="${SYSROOT}/usr/include" \
@@ -48,13 +52,18 @@ python_compile() {
 	distutils-r1_python_compile -j 1
 }
 
+# https://numba.pydata.org/numba-doc/latest/developer/contributing.html?highlight=test#running-tests
 python_test() {
 	distutils_install_for_testing
-	${EPYTHON} setup.py build_ext --inplace || die
-	${EPYTHON} runtests.py -m || die
+	NUMBA_NO_TBB=$(usex threads 0 1) \
+	TBBROOT="${SYSROOT}/usr/include" \
+	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
+	${EPYTHON} setup.py build_ext --inplace || die \
+		"${EPYTHON} failed to build_ext"
+	${EPYTHON} runtests.py || die \
+		"${EPYTHON} failed unittests"
 }
 
-# upstream authoritative install documentation
 # https://numba.pydata.org/numba-doc/latest/user/installing.html
 python_install_all() {
 	if use examples; then
