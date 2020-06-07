@@ -89,7 +89,6 @@ python_test() {
 		not test_webdriver and \
 		not test_bundle and \
 		not test_ext \
-		not test_export \
 	"
 	pytest -m "not sampledata" tests/unit -k \
 		   "${SKIP_TESTS}" -vv || die "unit tests fail with ${EPYTHON}"
