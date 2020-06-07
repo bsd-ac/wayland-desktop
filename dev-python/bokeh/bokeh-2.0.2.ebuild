@@ -8,7 +8,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 # upstream hasn't tested python 3.8 fully
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Statistical and interactive HTML plots for Python"
 HOMEPAGE="https://bokeh.org/
