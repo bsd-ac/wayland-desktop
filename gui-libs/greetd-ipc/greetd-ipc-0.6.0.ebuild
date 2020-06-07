@@ -10,7 +10,7 @@ ${P}
 inherit cargo
 
 DESCRIPTION="minimalistic login greeter daemon"
-HOMEPAGE=""
+HOMEPAGE="https://man.sr.ht/%7Ekennylevinsen/greetd/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
