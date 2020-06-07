@@ -22,3 +22,8 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
+ISUE="+man"
+
+BDEPEND="
+	man? ( app-text/scdoc )
+"
