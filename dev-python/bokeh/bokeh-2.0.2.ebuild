@@ -67,7 +67,6 @@ BDEPEND="
 	)
 "
 
-B
 distutils_enable_tests pytest
 
 PATCHES=(
