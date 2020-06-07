@@ -6,8 +6,7 @@ EAPI=7
 inherit acct-user
 
 ACCT_USER_ID=398
-ACCT_USER_GROUPS=( greetd )
-ACCT_USER_HOME=/var/lib/amavishome
+ACCT_USER_GROUPS=( greetd video )
 DESCRIPTION="User for gui-libs/greetd"
 
 acct-user_add_deps
