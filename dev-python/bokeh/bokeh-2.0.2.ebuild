@@ -41,7 +41,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	${DEPEND}
 	test? (
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/boto[${PYTHON_USEDEP}]
@@ -76,17 +75,16 @@ PATCHES=(
 python_test() {
 	distutils_install_for_testing
 	# disable tests having network calls
-	# and assertion failures
 	local SKIP_TESTS=" \
-		not (test_model and test_select) and \
 		not (test___init__ and TestWarnings and test_filters) and \
 		not (test_json__subcommands and test_no_script) and \
 		not (test_standalone and Test_autoload_static) and \
-		not test_export and \
-		not test_client_server and \
-		not test_server and \
+		not (test_model and test_select) and \
 		not test_tornado__server and \
+		not test_client_server and \
 		not test_webdriver and \
+		not test_export and \
+		not test_server and \
 		not test_bundle and \
 		not test_ext \
 	"
