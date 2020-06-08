@@ -2,6 +2,5 @@
 
 name="greetd"
 command="/usr/bin/greetd"
-command_user="greetd"
 command_background="yes"
 description="greetd login daemon"
