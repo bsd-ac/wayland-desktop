@@ -42,6 +42,7 @@ PATCHES=(
 
 python_prepare_all() {
 	rm numba/tests/test_typedlist.py || die
+	sed -i "s:-Werror::g" setup.py || die
 	distutils-r1_python_prepare_all
 }
 
