@@ -59,7 +59,7 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 ws2_32-sys-0.2.1
 "
 
-inherit cargo
+inherit cargo systemd eutils
 
 DESCRIPTION="ipc based login daemon"
 
@@ -68,30 +68,53 @@ SRC_URI="https://git.sr.ht/~kennylevinsen/greetd/archive/${PV}.tar.gz -> ${P}.ta
 	$(cargo_crate_uris ${CRATES})
 "
 RESTRICT="mirror"
-# License set may be more restrictive as OR is not respected
-# use cargo-license for a more accurate license picture
+
 LICENSE="Apache-2.0 BSD Boost-1.0 GPL-3 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="man systemd"
 
-DEPEND="acct-user/greetd"
+DEPEND="
+	acct-user/greetd
+	sys-auth/pambase
+"
 BDEPEND="man? ( app-text/scdoc )"
-RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-correct_user_config_toml.patch"
+)
 
 src_compile() {
 	cargo_src_compile
-#	if use man; then
-#
-#	fi
+	if use man; then
+		scdoc < ./man/agreety-1.scd > ./agreety.1
+		scdoc < ./man/greetd-1.scd > ./greetd.1
+		scdoc < ./man/greetd-5.scd > ./greetd.5
+		scdoc < ./man/greetd-ipc-7.scd > ./greetd-ipc.7
+	fi
 }
 
 src_install() {
 	dobin target/release/{agreety,fakegreet,greetd}
 
-	diropts -o greetd -g greetd
+	diropts -o greetd -g video
 	dodir /etc/greetd
 	insinto /etc/greetd
-	insopts -m0640 -o greetd -g greetd
+	insopts -m0644 -o greetd -g video
 	doins config.toml
+
+	if use systemd; then
+		systemd_dounit greetd.service
+	else
+		doinitd ${FILESDIR}/greetd
+	fi
+
+	if use man; then
+		doman agreety.1 greetd.1 greetd.5 greetd-ipc.7
+	fi
+}
+
+pkg_postint() {
+	optfeature "eye-candy gtk based greeter" gui-apps/gtkgreet
+	optfeature "minimalistic wayland greeter" gui-apps/wlgreet
 }
