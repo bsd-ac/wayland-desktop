@@ -49,8 +49,14 @@ src_compile() {
 		  WITH_SCREENCOPY=$(usex screencopy 1 0) \
 		  WITH_XWAYLAND=$(usex X 1 0) \
 		  all
+	if use man; then
+		emake doc
+	fi
 }
 
 src_install() {
 	emake PREFIX="${D}/usr" ETC_PREFIX="${D}/etc" install
+	if use man; then
+		emake PREFIX="${D}/usr" ETC_PREFIX="${D}/etc" install-doc
+	fi
 }
