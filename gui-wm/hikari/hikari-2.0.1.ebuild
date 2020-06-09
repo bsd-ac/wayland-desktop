@@ -10,7 +10,7 @@ KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gamma layershell screencopy +X"
+IUSE="gamma layershell +man screencopy +X"
 
 DEPEND="
 	dev-libs/glib
@@ -31,9 +31,9 @@ RDEPEND="
 "
 
 BDEPEND="
-	app-text/pandoc
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
+	man? ( app-text/pandoc )
 "
 
 # keep this as others OS's are using this as reference
