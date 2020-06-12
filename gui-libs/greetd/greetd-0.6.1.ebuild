@@ -97,10 +97,10 @@ src_compile() {
 src_install() {
 	dobin target/release/{agreety,fakegreet,greetd}
 
-	diropts -o greetd -g video
+	diropts -o greetd -g greetd
 	dodir /etc/greetd
 	insinto /etc/greetd
-	insopts -m0644 -o greetd -g video
+	insopts -m0644 -o greetd -g greetd
 	doins config.toml
 
 	if use systemd; then
