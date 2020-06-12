@@ -15,7 +15,7 @@
 		your shell in a TTY, greetd can start it.
 	</longdescription>
 	<use>
+		<flag name="layershell">Enable layer shell support</flag>
 		<flag name="man">Build and install man pages</flag>
-		<flag name="systemd">Install the systemd init file</flag>
 	</use>
 </pkgmetadata>
