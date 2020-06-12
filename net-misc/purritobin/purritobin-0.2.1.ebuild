@@ -36,16 +36,14 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex libuv -DUSE_DLIBUV '') \
-		  $(usex static-libs -DUSE_STATIC '') \
+	emake $(usex libuv USE_DLIBUV=1 '') \
+		  $(usex static-libs USE_STATIC=1 '') \
 		  all
 }
 
 src_install() {
 	emake prefix="/usr" \
 		  DESTDIR="${D}" \
-		  $(usex libuv -DUSE_LIBUV '') \
-		  $(usex static-libs -DUSE_STATIC '') \
 		  install
 	einstalldocs
 }
