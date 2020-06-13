@@ -20,12 +20,12 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="libuv static-libs"
 
-DEPEND="dev-cpp/usockets:=[libuv?,static-libs?]
-	dev-cpp/uwebsockets
+DEPEND="dev-cpp/usockets[libuv=,static-libs?]
 	libuv? ( >=dev-libs/libuv-1.35.0[static-libs?] )
 "
-RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}"
+BDEPEND="
+	dev-cpp/uwebsockets
+"
 
 src_prepare() {
 	sed -i -e "s:.ifdef:ifdef:g" \
@@ -36,9 +36,10 @@ src_prepare() {
 }
 
 src_compile() {
-	emake $(usex libuv USE_DLIBUV=1 '') \
-		  $(usex static-libs USE_STATIC=1 '') \
-		  all
+	env LDFLAGS="-L/usr/$(get_libdir)" \
+		emake $(usex libuv USE_DLIBUV=1 '') \
+		$(usex static-libs USE_STATIC=1 '') \
+		all
 }
 
 src_install() {
