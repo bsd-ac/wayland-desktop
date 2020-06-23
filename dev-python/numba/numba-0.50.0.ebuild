@@ -3,9 +3,9 @@
 
 EAPI=7
 
-# enable 3.8 when llvmlite gets 3.8.
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 eutils
 
 DESCRIPTION="NumPy aware dynamic Python compiler using LLVM"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/numba/numba/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="examples openmp threads"
+IUSE="openmp threads"
 
 DEPEND="
 	>=dev-python/llvmlite-0.33.0[${PYTHON_USEDEP}]
@@ -25,7 +25,7 @@ DEPEND="
 	dev-python/pip[${PYTHON_USEDEP}]
 	threads? ( dev-cpp/tbb )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -37,6 +37,7 @@ BDEPEND="
 DISTUTILS_IN_SOURCE_BUILD=1
 distutils_enable_tests unittest
 
+# doc system is another huge mess, skip it
 PATCHES=(
 	"${FILESDIR}/${P}-tbb-check.patch"
 	"${FILESDIR}/${P}-assertLessEqual.patch"
@@ -47,6 +48,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+# no parallel compile, ironic
 python_compile() {
 	NUMBA_NO_TBB=$(usex threads 0 1) \
 	TBBROOT="${SYSROOT}/usr/include" \
@@ -68,9 +70,6 @@ python_test() {
 
 # https://numba.pydata.org/numba-doc/latest/user/installing.html
 python_install_all() {
-	if use examples; then
-		dodoc -r examples
-	fi
 	NUMBA_NO_TBB=$(usex threads 0 1) \
 	TBBROOT="${SYSROOT}/usr/include" \
 	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
