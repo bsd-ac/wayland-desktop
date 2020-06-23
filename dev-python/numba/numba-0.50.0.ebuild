@@ -16,7 +16,7 @@ SRC_URI="https://github.com/numba/numba/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="openmp threads"
+IUSE="openmp +threads"
 
 DEPEND="
 	>=dev-python/llvmlite-0.33.0[${PYTHON_USEDEP}]
@@ -44,14 +44,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-long_no_truncate.patch"
 )
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-}
-
 # no parallel compile, ironic
 python_compile() {
 	NUMBA_NO_TBB=$(usex threads 0 1) \
-	TBBROOT="${SYSROOT}/usr/include" \
+	TBBROOT="${SYSROOT}/usr" \
 	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	distutils-r1_python_compile -j 1
 }
@@ -60,7 +56,7 @@ python_compile() {
 python_test() {
 	distutils_install_for_testing
 	NUMBA_NO_TBB=$(usex threads 0 1) \
-	TBBROOT="${SYSROOT}/usr/include" \
+	TBBROOT="${SYSROOT}/usr" \
 	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	${EPYTHON} setup.py build_ext --inplace || die \
 		"${EPYTHON} failed to build_ext"
@@ -71,7 +67,7 @@ python_test() {
 # https://numba.pydata.org/numba-doc/latest/user/installing.html
 python_install_all() {
 	NUMBA_NO_TBB=$(usex threads 0 1) \
-	TBBROOT="${SYSROOT}/usr/include" \
+	TBBROOT="${SYSROOT}/usr" \
 	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	distutils-r1_python_install_all
 }
