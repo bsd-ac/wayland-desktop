@@ -1,5 +1,5 @@
 diff --git a/meson.build b/meson.build
-index 72bc7b1..eb8b236 100644
+index 72bc7b1..88bd657 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -23,10 +23,12 @@ endif
@@ -39,12 +39,12 @@ index 72bc7b1..eb8b236 100644
  endif
  
 -if host_system == 'linux' and cc.has_header('sys/sdt.h')
-+if host_system == 'linux' and get_option('systemvtap')
++if host_system == 'linux' and get_option('systemtap')
  	config.set('HAVE_USDT', true)
  endif
  
 diff --git a/meson_options.txt b/meson_options.txt
-index 1c2eff6..18a4894 100644
+index 1c2eff6..359cf88 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
 @@ -2,5 +2,9 @@ option('benchmarks', type: 'boolean', value: false, description: 'Build benchmar
@@ -55,5 +55,5 @@ index 1c2eff6..18a4894 100644
 +       description: 'Enable cpu specific optimizations')
  option('x86_64-simd', type: 'string', value: 'sse2',
         description: 'Choose SIMD extension for x86_64 release build')
-+option('systemvtap', type: 'boolean', value: false, 
++option('systemtap', type: 'boolean', value: false, 
 +       description: 'Enable tracing using sdt')
