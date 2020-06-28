@@ -34,7 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
 	threads? ( dev-cpp/tbb )
 "
-BDEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}"
 
 # (1) remove qgl viewer cuz gudhi uses old broken
 # (2) remove python setup.py from cmake call
