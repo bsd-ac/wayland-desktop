@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
-DESCRIPTION=""
+DESCRIPTION="python frontend for the fast ripser tda tool"
 HOMEPAGE="https://ripser.scikit-tda.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
