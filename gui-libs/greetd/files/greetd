@@ -1,6 +1,0 @@
-#!/sbin/openrc-run
-
-name="greetd"
-command="/usr/bin/greetd"
-command_background="yes"
-description="greetd login daemon"
