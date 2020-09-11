@@ -25,11 +25,14 @@ REQUIRED_USE="^^ ( c python shell )"
 RDEPEND="shell? ( sys-process/lsof )"
 
 src_install() {
-	exeinto /usr/bin
-	if use python; then
-		mv "${S}"/wayland-logout.py "${S}"/wayland-logout
+	exeinto /usr/share/wayland-logout/
+	doexe "${BUILD_DIR}"/wayland-logout
+	doexe "${S}"/wayland-logout.{py,sh}
+	if use c; then
+		dosym ../share/wayland-logout/wayland-logout /usr/bin/wayland-logout
+	elif use python; then
+		dosym ../share/wayland-logout/wayland-logout.py /usr/bin/wayland-logout
 	elif use shell; then
-		mv "${S}"/wayland-logout.sh "${S}"/wayland-logout
+		dosym ../share/wayland-logout/wayland-logout.sh /usr/bin/wayland-logout
 	fi
-	doexe wayland-logout
 }
