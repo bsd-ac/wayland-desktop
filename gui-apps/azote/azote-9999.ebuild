@@ -34,11 +34,7 @@ RDEPEND="
 	media-gfx/maim
 	x11-misc/slop
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-	dev-libs/wayland-protocols
-"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 python_install_all() {
 	distutils-r1_python_install_all
