@@ -12,24 +12,23 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Hjdskes/cage"
 else
-	COMMIT=4e96d913fbeabe524579213a90135a8241a73c47
-	SRC_URI="https://github.com/Hjdskes/cage/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	SRC_URI="https://github.com/Hjdskes/cage/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X man"
+IUSE="+X +man"
 
 DEPEND="
-	gui-libs/wlroots[X?]
+	>=gui-libs/wlroots-0.11.0[X?]
 	x11-libs/pixman
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X?]
 "
 BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
+	man? ( app-text/scdoc )
 "
 
 src_configure() {
