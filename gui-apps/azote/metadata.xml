@@ -9,4 +9,9 @@
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
+  <use>
+    <flag name="imagemagick">enable colorpicker using imagemagick</flag>
+    <flag name="simple-colorpicker">enable colorpicker without imagemagick</flag>
+    <flag name="yaml">enable support for reading yaml files</flag>
+  </use>
 </pkgmetadata>

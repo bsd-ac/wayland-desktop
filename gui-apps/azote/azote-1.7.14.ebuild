@@ -20,21 +20,35 @@ fi
 
 LICENSE="ISC"
 SLOT="0"
+IUSE="simple-colorpicker imagemagick wayland X yaml"
 
 RDEPEND="
 	dev-cpp/gtkmm:3.0
 	dev-python/pillow
-	dev-python/pygobject
-	dev-python/pyyaml
+	dev-python/pygobject:3=
 	dev-python/send2trash
-	gui-apps/grim
-	gui-apps/slurp
-	gui-apps/swaybg
-	gui-apps/wlr-randr
-	media-gfx/feh
-	media-gfx/maim
-	x11-apps/xrandr
-	x11-misc/slop
+	simple-colorpicker? (
+		X? (
+			media-gfx/maim
+			x11-misc/slop
+		)
+		wayland? (
+			gui-apps/grim
+			gui-apps/slurp
+		)
+	)
+	imagemagick? (
+		media-gfx/imagemagick[jpeg,png,svg,X?]
+	)
+	wayland? (
+		gui-apps/swaybg
+		gui-apps/wlr-randr
+	)
+	X? (
+		media-gfx/feh
+		x11-apps/xrandr
+	)
+	yaml? ( dev-python/pyyaml )
 "
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -48,4 +62,6 @@ python_install_all() {
 
 	insinto /usr/share/azote
 	doins dist/azote.svg dist/indicator_{active,attention}.png
+	insinto /usr/share/licenses/azote
+	doins LICENSE-COLORTHIEF
 }
