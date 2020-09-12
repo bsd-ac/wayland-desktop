@@ -40,7 +40,7 @@ BDEPEND="
 	dev-libs/wayland-protocols
 "
 
-src_install() {
+python_install_all() {
 	distutils-r1_python_install_all
 
 	cd "${S}"
