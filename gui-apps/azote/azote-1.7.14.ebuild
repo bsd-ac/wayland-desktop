@@ -22,25 +22,23 @@ LICENSE="ISC"
 SLOT="0"
 
 RDEPEND="
-	dev-python/pygobject
-	dev-python/pillow
-	dev-python/send2trash
 	dev-cpp/gtkmm:3.0
-	media-gfx/feh
-	x11-apps/xrandr
+	dev-python/pillow
+	dev-python/pygobject
 	dev-python/pyyaml
+	dev-python/send2trash
 	gui-apps/grim
 	gui-apps/slurp
+	gui-apps/swaybg
+	gui-apps/wlr-randr
+	media-gfx/feh
 	media-gfx/maim
+	x11-apps/xrandr
 	x11-misc/slop
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-	dev-libs/wayland-protocols
-"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-src_install() {
+python_install_all() {
 	distutils-r1_python_install_all
 
 	cd "${S}"

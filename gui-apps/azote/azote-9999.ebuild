@@ -22,16 +22,18 @@ LICENSE="ISC"
 SLOT="0"
 
 RDEPEND="
-	dev-python/pygobject
-	dev-python/pillow
-	dev-python/send2trash
 	dev-cpp/gtkmm:3.0
-	media-gfx/feh
-	x11-apps/xrandr
+	dev-python/pillow
+	dev-python/pygobject
 	dev-python/pyyaml
+	dev-python/send2trash
 	gui-apps/grim
 	gui-apps/slurp
+	gui-apps/swaybg
+	gui-apps/wlr-randr
+	media-gfx/feh
 	media-gfx/maim
+	x11-apps/xrandr
 	x11-misc/slop
 "
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
