@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6..8} )
 
-inherit distutils-r1 cmake
+inherit python-r1 cmake
 
 DESCRIPTION="An open source C++, python library for Topological Data Analysis"
 HOMEPAGE="https://gudhi.inria.fr/"
@@ -17,21 +17,21 @@ KEYWORDS="~amd64"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="threads"
+IUSE="threads test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DISTUTILS_IN_SOURCE_BUILD=1
 CMAKE_IN_SOURCE_BUILD=1
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/cython[${PYTHON_USEDEP}]
 	dev-cpp/eigen:3
-	sci-mathematics/cgal
 	dev-libs/boost[python,${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pot[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
+	sci-mathematics/cgal
 	threads? ( dev-cpp/tbb )
 "
 DEPEND="${RDEPEND}"
@@ -43,17 +43,29 @@ PATCHES=(
 	"${FILESDIR}/gudhi-python_CMakeLists.txt.patch"
 )
 
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_without benchmark)
+		$(cmake_use_with example)
+		$(cmake_use_without python)
+		$(cmake_use_without test)
+		$(cmake_use_with utilities)
+	)
+	elog "${mycmakeargs}"
+	cmake_src_configure
+}
+
 src_compile() {
 	cmake_src_compile
 
-	cd "${BUILD_DIR}/python"
-	python_foreach_impl distutils-r1_python_compile
+	#cd "${BUILD_DIR}/python"
+	#python_foreach_impl distutils-r1_python_compile
 }
 
 src_install() {
 	einstalldocs
 	cmake_src_install
 
-	cd "${BUILD_DIR}/python"
-	python_foreach_impl distutils-r1_python_install
+	#cd "${BUILD_DIR}/python"
+	#python_foreach_impl distutils-r1_python_install
 }
