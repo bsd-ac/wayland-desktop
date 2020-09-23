@@ -21,5 +21,3 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-
-distutils_enable_tests pytest
