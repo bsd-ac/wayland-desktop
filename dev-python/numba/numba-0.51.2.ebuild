@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6..9} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1 eutils
+inherit eutils distutils-r1
 
 DESCRIPTION="NumPy aware dynamic Python compiler using LLVM"
 HOMEPAGE="https://numba.pydata.org/
@@ -15,22 +15,22 @@ SRC_URI="https://github.com/numba/numba/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="openmp +threads"
+KEYWORDS="~amd64 ~x86"
+IUSE="openmp threads"
 
 DEPEND="
-	>=dev-python/llvmlite-0.33.0[${PYTHON_USEDEP}]
-	<=dev-python/llvmlite-0.34.0
+	>=dev-python/llvmlite-0.34.0[${PYTHON_USEDEP}]
+	<=dev-python/llvmlite-0.35.0
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 	threads? ( dev-cpp/tbb )
 "
-RDEPEND="
+RDEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		sci-libs/scipy[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
 	)
 "
 
@@ -39,25 +39,18 @@ distutils_enable_tests unittest
 
 # doc system is another huge mess, skip it
 PATCHES=(
-	"${FILESDIR}/${P}-tbb-check.patch"
-	"${FILESDIR}/${P}-assertLessEqual.patch"
-	"${FILESDIR}/${P}-long_no_truncate.patch"
+	"${FILESDIR}/${P}-skip_tests.patch"
 )
 
-# no parallel compile, ironic
-python_compile() {
-	NUMBA_NO_TBB=$(usex threads 0 1) \
-	TBBROOT="${SYSROOT}/usr" \
-	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
-	distutils-r1_python_compile -j 1
+pkg_setup() {
+	export NUMBA_DISABLE_TBB=$(usex threads 0 1) \
+		TBBROOT="${EPREFIX}/usr" \
+		NUMBA_DISABLE_OPENMP=$(usex openmp 0 1)
 }
 
 # https://numba.pydata.org/numba-doc/latest/developer/contributing.html?highlight=test#running-tests
 python_test() {
 	distutils_install_for_testing
-	NUMBA_NO_TBB=$(usex threads 0 1) \
-	TBBROOT="${SYSROOT}/usr" \
-	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
 	${EPYTHON} setup.py build_ext --inplace || die \
 		"${EPYTHON} failed to build_ext"
 	${EPYTHON} runtests.py || die \
@@ -66,9 +59,9 @@ python_test() {
 
 # https://numba.pydata.org/numba-doc/latest/user/installing.html
 python_install_all() {
-	NUMBA_NO_TBB=$(usex threads 0 1) \
-	TBBROOT="${SYSROOT}/usr" \
-	NUMBA_NO_OPENMP=$(usex openmp 0 1) \
+	export NUMBA_DISABLE_TBB=$(usex threads 0 1) \
+		TBBROOT="${EPREFIX}/usr" \
+		NUMBA_DISABLE_OPENMP=$(usex openmp 0 1)
 	distutils-r1_python_install_all
 }
 
