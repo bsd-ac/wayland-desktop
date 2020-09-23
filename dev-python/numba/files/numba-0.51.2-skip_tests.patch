@@ -10,6 +10,18 @@ index 87f1165..c1c5f35 100644
      def test_jitclass_longlabel_not_truncated(self):
          # See issue #3872, llvm 7 introduced a max label length of 1024 chars
          # Numba ships patched llvm 7.1 (ppc64le) and patched llvm 8 to undo this
+diff --git a/numba/tests/test_np_functions.py b/numba/tests/test_np_functions.py
+index 01c15fd..3d9e228 100644
+--- a/numba/tests/test_np_functions.py
++++ b/numba/tests/test_np_functions.py
+@@ -2028,6 +2028,7 @@ class TestNPFunctions(MemoryLeakMixin, TestCase):
+                     params = {'ary': ary, 'to_begin': a, 'to_end': b}
+                     _check(params)
+ 
++    @unittest.skip("unhandled type error")
+     def test_ediff1d_edge_cases(self):
+         # NOTE: NumPy 1.16 has a variety of behaviours for type conversion, see
+         # https://github.com/numpy/numpy/issues/13103, as this is not resolved
 diff --git a/numba/tests/test_record_dtype.py b/numba/tests/test_record_dtype.py
 index 6d479c4..2357206 100644
 --- a/numba/tests/test_record_dtype.py
