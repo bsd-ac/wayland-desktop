@@ -3,10 +3,20 @@
 # See https://github.com/mrueg/repoman-travis
 #
 language: python
+services: docker
+arch:
+    - amd64
+os: linux
+dist: bionic
+branches:
+    only:
+        - master
 python:
     - "3.8"
 env:
     - PORTAGE_VER="3.0.7"
+    - PACKAGE=dev-libs/aml
+    - PACKAGE=gui-libs/wayland-logout
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml
@@ -30,5 +40,5 @@ before_script:
     - cd travis-overlay
 script:
     - ./../spinner.sh "python ../portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -d"
-# You can append own scripts after this line
+    - .travis/run.sh
 
