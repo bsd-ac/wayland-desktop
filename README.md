@@ -1,4 +1,6 @@
 # wayland-desktop
+[![Build Status](https://travis-ci.com/epsilon-0/wayland-desktop.svg?branch=master)](https://travis-ci.com/epsilon-0/wayland-desktop)
+
 gentoo overlay for wayland related ebuilds
 
 ## Overview
