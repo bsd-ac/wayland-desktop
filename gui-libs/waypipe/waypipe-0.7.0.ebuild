@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	dev-libs/wayland
-	virtual/pkg-config
+	virtual/pkgconfig
 "
 
 src_configure() {
