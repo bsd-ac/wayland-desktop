@@ -27,9 +27,11 @@ DEPEND="
 	lz4? ( app-arch/lz4 )
 	zstd? ( app-arch/zstd )
 "
+
 RDEPEND="${DEPEND}
 	dev-libs/weston[wayland-compositor,screen-sharing]
 "
+
 BDEPEND="
 	dev-libs/wayland
 	virtual/pkgconfig
