@@ -16,6 +16,7 @@ python:
 env:
     jobs:
         - PORTAGE_VER="3.0.7"
+        - PACKAGE="gui-wm/cage"
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml
