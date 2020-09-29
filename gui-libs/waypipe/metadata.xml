@@ -12,5 +12,6 @@
 	<use>
 		<flag name="dmabuf">use dmabuf for data exchange</flag>
 		<flag name="man">build man pages</flag>
-    <flag name="video">link with ffmpeg</flag>
+		<flag name="video">link with ffmpeg</flag>
+	</use>
 </pkgmetadata>

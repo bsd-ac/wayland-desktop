@@ -18,6 +18,7 @@ env:
         - PORTAGE_VER="3.0.7"
     jobs:
         - REPOMAN=1
+        - PACKAGE="gui-libs/waypipe"
         - PACKAGE="gui-wm/cage"
 before_install:
     - sudo apt-get -qq update
