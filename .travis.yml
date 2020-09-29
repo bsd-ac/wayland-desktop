@@ -13,10 +13,6 @@ branches:
         - master
 python:
     - "3.8"
-cache:
-    directories:
-        - /var/db/repos/gentoo
-        - 
 env:
     jobs:
         - PORTAGE_VER="3.0.7"
@@ -31,7 +27,7 @@ before_script:
     - mv .travis travis-overlay/
     - wget "https://raw.githubusercontent.com/mrueg/repoman-travis/master/spinner.sh"
     - wget -qO - "https://github.com/gentoo/portage/archive/portage-${PORTAGE_VER}.tar.gz" | tar xz
-    - sh -c "cd /var/db/repos/gentoo/ && git pull origin master"
+    - wget -qO - "https://github.com/gentoo-mirror/gentoo/archive/master.tar.gz" | tar xz -C /var/db/repos/gentoo --strip-components=1
     - chmod a+rwx spinner.sh
     - echo "portage:x:250:250:portage:/var/tmp/portage:/bin/false" >> /etc/passwd
     - echo "portage::250:portage,travis" >> /etc/group
@@ -40,5 +36,4 @@ before_script:
     - ln -s /var/db/repos/gentoo/profiles/default/linux/amd64/17.0 /etc/portage/make.profile
     - cd travis-overlay
 script:
-    - .travis/travis_ci.sh 
-
+    - .travis/travis_ci.sh
