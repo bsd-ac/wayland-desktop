@@ -30,11 +30,12 @@ case ${TRAVIS_CPU_ARCH} in
 		;;
 esac
 
-FILES=$(git --no-pager diff --name-only --diff-filter=ACMR "${TRAVIS_BRANCH}"...HEAD | grep -e "${PACKAGE}.*\.ebuild")
-if [ "${FILES}" = "" ]; then
-	echo "SUCCESS: ${PACKAGE} not modified"
-	exit 0
-fi
+#FILES=$(git --no-pager diff --name-only --diff-filter=ACMR "${TRAVIS_BRANCH}"...HEAD | grep -e "${PACKAGE}.*\.ebuild")
+#if [ "${FILES}" = "" ]; then
+#	echo "SUCCESS: ${PACKAGE} not modified"
+#	exit 0
+#fi
+FILES="gui-wm/cage/cage-0.1.2.1.ebuild"
 
 function iskeyword(){
         KEYWORDS=$(grep -Po "^${KEYWORDS}=\K.*" "${1}")
@@ -44,9 +45,15 @@ function iskeyword(){
 	fi
 }
 
-REPONAME=$(basename "$(readlink -f .)")
+if ! test -f profiles/repo_name; then
+	REPONAME=$(grep -e "^repo-name = .*" metadata/layout.conf | cut -d ' ' -f 3)
+else
+	REPONAME=$(cat profiles/repo_name)
+fi
+
 mkdir -p .tmpfiles/distfiles
 tar cf .travis/overlay.tar .
+wget -O - https://github.com/gentoo/gentoo/archive/master.tar.gz | tar xfz - -C .travis/
 echo \
 "[${REPONAME}]
 location = /var/db/repos/${REPONAME}
