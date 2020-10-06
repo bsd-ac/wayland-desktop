@@ -1,8 +1,8 @@
 #!/bin/bash
-if ! test -d "${PACKAGE}"; then
-	echo "WARNING: ${PACKAGE} not found in repository"
-	exit 0
-fi
+#if ! test -d "${PACKAGE}"; then
+#	echo "WARNING: ${PACKAGE} not found in repository"
+#	exit 0
+#fi
 
 case ${TRAVIS_CPU_ARCH} in
 	amd64)
@@ -88,4 +88,4 @@ for ebuild in ${FILES}; do
 	#ARCH2 runs not implemented yet
 done
 
-echo "SUCCESS: ${PACKAGE} passed"
+echo "SUCCESS: cage passed"

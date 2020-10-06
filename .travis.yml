@@ -4,7 +4,7 @@ python:
     - "3.8"
 env:
     global:
-        - PORTAGE_VER="3.0.7"
+        - PORTAGE_VER="3.0.8"
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml pkgcheck
