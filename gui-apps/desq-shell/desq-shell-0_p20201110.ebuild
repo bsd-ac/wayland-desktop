@@ -32,7 +32,9 @@ DEPEND="
 	gui-libs/libdesqwl:=
 	gui-libs/libdesqui:=
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	x11-misc/qt5ct
+"
 BDEPEND="
 	virtual/pkgconfig
 "

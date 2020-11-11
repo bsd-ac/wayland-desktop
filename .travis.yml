@@ -22,4 +22,3 @@ jobs:
     - stage: check
       script: python portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx
     - script: pkgcheck scan
-    - script: .travis/package_tester.sh
