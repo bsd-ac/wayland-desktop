@@ -1,0 +1,12 @@
+#!/bin/bash
+
+local -x CDIR="${EPREFIX}/usr/share/wayfire-de"
+
+# setup themes
+gsettings set org.gnome.desktop.interface gtk-theme Sweet
+gsettings set org.gnome.desktop.interface icon-theme wayfire-de
+gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic
+
+# setup folder for screenshots
+mkdir -p "${HOME}"/Pictures/Screenshots
+
