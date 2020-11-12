@@ -19,7 +19,7 @@ else
 	S="${WORKDIR}/oieicons-${COMMIT}"
 fi
 
-LICENSE="GPL-3"
+LICENSE="LGPL-3"
 SLOT="0"
 
 # dead symbolic links QA
