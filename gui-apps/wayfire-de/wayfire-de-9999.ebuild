@@ -22,6 +22,7 @@ RDEPEND="
 	x11-themes/oie-icon-theme
 	x11-themes/sweet-folders-icon-theme
 	x11-themes/sweet-dark-gtk-theme
+	virtual/cron
 "
 
 src_install() {
