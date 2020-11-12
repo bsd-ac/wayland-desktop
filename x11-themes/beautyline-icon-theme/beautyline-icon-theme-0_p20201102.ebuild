@@ -3,6 +3,8 @@
 
 EAPI="7"
 
+inherit xdg-utils
+
 DESCRIPTION="BeautyLine Icons Theme"
 
 HOMEPAGE="https://www.gnome-look.org/p/1425426"
@@ -33,4 +35,12 @@ src_install() {
 	insinto /usr/share/icons/BeautyLine
 	doins -r index.theme actions \
 		apps devices mimetypes places
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

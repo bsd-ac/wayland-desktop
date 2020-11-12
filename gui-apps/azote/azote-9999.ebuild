@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="ISC"
+LICENSE="GPL-3 BSD"
 SLOT="0"
 IUSE="simple-colorpicker imagemagick wayland X yaml"
 
