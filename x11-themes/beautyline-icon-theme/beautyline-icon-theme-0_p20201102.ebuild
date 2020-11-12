@@ -26,6 +26,7 @@ src_prepare() {
 	find . -xtype l -delete || die
 	mv mimetypes/scalable/application-vnd.oasis.opendocument.text-master.svg{ln,} || die
 	rm apps/scalable/goa-account-msn* || die
+	sed -e "/^Inherits/d" -i index.theme || die
 }
 
 src_install() {
