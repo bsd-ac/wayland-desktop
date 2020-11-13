@@ -14,12 +14,14 @@ RDEPEND="
 	gui-apps/oguri
 	gui-apps/grim
 	gui-apps/mako
-	gui-apps/nwg-launchers
+	gui-apps/nwg-launchers[bar,grid,menu]
 	gui-apps/slurp
-	gui-apps/swaylock-effects
+	gui-apps/swaylock-effects[gdk-pixbuf]
 	gui-apps/wl-clipboard
 	gui-apps/wayland-logout
 	gui-wm/wayfire
+	media-fonts/fontawesome[otf,ttf]
+	x11-themes/bibata-cursor-theme[modern]
 	x11-themes/beautyline-icon-theme
 	x11-themes/candy-icon-theme
 	x11-themes/oie-icon-theme
