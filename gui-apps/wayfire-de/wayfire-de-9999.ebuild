@@ -14,7 +14,7 @@ RDEPEND="
 	gui-apps/oguri
 	gui-apps/grim
 	gui-apps/mako
-	gui-apps/nwg-launchers[bar,grid,menu]
+	gui-apps/nwg-launchers[bar,dmenu,grid]
 	gui-apps/slurp
 	gui-apps/swaylock-effects[gdk-pixbuf]
 	gui-apps/wl-clipboard
