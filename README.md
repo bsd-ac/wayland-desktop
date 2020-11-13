@@ -34,7 +34,26 @@ Be polite in your request and give a clear indication about the changes you wish
 
 ### Setting up Wayfire DE
 
-First install the meta package: [gui-apps/wayfire-de](gui-apps/wayfire-de)
+First install the meta package: [gui-apps/wayfire-de](gui-apps/wayfire-de).<br/>
 This will install all the necessary dependencies and the command `wayfire-de-setup`.
 
 Run the command `wayfire-de-setup` and log back in using your preferred login manager or tty.
+
+### Setup includes
+
+`wayfire-de-setup` includes quite a few goodies:
+
+1. Featureful [Wayfire](https://github.com/WayfireWM/wayfire) configuration
+2. GTK goodies - [icons + theme + cursors](x11-themes/)
+3. [NWG Launchers](https://github.com/nwg-piotr/nwg-launchers) - log out menu + grid
+4. Wallpaper rotation - [oguri](https://github.com/vilhalmer/oguri) + rotation script using ogurictl
+5. [Waybar](https://github.com/Alexays/Waybar) - window list taskbar + basic system info
+6. Terminator - GTK theme compatible colors
+7. Screenshotting - fullscreen as well as area select (grim + slurp)
+
+
+### UnixPron
+
+![Screenshot 1](https://openpgpkey.bsd.ac/screenshot1.webp)
+![Screenshot 2](https://openpgpkey.bsd.ac/screenshot2.webp)
+![Screenshot 3](https://openpgpkey.bsd.ac/screenshot3.webp)
