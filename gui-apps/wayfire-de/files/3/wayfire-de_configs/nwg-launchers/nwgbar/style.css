@@ -1,0 +1,35 @@
+#bar {
+	margin: 10px /* affects top/bottom & left/right alignment */
+}
+
+button, image {
+	background-color: rgba ( 0, 0, 0, 0);
+	border-style: none;
+	box-shadow: none;
+	color: #000;
+}
+
+button {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px;
+	color: #eee;
+}
+
+button:hover {
+	background-color: rgba (255, 255, 255, 0.2);
+	border-radius: 10px;
+}
+
+button:focus {
+	box-shadow: 0 0 2px;
+}
+
+grid {
+	background-color: rgba (22, 22, 22, 0.9);
+	padding: 0;
+	border-radius: 15px;
+	border-style: solid;
+	border-width: 4px;
+	border-color: rgba (255, 20, 147, 0.7);
+}

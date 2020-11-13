@@ -1,0 +1,61 @@
+* {
+    border: none;
+    border-radius: 14px;
+    font-family: Anonymous Code Pro;
+    font-size: 14px;
+    min-height: 28px;
+}
+
+window#waybar {
+    border: 1px solid purple;
+    background: rgba (0, 0, 0, 0.8);
+}
+
+#window {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    transition: none;
+    color: transparent;
+    background: transparent;
+}
+
+#tray,
+#taskbar,
+#network,
+#pulseaudio,
+#temperature,
+#clock,
+#battery {
+    margin: 7px;
+    border-radius: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+    transition: none;
+}
+
+#network {
+    color: #111;
+    background: #55CDFC;
+}
+
+#pulseaudio {
+    color: #111;
+    background: #C724B1;
+}
+
+#temperature {
+    color: #111;
+    background: #39ff14;
+}
+
+#clock {
+    color: #eee;
+    background: #111;
+}
+
+#battery {
+    color: #111;
+    background: #f7a8b8;
+}
