@@ -30,7 +30,7 @@ RDEPEND="
 	gui-wm/wayfire
 	media-fonts/fontawesome[otf,ttf]
 	media-fonts/anonymous-pro
-	media-fonts/fira-core
+	media-fonts/fira-code
 	x11-terms/terminator
 	x11-themes/bibata-cursor-theme[modern]
 	x11-themes/beautyline-icon-theme

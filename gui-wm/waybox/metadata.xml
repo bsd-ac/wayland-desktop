@@ -8,11 +8,7 @@
     but bringing them natively to wayland.
   </longdescription>
   <maintainer type="person">
-    <email>gentoo@aisha.cc</email>
+    <email>floss@bsd.ac</email>
     <name>Aisha Tammy</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
   </maintainer>
 </pkgmetadata>
