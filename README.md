@@ -58,3 +58,4 @@ Run the command `wayfire-de-setup` and log back in using your preferred login ma
 ![Screenshot 2](https://openpgpkey.bsd.ac/screenshot2.webp)
 ![Screenshot 3](https://openpgpkey.bsd.ac/screenshot3.webp)
 ![Screenshot 4](https://openpgpkey.bsd.ac/screenshot4.png)
+![Screenshot 4](https://openpgpkey.bsd.ac/screenshot5.png)
