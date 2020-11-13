@@ -2,13 +2,13 @@
   <repo priority="50" quality="experimental">
     <name>wayland-desktop</name>
     <description>gentoo overlay for wayland related ebuilds</description>
-    <homepage>https://github.com/epsilon-0/wayland-desktop</homepage>
+    <homepage>https://github.com/bsd-ac/wayland-desktop</homepage>
     <irc>webchat.freenode.net/?channels=gentoo</irc>
     <owner>
       <email>gentoo@aisha.cc</email>
       <name>epsilonKNOT</name>
       <name>Aisha Tammy</name>
     </owner>
-    <source type="git">https://github.com/epsilon-0/wayland-desktop.git</source>
+    <source type="git">https://github.com/bsd-ac/wayland-desktop.git</source>
   </repo>
 </repositories>
