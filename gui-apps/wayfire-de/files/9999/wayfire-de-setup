@@ -80,26 +80,31 @@ gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic || 
 info "Setting up screenshot folders"
 mkdir -p "${HOME}"/Pictures/Screenshots || warn "Could not create ~/Pictures/screenshots folder"
 
-info "Setting up Wayfire config"
-#cp "${CDIR}"/wayfire.ini "${HOME}"/.config/wayfire.ini || warn "Could not create ~/.config/wayfire.ini config"
-
 info "Setting up nwg-launchers config"
 cp -r "${CDIR}"/nwg-launchers ~/.config || warn "Could not create ~/.config/nwg-launchers and children"
 
-if [ ! command -v crontab &> /dev/null ]; then
-    warn "No cron found, cannot do wallpaper management, continuing..."
-else
-    info "Setting up wallpaper management"
-    WDIR="${HOME}"/.config/wayfire-de/wallpapers
-    mkdir -p "${WDIR}" || warn "Could not create ~/.wayfire-de/wallpapers"
-    touch "${WDIR}"/.DO_ROTATE || warn "Could not setup wallpaper rotation"
-    touch "${WDIR}"/.current
-    if [[ ! -f "${WDIR}"/default ]]; then
-        cp /usr/share/wayfire-de/default_wallpaper "${WDIR}"/default || \
-            warn "Could not copy the default wallpaper, oguri will fail to start"
-    fi
-    cp -a "${CDIR}"/oguri.conf "${HOME}"/.config/oguri/config || warn "Could not setup ~/.config/oguri/config"
+info "Setting up wallpaper management"
+WDIR="${HOME}"/.config/wayfire-de/wallpapers
+mkdir -p "${WDIR}" || warn "Could not create ~/.wayfire-de/wallpapers"
+touch "${WDIR}"/.DO_ROTATE || warn "Could not setup wallpaper rotation"
+touch "${WDIR}"/.current
+if [[ ! -f "${WDIR}"/default ]]; then
+    cp /usr/share/wayfire-de/default_wallpaper "${WDIR}"/default || \
+        warn "Could not copy the default wallpaper, oguri will fail to start"
 fi
+cp -a "${CDIR}"/oguri.conf "${HOME}"/.config/oguri/config || warn "Could not setup ~/.config/oguri/config"
+
+info "Setting up waybar config"
+mkdir -p "${HOME}"/.config/waybar && cp -a "${CDIR}"/waybar/. "${HOME}"/.config/waybar || \
+	warn "Could not setup waybar config"
+
+info "Setting up terminator config"
+mkdir -p "${HOME}"/.config/terminator/plugins || warn "Could not create ~/.config/terminator/plugins"
+cp "${CDIR}"/terminator.conf "${HOME}"/.config/terminator/config || warn "Could not create ~/.config/terminator/config"
+cp "${CDIR}"/terminator-themes.py "${HOME}"/.config/terminator/plugins/ || warn "Could not create ~/.config/terminator/plugins/terminator-themes.py"
+
+info "Setting up Wayfire config"
+cp "${CDIR}"/wayfire.ini "${HOME}"/.config/wayfire.ini || warn "Could not create ~/.config/wayfire.ini config"
 
 ########## FINISHED ##########
 info "Finished setting up Wayfire DE"
