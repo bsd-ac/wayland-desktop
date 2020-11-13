@@ -1,0 +1,54 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "modules-left": ["tray", "wlr/taskbar"],
+  "modules-center": [],
+  "modules-right": ["network", "pulseaudio", "temperature", "battery", "clock"],
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10,
+  },
+  "wlr/taskbar": {
+    "format": "{icon} {title:.10}...",
+    "icon-size": 14,
+    "icon-theme": "wayfire-de",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-right": "minimize",
+    "on-click-middle": "close",
+  },
+  "network": {
+    "tooltip": true,
+    "tooltip-format": "{essid} ({ipaddr})",
+    "tooltip-format-ethernet": "{ipaddr}",
+    "tooltip-format-diconnected": "Disconnected",
+    "format-wifi": " ({signalStrength}%)",
+    "format-ethernet": " ",
+    "format-disconnected": "Disconnected",
+  },
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon} ({volume}%)",
+    "format-bluetooth": "{icon} ({volume}%)",
+    "format-muted": " ({volume}%)",
+    "format-icons": {
+      "default": [" ", " "],
+    },
+  },
+  "battery": {
+    "tooltip": false,
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon} ({capacity}%)",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "max-length": 25,
+  },
+  "clock": {
+    "tooltip": false,
+  },
+}

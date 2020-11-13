@@ -33,7 +33,7 @@ if [[ -f "${PDIR}"/.current ]]; then
     CINDEX=$((CINDEX % TOTAL))
 fi
 NEW_WP="${WALLPAPERS[CINDEX]}"
-ogurictl output '*' --image "${NEW_WP}"
+ogurictl output '*' --image "${NEW_WP}" || exit 1
 printf %s\\n "${NEW_WP}" > "${PDIR}"/.current || exit 1
 
 sleep 60s

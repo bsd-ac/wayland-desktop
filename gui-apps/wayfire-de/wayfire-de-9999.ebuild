@@ -5,6 +5,10 @@ inherit xdg-utils
 DESCRIPTION="meta package for a simple wayfire DE"
 HOMEPAGE="https://github.com/"
 
+if [[ "${PV}" != *9999 ]]; then
+KEYWORDS="~amd64"
+fi
+
 S="${WORKDIR}"
 LICENSE="ISC"
 SLOT="0"
