@@ -40,6 +40,8 @@ src_install() {
 	insinto /usr/share/wayfire-de
 	doins -r "${sdir}"/wayfire-de_configs/.
 	doins "${FILESDIR}"/default_wallpaper
+	exeinto /usr/share/wayfire-de
+	doexe "${sdir}"/wallpaper_rotate
 }
 
 pkg_postinst() {
