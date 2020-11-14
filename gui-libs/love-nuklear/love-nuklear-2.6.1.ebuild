@@ -14,6 +14,9 @@ LICENSE="MIT Unlicense"
 SLOT="0"
 IUSE="doc +extras"
 
-DEPEND="gui-libs/nuklear:="
+RDEPEND="dev-lang/luajit"
+DEPEND="${RDEPEND}
+	gui-libs/nuklear:=
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.6.1-nuklear.patch )
