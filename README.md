@@ -62,4 +62,5 @@ While not a full fledges Desktop Environment of the likes of Gnome/KDE Plasma, `
 ![Screenshot 2](https://openpgpkey.bsd.ac/screenshot2.webp)
 ![Screenshot 3](https://openpgpkey.bsd.ac/screenshot3.webp)
 ![Screenshot 4](https://openpgpkey.bsd.ac/screenshot4.png)
-![Screenshot 4](https://openpgpkey.bsd.ac/screenshot5.png)
+![Screenshot 5](https://openpgpkey.bsd.ac/screenshot5.png)
+![Screenshot 6](https://openpgpkey.bsd.ac/screenshot6.png)
