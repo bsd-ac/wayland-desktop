@@ -13,6 +13,8 @@ S="${WORKDIR}"
 LICENSE="JoyPixel.pdf"
 SLOT="0"
 
+FONT_CONF=( "${FILESDIR}"/75-joypixels.conf )
+
 src_prepare() {
 	default
 	cp "${DISTDIR}"/${P}.ttf "${S}"/${P}.ttf || die
@@ -21,4 +23,9 @@ src_prepare() {
 src_install() {
 	FONT_SUFFIX=ttf \
 	FONT_S="${S}" font_src_install
+	font_fontconfig
+}
+
+pkg_postinst() {
+	eselect fontconfig enable 75-joypixels.conf
 }
