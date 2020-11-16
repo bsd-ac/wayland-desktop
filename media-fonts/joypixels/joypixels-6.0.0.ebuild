@@ -21,11 +21,11 @@ src_prepare() {
 }
 
 src_install() {
-	FONT_SUFFIX=ttf \
-	FONT_S="${S}" font_src_install
+	FONT_SUFFIX=ttf font_src_install
 	font_fontconfig
 }
 
 pkg_postinst() {
+	font_pkg_postinst
 	eselect fontconfig enable 75-joypixels.conf
 }
