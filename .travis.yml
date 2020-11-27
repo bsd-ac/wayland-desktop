@@ -20,5 +20,4 @@ before_script:
     - ln -s /var/db/repos/gentoo/profiles/default/linux/amd64/17.1 /etc/portage/make.profile
 jobs:
     - stage: check
-      script: python portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx
-    - script: pkgcheck scan
+      script: python portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx --experimental-repository-modules=y
