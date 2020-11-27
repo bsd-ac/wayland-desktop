@@ -17,7 +17,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="modules opengl xdgv5"
+IUSE="modules opengl"
 
 RDEPEND="
 	gui-libs/wlroots
