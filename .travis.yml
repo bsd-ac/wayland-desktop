@@ -5,7 +5,7 @@ python:
 env:
     global:
         - PORTAGE_TAG="portage-3.0.10"
-	  REPOMAN_DEFAULT_OPTS="--experimental-repository-modules=y"
+          REPOMAN_DEFAULT_OPTS="--experimental-repository-modules=y"
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml pkgcheck
