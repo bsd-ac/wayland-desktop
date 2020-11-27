@@ -20,6 +20,7 @@ HTML_DOCS=( "doc/nuklear.html" )
 
 src_install() {
 	doheader nuklear.h
+	dosym ../nuklear.h /usr/include/nuklear/nuklear.h
 	use extras && \
 		FONT_SUFFIX="ttf" \
 		FONT_S="${S}/extra_font/" font_src_install
