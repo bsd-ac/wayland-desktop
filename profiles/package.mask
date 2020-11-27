@@ -1,5 +1,3 @@
-
 # Aisha Tammy <floss@bsd.ac>
-# mask westeros for now as it
-# doesn't build
+# mask westeros for now as it doesn't build
 gui-libs/westeros

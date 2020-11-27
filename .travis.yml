@@ -4,20 +4,21 @@ python:
     - "3.8"
 env:
     global:
-        - PORTAGE_VER="3.0.8"
+        - PORTAGE_TAG="portage-3.0.10"
+	  REPOMAN_DEFAULT_OPTS="--experimental-repository-modules=y"
 before_install:
     - sudo apt-get -qq update
     - pip install lxml pyyaml pkgcheck
 before_script:
     - sudo chmod a+rwX /etc/passwd /etc/group /etc /var /var/cache
     - mkdir -p /etc/portage /var/cache/distfiles /var/db/repos/gentoo
-    - wget -qO - "https://github.com/gentoo/portage/archive/portage-${PORTAGE_VER}.tar.gz" | tar xz
+    - wget -qO - "https://github.com/gentoo/portage/archive/${PORTAGE_TAG}.tar.gz" | tar xz
     - wget -qO - "https://github.com/gentoo-mirror/gentoo/archive/master.tar.gz" | tar xz -C /var/db/repos/gentoo --strip-components=1
     - wget "https://www.gentoo.org/dtd/metadata.dtd" -O /var/cache/distfiles/metadata.dtd
     - echo "portage:x:250:250:portage:/var/tmp/portage:/bin/false" >> /etc/passwd
     - echo "portage::250:portage,travis" >> /etc/group
-    - ln -s $TRAVIS_BUILD_DIR/portage-portage-${PORTAGE_VER}/cnf/repos.conf /etc/portage/repos.conf
+    - ln -s $TRAVIS_BUILD_DIR/portage-portage-${PORTAGE_TAG}/cnf/repos.conf /etc/portage/repos.conf
     - ln -s /var/db/repos/gentoo/profiles/default/linux/amd64/17.1 /etc/portage/make.profile
 jobs:
     - stage: check
-      script: python portage-portage-${PORTAGE_VER}/repoman/bin/repoman full -dx --experimental-repository-modules=y
+      script: python portage-${PORTAGE_TAG}/repoman/bin/repoman full -dx
