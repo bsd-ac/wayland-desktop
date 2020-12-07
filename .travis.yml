@@ -1,14 +1,17 @@
 ---
 language: python
-python:
-    - "3.8"
+python: 3.9
+cache:
+    pip: true
+    directories:
+        - $HOME/.cache/pkgcheck
 env:
     global:
-        - PORTAGE_TAG="portage-3.0.10"
+        - PORTAGE_TAG="portage-3.0.11"
           REPOMAN_DEFAULT_OPTS="--experimental-repository-modules=y"
 before_install:
-    - sudo apt-get -qq update
-    - pip install lxml pyyaml pkgcheck
+    - pip install lxml pyyaml
+    - pip install https://github.com/pkgcore/pkgcheck/archive/master.tar.gz
 before_script:
     - sudo chmod a+rwX /etc/passwd /etc/group /etc /var /var/cache
     - mkdir -p /etc/portage /var/cache/distfiles /var/db/repos/gentoo
@@ -19,6 +22,8 @@ before_script:
     - echo "portage::250:portage,travis" >> /etc/group
     - ln -s $TRAVIS_BUILD_DIR/portage-portage-${PORTAGE_TAG}/cnf/repos.conf /etc/portage/repos.conf
     - ln -s /var/db/repos/gentoo/profiles/default/linux/amd64/17.1 /etc/portage/make.profile
+    - sudo env "PATH=$PATH" pmaint sync gentoo
+    - sudo env "PATH=$PATH" pmaint regen --dir "$HOME/.cache/pkgcheck/repos" .
 jobs:
-    - stage: check
-      script: python portage-${PORTAGE_TAG}/repoman/bin/repoman full -dx
+    - script: python portage-${PORTAGE_TAG}/repoman/bin/repoman full -dx
+    - script: sudo env "PATH=$PATH" pkgcheck scan -v --exit
