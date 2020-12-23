@@ -45,10 +45,10 @@ PATCHES=( "${FILESDIR}"/${PN}-0.7.1-systemtap.patch )
 
 src_configure() {
 	local mymesonargs=(
+		$(meson_use systemtap with_systemtap)
 		$(meson_feature dmabuf with_dmabuf)
 		$(meson_feature lz4 with_lz4)
 		$(meson_feature man man-pages)
-		$(meson_feature systemtap with_systemtap)
 		$(meson_feature video with_video)
 		$(meson_feature vaapi with_vaapi)
 		$(meson_feature zstd with_zstd)
