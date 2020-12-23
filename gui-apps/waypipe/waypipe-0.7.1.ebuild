@@ -1,10 +1,11 @@
 
 EAPI=7
 
-inherit meson
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit meson python-any-r1
 
 DESCRIPTION="network transparency with Wayland"
-
 HOMEPAGE="https://gitlab.freedesktop.org/mstoeckl/waypipe"
 
 if [[ ${PV} == 9999 ]]; then
@@ -18,8 +19,8 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="dmabuf lz4 man systemtap vaapi video zstd test"
-REQUIRED_USE="vaapi? ( video )"
+IUSE="dmabuf lz4 man systemtap vaapi ffmpeg zstd test"
+REQUIRED_USE="vaapi? ( ffmpeg )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -30,7 +31,7 @@ DEPEND="
 	lz4? ( app-arch/lz4 )
 	systemtap? ( dev-util/systemtap )
 	vaapi? ( x11-libs/libva[drm,wayland] )
-	video? (
+	ffmpeg? (
 		media-video/ffmpeg[x264,vaapi?]
 	)
 	zstd? ( app-arch/zstd )
@@ -39,6 +40,7 @@ RDEPEND="${DEPEND}
 	dev-libs/weston[wayland-compositor,screen-sharing]
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	man? ( app-text/scdoc )
 	virtual/pkgconfig
 "
@@ -49,9 +51,9 @@ src_configure() {
 	local mymesonargs=(
 		$(meson_use systemtap with_systemtap)
 		$(meson_feature dmabuf with_dmabuf)
+		$(meson_feature ffmpeg with_video)
 		$(meson_feature lz4 with_lz4)
 		$(meson_feature man man-pages)
-		$(meson_feature video with_video)
 		$(meson_feature vaapi with_vaapi)
 		$(meson_feature zstd with_zstd)
 	)
