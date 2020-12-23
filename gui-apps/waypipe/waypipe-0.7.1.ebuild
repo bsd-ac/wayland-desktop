@@ -13,21 +13,23 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://gitlab.freedesktop.org/mstoeckl/waypipe/-/archive/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-v${PV}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="dmabuf lz4 man systemtap vaapi video zstd"
+IUSE="dmabuf lz4 man systemtap vaapi video zstd test"
+REQUIRED_USE="vaapi? ( video )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dmabuf? (
-		media-libs/mesa[gbm]
+		media-libs/mesa[gbm,vaapi?,wayland]
 		x11-libs/libdrm
 	)
 	lz4? ( app-arch/lz4 )
 	systemtap? ( dev-util/systemtap )
-	vaapi? ( media-libs/mesa[vaapi] )
+	vaapi? ( x11-libs/libva[drm,wayland] )
 	video? (
 		media-video/ffmpeg[x264,vaapi?]
 	)

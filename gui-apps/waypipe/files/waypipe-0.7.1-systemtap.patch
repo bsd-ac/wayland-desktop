@@ -1,8 +1,16 @@
 diff --git a/meson.build b/meson.build
-index 262b17b..274fc5b 100644
+index 262b17b..ff0bc67 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -62,7 +62,7 @@ rt = cc.find_library('rt')
+@@ -6,7 +6,6 @@ project(
+ 	default_options: [
+ 		'c_std=c11',
+ 		'warning_level=3',
+-		'werror=true',
+ 	],
+ 	version: '0.7.1',
+ )
+@@ -62,7 +61,7 @@ rt = cc.find_library('rt')
  # XXX dtrace -G (Solaris, FreeBSD, NetBSD) isn't supported yet
  is_linux = host_machine.system() == 'linux'
  is_darwin = host_machine.system() == 'darwin'
@@ -12,7 +20,7 @@ index 262b17b..274fc5b 100644
  endif
  liblz4 = dependency('liblz4', version: '>=1.7.0', required: get_option('with_lz4'))
 diff --git a/meson_options.txt b/meson_options.txt
-index f0d402e..ff5b2e0 100644
+index f0d402e..cff7669 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
 @@ -4,3 +4,4 @@ option('with_dmabuf', type : 'feature', value : 'auto', description : 'Support D
