@@ -21,12 +21,12 @@ RDEPEND="
 	gui-apps/grim
 	gui-apps/mako
 	gui-apps/nwg-launchers[bar,dmenu,grid]
-	gui-apps/oguri
 	gui-apps/slurp
 	gui-apps/swappy[libnotify]
 	gui-apps/swaylock-effects[gdk-pixbuf]
 	gui-apps/waybar[network,popups,pulseaudio,tray]
 	gui-apps/wayland-logout
+	gui-apps/wf-shell
 	gui-apps/wl-clipboard
 	gui-wm/wayfire
 	media-fonts/anonymous-pro
