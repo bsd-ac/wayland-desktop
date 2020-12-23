@@ -38,7 +38,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	dev-libs/weston[wayland-compositor,screen-sharing]
-	net-misc/openssh
 "
 BDEPEND="
 	${PYTHON_DEPS}
