@@ -6,8 +6,9 @@
 		<name>Aisha Tammy</name>
 	</maintainer>
 	<use>
-		<flag name="dmabuf">use dmabuf for data exchange</flag>
-		<flag name="man">build man pages</flag>
-		<flag name="video">link with ffmpeg</flag>
+		<flag name="dmabuf">Use dmabuf for data exchange and hardware decoding</flag>
+		<flag name="man">Build and install man pages</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="video">Link with ffmpeg for software decoding</flag>
 	</use>
 </pkgmetadata>
