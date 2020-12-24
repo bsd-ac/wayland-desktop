@@ -1,6 +1,6 @@
 # wayland-desktop
-[![Build Status](https://travis-ci.com/bsd-ac/wayland-desktop.svg?branch=master)](https://travis-ci.com/bsd-ac/wayland-desktop)
 ![pkgcheck](https://github.com/bsd-ac/wayland-desktop/workflows/pkgcheck/badge.svg)
+![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
 
 gentoo overlay for wayland related ebuilds
 
