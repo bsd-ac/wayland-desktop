@@ -1,6 +1,6 @@
 # wayland-desktop
-![pkgcheck](https://github.com/bsd-ac/wayland-desktop/workflows/pkgcheck/badge.svg)
-![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
+[![pkgcheck](https://github.com/bsd-ac/wayland-desktop/workflows/pkgcheck/badge.svg)](https://github.com/bsd-ac/wayland-desktop/actions?query=workflow:pkgcheck)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://wiki.gentoo.org/wiki/Contributing_to_Gentoo)
 
 gentoo overlay for wayland related ebuilds
 
