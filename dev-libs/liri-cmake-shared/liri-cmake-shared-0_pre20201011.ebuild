@@ -12,7 +12,7 @@ else
 	COMMIT=071ec5dbbedafa48fe8d80e9bd627ed318a5014f
 	SRC_URI="https://github.com/lirios/cmake-shared/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/cmake-shared-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"

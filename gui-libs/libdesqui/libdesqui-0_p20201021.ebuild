@@ -14,7 +14,7 @@ else
 	COMMIT=b97a042ac712999ee43675b17c210b3b48a36a78
 	SRC_URI="https://gitlab.com/DesQ/libdesqui/-/archive/${COMMIT}/libdesqui-${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/libdesqui-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3"

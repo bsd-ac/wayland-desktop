@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="23f31ca89c669841a4dc9dda73fe09aa6f014f28"
 	SRC_URI="https://github.com/antirez/rax/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 

@@ -14,7 +14,7 @@ else
 	COMMIT=93418cb1570d7bd343957f3d2896dec05676e37f
 	SRC_URI="https://gitlab.com/DesQ/DesQUtils/PolkitExec/-/archive/${COMMIT}/PolkitExec-${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/PolkitExec-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3"

@@ -12,7 +12,7 @@ else
 	COMMIT=1bb3ad879611b50c22cb9933dcff02243e5992d3
 	SRC_URI="https://github.com/lirios/fluid/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/fluid-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"

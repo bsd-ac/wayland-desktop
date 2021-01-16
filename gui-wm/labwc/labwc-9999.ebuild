@@ -13,7 +13,7 @@ else
 	COMMIT=64b6c37e7c2f6057000b36d530046b2b084283df
 	SRC_URI="https://github.com/johanmalm/labwc/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2"

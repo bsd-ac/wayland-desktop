@@ -12,7 +12,7 @@ else
 	COMMIT=ff9e88882a7da05b31713722f08e81d7b842c882
 	SRC_URI="https://github.com/lirios/wayland/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/wayland-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"

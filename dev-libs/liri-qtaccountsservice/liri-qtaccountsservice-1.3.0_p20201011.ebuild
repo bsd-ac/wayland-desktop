@@ -12,7 +12,7 @@ else
 	COMMIT=cc8bbdcb42feaa456bfef1aff1f1e67c2d67a786
 	SRC_URI="https://github.com/lirios/qtaccountsservice/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/qtaccountsservice-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"

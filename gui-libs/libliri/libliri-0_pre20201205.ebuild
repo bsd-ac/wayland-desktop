@@ -12,7 +12,7 @@ else
 	COMMIT=6e47eb9030575a7c6eee0310bb64a935ae320757
 	SRC_URI="https://github.com/lirios/libliri/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"

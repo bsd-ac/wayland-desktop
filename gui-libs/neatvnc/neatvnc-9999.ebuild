@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="7fb2215c0f5aab0ed9206c25b5e7f85d36930d75"
 	SRC_URI="https://github.com/any1/neatvnc/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 

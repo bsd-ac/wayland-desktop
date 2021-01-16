@@ -13,7 +13,7 @@ else
 	COMMIT=c7a60fe2e8938d4e50bf39aeaa09df2ad25babe7
 	SRC_URI="https://github.com/buffet/kiwmi/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MPL-2.0"

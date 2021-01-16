@@ -14,7 +14,7 @@ else
 	COMMIT=5f0b22059106685078f18cfcff4ab1bb9e60e488
 	SRC_URI="https://gitlab.com/DesQ/DesQUtils/SettingsDaemon/-/archive/${COMMIT}/SettingsDaemon-${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SettingsDaemon-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3"

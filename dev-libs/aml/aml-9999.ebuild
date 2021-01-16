@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="099e0c71942a0c0a42f40b9b18e616cfe20dd534"
 	SRC_URI="https://github.com/any1/aml/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 

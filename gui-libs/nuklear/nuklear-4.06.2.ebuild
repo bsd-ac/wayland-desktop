@@ -12,7 +12,7 @@ S="${WORKDIR}"/Nuklear-${COMMIT}
 SLOT="$(ver_rs 1)/$(ver_rs 2)"
 
 # C89 and ANSI C library
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64"
 LICENSE="MIT Unlicense"
 IUSE="+extras"
 

@@ -14,7 +14,7 @@ else
 	COMMIT=29820a7f4723df9933aa6752704f1574ee1a9406
 	SRC_URI="https://gitlab.com/DesQ/Shell/-/archive/${COMMIT}/Shell-${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/Shell-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3"

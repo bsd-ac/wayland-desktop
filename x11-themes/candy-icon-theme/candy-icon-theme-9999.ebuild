@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	COMMIT="4c80adb4630fb75c16ce2c94be7614e6d45f35ba"
 	SRC_URI="https://github.com/EliverLara/candy-icons/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/candy-icons-${COMMIT}"
 fi
 

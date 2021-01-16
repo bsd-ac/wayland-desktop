@@ -12,7 +12,7 @@ else
 	COMMIT=7215f4102072f4a242c05c0d197840df57f54b8b
 	SRC_URI="https://github.com/lirios/qtgsettings/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/qtgsettings-${COMMIT}
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"
