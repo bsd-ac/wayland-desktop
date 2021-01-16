@@ -6,7 +6,7 @@ inherit font
 DESCRIPTION="single-header ANSI C cross platform GUI library"
 HOMEPAGE="https://immediate-mode-ui.github.io/Nuklear/"
 
-COMMIT=74a4df4eb965150ede86fefa6c147476541078a4
+COMMIT=fc5dc44d8ebdd2a712c680aa9b628258baa93b4f
 SRC_URI="https://github.com/Immediate-Mode-UI/Nuklear/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/Nuklear-${COMMIT}
 SLOT="$(ver_rs 1)/$(ver_rs 2)"
