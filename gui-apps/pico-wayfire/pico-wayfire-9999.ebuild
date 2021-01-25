@@ -42,6 +42,10 @@ RDEPEND="
 	x11-themes/sweet-dark-gtk-theme
 "
 
+src_install() {
+	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" VERSION="${PV}" install
+}
+
 pkg_postinst() {
 	xdg_icon_cache_update
 }
