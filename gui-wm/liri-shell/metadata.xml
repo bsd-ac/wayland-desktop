@@ -5,7 +5,4 @@
 		<email>floss@bsd.ac</email>
 		<name>Aisha Tammy</name>
 	</maintainer>
-	<use>
-		<flag name="man">Build and install man pages</flag>
-	</use>
 </pkgmetadata>
