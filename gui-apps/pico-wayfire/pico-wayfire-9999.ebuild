@@ -26,6 +26,7 @@ RDEPEND="
 	gui-apps/swaylock-effects[gdk-pixbuf]
 	gui-apps/waybar[network,popups,pulseaudio,tray]
 	gui-apps/wayland-logout
+	gui-apps/wcm
 	gui-apps/wf-shell
 	gui-apps/wl-clipboard
 	gui-wm/wayfire
