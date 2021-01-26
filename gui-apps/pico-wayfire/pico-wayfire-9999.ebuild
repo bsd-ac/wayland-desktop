@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="ISC"
+LICENSE="GPL-3 ISC CC-BY-NC-ND-3.0"
 SLOT="0"
 
 RDEPEND="
@@ -39,18 +39,11 @@ RDEPEND="
 	x11-themes/beautyline-icon-theme
 	x11-themes/candy-icon-theme
 	x11-themes/oie-icon-theme
+	x11-themes/pico-wayfire-icon-theme
 	x11-themes/sweet-folders-icon-theme
 	x11-themes/sweet-dark-gtk-theme
 "
 
-src_install() {
-	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" VERSION="${PV}" install
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+src_compile() {
+	VERSION="${PV}" default
 }
