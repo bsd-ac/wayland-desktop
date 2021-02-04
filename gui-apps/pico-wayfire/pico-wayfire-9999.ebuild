@@ -25,12 +25,12 @@ RDEPEND="
 	gui-apps/slurp
 	gui-apps/swappy[libnotify]
 	gui-apps/swaylock-effects[gdk-pixbuf]
-	gui-apps/wayfire-plugins-extra
-	gui-apps/waybar[network,popups,pulseaudio,tray,wifi]
+	gui-apps/waybar[network,popups,pulseaudio,tray,wifi(+)]
 	gui-apps/wayland-logout
 	gui-apps/wcm
 	gui-apps/wf-shell
 	gui-apps/wl-clipboard
+	gui-libs/wayfire-plugins-extra
 	media-fonts/fira-code
 	media-fonts/fontawesome[otf,ttf]
 	|| (
