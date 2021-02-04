@@ -1,3 +1,5 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
@@ -25,8 +27,5 @@ PATCHES=( "${FILESDIR}"/${PN}-1.2-Makefile.patch )
 
 src_configure() {
 	tc-export CC
-}
-
-src_install() {
-	LIBDIR="/usr/$(get_libdir)" default
+	export LIBDIR="/usr/$(get_libdir)"
 }
