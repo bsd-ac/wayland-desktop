@@ -7,14 +7,13 @@ inherit xdg
 
 DESCRIPTION="BeautyLine Icons Theme"
 HOMEPAGE="https://www.gnome-look.org/p/1425426"
-SRC_URI="${P}.tar.gz"
+SRC_URI="https://bsd.ac/gentoo-distfiles/${P}.tar.gz"
 KEYWORDS="~amd64"
 S="${WORKDIR}"/BeautyLine
 
 # can't seem to find a license
 LICENSE="all-rights-reserved"
 SLOT="0"
-RESTRICT="fetch"
 IUSE="+no-inherit"
 
 pkg_pretend() {
