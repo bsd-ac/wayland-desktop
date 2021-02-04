@@ -1,0 +1,4 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
+
+no-inherit - modify theme to not inherit from any other themes. WARNING: designed for x11-themes/pico-wayfire-icon-theme, may cause missing icons otherwise

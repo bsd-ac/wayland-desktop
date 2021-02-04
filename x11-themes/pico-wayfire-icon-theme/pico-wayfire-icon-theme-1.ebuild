@@ -1,7 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-EAPI="7"
+EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="meta icon theme for pico-wayfire"
 HOMEPAGE="https://github.com/bsd-ac/pico-wayfire-icon-theme"
@@ -17,15 +19,15 @@ fi
 LICENSE="ISC"
 SLOT="0"
 
+RDEPEND="
+	x11-themes/adwaita-icon-theme
+	x11-themes/beautyline-icon-theme
+	x11-themes/candy-icon-theme
+	x11-themes/hicolor-icon-theme
+	x11-themes/oie-icon-theme
+"
+
 src_install() {
 	insinto /usr/share/icons/PicoWayfire
 	doins -r index.theme scalable
-}
-
-pkg_postinst(){
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

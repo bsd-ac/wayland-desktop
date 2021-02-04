@@ -1,10 +1,11 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-EAPI="7"
+EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="OieIcons Theme"
-
 HOMEPAGE="https://www.opencode.net/adhe/oieicons"
 
 if [[ "${PV}" == "9999" ]]; then
@@ -19,12 +20,13 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
+IUSE="+no-inherit"
 
 # dead symbolic links QA
 src_prepare() {
 	default
-	sed -e "/^Inherits/d" -i OieIcons/index.theme || die
 	find . -xtype l -delete || die
+	use no-inherit && sed -e "/^Inherits/d" -i OieIcons/index.theme || die
 	# gentoo specific
 	ln -s thunderbird.svg "${S}"/OieIcons/scalable/apps/thunderbird-bin.svg || die
 }
@@ -33,12 +35,4 @@ src_install() {
 	cd OieIcons
 	insinto /usr/share/icons/OieIcons
 	doins -r index.theme scalable
-}
-
-pkg_postinst(){
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

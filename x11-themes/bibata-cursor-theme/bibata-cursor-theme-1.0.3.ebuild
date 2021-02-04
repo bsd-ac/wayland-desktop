@@ -1,7 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-EAPI="7"
+EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="material based cursor theme"
 HOMEPAGE="https://github.com/ful1e5/Bibata_Cursor"
@@ -12,7 +14,7 @@ KEYWORDS="~amd64"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+modern original"
-REQUIRED_USE="?? ( modern original )"
+REQUIRED_USE="|| ( modern original )"
 
 src_install() {
 	local flavors_modern=(
@@ -37,12 +39,4 @@ src_install() {
 			doins -r ${flavor}/.
 		done
 	fi
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

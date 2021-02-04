@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>floss@bsd.ac</email>
-        <name>Aisha Tammy</name>
-    </maintainer>
-    <use>
-        <flag name="modern">install modern variants of theme</flag>
-        <flag name="original">install original variation theme</flag>
-    </use>
+	<maintainer type="person">
+		<email>floss@bsd.ac</email>
+		<name>Aisha Tammy</name>
+	</maintainer>
+	<use>
+		<flag name="modern">install modern variantion of the theme</flag>
+		<flag name="original">install original variation of the theme</flag>
+	</use>
 </pkgmetadata>

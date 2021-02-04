@@ -1,11 +1,13 @@
-EAPI="7"
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-inherit xdg-utils
+EAPI=7
+
+inherit xdg
 
 DESCRIPTION="BeautyLine Icons Theme"
-
 HOMEPAGE="https://www.gnome-look.org/p/1425426"
-SRC_URI="BeautyLine.tar.gz"
+SRC_URI="${P}.tar.gz"
 KEYWORDS="~amd64"
 S="${WORKDIR}"/BeautyLine
 
@@ -13,6 +15,7 @@ S="${WORKDIR}"/BeautyLine
 LICENSE="all-rights-reserved"
 SLOT="0"
 RESTRICT="fetch"
+IUSE="+no-inherit"
 
 pkg_pretend() {
 	elog "download the package manually from"
@@ -26,21 +29,14 @@ src_prepare() {
 	find . -xtype l -delete || die
 	mv mimetypes/scalable/application-vnd.oasis.opendocument.text-master.svg{ln,} || die
 	rm apps/scalable/goa-account-msn* || die
-	sed -e "/^Inherits/d" -i index.theme || die
 	# gentoo specific changes
 	ln -s Zoom.svg "${S}"/apps/scalable/zoom-videocam.svg || die
+	# pico wayfire specific changes
+	use no-inherit && sed -e "/^Inherits/d" -i index.theme || die
 }
 
 src_install() {
 	insinto /usr/share/icons/BeautyLine
 	doins -r index.theme actions \
 		apps devices mimetypes places
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

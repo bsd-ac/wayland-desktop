@@ -1,6 +1,7 @@
-EAPI=7
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-inherit xdg-utils
+EAPI=7
 
 DESCRIPTION="dotfiles for creating a consistent look on wayfire"
 HOMEPAGE="https://github.com/bsd-ac/pico-wayfire"
@@ -13,7 +14,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-3 ISC CC-BY-NC-ND-3.0"
+LICENSE="CC-BY-NC-ND-3.0 GPL-3 ISC"
 SLOT="0"
 
 RDEPEND="
@@ -24,26 +25,26 @@ RDEPEND="
 	gui-apps/slurp
 	gui-apps/swappy[libnotify]
 	gui-apps/swaylock-effects[gdk-pixbuf]
-	gui-apps/waybar[network,popups,pulseaudio,tray]
+	gui-apps/wayfire-plugins-extra
+	gui-apps/waybar[network,popups,pulseaudio,tray,wifi]
 	gui-apps/wayland-logout
 	gui-apps/wcm
 	gui-apps/wf-shell
 	gui-apps/wl-clipboard
-	gui-wm/wayfire
-	media-fonts/anonymous-pro
 	media-fonts/fira-code
 	media-fonts/fontawesome[otf,ttf]
-	media-fonts/joypixels
+	|| (
+		media-fonts/noto-emoji
+		media-fonts/joypixels
+	)
+	media-fonts/noto
+	media-fonts/powerline-symbols
 	x11-terms/terminator
 	x11-themes/bibata-cursor-theme[modern]
-	x11-themes/beautyline-icon-theme
-	x11-themes/candy-icon-theme
-	x11-themes/oie-icon-theme
 	x11-themes/pico-wayfire-icon-theme
-	x11-themes/sweet-folders-icon-theme
 	x11-themes/sweet-dark-gtk-theme
 "
 
-src_compile() {
-	VERSION="${PV}" default
+src_configure() {
+	export VERSION="${PV}"
 }

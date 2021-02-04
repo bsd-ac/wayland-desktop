@@ -1,7 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-EAPI="7"
+EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="sweet gradient icons"
 HOMEPAGE="https://github.com/EliverLara/candy-icons"
@@ -18,23 +20,17 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="+no-inherit"
 
 # dead symbolic links QA
 src_prepare() {
 	default
-	sed -e "/^Inherits/d" -i index.theme || die
 	find . -xtype l -delete || die
+	# pico wayfire specific changes
+	use no-inherit && sed -e "/^Inherits/d" -i index.theme || die
 }
 
 src_install() {
 	insinto /usr/share/icons/candy-icons
 	doins -r index.theme apps devices places preferences preview
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

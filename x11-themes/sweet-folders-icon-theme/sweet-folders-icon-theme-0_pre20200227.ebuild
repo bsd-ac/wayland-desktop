@@ -1,10 +1,11 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
-EAPI="7"
+EAPI=7
 
-inherit xdg-utils
+inherit xdg
 
 DESCRIPTION="sweet gradient icons"
-
 HOMEPAGE="https://github.com/EliverLara/Sweet-folders"
 
 if [[ "${PV}" == "9999" ]]; then
@@ -19,24 +20,20 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="+no-inherit"
 
 src_prepare() {
 	default
 	find . -xtype l -delete || die
-	for if in Sweet-*/index.theme; do
-		sed -e "/^Inherits/d" -i ${if} || die
-	done
+	if use no-inherit; then
+		local ifile
+		for ifile in Sweet-*/index.theme; do
+			sed -e "/^Inherits/d" -i "${ifile}" || die
+		done
+	fi
 }
 
 src_install() {
 	insinto /usr/share/icons/
 	doins -r Sweet-*
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
