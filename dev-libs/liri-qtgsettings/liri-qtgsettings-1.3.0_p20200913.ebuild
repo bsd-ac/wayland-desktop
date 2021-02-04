@@ -28,5 +28,6 @@ DEPEND="
 	dev-libs/liri-cmake-shared
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
+	kde-frameworks/extra-cmake-modules:5
 "
 RDEPEND="${DEPEND}"
