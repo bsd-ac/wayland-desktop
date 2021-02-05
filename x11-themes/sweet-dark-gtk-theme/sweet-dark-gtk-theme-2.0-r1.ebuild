@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 src_install() {
-	insinto /usr/share/themes/Sweet
+	insinto /usr/share/themes/Sweet-Dark
 	doins -r assets gnome-shell gtk-{2,3}.0 \
 		  metacity-1 xfwm4 index.theme
 }
