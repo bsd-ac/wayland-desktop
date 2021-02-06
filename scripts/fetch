@@ -1,4 +1,7 @@
 #!/bin/sh
 
 find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
-     -o -wholename "*profile*" -o -wholename "*9999*" \) -exec ebuild {} fetch \;
+     -o -wholename "*profile*" -o -wholename "*9999*" \) -exec env DISTDIR=DISTDIR ebuild {} fetch \;
+
+rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ floss:~/gentoo-distfiles/
+
