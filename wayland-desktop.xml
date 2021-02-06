@@ -1,14 +1,14 @@
 <repositories encoding="unicode" version="1.1">
-  <repo priority="50" quality="experimental">
-    <name>wayland-desktop</name>
-    <description>gentoo overlay for wayland related ebuilds</description>
-    <homepage>https://github.com/bsd-ac/wayland-desktop</homepage>
-    <irc>webchat.freenode.net/?channels=gentoo</irc>
-    <owner>
-      <email>floss@bsd.ac</email>
-      <name>epsilonKNOT</name>
-      <name>Aisha Tammy</name>
-    </owner>
-    <source type="git">https://github.com/bsd-ac/wayland-desktop.git</source>
-  </repo>
+	<repo priority="50" quality="experimental">
+		<name>wayland-desktop</name>
+		<description>gentoo overlay for wayland and desktop related ebuilds</description>
+		<homepage>https://github.com/bsd-ac/wayland-desktop</homepage>
+		<irc>webchat.freenode.net/?channels=gentoo</irc>
+		<owner>
+			<email>floss@bsd.ac</email>
+			<name>epsilonKNOT</name>
+			<name>Aisha Tammy</name>
+		</owner>
+		<source type="git">https://github.com/bsd-ac/wayland-desktop.git</source>
+	</repo>
 </repositories>
