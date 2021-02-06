@@ -1,0 +1,4 @@
+#!/bin/sh
+
+find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
+     -o -wholename "*profile*" -o -wholename "*9999*" \) -exec ebuild {} fetch \;
