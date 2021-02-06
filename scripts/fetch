@@ -1,9 +1,18 @@
 #!/bin/sh
 
+# this script downloads all repos and uploads them to server "floss" which is configured
+# in the ssh config file, ~/.ssh/config, with password-less access using an ssh-key.
+# --rsync-path="/usr/bin/openrsync" is used as it is an OpenBSD remote server
+
+mkdir -p DISTDIR PORTAGE_TMPDIR
+
 find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
      -o -wholename "*profile*" -o -wholename "*9999*" \) -exec env DISTDIR=DISTDIR ebuild {} fetch \;
 
 # need to workaround git-r3
+# git-r3 class has no fetch phase, so we do an unpack with a new PORTAGE_TMPDIR
+# and because its an unpack phase, it will have a memory of unpacking, so we need to
+# remove all history too
 rm -r PORTAGE_TMPDIR/*
 find . -type f -name "*9999.ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
      -o -wholename "*profile*" \) -exec env DISTDIR=DISTDIR PORTAGE_TMPDIR=PORTAGE_TMPDIR ebuild {} unpack \;
