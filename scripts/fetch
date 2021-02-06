@@ -3,5 +3,9 @@
 find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
      -o -wholename "*profile*" -o -wholename "*9999*" \) -exec env DISTDIR=DISTDIR ebuild {} fetch \;
 
-rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ floss:~/gentoo-distfiles/
+# need to workaround git-r3
+rm -r PORTAGE_TMPDIR/*
+find . -type f -name "*9999.ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
+     -o -wholename "*profile*" \) -exec env DISTDIR=DISTDIR PORTAGE_TMPDIR=PORTAGE_TMPDIR ebuild {} unpack \;
 
+rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ floss:~/gentoo-distfiles/
