@@ -1,7 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
-inherit fcaps meson
+inherit bash-completion-r1 fcaps meson
 
 DESCRIPTION="Screen locker for Wayland"
 HOMEPAGE="https://github.com/mortie/swaylock-effects"
@@ -19,7 +21,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 CPU_FLAGS_X86=( "sse" )
-IUSE="+gdk-pixbuf +man +pam ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
+IUSE="fish-completion +gdk-pixbuf man pam ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
 
 DEPEND="
 	dev-libs/wayland
@@ -51,7 +53,7 @@ src_configure() {
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
 		$(meson_use cpu_flags_x86_sse sse)
-		"-Dfish-completions=false"
+		$(meson_use fish-completion fish_completions)
 		"-Dzsh-completions=false"
 		"-Dbash-completions=false"
 	)
@@ -61,7 +63,11 @@ src_configure() {
 	meson_src_configure
 }
 
-pkg_postinst() {
+src_install() {
+	meson_src_install
+	newbashcomp completions/bash/swaylock ${PN}
+	insinto /usr/share/zsh/site-functions
+	doins completions/zsh/_swaylock
 	if ! use pam; then
 		fcaps cap_sys_admin usr/bin/swaylock
 	fi

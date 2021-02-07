@@ -1,7 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
-inherit fcaps meson
+inherit bash-completion-r1 fcaps meson
 
 DESCRIPTION="Screen locker for Wayland"
 HOMEPAGE="https://github.com/mortie/swaylock-effects"
@@ -12,12 +14,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mortie/swaylock-effects.git"
 else
 	SRC_URI="https://github.com/mortie/swaylock-effects/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${PN}-${MY_PV}
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="fish-completion +gdk-pixbuf +man +pam zsh-completion"
+IUSE="fish-completion +gdk-pixbuf man pam"
 
 DEPEND="
 	dev-libs/wayland
@@ -45,22 +48,25 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dman-pages=$(usex man enabled disabled)
-		-Dpam=$(usex pam enabled disabled)
-		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
-		$(meson_use fish-completion fish-completions)
-		$(meson_use zsh-completion zsh-completions)
-		"-Dbash-completions=true"
-		"-Dwerror=false"
+		$(meson_feature man man-pages)
+		$(meson_feature pam)
+		$(meson_feature gdk-pixbuf)
+		$(meson_use cpu_flags_x86_sse sse)
+		$(meson_use fish-completion fish_completions)
+		"-Dzsh-completions=false"
+		"-Dbash-completions=false"
 	)
 	if [[ ${PV} != 9999 ]]; then
-		emesonargs+=("-Dswaylock-version=${PV}")
+		emesonargs+=( "-Dswaylock-version=${PV}" )
 	fi
-
 	meson_src_configure
 }
 
-pkg_postinst() {
+src_install() {
+	meson_src_install
+	newbashcomp completions/bash/swaylock ${PN}
+	insinto /usr/share/zsh/site-functions
+	doins completions/zsh/_swaylock
 	if ! use pam; then
 		fcaps cap_sys_admin usr/bin/swaylock
 	fi
