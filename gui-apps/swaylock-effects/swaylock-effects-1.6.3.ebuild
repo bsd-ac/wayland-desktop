@@ -51,7 +51,6 @@ src_configure() {
 		$(meson_feature man man-pages)
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
-		$(meson_use cpu_flags_x86_sse sse)
 		$(meson_use fish-completion fish-completions)
 		"-Dzsh-completions=false"
 		"-Dbash-completions=false"
