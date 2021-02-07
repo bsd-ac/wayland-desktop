@@ -12,14 +12,12 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mortie/swaylock-effects.git"
 else
 	SRC_URI="https://github.com/mortie/swaylock-effects/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${MY_PV}
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-CPU_FLAGS_X86=( "sse" )
-IUSE="+gdk-pixbuf +man +pam ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
+IUSE="fish-completion +gdk-pixbuf +man +pam zsh-completion"
 
 DEPEND="
 	dev-libs/wayland
@@ -47,17 +45,18 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
-		$(meson_feature pam)
-		$(meson_feature gdk-pixbuf)
-		$(meson_use cpu_flags_x86_sse sse)
-		"-Dfish-completions=false"
-		"-Dzsh-completions=false"
-		"-Dbash-completions=false"
+		-Dman-pages=$(usex man enabled disabled)
+		-Dpam=$(usex pam enabled disabled)
+		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
+		$(meson_use fish-completion fish-completions)
+		$(meson_use zsh-completion zsh-completions)
+		"-Dbash-completions=true"
+		"-Dwerror=false"
 	)
 	if [[ ${PV} != 9999 ]]; then
-		emesonargs+=( "-Dswaylock-version=${PV}" )
+		emesonargs+=("-Dswaylock-version=${PV}")
 	fi
+
 	meson_src_configure
 }
 
