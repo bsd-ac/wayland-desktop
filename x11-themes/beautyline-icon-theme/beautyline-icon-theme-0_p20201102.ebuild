@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="BeautyLine Icons Theme"
 HOMEPAGE="https://www.gnome-look.org/p/1425426"
-SRC_URI="https://bsd.ac/gentoo-distfiles/${P}.tar.gz"
+SRC_URI="mirror://bsd.ac/${P}.tar.gz"
 KEYWORDS="~amd64"
 S="${WORKDIR}"/BeautyLine
 
