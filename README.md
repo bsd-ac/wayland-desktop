@@ -2,6 +2,7 @@
 [![pkgcheck](https://github.com/bsd-ac/wayland-desktop/workflows/pkgcheck/badge.svg)](https://github.com/bsd-ac/wayland-desktop/actions?query=workflow:pkgcheck)
 [![repoman](https://github.com/bsd-ac/wayland-desktop/workflows/repoman/badge.svg)](https://github.com/bsd-ac/wayland-desktop/actions?query=workflow:repoman)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://wiki.gentoo.org/wiki/Contributing_to_Gentoo)
+[![chat on freenode](https://img.shields.io/badge/chat-on%20freenode-brightgreen.svg)](https://webchat.freenode.net/#gentoo-science)
 
 gentoo overlay for wayland related ebuilds
 
@@ -24,3 +25,9 @@ Now you can install packages from the overlay.
 ```
     # emerge --ask --verbose gui-apps/pico-wayfire
 ```
+
+## Licensing and contributing
+
+All ebuilds in this repository are under ISC license, if you want to contribute please make sure you are okay with that.
+
+If making a PR for an ebuild, make sure to add your name to the top of the ebuild with the correct years.
