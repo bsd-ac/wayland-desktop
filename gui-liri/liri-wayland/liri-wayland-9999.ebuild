@@ -1,6 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
+
 EAPI=7
 
-inherit cmake
+inherit cmake virtualx
 
 DESCRIPTION="Liri wayland client and server extensions"
 HOMEPAGE="https://github.com/lirios/wayland"
@@ -20,14 +23,26 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
 	dev-qt/qtwayland:5
 "
-RDEPEND="${DEPEND}"
-BDEPEND="
-	dev-libs/liri-cmake-shared
-	dev-libs/wayland-protocols
-	kde-frameworks/extra-cmake-modules
+DEPEND="${RDEPEND}
+	gui-liri/liri-cmake-shared
 "
+BDEPEND="
+	dev-libs/wayland-protocols
+"
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
+}

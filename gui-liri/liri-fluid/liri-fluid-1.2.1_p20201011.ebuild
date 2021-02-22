@@ -1,6 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
+
 EAPI=7
 
-inherit cmake xdg-utils
+inherit cmake xdg virtualx
 
 DESCRIPTION="Liri library for QtQuick apps with Material Design"
 HOMEPAGE="https://github.com/lirios/fluid"
@@ -18,35 +21,42 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# needs to be installed to test
+RESTRICT="test"
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtquickcontrols2:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwayland:5
 "
-RDEPEND="${DEPEND}"
-BDEPEND="
-	dev-libs/liri-cmake-shared
-	dev-libs/wayland-protocols
-	kde-frameworks/extra-cmake-modules
+DEPEND="${RDEPEND}
+	gui-liri/liri-cmake-shared
+	dev-libs/wayland
 "
+BDEPEND="
+	dev-libs/wayland-protocols
+"
+
+src_prepare() {
+	cmake_src_prepare
+	xdg_src_prepare
+}
 
 src_configure() {
 	mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
 		-DFLUID_USE_SYSTEM_LCS:BOOL=ON
-		-DFLUID_WITH_DOCUMENTATION:BOOL=OFF
 		-DFLUID_WITH_DEMO:BOOL=ON
 		-DFLUID_WITH_QML_MODULES:BOOL=ON
-		-DFLUID_INSTALL_ICONS:BOOL=OFF
+		-DFLUID_INSTALL_ICONS:BOOL=ON
+		-DFLUID_WITH_DOCUMENTATION:BOOL=OFF
 	)
 	cmake_src_configure
 }
 
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+src_test() {
+	virtx cmake_src_test
 }

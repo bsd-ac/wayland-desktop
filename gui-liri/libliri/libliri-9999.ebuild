@@ -1,3 +1,6 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
+
 EAPI=7
 
 inherit cmake
@@ -20,11 +23,26 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
 	dev-qt/qtwayland:5
+	dev-qt/qtxml:5
+"
+DEPEND="${RDEPEND}
+	gui-liri/liri-cmake-shared
 "
 BDEPEND="
 	dev-libs/wayland-protocols
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-0-no_logind_test.patch )
+
+src_configure() {
+	local mycmakeargs=(
+		-DLIRI_BUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}

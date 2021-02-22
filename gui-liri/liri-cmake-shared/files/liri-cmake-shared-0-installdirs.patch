@@ -1,0 +1,35 @@
+diff --git a/modules/LiriBuild.cmake b/modules/LiriBuild.cmake
+index 8fdfad9..11336d7 100644
+--- a/modules/LiriBuild.cmake
++++ b/modules/LiriBuild.cmake
+@@ -3,20 +3,22 @@ set(_LIRI_VERSION_HEADER_TEMPLATE "${CMAKE_CURRENT_LIST_DIR}/LiriModuleVersion.h
+ set(_LIRI_MODULE_CONFIG_TEMPLATE "${CMAKE_CURRENT_LIST_DIR}/LiriModuleConfig.cmake.in")
+ 
+ # Install locations:
+-set(INSTALL_BINDIR "bin" CACHE PATH "Executables [PREFIX/bin]")
+-set(INSTALL_INCLUDEDIR "include" CACHE PATH "Header files [PREFIX/include]")
+-set(INSTALL_LIBDIR "lib" CACHE PATH "Libraries [PREFIX/lib]")
++set(INSTALL_BINDIR "${CMAKE_INSTALL_BINDIR}" CACHE PATH "Executables [PREFIX/bin]")
++set(INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR}" CACHE PATH "Header files [PREFIX/include]")
++set(INSTALL_LIBDIR "${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Libraries [PREFIX/lib]")
+ set(INSTALL_PLUGINSDIR "${INSTALL_LIBDIR}/plugins" CACHE PATH
+     "Plugins [LIBDIR/plugins]")
+-set(INSTALL_LIBEXECDIR "libexec" CACHE PATH "Helper programs [PREFIX/libexec]")
++set(INSTALL_LIBEXECDIR ${CMAKE_INSTALL_LIBEXECDIR}" CACHE PATH "Helper programs [PREFIX/libexec]")
+ set(INSTALL_QMLDIR "${INSTALL_LIBDIR}/qml" CACHE PATH "QML2 imports [LIBDIR/qml]")
+-set(INSTALL_DATADIR "share" CACHE PATH  "Arch-independent data [PREFIX/share]")
+-set(INSTALL_APPLICATIONSDIR "share/applications" CACHE PATH
++set(INSTALL_DATADIR "${CMAKE_INSTALL_DATADIR}" CACHE PATH  "Arch-independent data [PREFIX/share]")
++set(INSTALL_APPLICATIONSDIR "${INSTALL_DATADIR}/applications" CACHE PATH
+     "Desktop entries [PREFIX/share/applications]")
+-set(INSTALL_METAINFODIR "share/metainfo" CACHE PATH
++set(INSTALL_METAINFODIR "${INSTALL_DATADIR}/metainfo" CACHE PATH
+     "AppStream metadata [PREFIX/share/metainfo]")
+ set(INSTALL_DOCDIR "${INSTALL_DATADIR}/doc" CACHE PATH "Documentation [DATADIR/doc]")
+-set(INSTALL_SYSCONFDIR "etc" CACHE PATH "Settings used by Liri programs [PREFIX/etc]")
++set(INSTALL_SYSCONFDIR "${CMAKE_INSTALL_SYSCONFDIR}" CACHE PATH "Settings used by Liri programs [PREFIX/etc]")
++
++include(GNUInstallDirs)
+ 
+ # Make Qt Creator QML syntax highlighting aware of our modules:
+ set(QML_IMPORT_PATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_QMLDIR}" CACHE PATH

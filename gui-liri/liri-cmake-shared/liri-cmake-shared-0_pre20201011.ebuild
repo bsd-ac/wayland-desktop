@@ -21,4 +21,6 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-PATCHES=( "${FILESDIR}"/${PN}-0-libdir.patch )
+RDEPEND="kde-frameworks/extra-cmake-modules"
+
+PATCHES=( "${FILESDIR}"/${PN}-0-installdirs.patch )

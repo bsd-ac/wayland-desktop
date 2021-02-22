@@ -1,0 +1,14 @@
+logind test doesn't work in sandbox
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,9 +47,6 @@ if(LIRI_BUILD_TESTING)
+     if(TARGET Liri::Models)
+         add_subdirectory(tests/auto/core)
+     endif()
+-    if(TARGET Liri::Logind)
+-        add_subdirectory(tests/auto/logind)
+-    endif()
+     if(TARGET Liri::Xdg)
+         add_subdirectory(tests/auto/xdg)
+     endif()

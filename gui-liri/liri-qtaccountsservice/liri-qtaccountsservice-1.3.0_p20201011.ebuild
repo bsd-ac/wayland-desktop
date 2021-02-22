@@ -1,6 +1,9 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
+
 EAPI=7
 
-inherit cmake
+inherit cmake virtualx
 
 DESCRIPTION="Qt-style API for AccountsService DBus service"
 HOMEPAGE="https://github.com/lirios/qtaccountsservice"
@@ -27,5 +30,16 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-libs/liri-cmake-shared
+	gui-liri/liri-cmake-shared
 "
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_src_test
+}

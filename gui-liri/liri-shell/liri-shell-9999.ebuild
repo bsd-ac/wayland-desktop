@@ -1,3 +1,6 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
+
 EAPI=7
 
 inherit cmake
@@ -18,21 +21,23 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="
-	dev-libs/qtgsettings
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgraphicaleffects:5
 	dev-qt/qtquickcontrols2:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwayland:5
-	gui-libs/libliri
-	gui-libs/liri-fluid
-	gui-libs/liri-wayland
+	gui-liri/libliri
+	gui-liri/liri-fluid
+	gui-liri/liri-qtgsettings
+	gui-liri/liri-wayland
 	kde-frameworks/solid:5
 	sys-auth/polkit-qt
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	gui-liri/liri-cmake-shared
+"
 BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig

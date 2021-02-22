@@ -23,11 +23,18 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	dev-libs/glib
-	dev-libs/liri-cmake-shared
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
-	kde-frameworks/extra-cmake-modules:5
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	gui-liri/liri-cmake-shared
+"
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}

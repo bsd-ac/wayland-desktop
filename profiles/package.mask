@@ -1,3 +1,11 @@
 # Aisha Tammy <floss@bsd.ac>
+# mask liri-meta as not everythig is ported
+gui-liri/liri-meta
+
+# Aisha Tammy <floss@bsd.ac>
+# porting not yet complete
+gui-liri/liri-shell
+
+# Aisha Tammy <floss@bsd.ac>
 # mask westeros for now as it doesn't build
 gui-libs/westeros
