@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit ecm
 
 DESCRIPTION="shared cmake configuration utils for liri"
 HOMEPAGE="https://github.com/lirios/cmake-shared"
@@ -26,9 +26,10 @@ RDEPEND="
 	dev-qt/qtcore:5
 	gui-liri/libliri
 	gui-liri/liri-qtudev
-	x11-libs/libdrm
 	media-libs/mesa[gbm,egl]
+	x11-libs/libdrm
 "
 DEPEND="${RDEPEND}
+	gui-liri/liri-cmake-shared
 	media-libs/libglvnd
 "

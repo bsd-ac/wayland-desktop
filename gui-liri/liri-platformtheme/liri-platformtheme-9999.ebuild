@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit ecm
 
 DESCRIPTION="QtQuick and Wayland shell for convergence"
 HOMEPAGE="https://github.com/lirios/shell"

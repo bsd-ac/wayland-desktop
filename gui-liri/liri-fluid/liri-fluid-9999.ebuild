@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg virtualx
+inherit ecm
 
 DESCRIPTION="Liri library for QtQuick apps with Material Design"
 HOMEPAGE="https://github.com/lirios/fluid"
@@ -40,11 +40,6 @@ BDEPEND="
 	dev-libs/wayland-protocols
 "
 
-src_prepare() {
-	cmake_src_prepare
-	xdg_src_prepare
-}
-
 src_configure() {
 	mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
@@ -54,9 +49,5 @@ src_configure() {
 		-DFLUID_INSTALL_ICONS:BOOL=ON
 		-DFLUID_WITH_DOCUMENTATION:BOOL=OFF
 	)
-	cmake_src_configure
-}
-
-src_test() {
-	virtx cmake_src_test
+	ecm_src_configure
 }

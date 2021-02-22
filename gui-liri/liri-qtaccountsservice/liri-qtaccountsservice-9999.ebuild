@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake virtualx
+inherit ecm
 
 DESCRIPTION="Qt-style API for AccountsService DBus service"
 HOMEPAGE="https://github.com/lirios/qtaccountsservice"
@@ -37,9 +37,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 	)
-	cmake_src_configure
-}
-
-src_test() {
-	virtx cmake_src_test
+	ecm_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit ecm
 
 DESCRIPTION="Qt wrapper for GSettings for Liri"
 HOMEPAGE="https://github.com/lirios/qtgsettings"
@@ -36,5 +36,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 	)
-	cmake_src_configure
+	ecm_src_configure
 }

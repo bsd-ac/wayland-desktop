@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit ecm
 
 DESCRIPTION="QtQuick and Wayland shell for convergence"
 HOMEPAGE="https://github.com/lirios/shell"
@@ -54,5 +54,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIRI_ENABLE_SYSTEMD=$(usex systemd)
 	)
-	cmake_src_configure
+	ecm_src_configure
 }

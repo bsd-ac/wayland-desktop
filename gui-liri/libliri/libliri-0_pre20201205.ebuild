@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit ecm
 
 DESCRIPTION="Liri core library"
 HOMEPAGE="https://github.com/lirios/libliri"
@@ -44,5 +44,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIRI_BUILD_TESTING=$(usex test)
 	)
-	cmake_src_configure
+	ecm_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake virtualx
+inherit ecm
 
 DESCRIPTION="Liri wayland client and server extensions"
 HOMEPAGE="https://github.com/lirios/wayland"
@@ -40,9 +40,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 	)
-	cmake_src_configure
-}
-
-src_test() {
-	virtx cmake_src_test
+	ecm_src_configure
 }
