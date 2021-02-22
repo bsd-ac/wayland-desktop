@@ -10,12 +10,12 @@ index 8fdfad9..11336d7 100644
 -set(INSTALL_INCLUDEDIR "include" CACHE PATH "Header files [PREFIX/include]")
 -set(INSTALL_LIBDIR "lib" CACHE PATH "Libraries [PREFIX/lib]")
 +set(INSTALL_BINDIR "${CMAKE_INSTALL_BINDIR}" CACHE PATH "Executables [PREFIX/bin]")
-+set(INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR}" CACHE PATH "Header files [PREFIX/include]")
++set(INSTALL_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}" CACHE PATH "Header files [PREFIX/include]")
 +set(INSTALL_LIBDIR "${CMAKE_INSTALL_LIBDIR}" CACHE PATH "Libraries [PREFIX/lib]")
  set(INSTALL_PLUGINSDIR "${INSTALL_LIBDIR}/plugins" CACHE PATH
      "Plugins [LIBDIR/plugins]")
 -set(INSTALL_LIBEXECDIR "libexec" CACHE PATH "Helper programs [PREFIX/libexec]")
-+set(INSTALL_LIBEXECDIR ${CMAKE_INSTALL_LIBEXECDIR}" CACHE PATH "Helper programs [PREFIX/libexec]")
++set(INSTALL_LIBEXECDIR "${CMAKE_INSTALL_LIBEXECDIR}" CACHE PATH "Helper programs [PREFIX/libexec]")
  set(INSTALL_QMLDIR "${INSTALL_LIBDIR}/qml" CACHE PATH "QML2 imports [LIBDIR/qml]")
 -set(INSTALL_DATADIR "share" CACHE PATH  "Arch-independent data [PREFIX/share]")
 -set(INSTALL_APPLICATIONSDIR "share/applications" CACHE PATH
