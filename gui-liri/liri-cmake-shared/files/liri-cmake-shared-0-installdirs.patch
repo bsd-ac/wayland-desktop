@@ -5,6 +5,8 @@ index 8fdfad9..11336d7 100644
 @@ -3,20 +3,22 @@ set(_LIRI_VERSION_HEADER_TEMPLATE "${CMAKE_CURRENT_LIST_DIR}/LiriModuleVersion.h
  set(_LIRI_MODULE_CONFIG_TEMPLATE "${CMAKE_CURRENT_LIST_DIR}/LiriModuleConfig.cmake.in")
  
++
++include(GNUInstallDirs)
  # Install locations:
 -set(INSTALL_BINDIR "bin" CACHE PATH "Executables [PREFIX/bin]")
 -set(INSTALL_INCLUDEDIR "include" CACHE PATH "Header files [PREFIX/include]")
@@ -28,8 +30,6 @@ index 8fdfad9..11336d7 100644
  set(INSTALL_DOCDIR "${INSTALL_DATADIR}/doc" CACHE PATH "Documentation [DATADIR/doc]")
 -set(INSTALL_SYSCONFDIR "etc" CACHE PATH "Settings used by Liri programs [PREFIX/etc]")
 +set(INSTALL_SYSCONFDIR "${CMAKE_INSTALL_SYSCONFDIR}" CACHE PATH "Settings used by Liri programs [PREFIX/etc]")
-+
-+include(GNUInstallDirs)
  
  # Make Qt Creator QML syntax highlighting aware of our modules:
  set(QML_IMPORT_PATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_QMLDIR}" CACHE PATH
