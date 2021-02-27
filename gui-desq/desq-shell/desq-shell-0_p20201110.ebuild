@@ -1,3 +1,5 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
@@ -26,9 +28,9 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtsvg:5
-	gui-libs/libdesq:=
-	gui-libs/libdesqwl:=
-	gui-libs/libdesqui:=
+	gui-desq/libdesq:=
+	gui-desq/libdesqwl:=
+	gui-desq/libdesqui:=
 "
 RDEPEND="${DEPEND}
 	x11-misc/qt5ct

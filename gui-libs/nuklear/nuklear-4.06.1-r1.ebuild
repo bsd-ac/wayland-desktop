@@ -1,3 +1,5 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
@@ -14,15 +16,12 @@ SLOT="$(ver_rs 1)/$(ver_rs 2)"
 # C89 and ANSI C library
 KEYWORDS="~amd64"
 LICENSE="MIT Unlicense"
-IUSE="+extras"
 
 HTML_DOCS=( "doc/nuklear.html" )
 
 src_install() {
 	doheader nuklear.h
 	dosym ../nuklear.h /usr/include/nuklear/nuklear.h
-	use extras && \
-		FONT_SUFFIX="ttf" \
-		FONT_S="${S}/extra_font/" font_src_install
+	FONT_SUFFIX="ttf" FONT_S="${S}/extra_font/" font_src_install
 	einstalldocs
 }

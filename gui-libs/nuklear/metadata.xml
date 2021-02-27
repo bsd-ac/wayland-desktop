@@ -5,7 +5,4 @@
         <email>floss@bsd.ac</email>
         <name>Aisha Tammy</name>
     </maintainer>
-    <use>
-        <flag name="extras">install fonts shipped with package</flag>
-    </use>
 </pkgmetadata>

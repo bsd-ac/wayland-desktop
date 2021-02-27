@@ -1,3 +1,5 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
@@ -25,7 +27,7 @@ DEPEND="
 	dev-qt/qtgui:5[wayland,X]
 	dev-qt/qtwayland:5[X]
 	dev-libs/wayland
-	gui-libs/libdesq:=
+	gui-desq/libdesq:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

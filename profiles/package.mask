@@ -1,0 +1,17 @@
+# Aisha Tammy (2021-02-27)
+# Currently, liri projects are not working.
+# Mask until fixed
+gui-liri/libliri
+gui-liri/liri-cmake-shared
+gui-liri/liri-eglfs
+gui-liri/liri-fluid
+gui-liri/liri-platformtheme
+gui-liri/liri-qml-xwayland
+gui-liri/liri-qtaccountsservice
+gui-liri/liri-qtgsettings
+gui-liri/liri-qtudev
+gui-liri/liri-session
+gui-liri/liri-shell
+gui-liri/liri-wayland
+gui-liri/liri-xdg-desktop-portal
+

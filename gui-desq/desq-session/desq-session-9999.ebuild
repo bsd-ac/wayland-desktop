@@ -1,3 +1,5 @@
+# Copyright 2021 Aisha Tammy
+# Distributed under the terms of the ISC License
 
 EAPI=7
 
@@ -23,13 +25,13 @@ SLOT="0"
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	gui-libs/libdesq:=
-	gui-libs/libdesqwl:=
+	gui-desq/libdesq:=
+	gui-desq/libdesqwl:=
 	x11-libs/libxcb[xkb]
 "
 RDEPEND="${DEPEND}
-	gui-apps/desq-shell
-	gui-apps/desq-settings
+	gui-desq/desq-shell
+	gui-desq/desq-settings
 	gui-wm/wayfire
 "
 BDEPEND="

@@ -1,0 +1,7 @@
+move gui-apps/desq-polkit gui-desq/desq-polkit
+move gui-apps/desq-session gui-desq/desq-session
+move gui-apps/desq-settings gui-desq/desq-settings
+move gui-apps/desq-shell gui-desq/desq-shell
+move gui-libs/libdesq gui-desq/libdesq
+move gui-libs/libdesqui gui-desq/libdesqui
+move gui-libs/libdesqwl gui-desq/libdesqwl
