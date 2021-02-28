@@ -22,9 +22,9 @@ LICENSE="GPL-3"
 SLOT="0"
 
 DEPEND="
-	dev-libs/libdbusmenu-qt
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[wayland,X]
+	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtsvg:5
 	gui-desq/libdesq

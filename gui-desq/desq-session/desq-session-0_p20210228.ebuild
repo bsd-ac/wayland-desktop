@@ -25,8 +25,6 @@ DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	gui-desq/libdesq
-	gui-desq/libdesqwl
-	x11-libs/libxcb[xkb]
 "
 RDEPEND="${DEPEND}
 	gui-desq/desq-shell

@@ -23,7 +23,7 @@ SLOT="0"
 
 DEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[X]
+	dev-qt/qtgui:5[wayland,X]
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5[X]
 	gui-desq/libdesq

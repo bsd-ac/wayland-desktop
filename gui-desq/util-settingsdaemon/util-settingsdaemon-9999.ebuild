@@ -24,6 +24,6 @@ SLOT="0"
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[wayland,X]
 "
 RDEPEND="${DEPEND}"
