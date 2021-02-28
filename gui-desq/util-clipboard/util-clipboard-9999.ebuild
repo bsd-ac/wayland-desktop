@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake xdg
+inherit xdg cmake
 
 DESCRIPTION="Simple clipboard for DesQ Shell"
 HOMEPAGE="https://desq-project.org/"
@@ -31,3 +31,8 @@ DEPEND="
 	gui-desq/libdesqwl
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	xdg_src_prepare
+	cmake_src_prepare
+}
