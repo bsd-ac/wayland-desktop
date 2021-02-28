@@ -1,0 +1,47 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2f94251..a5d4412 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,7 @@ set(QT_MIN_VERSION "5.10.0")
+ include(LiriSetup)
+ 
+ ## Features:
++option(LIRI_ENABLE_PIPEWIRE "Enable pipewire support" OFF)
+ option(LIRI_ENABLE_SYSTEMD "Enable systemd support" ON)
+ add_feature_info("Liri::Systemd" LIRI_ENABLE_SYSTEMD "Enable systemd support")
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 46e6cb6..07c05c7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -18,9 +18,8 @@ if(NOT TARGET Liri::Xdg)
+     find_package(Liri1Xdg REQUIRED)
+ endif()
+ 
+-find_package(PipeWire)
+-
+-if(TARGET PkgConfig::PipeWire)
++if(LIRI_ENABLE_PIPEWIRE)
++    find_package(PipeWire REQUIRED)
+     find_package(Libdrm REQUIRED)
+ endif()
+ 
+@@ -104,9 +103,11 @@ liri_add_executable(XdgDesktopPortalLiri
+         Liri::Xdg
+ )
+ 
+-if(TARGET PkgConfig::PipeWire)
+-    liri_extend_target("XdgDesktopPortalLiri"
+-        DEFINES SCREENCAST_ENABLED
+-        SOURCES "${screencast_SOURCES}"
+-        LIBRARIES "PkgConfig::PipeWire;PkgConfig::Libdrm")
+-endif()
+\ No newline at end of file
++if(LIRI_ENABLE_PIPEWIRE)
++    if(TARGET PkgConfig::PipeWire)
++        liri_extend_target("XdgDesktopPortalLiri"
++            DEFINES SCREENCAST_ENABLED
++            SOURCES "${screencast_SOURCES}"
++            LIBRARIES "PkgConfig::PipeWire;PkgConfig::Libdrm")
++    endif()
++endif()
