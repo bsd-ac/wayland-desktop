@@ -31,5 +31,4 @@ DEPEND="
 RDEPEND="${DEPEND}
 	gui-desq/desq-shell
 	gui-desq/util-settingsdaemon
-	gui-wm/wayfire
 "

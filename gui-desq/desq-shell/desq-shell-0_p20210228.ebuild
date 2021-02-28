@@ -32,5 +32,6 @@ DEPEND="
 	gui-desq/libdesqui
 "
 RDEPEND="${DEPEND}
+	gui-wm/wayfire
 	x11-misc/qt5ct
 "
