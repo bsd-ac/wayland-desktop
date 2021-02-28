@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="dotfiles for creating a consistent look on wayfire"
+DESCRIPTION="Opinionated dotfiles for a consistent look on wayfire"
 HOMEPAGE="https://github.com/bsd-ac/pico-wayfire"
 
 if [[ "${PV}" = 9999 ]]; then
