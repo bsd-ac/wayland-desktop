@@ -3,6 +3,7 @@
 
 EAPI=7
 
+FONT_SUFFIX=ttf
 inherit font
 
 DESCRIPTION="joypixels font for better emoji and unicode support"
@@ -13,17 +14,11 @@ KEYWORDS="~amd64"
 S="${WORKDIR}"
 
 #https://cdn.joypixels.com/distributions/gentoo-linux/appendix/joypixels-license-appendix.txt
+#https://cdn.joypixels.com/distributions/gentoo-linux/license/free-license.txt
 LICENSE="JoyPixels"
 SLOT="0"
-
-FONT_CONF=( "${FILESDIR}"/75-joypixels.conf )
 
 src_prepare() {
 	default
 	cp "${DISTDIR}"/${P}.ttf "${S}"/${P}.ttf || die
-}
-
-src_install() {
-	FONT_SUFFIX=ttf font_src_install
-	font_fontconfig
 }
