@@ -1,3 +1,22 @@
+# Aisha Tammy (2021-03-01)
+# DesQ projects are segfaulting
+gui-desq/desq-meta
+gui-desq/desq-session
+gui-desq/desq-shell
+gui-desq/libdesq
+gui-desq/libdesqui
+gui-desq/libdesqwl
+gui-desq/plugins-sni
+gui-desq/util-clipboard
+gui-desq/util-dock
+gui-desq/util-osk
+gui-desq/util-panel
+gui-desq/util-polkitexec
+gui-desq/util-powerdaemon
+gui-desq/util-powermanager
+gui-desq/util-settingsdaemon
+gui-desq/util-splash
+
 # Aisha Tammy (2021-02-28)
 # Does not build with latest wlroots
 gui-wm/labwc
