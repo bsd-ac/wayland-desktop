@@ -3,7 +3,11 @@
 
 EAPI=7
 
-DESCRIPTION="Openbox alternative for wayland"
+# NOTE: zig is weird it is doing the install during
+#       the compile phase for some reason, so we
+#       first do the install to a temporary directory
+
+DESCRIPTION="Dynamic tiling wayland compositor"
 HOMEPAGE="https://github.com/johanmalm/labwc"
 
 if [[ ${PV} == 9999 ]]; then
@@ -16,15 +20,16 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
-IUSE="doc +X"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
 	dev-libs/wayland
-	gui-libs/wlroots[X]
+	<gui-libs/wlroots-9999[X,x11-backend]
 	x11-libs/cairo[X]
 	x11-libs/libxkbcommon:=[X]
 	x11-libs/pixman
@@ -34,14 +39,30 @@ BDEPEND="
 	>=dev-lang/zig-0.7.1
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
-	doc? ( app-text/scdoc )
+	app-text/scdoc
 "
 
+src_configure() {
+	export zigoptions=(
+		--verbose
+		-Drelease-safe
+		-Dxwayland=true
+		-Dman-pages=true
+		-Dexamples=false
+		"${EXTRA_ECONF[@]}"
+	)
+	export CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
+}
+
 src_compile() {
-	local -x CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
-	zig build -Drelease-safe || die
+	zig build "${zigoptions[@]}" --prefix "${T}/temp_install" || die
+}
+
+src_test() {
+	zig build test "${zigoptions[@]}" --prefix "${T}/temp_install" || die
 }
 
 src_install() {
-	zig --prefix="${ED}/usr" install || die
+	zig build install "${zigoptions[@]}" --prefix "${ED}/usr" || die
+	mv "${ED}"/usr/etc "${ED}" || die
 }

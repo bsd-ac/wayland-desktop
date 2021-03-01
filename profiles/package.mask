@@ -1,7 +1,6 @@
 # Aisha Tammy (2021-02-28)
 # Does not build with latest wlroots
 gui-wm/labwc
-gui-wm/river
 gui-wm/waybox
 
 # Aisha Tammy (2021-02-27)
