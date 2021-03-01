@@ -4,7 +4,7 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://wiki.gentoo.org/wiki/Contributing_to_Gentoo)
 [![chat on freenode](https://img.shields.io/badge/chat-on%20freenode-brightgreen.svg)](https://webchat.freenode.net/#gentoo-science)
 
-gentoo overlay for wayland related ebuilds
+Gentoo overlay for Wayland related ebuilds
 
 ## Activate overlay (via eselect-repository)
 
@@ -13,21 +13,30 @@ gentoo overlay for wayland related ebuilds
 ```
 
 ## Using packages from the overlay
-If you are running on the stable branch by default, allow **~amd64** keyword files from this repository.
+
+### AMD64
+
+If running on the stable **amd64** branch by default, unstable **~amd64** keywords must be allowed for packages from this repository.
 Make sure that `/etc/portage/package.accept_keywords` exists and is a directory.
 
 ```
-    $ echo "*/*::wayland-desktop ~amd64" >> /etc/portage/package.accept_keywords/wayland-desktop
+    $ echo "*/*::wayland-desktop ~amd64" > /etc/portage/package.accept_keywords/wayland-desktop
+    $ emerge --ask --verbose gui-apps/pico-wayfire
 ```
 
-Now you can install packages from the overlay.
+### Other ARCHs
+
+Unless really important, all ebuilds from this overlay will only have the **~amd64** *USE* flag, for ease of maintenance.
+
+If running on a different *ARCH*, all keywords must be accepted.
 
 ```
-    # emerge --ask --verbose gui-apps/pico-wayfire
+    $ echo "*/*::wayland-desktop **" > /etc/portage/package.accept_keywords/wayland-desktop
+    $ emerge --ask --verbose gui-apps/pico-wayfire
 ```
 
 ## Licensing and contributing
 
-All ebuilds in this repository are under ISC license, if you want to contribute please make sure you are okay with that.
+All ebuilds in this repository are under the [ISC license](LICENSE).
 
-If making a PR for an ebuild, make sure to add your name to the top of the ebuild with the correct years.
+Any users who wish to contribute should know and be comfortable with this. When making a PR, make sure to add the appropriate name and years to the top of the ebuilds.
