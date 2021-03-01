@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
 	dev-libs/wayland
-	<gui-libs/wlroots-9999[X,x11-backend]
+	<gui-libs/wlroots-9999[X]
 	x11-libs/cairo[X]
 	x11-libs/libxkbcommon:=[X]
 	x11-libs/pixman
