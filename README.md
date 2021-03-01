@@ -10,6 +10,7 @@ Gentoo overlay for Wayland related ebuilds
 
 ```
     $ eselect repository enable wayland-desktop
+    $ emaint sync --repo wayland-desktop
 ```
 
 ## Using packages from the overlay
