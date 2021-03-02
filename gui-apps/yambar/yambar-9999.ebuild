@@ -21,9 +21,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="modules"
 
-DEPEND="
+RDEPEND="
 	dev-libs/libyaml
-	dev-libs/tllist
 	dev-libs/wayland
 	media-libs/fcft
 	x11-libs/cairo
@@ -35,7 +34,9 @@ DEPEND="
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-wm
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/tllist
+"
 BDEPEND="
 	app-text/scdoc
 	dev-libs/wayland-protocols
@@ -44,9 +45,10 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use modules core-plugins-as-shared-libraries)
+		-Dwerror=false
 		-Dbackend-x11=enabled
 		-Dbackend-wayland=enabled
+		$(meson_use modules core-plugins-as-shared-libraries)
 	)
 	meson_src_configure
 }
