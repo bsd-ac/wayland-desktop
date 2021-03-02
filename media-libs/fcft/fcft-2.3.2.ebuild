@@ -22,23 +22,21 @@ SLOT="0"
 IUSE="+text-shaping"
 
 RDEPEND="
-	dev-libs/tllist
 	media-libs/harfbuzz
 	media-libs/fontconfig
 	media-libs/freetype
 	x11-libs/pixman
 "
+DEPEND="${RDEPEND}
+	dev-libs/tllist
+"
 BDEPEND="
 	app-text/scdoc
 "
 
-src_prepare() {
-	default
-	sed -e "/werror/d" -i meson.build || die
-}
-
 src_configure() {
 	local emesonargs=(
+		-Dwerror=false
 		$(meson_feature text-shaping)
 	)
 	meson_src_configure
