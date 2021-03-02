@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 fcaps meson
+inherit bash-completion-r1 meson
 
 DESCRIPTION="Screen locker for Wayland"
 HOMEPAGE="https://github.com/mortie/swaylock-effects"
@@ -20,8 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-CPU_FLAGS_X86=( "sse" )
-IUSE="fish-completion +gdk-pixbuf man pam ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
+IUSE="fish-completion +gdk-pixbuf pam cpu_flags_x86_sse"
 
 DEPEND="
 	dev-libs/wayland
@@ -34,41 +33,40 @@ RDEPEND="${DEPEND}
 	!gui-apps/swaylock
 "
 BDEPEND="
+	app-text/scdoc
 	>=dev-libs/wayland-protocols-1.14
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 "
 
 src_prepare() {
 	default
-	sed -e "/werror=true/d" \
-	    -e "/mtune=native/d" \
+	sed -e "/mtune=native/d" \
 	    -e "/-O3/d" \
 	    -i meson.build || die
 }
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dwerror=false
+		-Dman-pages=enabled
+		-Dzsh-completions=false
+		-Dbash-completions=false
+		-Dswaylock-version=${PV}
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
 		$(meson_use cpu_flags_x86_sse sse)
 		$(meson_use fish-completion fish-completions)
-		"-Dzsh-completions=false"
-		"-Dbash-completions=false"
 	)
-	if [[ ${PV} != 9999 ]]; then
-		emesonargs+=( "-Dswaylock-version=${PV}" )
-	fi
 	meson_src_configure
 }
 
 src_install() {
 	meson_src_install
-	newbashcomp completions/bash/swaylock ${PN}
+	newbashcomp completions/bash/swaylock swaylock
 	insinto /usr/share/zsh/site-functions
 	doins completions/zsh/_swaylock
 	if ! use pam; then
-		fcaps cap_sys_admin usr/bin/swaylock
+		fowners root:0 /usr/bin/wayfire
+		fperms 4511 /usr/bin/wayfire
 	fi
 }
