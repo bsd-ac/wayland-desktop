@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit xdg cmake
 
 DESCRIPTION="main user interface shell for DesQ"
 HOMEPAGE="https://desq-project.org/"
@@ -33,6 +33,20 @@ DEPEND="
 	gui-desq/libdesqui
 "
 RDEPEND="${DEPEND}
+	gui-desq/util-settingsdaemon
 	gui-wm/wayfire
 	x11-misc/qt5ct
 "
+
+src_prepare() {
+	xdg_src_prepare
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DPKGCONFPATH="${EPREFIX}"/etc/xdg/desq
+		-DPKGSHAREDPATH=share/desq
+	)
+	cmake_src_configure
+}

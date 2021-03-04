@@ -30,3 +30,11 @@ RDEPEND="${DEPEND}
 	gui-desq/desq-shell
 	gui-desq/util-settingsdaemon
 "
+
+src_configure() {
+	local mycmakeargs=(
+		-DPKGCONFPATH="${EPREFIX}"/etc/xdg/desq
+		-DPKGSHAREDPATH=share/desq
+	)
+	cmake_src_configure
+}

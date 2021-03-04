@@ -28,3 +28,11 @@ DEPEND="
 	dev-libs/wayland
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DPKGCONFPATH="${EPREFIX}"/etc/xdg/desq
+		-DPKGSHAREDPATH=share/desq
+	)
+	cmake_src_configure
+}

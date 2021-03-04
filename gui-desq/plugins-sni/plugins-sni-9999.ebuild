@@ -21,6 +21,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 DEPEND="
+	dev-libs/libdbusmenu-qt5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[wayland,X]
@@ -29,3 +30,11 @@ DEPEND="
 	gui-desq/libdesqwl
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DPKGCONFPATH="${EPREFIX}"/etc/xdg/desq
+		-DPKGSHAREDPATH=share/desq
+	)
+	cmake_src_configure
+}

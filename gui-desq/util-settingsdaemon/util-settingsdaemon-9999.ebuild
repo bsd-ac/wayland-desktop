@@ -27,3 +27,11 @@ DEPEND="
 	dev-qt/qtgui:5[wayland,X]
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DPKGCONFPATH="${EPREFIX}"/etc/xdg/desq
+		-DPKGSHAREDPATH=share/desq
+	)
+	cmake_src_configure
+}
