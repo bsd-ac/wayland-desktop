@@ -23,7 +23,7 @@ RDEPEND="
 	gui-apps/mako
 	gui-apps/nwg-launchers[bar,dmenu,grid]
 	gui-apps/slurp
-	gui-apps/swappy[libnotify]
+	gui-apps/swappy
 	gui-apps/swaylock-effects[gdk-pixbuf]
 	gui-apps/waybar[network,popups,pulseaudio,tray,wifi(+)]
 	gui-apps/wayland-logout
