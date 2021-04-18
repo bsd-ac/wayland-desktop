@@ -1,5 +1,5 @@
 # Copyright 2021 Aisha Tammy
-# Copyright 2021 Ichika Omamori
+# Copyright 2021 Ichika Zou
 # Distributed under the terms of the ISC License
 
 EAPI=7
