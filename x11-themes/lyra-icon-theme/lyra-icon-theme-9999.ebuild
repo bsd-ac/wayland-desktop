@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="ISC"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE="no-inherit"
 
