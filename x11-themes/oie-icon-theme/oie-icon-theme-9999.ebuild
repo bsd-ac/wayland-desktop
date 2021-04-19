@@ -20,7 +20,7 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+no-inherit"
+IUSE="no-inherit"
 
 # dead symbolic links QA
 src_prepare() {

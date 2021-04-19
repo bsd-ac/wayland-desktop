@@ -13,7 +13,7 @@ S="${WORKDIR}"/BeautyLine
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+no-inherit"
+IUSE="no-inherit"
 
 src_prepare() {
 	default

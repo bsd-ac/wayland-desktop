@@ -14,7 +14,7 @@ S="${WORKDIR}"/BeautyLine
 # can't seem to find a license
 LICENSE="all-rights-reserved"
 SLOT="0"
-IUSE="+no-inherit"
+IUSE="no-inherit"
 
 pkg_pretend() {
 	elog "download the package manually from"
