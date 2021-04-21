@@ -17,10 +17,6 @@ gui-desq/util-powermanager
 gui-desq/util-settingsdaemon
 gui-desq/util-splash
 
-# Aisha Tammy (2021-02-28)
-# Does not build with latest wlroots
-gui-wm/waybox
-
 # Aisha Tammy (2021-02-27)
 # Currently, liri projects are not working.
 # Mask until fixed
