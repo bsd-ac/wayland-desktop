@@ -28,6 +28,8 @@ src_prepare() {
 	find . -xtype l -delete || die
 	# pico wayfire specific changes
 	use no-inherit && sed -e "/^Inherits/d" -i index.theme || die
+	ln -s dropbox.svg apps/scalable/dropboxstatus-logo.svg || die
+	ln -s zoom-desktop.svg apps/scalable/zoom-videocam.svg || die
 }
 
 src_install() {
