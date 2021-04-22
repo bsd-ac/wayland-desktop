@@ -18,8 +18,6 @@ else
 	KEYWORDS="~amd64"
 fi
 
-CMAKE_USE_DIR="${S}"/src
-
 LICENSE="GPL-3"
 SLOT="0"
 
