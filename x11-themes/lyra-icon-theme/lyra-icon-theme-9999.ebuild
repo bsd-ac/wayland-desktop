@@ -25,6 +25,7 @@ SLOT="0"
 IUSE="no-inherit"
 
 src_compile() {
+	find . -xtype l -delete || die
 	mkdir "${T}"/generated || die
 	./install.sh -a -d "${T}"/generated || die
 }
@@ -32,8 +33,9 @@ src_compile() {
 src_install() {
 	insinto /usr/share/icons/
 	for themev in "${T}"/generated/*; do
-		use no-inherit && sed -e "/^Inherits/d" \
-				      -i "${themev}"/index.theme || die
+		if use no-inherit ; then
+			sed -e "/^Inherits/d" -i "${themev}"/index.theme || die
+		fi
 		doins -r "${themev}"
 	done
 }
