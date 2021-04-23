@@ -4,7 +4,7 @@
 # in the ssh config file, ~/.ssh/config, with password-less access using an ssh-key.
 # --rsync-path="/usr/bin/openrsync" is used as it is an OpenBSD remote server
 
-mkdir -p DISTDIR PORTAGE_TMPDIR
+mkdir -p DISTDIR DISTDIR_GIT PORTAGE_TMPDIR
 
 find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
      -o -wholename "*profile*" -o -wholename "*9999*" \) -exec env DISTDIR=DISTDIR ebuild {} fetch \;
@@ -13,8 +13,8 @@ find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*
 # git-r3 class has no fetch phase, so we do an unpack with a new PORTAGE_TMPDIR
 # and because its an unpack phase, it will have a memory of unpacking, so we need to
 # remove all history too
-rm -r PORTAGE_TMPDIR/*
+rm -r PORTAGE_TMPDIR/portage
 find . -type f -name "*9999.ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
-     -o -wholename "*profile*" \) -exec env DISTDIR=DISTDIR PORTAGE_TMPDIR=PORTAGE_TMPDIR ebuild {} clean unpack \;
+     -o -wholename "*profile*" \) -exec env DISTDIR=DISTDIR_GIT PORTAGE_TMPDIR=PORTAGE_TMPDIR ebuild {} clean unpack \;
 
-rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ floss:~/gentoo-distfiles/
+rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ PORTAGE_TMPDIR/portage/*/*/work/ floss:~/gentoo-distfiles/
