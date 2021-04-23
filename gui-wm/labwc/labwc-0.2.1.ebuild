@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+man +X"
+IUSE="+X"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -33,15 +33,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-text/scdoc
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 "
 
 src_configure() {
 	local emesonargs=(
 		$(meson_feature X xwayland)
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 	)
 	meson_src_configure
 }
