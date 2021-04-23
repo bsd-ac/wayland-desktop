@@ -14,6 +14,8 @@ KEYWORDS="~amd64"
 LICENSE="GPL-3"
 SLOT="0"
 
+PATCHES=( "${FILESDIR}"/sweet-dark-gtk-theme-2.0-height-fix.patch )
+
 src_install() {
 	insinto /usr/share/themes/Sweet-Dark
 	doins -r assets gnome-shell gtk-{2,3}.0 \
