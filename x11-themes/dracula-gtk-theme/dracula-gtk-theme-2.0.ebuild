@@ -8,8 +8,8 @@ inherit xdg
 DESCRIPTION="Dracula GTK theme"
 HOMEPAGE="https://draculatheme.com/gtk"
 SRC_URI="
-	https://github.com/dracula/gtk/releases/download/v${PV}/Dracula-pink-accent.tar.xz
-	https://github.com/dracula/gtk/releases/download/v${PV}/Dracula.tar.xz
+	https://github.com/dracula/gtk/releases/download/v${PV}/Dracula-pink-accent.tar.xz -> ${P}-pink.tar.xz
+	https://github.com/dracula/gtk/releases/download/v${PV}/Dracula.tar.xz -> ${P}.tar.xz
 "
 S="${WORKDIR}"
 
@@ -22,7 +22,7 @@ src_prepare() {
 	local theme
 	for theme in * ; do
 		sed -e "/^Name\s*=Ant-Dracula/s|^.*$|Name=${theme}|" \
-		    -i "${theme}"/index.theme || die
+			-i "${theme}"/index.theme || die
 	done
 }
 
