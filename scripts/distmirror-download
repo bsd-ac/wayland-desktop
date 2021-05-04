@@ -16,5 +16,3 @@ find . -type f -name "*ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*
 rm -r PORTAGE_TMPDIR/portage
 find . -type f -name "*9999.ebuild" ! \( -wholename ".git*" -o -wholename "*metadata*" \
      -o -wholename "*profile*" \) -exec env DISTDIR=DISTDIR_GIT PORTAGE_TMPDIR=PORTAGE_TMPDIR ebuild {} clean unpack \;
-
-rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ PORTAGE_TMPDIR/portage/*/*/work/ floss:~/gentoo-distfiles/
