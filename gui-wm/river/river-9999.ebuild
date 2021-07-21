@@ -29,14 +29,14 @@ RDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
 	dev-libs/wayland
-	<gui-libs/wlroots-9999[X]
+	>=gui-libs/wlroots-0.14.0[X]
 	x11-libs/cairo[X]
 	x11-libs/libxkbcommon:=[X]
 	x11-libs/pixman
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-lang/zig-0.7.1
+	>=dev-lang/zig-0.8.0
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
 	app-text/scdoc
@@ -64,5 +64,6 @@ src_test() {
 
 src_install() {
 	zig build install "${zigoptions[@]}" --prefix "${ED}/usr" || die
+	mkdir "${ED}"/usr/etc || die
 	mv "${ED}"/usr/etc "${ED}" || die
 }
