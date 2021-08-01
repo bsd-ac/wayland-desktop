@@ -48,7 +48,6 @@ src_configure() {
 		-Drelease-safe
 		-Dxwayland=true
 		-Dman-pages=true
-		-Dexamples=false
 		"${EXTRA_ECONF[@]}"
 	)
 	export CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
