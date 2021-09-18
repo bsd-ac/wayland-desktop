@@ -15,7 +15,7 @@ else
 	COMMIT=5c9d8acd92942eb8ab30a9cea1fd1847ca648741
 	SRC_URI="https://gitlab.com/marcusbritanicus/QtGreet/-/archive/${COMMIT}/QtGreet-${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/QtGreet-${COMMIT}
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 CMAKE_USE_DIR="${S}"/src
