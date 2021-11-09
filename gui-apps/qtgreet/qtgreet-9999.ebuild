@@ -1,9 +1,10 @@
 # Copyright 2021 Aisha Tammy
+# Copyright 2021 Ichika Zou
 # Distributed under the terms of the ISC License
 
 EAPI=7
 
-inherit cmake
+inherit meson
 
 DESCRIPTION="QT based greeter for greetd"
 HOMEPAGE="https://gitlab.com/marcusbritanicus/QtGreet"
@@ -21,19 +22,15 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-CDEPEND="
+DEPEND="
 	dev-libs/json-c
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwayland:5
 	dev-qt/qtwidgets:5
-	gui-libs/wlroots
-"
-DEPEND="${CDEPEND}
-	kde-frameworks/extra-cmake-modules
 "
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	gui-libs/greetd
 "
