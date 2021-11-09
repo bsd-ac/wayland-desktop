@@ -1,2 +1,2 @@
 
-rsync --rsync-path="/usr/bin/openrsync" -av DISTDIR/ PORTAGE_TMPDIR/portage/*/*/work/ floss:~/files/gentoo-distfiles/
+rsync -av DISTDIR/ PORTAGE_TMPDIR/portage/*/*/work/ floss:~/files/gentoo-distfiles/

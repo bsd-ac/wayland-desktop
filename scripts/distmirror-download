@@ -2,7 +2,6 @@
 
 # this script downloads all repos and uploads them to server "floss" which is configured
 # in the ssh config file, ~/.ssh/config, with password-less access using an ssh-key.
-# --rsync-path="/usr/bin/openrsync" is used as it is an OpenBSD remote server
 
 mkdir -p DISTDIR DISTDIR_GIT PORTAGE_TMPDIR
 
