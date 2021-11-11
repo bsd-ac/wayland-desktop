@@ -22,10 +22,10 @@ RDEPEND="${DEPEND}
 	gui-libs/gtk-layer-shell
 "
 
-src_install() {
+python_install() {
+	distutils-r1_python_install
 	insinto /usr/share/pixmaps
 	doins nwg-panel.svg nwg-shell.svg
 	insinto /usr/share/applications
 	doins nwg-panel-config.desktop
-	distutils-r1_python_install_all
 }
