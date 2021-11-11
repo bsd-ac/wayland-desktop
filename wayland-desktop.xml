@@ -3,7 +3,6 @@
 		<name>wayland-desktop</name>
 		<description>Gentoo overlay for Wayland related ebuilds</description>
 		<homepage>https://github.com/bsd-ac/wayland-desktop</homepage>
-		<irc>webchat.freenode.net/?channels=#gentoo-science</irc>
 		<owner>
 			<email>floss@bsd.ac</email>
 			<name>epsilonKNOT</name>
