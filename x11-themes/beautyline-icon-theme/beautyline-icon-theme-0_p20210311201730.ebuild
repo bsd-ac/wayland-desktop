@@ -22,7 +22,9 @@ src_prepare() {
 	# dead symbolic links QA
 	find . -xtype l -delete || die
 	# pico wayfire specific changes
-	use no-inherit && sed -e "/^Inherits/d" -i index.theme || die
+	if use no-inherit; then
+		sed -e "/^Inherits/d" -i index.theme || die
+	fi
 }
 
 src_install() {
