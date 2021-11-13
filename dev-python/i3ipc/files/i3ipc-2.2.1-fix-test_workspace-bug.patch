@@ -1,0 +1,50 @@
+From 25c913c09508ea70b74723e0f8b8c4676ef0dfa3 Mon Sep 17 00:00:00 2001
+From: Tony Crisci <tony@dubstepdish.com>
+Date: Sat, 22 Aug 2020 16:14:56 -0400
+Subject: [PATCH] fix test_workspace bug
+
+---
+ test/aio/test_workspace.py | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/test/aio/test_workspace.py b/test/aio/test_workspace.py
+index 8b65587..2ff0f6c 100644
+--- a/test/aio/test_workspace.py
++++ b/test/aio/test_workspace.py
+@@ -4,18 +4,17 @@
+ import asyncio
+ from i3ipc import Event, TickEvent
+ 
+-events = asyncio.Queue()
+-
+ 
+ class TestWorkspace(IpcTest):
+     async def on_workspace(self, i3, e):
+-        await events.put(e)
++        await self.events.put(e)
+ 
+     async def on_tick(self, i3, e):
+-        await events.put(e)
++        await self.events.put(e)
+ 
+     @pytest.mark.asyncio
+     async def test_workspace(self, i3):
++        self.events = asyncio.Queue()
+         await i3.command('workspace 0')
+         await i3.subscribe([Event.WORKSPACE, Event.TICK])
+ 
+@@ -23,11 +22,11 @@ async def test_workspace(self, i3):
+         i3.on(Event.TICK, self.on_tick)
+ 
+         await i3.send_tick()
+-        assert isinstance(await events.get(), TickEvent)
+-        assert isinstance(await events.get(), TickEvent)
++        assert isinstance(await self.events.get(), TickEvent)
++        assert isinstance(await self.events.get(), TickEvent)
+ 
+         await i3.command('workspace 12')
+-        e = await events.get()
++        e = await self.events.get()
+ 
+         workspaces = await i3.get_workspaces()
+ 
