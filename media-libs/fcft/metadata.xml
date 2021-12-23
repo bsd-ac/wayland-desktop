@@ -6,6 +6,8 @@
 		<name>Aisha Tammy</name>
 	</maintainer>
 	<use>
-		<flag name="text-shaping">enable text shaping</flag>
+		<flag name="grapheme-shaping">enable shaping of individual grapheme clusters</flag>
+		<flag name="run-shaping">enable shaping of whole text runs</flag>
+		<flag name="test-text-shaping">enable tests for text shaping</flag>
 	</use>
 </pkgmetadata>
