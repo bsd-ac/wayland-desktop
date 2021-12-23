@@ -42,8 +42,8 @@ src_configure() {
 	local emesonargs=(
 		-Dwerror=false
 		$(meson_feature cairo enable-cairo)
-		$(meson_feature png enable-png)
-		$(meson_feature svg enable-svg)
+		$(meson_native_use_feature png png-backend)
+		$(meson_native_use_feature svg svg-backend)
 	)
 	meson_src_configure
 }
