@@ -19,14 +19,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X"
+IUSE="+X"
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/libxml2:2
-	>=gui-libs/wlroots-0.14.0:=[X?]
-	<gui-libs/wlroots-0.15.0:=[X?]
+	>=gui-libs/wlroots-0.14.1:=[X?]
 	x11-libs/cairo[X?]
 	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pango[X?]
@@ -42,7 +41,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		$(meson_use X xwayland)
-		$(meson_use man man-pages)
+		-Dman-pages=true
 	)
 	meson_src_configure
 }
