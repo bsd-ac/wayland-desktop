@@ -25,7 +25,6 @@ RDEPEND="
 	dev-libs/libinput
 	dev-libs/libxml2:2
 	>=gui-libs/wlroots-0.16.0:=[X?]
-	<gui-libs/wlroots-0.17.0:=[X?]
 	x11-libs/cairo[X?]
 	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pango[X?]
