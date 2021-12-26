@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	gui-liri/libliri
 	gui-liri/liri-qtudev
-	media-libs/mesa[gbm,egl]
+	media-libs/mesa[gbm(+),egl(+)]
 	x11-libs/libdrm
 "
 DEPEND="${RDEPEND}
