@@ -42,9 +42,16 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dwerror=false
+		-Dpng-backend=$(usex png none libpng)
+		-Dsvg-backend=$(usex svg none librsvg)
 		$(meson_feature cairo enable-cairo)
-		$(meson_native_use_feature png png-backend)
-		$(meson_native_use_feature svg svg-backend)
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+	rm -r "${ED}/usr/share/doc/fuzzel" || die
+	local -x DOCS=( LICENSE README.md CHANGELOG.md )
+	einstalldocs
 }
