@@ -1,5 +1,6 @@
 # Copyright 2021 Aisha Tammy
 # Copyright 2021 Erik Rodriguez
+# Copyright 2022 Ryan Fox
 # Distributed under the terms of the ISC License
 
 EAPI=7
@@ -42,8 +43,8 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dwerror=false
-		-Dpng-backend=$(usex png none libpng)
-		-Dsvg-backend=$(usex svg none librsvg)
+		-Dpng-backend=$(usex png libpng none)
+		-Dsvg-backend=$(usex svg librsvg none)
 		$(meson_feature cairo enable-cairo)
 	)
 	meson_src_configure
