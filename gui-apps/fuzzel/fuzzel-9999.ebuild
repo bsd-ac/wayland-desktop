@@ -8,11 +8,11 @@ EAPI=7
 inherit meson xdg
 
 DESCRIPTION="Application launcher similar to rofi's 'drun' mode"
-HOMEPAGE="https://codeberg.org/dnkl/yambar"
+HOMEPAGE="https://codeberg.org/dnkl/fuzzel"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://codeberg.org/dnkl/fuzzel"
+	EGIT_REPO_URI="https://codeberg.org/dnkl/fuzzel.git"
 else
 	SRC_URI="https://codeberg.org/dnkl/fuzzel/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}
