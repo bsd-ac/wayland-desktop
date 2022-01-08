@@ -3,7 +3,7 @@
 # Copyright 2022 Ryan Fox
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg
 
