@@ -2,7 +2,7 @@
 # Copyright 2021 Ichika Zou
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
