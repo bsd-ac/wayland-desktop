@@ -1,7 +1,7 @@
 # Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Opinionated dotfiles for a consistent look on wayfire"
 HOMEPAGE="https://github.com/bsd-ac/pico-wayfire"
