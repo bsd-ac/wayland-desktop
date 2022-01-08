@@ -1,7 +1,7 @@
 # Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 inherit bash-completion-r1 meson
 
@@ -41,8 +41,8 @@ BDEPEND="
 src_prepare() {
 	default
 	sed -e "/mtune=native/d" \
-	    -e "/-O3/d" \
-	    -i meson.build || die
+		-e "/-O3/d" \
+		-i meson.build || die
 }
 
 src_configure() {

@@ -1,7 +1,7 @@
 # Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 inherit bash-completion-r1 meson
 
@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="fish-completion +gdk-pixbuf pam"
+IUSE="fish-completion +gdk-pixbuf pam cpu_flags_x86_sse"
 
 DEPEND="
 	dev-libs/wayland
@@ -41,8 +41,8 @@ BDEPEND="
 src_prepare() {
 	default
 	sed -e "/mtune=native/d" \
-	    -e "/-O3/d" \
-	    -i meson.build || die
+		-e "/-O3/d" \
+		-i meson.build || die
 }
 
 src_configure() {
@@ -54,6 +54,7 @@ src_configure() {
 		-Dswaylock-version=${PV}
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
+		$(meson_use cpu_flags_x86_sse sse)
 		$(meson_use fish-completion fish-completions)
 	)
 	meson_src_configure
