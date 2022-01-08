@@ -1,7 +1,7 @@
 # Copyright 2021 knotteye <knotteye@waldn.net>
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9,10} )
 
