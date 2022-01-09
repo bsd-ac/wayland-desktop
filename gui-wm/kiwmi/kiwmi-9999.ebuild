@@ -1,7 +1,7 @@
 # Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..3} luajit )
 inherit lua-single meson
