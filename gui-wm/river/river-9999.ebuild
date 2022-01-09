@@ -1,7 +1,7 @@
 # Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 # NOTE: zig is weird it is doing the install during
 #       the compile phase for some reason, so we
