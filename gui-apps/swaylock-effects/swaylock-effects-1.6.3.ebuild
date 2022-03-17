@@ -51,10 +51,8 @@ src_configure() {
 		-Dman-pages=enabled
 		-Dzsh-completions=false
 		-Dbash-completions=false
-		-Dswaylock-version=${PV}
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
-		$(meson_use cpu_flags_x86_sse sse)
 		$(meson_use fish-completion fish-completions)
 	)
 	meson_src_configure
