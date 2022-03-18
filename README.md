@@ -1,7 +1,6 @@
 # wayland-desktop
 
 [![pkgcheck](https://github.com/bsd-ac/wayland-desktop/workflows/pkgcheck/badge.svg)](https://github.com/bsd-ac/wayland-desktop/actions?query=workflow:pkgcheck)
-[![repoman](https://github.com/bsd-ac/wayland-desktop/workflows/repoman/badge.svg)](https://github.com/bsd-ac/wayland-desktop/actions?query=workflow:repoman)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://wiki.gentoo.org/wiki/Contributing_to_Gentoo)
 [![matrix](https://img.shields.io/matrix/gentoo:matrix.org)](https://matrix.to/#/#gentoo:matrix.org)
 
