@@ -29,6 +29,7 @@ DEPEND="
 			dev-python/pycairo[${PYTHON_USEDEP}]
 			dev-python/pyfiglet[${PYTHON_USEDEP}]
 			dev-python/python-pam[${PYTHON_USEDEP}]
+			dev-python/pywm[${PYTHON_USEDEP}]
 			dev-python/thefuzz[${PYTHON_USEDEP}]
 		')
 "
