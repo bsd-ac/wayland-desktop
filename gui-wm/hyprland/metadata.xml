@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>floss@bsd.ac</email>
+        <name>Aisha Tammy</name>
+    </maintainer>
+    <use>
+            <flag name="system-wlroots">use the system wide wlroots, else build it as a submodule.</flag>
+    </use>
+</pkgmetadata>

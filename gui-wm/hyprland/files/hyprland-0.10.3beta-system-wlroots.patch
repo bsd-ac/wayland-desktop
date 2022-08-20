@@ -1,0 +1,59 @@
+diff --git a/meson.build b/meson.build
+index 9435333..21afe36 100644
+--- a/meson.build
++++ b/meson.build
+@@ -37,17 +37,28 @@ add_project_arguments(
+   ],
+   language: 'cpp')
+ 
+-wlroots = subproject('wlroots', default_options: ['examples=false'])
+-have_xwlr = wlroots.get_variable('features').get('xwayland')
++wlroots = dependency('wlroots', required: get_option('use_system_wlroots'))
++use_system_wlroots = not get_option('use_system_wlroots').disabled() and wlroots.found()
++if not use_system_wlroots
++  wlroots = subproject('wlroots', default_options : ['examples=false']).get_variable('wlroots')
++endif
++
++have_xwlr = false
++if use_system_wlroots
++  have_xwlr = cpp_compiler.get_define('WLR_HAS_XWAYLAND', prefix: '#include <wlr/config.h>', dependencies: wlroots) == '1'
++else
++  have_xwlr = subproject('wlroots').get_variable('features').get('xwayland')
++endif
++
+ xcb_dep = dependency('xcb', required: get_option('xwayland'))
+ 
+ if get_option('xwayland').enabled() and not have_xwlr
+-	error('Cannot enable Xwayland in Hyprland: wlroots has been built without Xwayland support')
++  error('Cannot enable Xwayland in Hyprland: wlroots has been built without Xwayland support')
+ endif
+ have_xwayland = xcb_dep.found() and have_xwlr
+ 
+ if not have_xwayland
+-add_project_arguments('-DNO_XWAYLAND', language: 'cpp')
++  add_project_arguments('-DNO_XWAYLAND', language: 'cpp')
+ endif
+ 
+ if get_option('buildtype') == 'debug'
+diff --git a/meson_options.txt b/meson_options.txt
+index d34c617..adf708f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1 +1,2 @@
++option('use_system_wlroots', type: 'feature', value: 'auto', description: 'Use the system-wide installation of wlroots')
+ option('xwayland', type: 'feature', value: 'auto', description: 'Enable support for X11 applications')
+diff --git a/src/meson.build b/src/meson.build
+index 5d64188..1d8f7b2 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -5,9 +5,9 @@ executable('Hyprland', src,
+   cpp_args: ['-DWLR_USE_UNSTABLE'],
+   dependencies: [
+     server_protos,
++    wlroots,
+     dependency('wayland-server'),
+     dependency('wayland-client'),
+-    wlroots.get_variable('wlroots'),
+     dependency('cairo'),
+     dependency('pango'),
+     dependency('pangocairo'),
