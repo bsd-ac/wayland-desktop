@@ -1,0 +1,22 @@
+name: duplicates
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup master gentoo repository
+      run: |
+        ./scripts/setup-master-gentoo.sh
+    - name: Check for duplicates
+      run: |
+        ./scripts/check-duplicates.sh
