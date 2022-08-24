@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit toolchain-funcs meson
 
 DESCRIPTION="Dynamic tiling Wayland compositor that doesn't sacrifice on its looks."
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
@@ -59,6 +59,7 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-0.10.3beta-system-wlroots.patch" )
 
 src_configure() {
+	tc-is-gcc && [[ $(gcc-major-version) -ge 12 ]]  && [[ $(gcc-minor-version) -ge 1 ]] || die "hyprland needs gcc version >= 12.1 for C++23"
 	local emesonargs=(
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature X xwayland)
