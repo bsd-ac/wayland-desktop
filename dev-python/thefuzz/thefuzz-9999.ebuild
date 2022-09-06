@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-2"
+LICENSE="LGLP-2.1"
 SLOT="0"
 
 DEPEND="
