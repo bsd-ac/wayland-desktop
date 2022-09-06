@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hyprwm/Hyprland"
 else
-	MY_PV="0.11.0beta"
+	MY_PV="${PV}beta"
 	SRC_URI="https://github.com/hyprwm/Hyprland/releases/download/v${MY_PV}/source-v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"
 	KEYWORDS="~amd64"
