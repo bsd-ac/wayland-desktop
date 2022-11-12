@@ -29,6 +29,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	sys-apps/dbus
+	test? ( $(python_gen_cond_dep '
+		dev-python/unittest-or-fail[${PYTHON_USEDEP}]
+		') )
 "
 
 distutils_enable_tests pytest
