@@ -51,7 +51,7 @@ RDEPEND="
 "
 
 BDEPEND="
-	dev-libs/wayland-protocols
+	>=dev-libs/wayland-protocols-1.27
 	virtual/pkgconfig
 "
 
