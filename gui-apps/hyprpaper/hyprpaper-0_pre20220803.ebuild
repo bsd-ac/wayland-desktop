@@ -34,8 +34,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0_pre20220803-buildvars.patch" )
-
 src_compile() {
 	emake protocols
 	cmake_src_compile
