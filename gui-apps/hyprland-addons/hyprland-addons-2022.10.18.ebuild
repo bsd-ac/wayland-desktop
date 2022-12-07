@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="grimblast shellevents"
+IUSE="+grimblast +shellevents"
 REQUIRED_USE="|| ( grimblast shellevents )"
 
 RDEPEND="
