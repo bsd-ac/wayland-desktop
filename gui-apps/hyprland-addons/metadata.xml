@@ -8,4 +8,8 @@
 	<upstream>
 		<remote-id type="github">hyprwm/contrib</remote-id>
 	</upstream>
+	<use>
+		<flag name="grimblast">Installs grimblast, a hyprland version of grimshot.</flag>
+		<flag name="shellevents">Invoke shell functions in response to Hyprland socket2 events.</flag>
+	</use>
 </pkgmetadata>
