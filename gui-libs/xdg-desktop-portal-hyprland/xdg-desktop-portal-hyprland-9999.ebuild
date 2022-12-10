@@ -58,10 +58,9 @@ src_configure() {
 	meson_src_configure
 }
 
-MAKEOPTS="-C ${S}/hyprland-share-picker"
 src_compile() {
 	meson_src_compile
-	emake all
+	emake -C hyprland-share-picker all
 }
 
 src_install() {
