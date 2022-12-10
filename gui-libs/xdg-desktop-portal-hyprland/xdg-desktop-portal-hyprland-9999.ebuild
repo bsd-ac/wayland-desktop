@@ -22,18 +22,18 @@ IUSE="elogind systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
-	>=media-video/pipewire-0.3.41:=
 	dev-libs/inih
 	dev-libs/wayland
+	dev-qt/qtbase
+	dev-qt/qtwayland:6
 	media-libs/mesa
+	>=media-video/pipewire-0.3.41:=
 	x11-libs/libdrm
 	|| (
 		systemd? ( >=sys-apps/systemd-237 )
 		elogind? ( >=sys-auth/elogind-237 )
 		sys-libs/basu
 	)
-	dev-qt/qtbase
-	dev-qt/qtwayland:6
 "
 # mesa is needed for gbm dep (which it hards sets to 'on')
 RDEPEND="
