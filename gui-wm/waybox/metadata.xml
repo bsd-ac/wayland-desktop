@@ -11,4 +11,7 @@
     <email>floss@bsd.ac</email>
     <name>Aisha Tammy</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">wizbright/waybox</remote-id>
+  </upstream>
 </pkgmetadata>

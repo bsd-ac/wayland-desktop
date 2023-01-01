@@ -1,7 +1,7 @@
 # Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="openbox clone on wayland"
 HOMEPAGE="https://github.com/wizbright/waybox"
