@@ -14,7 +14,7 @@ SRC_URI="
 	https://aka.ms/segoemdl2 -> ${P}-mdl2.zip
 "
 
-LICENSE="EULA"
+LICENSE="Microsoft-Font"
 SLOT="0"
 KEYWORDS="~amd64"
 
