@@ -1,7 +1,7 @@
 # Copyright 2022 Julien Roy <julien@jroy.ca>
 # Distributed under the terms of the ISC License
 
-EAPI=7
+EAPI=8
 
 inherit meson
 
