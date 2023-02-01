@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-
+DISTUTILS_USE_PEP517=setuptools
 inherit virtualx distutils-r1
 
 DESCRIPTION="An improved Python library to control i3wm and sway."
