@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson
 
-DESCRIPTION="Thin wrapper around Q*Application for DFL project"
+DESCRIPTION="Helper utilities for the DFL project"
 HOMEPAGE="https://gitlab.com/desktop-frameworks/utils"
 
 if [[ ${PV} == 9999 ]]; then
