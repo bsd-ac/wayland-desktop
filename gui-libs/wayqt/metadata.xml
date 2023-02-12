@@ -5,4 +5,7 @@
         <email>floss@bsd.ac</email>
         <name>Aisha Tammy</name>
     </maintainer>
+    <upstream>
+        <remote-id type="gitlab">desktop-frameworks/wayqt</remote-id>
+    </upstream>
 </pkgmetadata>
