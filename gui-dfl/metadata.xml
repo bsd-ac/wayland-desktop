@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gui-dfl category contains ports from the desktop-framework-libraries project: https://gitlab.com/desktop-frameworks
+	</longdescription>
+</catmetadata>
