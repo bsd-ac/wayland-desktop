@@ -22,6 +22,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+qt5 qt6"
+REQUIRED_USE="^^ ( qt5 qt6 )"
 
 DEPEND="
 	dev-libs/json-c
