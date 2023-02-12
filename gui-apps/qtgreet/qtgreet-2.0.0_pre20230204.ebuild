@@ -26,7 +26,7 @@ IUSE="+qt5 qt6"
 DEPEND="
 	dev-libs/json-c
 	dev-libs/wayland
-	>=gui-libs/wlroots-0.16.0:0/16=
+	>=gui-libs/wlroots-0.16.0:0/16
 	x11-libs/libxkbcommon:=
 	qt5? (
 		dev-qt/qtcore:5
@@ -65,4 +65,9 @@ src_configure() {
 		"-Duse_qt_version=$(usex qt5 qt5 qt6)"
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+	keepdir "/var/lib/qtgreet"
 }
