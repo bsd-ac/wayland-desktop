@@ -51,8 +51,3 @@ RDEPEND="
 		sys-apps/xdg-desktop-portal-gtk
 	)
 "
-
-src_prepare() {
-	meson_src_prepare
-	xdg_src_prepare
-}
