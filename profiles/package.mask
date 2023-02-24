@@ -3,7 +3,6 @@
 gui-desq/desq-meta
 gui-desq/desq-session
 gui-desq/desq-shell
-gui-desq/libdesq
 gui-desq/libdesqui
 gui-desq/libdesqwl
 gui-desq/plugins-sni
