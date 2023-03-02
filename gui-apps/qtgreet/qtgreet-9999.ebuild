@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/marcusbritanicus/QtGreet"
 else
 	COMMIT="6234ab0920cb7e9a4baefc9da2ee32c21a2d04c1"
-	SRC_URI="https://gitlab.com/marcusbritanicus/QtGreet/-/archive/${COMMIT}/QtGreet-${COMMIT}.tar.bz2 -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.com/marcusbritanicus/QtGreet/-/archive/${COMMIT}/QtGreet-${COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}"/QtGreet-${COMMIT}
 	KEYWORDS="~amd64"
 fi
