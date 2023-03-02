@@ -3,7 +3,9 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+# can't enable yet, meson inherit implies in source build
+# https://github.com/bsd-ac/wayland-desktop/issues/49
+#DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit meson distutils-r1
