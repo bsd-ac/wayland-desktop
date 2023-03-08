@@ -33,7 +33,7 @@ DEPEND="
 	media-libs/libjpeg-turbo
 	media-libs/libpng
 	media-libs/freetype:=[X?]
-	>=x11-libs/libdrm-2.4.113:=
+	>=x11-libs/libdrm-2.4.114:=
 	x11-libs/gtk+:3=[wayland,X?]
 	x11-libs/cairo:=[X?,svg(+)]
 	x11-libs/libxkbcommon:=[X?]
