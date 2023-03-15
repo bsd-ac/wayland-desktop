@@ -25,6 +25,7 @@ IUSE="system-wlroots systemd X"
 DEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
+	dev-libs/libliftoff
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
