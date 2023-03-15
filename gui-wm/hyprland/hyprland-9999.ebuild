@@ -29,6 +29,7 @@ DEPEND="
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
+	media-libs/libdisplay-info
 	media-libs/libglvnd[X?]
 	media-libs/libjpeg-turbo
 	media-libs/libpng
