@@ -47,7 +47,9 @@ DEPEND="
 		x11-libs/libxcb
 		x11-base/xwayland
 	)
-	gui-libs/wlroots:=[X?]
+	system-wlroots? (
+		gui-libs/wlroots:=[X?]
+	)
 "
 
 RDEPEND="
