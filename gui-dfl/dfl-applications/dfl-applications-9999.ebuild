@@ -26,9 +26,11 @@ REQUIRED_USE="^^ ( qt5 qt6 )"
 DEPEND="
 	qt5? (
 		dev-qt/qtcore:5
+		gui-dfl/dfl-ipc[qt5]
 	)
 	qt6? (
 		dev-qt/qtbase:6
+		gui-dfl/dfl-ipc[qt6]
 	)
 "
 RDEPEND="
