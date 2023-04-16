@@ -51,7 +51,6 @@ DEPEND="
 		gui-libs/wlroots:=[X?]
 	)
 	!system-wlroots? (
-		dev-libs/wayland-protocols:=[X?]
 		media-libs/libdisplay-info
 		sys-apps/hwdata
 		sys-auth/seatd
@@ -64,7 +63,6 @@ DEPEND="
 		x11-libs/xcb-util-wm
 		dev-util/meson
 		dev-util/wayland-scanner
-		virtual/pkgconfig
 		dev-util/ninja
 		dev-util/meson-format-array
 	}
