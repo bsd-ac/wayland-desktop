@@ -50,6 +50,24 @@ DEPEND="
 	system-wlroots? (
 		gui-libs/wlroots:=[X?]
 	)
+	!system-wlroots? (
+		dev-libs/wayland-protocols:=[X?]
+		media-libs/libdisplay-info
+		sys-apps/hwdata
+		sys-auth/seatd
+		virtual/libudev
+		dev-util/glslang
+		dev-util/vulkan-headers
+		media-libs/vulkan-loader
+		x11-libs/xcb-util-image
+		x11-libs/xcb-util-renderutil
+		x11-libs/xcb-util-wm
+		dev-util/meson
+		dev-util/wayland-scanner
+		virtual/pkgconfig
+		dev-util/ninja
+		dev-util/meson-format-array
+	}
 "
 
 RDEPEND="
