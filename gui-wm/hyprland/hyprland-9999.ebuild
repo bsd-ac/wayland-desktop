@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="system-wlroots systemd X"
+IUSE="system-wlroots systemd X video_cards_nvidia"
 
 DEPEND="
 	dev-libs/libevdev
@@ -62,6 +62,20 @@ BDEPEND="
 "
 
 PATCHES=( "${FILESDIR}/${PN}-0.10.3beta-system-wlroots.patch" )
+
+src_prepare() {
+	default
+
+	# Nvidia patch
+	if use video_cards_nvidia; then
+		sed -i "s|glFlush();|glFinish();|" \
+			"${S}/subprojects/wlroots/render/gles2/renderer.c" || die "Nvidia patch failed"
+
+		eapply "${FILESDIR}/0001-Screencast-for-Nvidia.patch"
+	fi
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	tc-is-gcc && [[ $(gcc-major-version) -ge 12 ]]  && [[ $(gcc-minor-version) -ge 1 ]] || die "hyprland needs gcc version >= 12.1 for C++23"
