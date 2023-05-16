@@ -1,4 +1,4 @@
-# Copyright 2021 Aisha Tammy
+# Copyright 2021 Aisha Tammy, Ichika Zou
 # Distributed under the terms of the ISC License
 
 EAPI=8
@@ -6,21 +6,21 @@ EAPI=8
 inherit bash-completion-r1 meson
 
 DESCRIPTION="Screen locker for Wayland"
-HOMEPAGE="https://github.com/mortie/swaylock-effects"
+HOMEPAGE="https://github.com/jirutka/swaylock-effects"
 
 MY_PV=$(ver_rs 2 '-')
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/mortie/swaylock-effects.git"
+	EGIT_REPO_URI="https://github.com/jirutka/swaylock-effects.git"
 else
-	SRC_URI="https://github.com/mortie/swaylock-effects/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/jirutka/swaylock-effects/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="fish-completion +gdk-pixbuf pam cpu_flags_x86_sse"
+IUSE="zsh-completion +gdk-pixbuf pam +man cpu_flags_x86_sse"
 
 DEPEND="
 	dev-libs/wayland
@@ -38,25 +38,16 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default
-	sed -e "/mtune=native/d" \
-		-e "/-O3/d" \
-		-i meson.build || die
-}
-
 src_configure() {
 	local emesonargs=(
-		-Dwerror=false
-		-Dman-pages=enabled
-		-Dzsh-completions=false
-		-Dbash-completions=false
-		-Dswaylock-version=${PV}
-		$(meson_feature pam)
-		$(meson_feature gdk-pixbuf)
-		$(meson_use cpu_flags_x86_sse sse)
-		$(meson_use fish-completion fish-completions)
+		-Dman-pages=$(usex man enabled disabled)
+		-Dpam=$(usex pam enabled disabled)
+		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
+		$(meson_use zsh-completion zsh-completions)
+		"-Dbash-completions=true"
+		"-Dwerror=false"
 	)
+
 	meson_src_configure
 }
 
@@ -66,7 +57,7 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins completions/zsh/_swaylock
 	if ! use pam; then
-		fowners root:0 /usr/bin/wayfire
-		fperms 4511 /usr/bin/wayfire
+		fowners root:0 ${ED}/bin/swaylock
+		fperms 4511 ${ED}/bin/swaylock
 	fi
 }
