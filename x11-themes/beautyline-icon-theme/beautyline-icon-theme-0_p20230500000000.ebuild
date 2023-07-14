@@ -20,9 +20,9 @@ src_prepare() {
 	rm mimetypes/scalable/application-vnd.oasis.opendocument.text-master.svgln || die
 	# dead symbolic links QA
 	find . -xtype l -delete || die
-	# filenames with spaces are invalid
-	mv "apps/scalable/keysmith 1.svg" "apps/scalable/keysmith_1.svg" || die
 	# pico wayfire specific changes
+	mv './apps/scalable/java (1).svg' './apps/scalable/java_(1).svg' || die
+	find . -type l -name "* *" | while read file; do mv "$file" ${file// /_}; done || die
 	if use no-inherit; then
 		sed -e "/^Inherits/d" -i index.theme || die
 	fi
