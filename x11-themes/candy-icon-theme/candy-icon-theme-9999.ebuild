@@ -32,6 +32,7 @@ src_prepare() {
 	fi
 	ln -s dropbox.svg apps/scalable/dropboxstatus-logo.svg || die
 	ln -s zoom-desktop.svg apps/scalable/zoom-videocam.svg || die
+	ln -s mupdf.svg apps/scalable/new-mupdf-icon.svg || die
 }
 
 src_install() {
