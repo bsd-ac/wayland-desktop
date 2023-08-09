@@ -15,10 +15,8 @@ then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pwaller/pyfiglet.git"
 else
-	PYPI_VER="0.8.post1"
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${PYPI_VER}.tar.gz -> ${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}-${PYPI_VER}"
 fi
 
 LICENSE="MIT"
