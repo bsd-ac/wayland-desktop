@@ -13,11 +13,14 @@ LICENSE="GPLv3"
 SLOT="0"
 KEYWORDS="~arm64 ~amd64"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	dev-util/wayland-scanner
+	virtual/pkgconfig
+"
 DEPEND="
-	x11-libs/pixman
 	dev-libs/wayland
 	dev-libs/wayland-protocols
+	x11-libs/pixman
 "
 RDEPEND="${DEPEND}"
 
