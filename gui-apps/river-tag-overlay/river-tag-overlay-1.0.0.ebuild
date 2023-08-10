@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A pop-up showing tag status [in the river window manager]"
 HOMEPAGE="https://git.sr.ht/~leon_plickat/river-tag-overlay"
-SRC_URI="https://git.sr.ht/~leon_plickat/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://git.sr.ht/~leon_plickat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}"/${PN}-v${PV}
 
