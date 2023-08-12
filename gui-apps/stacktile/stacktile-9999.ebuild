@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~arm64 ~amd64"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-libs/wayland
