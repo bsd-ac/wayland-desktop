@@ -21,6 +21,9 @@ RDEPEND="
 	dev-libs/wayland-protocols
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-util/wayland-scanner
+"
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
