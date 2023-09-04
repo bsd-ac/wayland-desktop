@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit edo
+
 DESCRIPTION="Small screenlocker for Wayland compositors"
 HOMEPAGE="https://github.com/ifreund/waylock"
 
@@ -20,14 +22,28 @@ RDEPEND="
 	x11-libs/libxkbcommon:=
 "
 DEPEND="${RDEPEND}"
+EZIG_VISION="0.10*"
 BDEPEND="
-	|| ( >=dev-lang/zig-0.10.0 >=dev-lang/zig-bin-0.10.0 )
+	|| ( =dev-lang/zig-${EZIG_VISION} =dev-lang/zig-bin-${EZIG_VISION} )
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
 	man? ( app-text/scdoc )
 "
 
 QA_FLAGS_IGNORED="usr/bin/waylock"
+
+# : refer to sys-fs/ncdu :
+zig-set_EZIG() {
+    [[ -n ${EZIG} ]] && return
+
+    grep_version=$(echo ${EZIG_VISION} | sed -E 's/\./\\./g; s/\*/.*/g')
+    EZIG=$(compgen -c | grep 'zig.*-'$grep_version | head -n 1) || die
+}
+
+ezig() {
+    zig-set_EZIG
+    edo "${EZIG}" "${@}"
+}
 
 src_compile() {
 	local zigoptions=(
@@ -38,11 +54,11 @@ src_compile() {
 		${ZIG_FLAGS[@]}
 	)
 
-	DESTDIR="${T}" zig build "${zigoptions[@]}" --prefix /usr || die
+	DESTDIR="${T}" ezig build "${zigoptions[@]}" --prefix /usr || die
 }
 
 src_test() {
-	zig build test || die
+	ezig build test || die
 }
 
 src_install() {
