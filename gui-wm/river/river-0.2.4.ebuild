@@ -24,7 +24,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	|| ( >=dev-lang/zig-0.10.0 >=dev-lang/zig-bin-0.10.0 )
+	|| ( dev-lang/zig:0.10 dev-lang/zig-bin:0.10 )
 	dev-libs/wayland-protocols
 	man? ( app-text/scdoc )
 	virtual/pkgconfig
