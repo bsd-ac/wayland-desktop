@@ -14,7 +14,6 @@ EGIT_REPO_URI="https://github.com/justinlovinger/owm"
 
 LICENSE="MIT ISC Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64"
 
 QA_FLAGS_IGNORED="usr/bin/owm"
 
