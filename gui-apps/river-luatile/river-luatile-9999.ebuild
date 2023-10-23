@@ -19,9 +19,9 @@ else
 		https://github.com/MaxVerevkin/river-luatile/archive/v${PV}.tar.gz -> ${PN}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
+	KEYWORDS="~amd64"
 fi
 
-KEYWORDS="~amd64"
 LICENSE="GPL-3 MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 
