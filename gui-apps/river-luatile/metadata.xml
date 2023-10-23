@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gladiuswq@proton.me</email>
+		<name>Maxim Chizhov</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a little program that lets you write your own river layout generator in lua.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">MaxVerevkin/river-luatile</remote-id>
+	</upstream>
+</pkgmetadata>
