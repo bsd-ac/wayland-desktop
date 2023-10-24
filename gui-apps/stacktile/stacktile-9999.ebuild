@@ -41,5 +41,6 @@ src_test() {
 }
 
 src_install() {
-	cp -r "${T}"/usr "${ED}"/ || die
+	dobin ${T}/usr/bin/${PN}
+	doman ${T}/usr/share/man/man1/${PN}.1
 }
