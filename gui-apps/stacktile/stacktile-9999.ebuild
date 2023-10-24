@@ -5,12 +5,9 @@ EAPI=8
 
 inherit git-r3
 
-DESCRIPTION="Small screenlocker for Wayland compositors"
+DESCRIPTION="stacktile is a layout generator for the river Wayland compositor."
 HOMEPAGE="https://git.sr.ht/~leon_plickat/stacktile"
 EGIT_REPO_URI="${HOMEPAGE}"
-#SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
-#S="${WORKDIR}"/${PN}-v${PV}
 
 LICENSE="GPLv3"
 SLOT="0"
