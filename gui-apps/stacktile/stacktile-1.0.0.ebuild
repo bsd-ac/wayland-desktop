@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Small screenlocker for Wayland compositors"
+DESCRIPTION="stacktile is a layout generator for the river Wayland compositor."
 HOMEPAGE="https://git.sr.ht/~leon_plickat/stacktile"
 SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
