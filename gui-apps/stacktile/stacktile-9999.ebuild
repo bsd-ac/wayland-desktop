@@ -14,8 +14,6 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~amd64"
-
 RDEPEND="
 	dev-libs/wayland
 	dev-libs/wayland-protocols
