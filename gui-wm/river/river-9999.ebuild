@@ -34,7 +34,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	|| ( dev-lang/zig:0.10 dev-lang/zig-bin:0.10 )
+	|| ( dev-lang/zig:0.11 dev-lang/zig-bin:0.11 )
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
 	app-text/scdoc
@@ -43,7 +43,7 @@ BDEPEND="
 src_configure() {
 	export zigoptions=(
 		--verbose
-		-Drelease-safe
+		-Doptimize=ReleaseSafe
 		-Dxwayland=true
 		-Dman-pages=true
 		"${EXTRA_ECONF[@]}"
