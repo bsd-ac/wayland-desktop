@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit edo
+
 DESCRIPTION="Dynamic tiling wayland compositor"
 HOMEPAGE="https://github.com/riverwm/river"
 
@@ -23,14 +25,28 @@ RDEPEND="
 	x11-libs/pixman
 "
 DEPEND="${RDEPEND}"
+EZIG_VISION="0.11*"
 BDEPEND="
-	|| ( dev-lang/zig:0.11 dev-lang/zig-bin:0.11 )
+	|| ( =dev-lang/zig-${EZIG_VISION} =dev-lang/zig-bin-${EZIG_VISION} )
 	dev-libs/wayland-protocols
 	man? ( app-text/scdoc )
 	virtual/pkgconfig
 "
 
 QA_FLAGS_IGNORED="usr/bin/river(ctl|tile)?"
+
+# : refer to sys-fs/ncdu :
+zig-set_EZIG() {
+    [[ -n ${EZIG} ]] && return
+
+    grep_version=$(echo ${EZIG_VISION} | sed -E 's/\./\\./g; s/\*/.*/g')
+    EZIG=$(compgen -c | grep 'zig.*-'$grep_version | head -n 1) || die
+}
+
+ezig() {
+    zig-set_EZIG
+    edo "${EZIG}" "${@}"
+}
 
 src_compile() {
 	local zigoptions=(
@@ -42,11 +58,11 @@ src_compile() {
 		${ZIG_FLAGS[@]}
 	)
 
-	DESTDIR="${T}" zig build "${zigoptions[@]}" --prefix /usr || die
+	DESTDIR="${T}" ezig build "${zigoptions[@]}" --prefix /usr || die
 }
 
 src_test() {
-	zig build test || die
+	ezig build test || die
 }
 
 src_install() {
