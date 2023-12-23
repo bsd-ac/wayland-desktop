@@ -9,7 +9,7 @@ DESCRIPTION="Dynamic tiling wayland compositor"
 HOMEPAGE="https://github.com/riverwm/river"
 
 SRC_URI="https://github.com/riverwm/river/releases/download/v${PV}/${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 LICENSE="GPL-3"
 SLOT="0"
