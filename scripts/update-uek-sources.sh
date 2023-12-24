@@ -45,10 +45,26 @@ echo "Done."
 echo "Fetching latest tags from ${UEK_SOURCES_URL}..."
 latest_uek_tag=$(git ls-remote --sort='version:refname' --tags ${UEK_SOURCES_URL} | grep -oP "${UEK_BRANCH}\.[0-9]+-[0-9]+\.[0-9]+\.[0-9]+" | tail -n 1)
 echo "Latest tag: ${latest_uek_tag}"
-
-echo "Creating new uek-sources ebuild..."
 ebuild_version=$(echo ${latest_uek_tag} | sed -e "s/\-/./")
 echo "Ebuild version: ${ebuild_version}"
+
+ebuild_revision=$(ls -1 ${PATH_GURU}/sys-kernel/uek-sources/uek-sources-${ebuild_version}*.ebuild | wc -l)
+if [[ ${ebuild_revision} -gt 0 ]]; then
+    echo "Ebuild with tag ${latest_uek_tag} already exists."
+    echo "Checking if latest ebuild for tag has the same genpatches version..."
+    latest_revision=$(ls -1 ${PATH_GURU}/sys-kernel/uek-sources/uek-sources-${ebuild_version}*.ebuild | tail -n 1)
+    echo "Latest ebuild: $(basename ${latest_revision})"
+    if [[ $(grep -oP "K_GENPATCHES_VER=\"([0-9]*)\"" ${latest_revision} | grep -oP "([0-9]*)") -eq ${latest_genpatches_version} ]]; then
+	echo "Latest ebuild has the same genpatches version."
+	echo "Nothing to do."
+	exit 0
+    fi
+    echo "Latest ebuild has a different genpatches version."
+    ebuild_version="${ebuild_version}-r${ebuild_revision}"
+    echo "Creating a new revision: ${ebuild_version}"
+fi
+
+echo "Creating new uek-sources ebuild..."
 sed -e "s/@K_GENPATCHES_VER@/${latest_genpatches_version}/g" \
     scripts/uek-sources.ebuild.template > ${PATH_GURU}/sys-kernel/uek-sources/uek-sources-${ebuild_version}.ebuild
 pushd ${PATH_GURU}/sys-kernel/uek-sources
