@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+qt5 qt6"
+IUSE="greetwl +qt5 qt6"
 REQUIRED_USE="^^ ( qt5 qt6 )"
 
 CDEPEND="
@@ -67,6 +67,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		"-Duse_qt_version=$(usex qt5 qt5 qt6)"
+		"-Dbuild_greetwl=$(usex greetwl true false)"
 	)
 	meson_src_configure
 }
