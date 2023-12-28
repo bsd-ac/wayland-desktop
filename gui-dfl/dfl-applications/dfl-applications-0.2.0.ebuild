@@ -40,6 +40,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/dfl-applications-0.2.0-header-prefix.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		"-Duse_qt_version=$(usex qt5 qt5 qt6)"

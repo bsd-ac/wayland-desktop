@@ -1,0 +1,45 @@
+diff --git a/Application.cpp b/Application.cpp
+index 202c86e..12e17bb 100644
+--- a/Application.cpp
++++ b/Application.cpp
+@@ -14,8 +14,8 @@
+ #include "Application.hpp"
+ #include "ApplicationImpl.hpp"
+ 
+-#include <IpcServer.hpp>
+-#include <IpcClient.hpp>
++#include <DFIpcServer.hpp>
++#include <DFIpcClient.hpp>
+ 
+ 
+ DFL::Application::Application( int& argc, char **argv ) : QApplication( argc, argv ) {
+diff --git a/CoreApplication.cpp b/CoreApplication.cpp
+index 4ae91c7..7c68dca 100644
+--- a/CoreApplication.cpp
++++ b/CoreApplication.cpp
+@@ -14,8 +14,8 @@
+ #include "CoreApplication.hpp"
+ #include "ApplicationImpl.hpp"
+ 
+-#include <IpcServer.hpp>
+-#include <IpcClient.hpp>
++#include <DFIpcServer.hpp>
++#include <DFIpcClient.hpp>
+ 
+ 
+ DFL::CoreApplication::CoreApplication( int& argc, char **argv ) : QCoreApplication( argc, argv ) {
+diff --git a/GuiApplication.cpp b/GuiApplication.cpp
+index 39b4346..e3221ec 100644
+--- a/GuiApplication.cpp
++++ b/GuiApplication.cpp
+@@ -14,8 +14,8 @@
+ #include "GuiApplication.hpp"
+ #include "ApplicationImpl.hpp"
+ 
+-#include <IpcServer.hpp>
+-#include <IpcClient.hpp>
++#include <DFIpcServer.hpp>
++#include <DFIpcClient.hpp>
+ 
+ 
+ DFL::GuiApplication::GuiApplication( int& argc, char **argv ) : QGuiApplication( argc, argv ) {
