@@ -12,9 +12,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/desktop-frameworks/applications"
 else
-	COMMIT="be3e1b24f420f58deac0f2ddbe1d081c3e4c6c6f"
-	SRC_URI="https://gitlab.com/desktop-frameworks/applications/-/archive/${COMMIT}/applications-${COMMIT}.tar.bz2 -> ${P}.tar.bz2"
-	S="${WORKDIR}/applications-${COMMIT}"
+	SRC_URI="https://gitlab.com/desktop-frameworks/applications/-/archive/v${PV}/applications-v${PV}.tar.bz2 -> ${P}.tar.bz2"
+	S="${WORKDIR}/applications-v${PV}"
 	KEYWORDS="~amd64"
 fi
 
