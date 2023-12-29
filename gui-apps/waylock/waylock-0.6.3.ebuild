@@ -8,7 +8,7 @@ inherit edo
 DESCRIPTION="Small screenlocker for Wayland compositors"
 HOMEPAGE="https://github.com/ifreund/waylock"
 
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/ifreund/waylock/releases/download/v${PV}/${P}.tar.gz"
 KEYWORDS="~amd64"
 
 LICENSE="ISC"
@@ -34,15 +34,15 @@ QA_FLAGS_IGNORED="usr/bin/waylock"
 
 # : refer to sys-fs/ncdu :
 zig-set_EZIG() {
-    [[ -n ${EZIG} ]] && return
+	[[ -n ${EZIG} ]] && return
 
-    grep_version=$(echo ${EZIG_VISION} | sed -E 's/\./\\./g; s/\*/.*/g')
-    EZIG=$(compgen -c | grep 'zig.*-'$grep_version | head -n 1) || die
+	grep_version=$(echo ${EZIG_VISION} | sed -E 's/\./\\./g; s/\*/.*/g')
+	EZIG=$(compgen -c | grep 'zig.*-'$grep_version | head -n 1) || die
 }
 
 ezig() {
-    zig-set_EZIG
-    edo "${EZIG}" "${@}"
+	zig-set_EZIG
+	edo "${EZIG}" "${@}"
 }
 
 src_compile() {

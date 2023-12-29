@@ -5,4 +5,7 @@
         <email>vimja@vimja.email</email>
         <name>Niklaus 'vimja' Hofer</name>
     </maintainer>
+    <upstream>
+        <remote-id type="github">ifreund/waylock</remote-id>
+    </upstream>
 </pkgmetadata>
