@@ -1,4 +1,4 @@
-# Copyright 2023 Gabriel Sanches
+# Copyright 2023 Niklaus 'vimja' Hofer
 # Distributed under the terms of the ISC License
 
 EAPI=8
