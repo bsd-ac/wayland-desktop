@@ -1,0 +1,13 @@
+diff --git a/src/layoutmanager/parser/hjson.h b/src/layoutmanager/parser/hjson.h
+index 31b5322..74204c9 100644
+--- a/src/layoutmanager/parser/hjson.h
++++ b/src/layoutmanager/parser/hjson.h
+@@ -1,6 +1,8 @@
+ #ifndef HJSON_AFOWENFOWANEFWOAFNLL
+ #define HJSON_AFOWENFOWANEFWOAFNLL
+ 
++#include <cstdint>
++
+ #include <string>
+ #include <memory>
+ #include <map>
