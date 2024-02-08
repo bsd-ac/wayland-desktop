@@ -21,6 +21,9 @@ else
 	SRC_URI="https://github.com/jbuchermn/pywm/archive/refs/tags/v${MY_VER}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_VER}"
 	KEYWORDS="~amd64"
+
+	PATCHES="${FILESDIR}/pywm-wlroots-wrap.patch"
+	RESTRICT="network-sandbox"
 fi
 
 LICENSE="MIT"
@@ -40,7 +43,6 @@ DEPEND="
 	x11-libs/libdrm
 	x11-libs/libxkbcommon[X?]
 	gui-libs/egl-wayland
-	>=gui-libs/wlroots-0.14.1:=[X?]
 	media-libs/mesa:=[gles2,wayland,X?]
 	x11-libs/pixman
 "
@@ -52,13 +54,20 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/pywm-0.3-meson.patch" )
+PATCHES=(
+	${PATCHES}
+	"${FILESDIR}/pywm-0.3-meson.patch"
+	"${FILESDIR}/pywm-wlroots-no-examples.patch"
+)
 
 python_prepare() {
 	sed -e "s:@MESON_BUILD_ROOT@:${BUILD_DIR}:g" -i setup.py || die
 }
 
 python_configure_all() {
+	if [[ ${PV} != 9999 ]]; then
+		cd ${S} && meson subprojects update --reset
+	fi
 	local emesonargs=(
 		$(meson_feature X xwayland)
 	)

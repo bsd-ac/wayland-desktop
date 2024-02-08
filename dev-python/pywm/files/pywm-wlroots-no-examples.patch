@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -44,7 +44,7 @@ math           = meson.get_compiler('c').find_library('m')
+ 
+ has_xwayland = xwayland.found() and get_option('xwayland').enabled()
+ 
+-wlroots        = subproject('wlroots', default_options: ['default_library=static']).get_variable('wlroots')
++wlroots        = subproject('wlroots', default_options: ['default_library=static', 'examples=false']).get_variable('wlroots')
+ 
+ if has_xwayland
+     add_project_arguments(

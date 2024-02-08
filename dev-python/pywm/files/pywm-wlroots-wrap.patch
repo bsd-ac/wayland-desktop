@@ -1,0 +1,12 @@
+diff --git a/subprojects/wlroots.wrap b/subprojects/wlroots.wrap
+new file mode 100644
+index 0000000..6fd301f
+--- /dev/null
++++ b/subprojects/wlroots.wrap
+@@ -0,0 +1,6 @@
++[wrap-git]
++directory = wlroots
++url = https://gitlab.freedesktop.org/wlroots/wlroots.git
++revision = e279266f714c7122e9ad97d56d047313f78cfdbe
++depth = 1
++
