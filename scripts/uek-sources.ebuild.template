@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,9 +24,9 @@ SRC_URI="
 	https://github.com/oracle/linux-uek/archive/refs/tags/v${UEK_VERSION}.tar.gz
 		-> linux-uek-${UEK_VERSION}.tar.gz
 	mirror://gentoo/genpatches-${KERNEL_TRUNK}-${K_GENPATCHES_VER}.base.tar.xz
-	mirror://gentoo/genpatches-${KERNEL_TRUNK}-${K_GENPATCHES_VER}.experimental.tar.xz
 	mirror://gentoo/genpatches-${KERNEL_TRUNK}-${K_GENPATCHES_VER}.extras.tar.xz
 "
+#mirror://gentoo/genpatches-${KERNEL_TRUNK}-${K_GENPATCHES_VER}.experimental.tar.xz
 S="${WORKDIR}/linux-uek-${UEK_VERSION}"
 
 LICENSE="GPL-2"
@@ -58,8 +58,8 @@ src_prepare() {
 		"${WORKDIR}"/3000_Support-printing-firmware-info.patch
 		"${WORKDIR}"/4567_distro-Gentoo-Kconfig.patch
 	)
-	use experimental && PATCHES+=(
-		"${WORKDIR}"/5010_enable-cpu-optimizations-universal.patch
-	)
+	#use experimental && PATCHES+=(
+	#	"${WORKDIR}"/5010_enable-cpu-optimizations-universal.patch
+	#)
 	default
 }

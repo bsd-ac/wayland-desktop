@@ -34,7 +34,7 @@ echo "Latest gentoo kernel for branch ${UEK_BRANCH}: ${latest_gentoo_kernel}"
 latest_genpatches_version=$(grep -oP "K_GENPATCHES_VER=\"([0-9]*)\"" ${latest_gentoo_kernel} | grep -oP "([0-9]*)")
 echo "Latest genpatches version: ${latest_genpatches_version}"
 echo "Fetching latest genpatches..."
-ebuild ${latest_gentoo_kernel} fetch
+env USE=experimental ebuild ${latest_gentoo_kernel} fetch
 echo "Done."
 popd
 
