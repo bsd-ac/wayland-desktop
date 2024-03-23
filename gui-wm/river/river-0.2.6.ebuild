@@ -6,13 +6,13 @@ EAPI=8
 inherit edo
 
 DESCRIPTION="Dynamic tiling wayland compositor"
-HOMEPAGE="https://github.com/riverwm/river"
+HOMEPAGE="https://codeberg.org/river/river"
 
-SRC_URI="https://github.com/riverwm/river/releases/download/v${PV}/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm64"
-
+SRC_URI="https://codeberg.org/river/river/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
+
 IUSE="+man pie test +X"
 RESTRICT="!test? ( test )"
 

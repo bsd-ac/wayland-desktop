@@ -8,13 +8,13 @@ EAPI=8
 #       first do the install to a temporary directory
 
 DESCRIPTION="Dynamic tiling wayland compositor"
-HOMEPAGE="https://github.com/riverwm/river"
+HOMEPAGE="https://codeberg.org/river/river"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/riverwm/river"
+	EGIT_REPO_URI="https://codeberg.org/river/river"
 else
-	SRC_URI="https://github.com/riverwm/river/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://codeberg.org/river/river/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
