@@ -6,6 +6,6 @@
         <name>Niklaus 'vimja' Hofer</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">ifreund/waylock</remote-id>
+        <remote-id type="codeberg">ifreund/waylock</remote-id>
     </upstream>
 </pkgmetadata>

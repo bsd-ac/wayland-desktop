@@ -6,9 +6,9 @@ EAPI=8
 inherit edo
 
 DESCRIPTION="Small screenlocker for Wayland compositors"
-HOMEPAGE="https://github.com/ifreund/waylock"
+HOMEPAGE="https://codeberg.org/ifreund/waylock"
 
-SRC_URI="https://github.com/ifreund/waylock/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI="https://codeberg.org/ifreund/waylock/releases/download/v${PV}/${P}.tar.gz"
 KEYWORDS="~amd64"
 
 LICENSE="ISC"
