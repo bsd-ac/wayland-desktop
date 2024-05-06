@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2024 Daniella 'tfemby' Kicsak
+# Distributed under the terms of the ISC License
 
 EAPI=8
 
@@ -14,28 +14,24 @@ if [[ ${PV} == 9999 ]]; then
 else
 	GIT_COMMIT="7d385ec32a529d3e1f3b525d1dbbcad6eb4d535b"
 	SRC_URI="https://github.com/labwc/labwc-tweaks/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-
-	MY_PN="${PN/0/}"
-	S="${WORKDIR}/${MY_PN}-${GIT_COMMIT}"
-
+	S="${WORKDIR}/labwc-tweaks-${GIT_COMMIT}"
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE=" "
-RESTRICT=" "
 
 RDEPEND="
-	dev-qt/qtbase:6
 	dev-libs/libxml2
 	dev-libs/glib:2
+	dev-qt/qtbase:6
 "
 DEPEND="${RDEPEND}"
 
 BDEPEND="
 	dev-lang/perl
 	dev-qt/qttools:6
+	virtual/pkgconfig
 	x11-libs/libxkbcommon
 "
 
