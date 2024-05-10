@@ -36,10 +36,6 @@ BDEPEND="
 "
 
 src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_BUILD_TYPE=None
-		-DCMAKE_INSTALL_PREFIX=/usr
-	)
 	cmake_src_configure
 }
 
