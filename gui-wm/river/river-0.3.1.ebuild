@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
 	dev-libs/wayland
-	=gui-libs/wlroots-0.17*:=[X?]
+	>=gui-libs/wlroots-0.17.2:=[X?]
 	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pixman
 "
