@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit meson xdg-utils
 
 DESCRIPTION="Openbox alternative for wayland"
 HOMEPAGE="https://github.com/labwc/labwc"
@@ -49,4 +49,12 @@ src_configure() {
 		-Dman-pages=enabled
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
