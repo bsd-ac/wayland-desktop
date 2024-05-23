@@ -1,9 +1,9 @@
-# Copyright 2023 Aisha Tammy and B. Gazotti
+# Copyright 2021 Aisha Tammy
 # Distributed under the terms of the ISC License
 
 EAPI=8
 
-inherit meson
+inherit meson xdg-utils
 
 DESCRIPTION="Openbox alternative for wayland"
 HOMEPAGE="https://github.com/labwc/labwc"
@@ -18,18 +18,21 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+X"
+IUSE="+nls +svg +X"
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libinput
 	dev-libs/libxml2:2
 	>=gui-libs/wlroots-0.17.0:=[X?]
+	media-libs/libpng
 	x11-libs/cairo[X?]
 	x11-libs/libdrm:=
 	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pango[X?]
 	x11-libs/pixman
+	nls? ( sys-devel/gettext )
+	svg? ( gnome-base/librsvg:= )
 	X? ( x11-libs/libxcb:0= )
 "
 DEPEND="${RDEPEND}"
@@ -43,7 +46,19 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		$(meson_feature X xwayland)
-		-Dman-pages=enabled
+		-Dman-pages="enabled"
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
