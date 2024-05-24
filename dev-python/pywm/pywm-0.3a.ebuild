@@ -6,7 +6,7 @@ EAPI=8
 # can't enable yet, meson inherit implies in source build
 # https://github.com/bsd-ac/wayland-desktop/issues/49
 #DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit meson distutils-r1
 
@@ -43,7 +43,7 @@ DEPEND="
 	x11-libs/libdrm
 	x11-libs/libxkbcommon[X?]
 	gui-libs/egl-wayland
-	media-libs/mesa:=[gles2,wayland,X?]
+	media-libs/mesa:=[wayland,X?]
 	x11-libs/pixman
 "
 RDEPEND="${DEPEND}
@@ -65,8 +65,8 @@ python_prepare() {
 }
 
 python_configure_all() {
-	if [[ ${PV} != 9999 ]]; then
-		cd ${S} && meson subprojects update --reset
+	if [[ "${PV}" != 9999 ]]; then
+		cd "${S}" && meson subprojects update --reset
 	fi
 	local emesonargs=(
 		$(meson_feature X xwayland)
