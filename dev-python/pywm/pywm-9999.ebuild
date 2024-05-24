@@ -36,7 +36,7 @@ DEPEND="
 		dev-python/imageio[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
-		dev-python/python-evdev[${PYTHON_USEDEP}]
+		dev-python/evdev[${PYTHON_USEDEP}]
 	')
 	dev-libs/libinput:=
 	dev-libs/wayland
