@@ -5,6 +5,13 @@
     <email>floss@bsd.ac</email>
     <name>Aisha Tammy</name>
   </maintainer>
+  <maintainer type="person">
+	<name>B. Gazotti</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>nosqrt@outlook.com</email>
+	<name>Daniella Kicsak</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">labwc/labwc</remote-id>
   </upstream>
