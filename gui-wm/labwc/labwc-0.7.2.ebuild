@@ -1,4 +1,4 @@
-# Copyright 2021 Aisha Tammy
+# Copyright 2021 Aisha Tammy, B. Gazotti and Daniella Kicsak
 # Distributed under the terms of the ISC License
 
 EAPI=8
