@@ -6,14 +6,8 @@ EAPI=8
 DESCRIPTION="Hyprshot is an utility to easily take screenshot in Hyprland using your mouse"
 HOMEPAGE="https://github.com/Gustash/Hyprshot/"
 
-if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/Gustash/Hyprshot.git/"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/Gustash/Hyprshot/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	S=${WORKDIR}/Hyprshot-${PV}
-	KEYWORDS="~amd64"
-fi
+EGIT_REPO_URI="https://github.com/Gustash/Hyprshot.git/"
+inherit git-r3
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,6 +20,7 @@ RDEPEND="
 	gui-apps/wl-clipboard
 	gui-wm/hyprland
 	x11-libs/libnotify
+	gui-apps/hyprpicker
 "
 
 src_install() {

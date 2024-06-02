@@ -21,6 +21,7 @@ RDEPEND="
 	gui-apps/wl-clipboard
 	gui-wm/hyprland
 	x11-libs/libnotify
+	gui-apps/hyprpicker
 "
 
 src_install() {
