@@ -45,7 +45,9 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature nls svg X xwayland)
+		$(meson_feature X xwayland)
+		$(meson_feature nls)
+		$(meson_feature svg)
 		-Dman-pages=enabled
 	)
 	meson_src_configure
