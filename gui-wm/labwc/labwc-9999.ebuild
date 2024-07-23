@@ -42,6 +42,9 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+PATCHES=(
+        "${FILESDIR}"/${P}-meson_doc_path.patch
+)
 
 src_configure() {
 	local emesonargs=(
