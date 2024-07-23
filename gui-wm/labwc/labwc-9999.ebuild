@@ -22,9 +22,9 @@ IUSE="+nls +svg +X"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/libinput
+	>=dev-libs/libinput-1.14
 	dev-libs/libxml2:2
-	>=gui-libs/wlroots-0.17.0:=[X?]
+	>=gui-libs/wlroots-0.18.0:=[X?]
 	media-libs/libpng
 	x11-libs/cairo[X?]
 	x11-libs/libdrm:=
@@ -32,13 +32,13 @@ RDEPEND="
 	x11-libs/pango[X?]
 	x11-libs/pixman
 	nls? ( sys-devel/gettext )
-	svg? ( gnome-base/librsvg:= )
+	svg? ( >=gnome-base/librsvg-2.46 )
 	X? ( x11-libs/libxcb:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/scdoc
-	dev-libs/wayland-protocols
+	>=dev-libs/wayland-protocols-1.35
 	sys-devel/gettext
 	virtual/pkgconfig
 "
