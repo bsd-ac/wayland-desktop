@@ -43,7 +43,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-        "${FILESDIR}"/${P}-meson_doc_path.patch
+	"${FILESDIR}"/${PN}-meson_doc_path.patch
 )
 
 src_configure() {
