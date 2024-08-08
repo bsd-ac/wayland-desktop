@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/glib:2
 	>=dev-libs/libinput-1.14
 	dev-libs/libxml2:2
-	>=gui-libs/wlroots-0.18.0:=[X?]
+	gui-libs/wlroots:0/18[X?]
 	media-libs/libpng
 	x11-libs/cairo[X?]
 	x11-libs/libdrm:=
