@@ -5,6 +5,9 @@
 		<email>floss@bsd.ac</email>
 		<name>Aisha Tammy</name>
 	</maintainer>
+	<use>
+		<flag name="greetwl">Build minimal wayland compositor for hosting qtgreet</flag>
+	</use>
 	<upstream>
 		<remote-id type="gitlab">marcusbritanicus/QtGreet</remote-id>
 	</upstream>
