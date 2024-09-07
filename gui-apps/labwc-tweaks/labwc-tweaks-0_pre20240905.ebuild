@@ -21,8 +21,6 @@ fi
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE=" "
-RESTRICT=" "
 
 RDEPEND="
 	dev-qt/qtbase:6
