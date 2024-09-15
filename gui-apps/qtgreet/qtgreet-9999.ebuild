@@ -20,15 +20,15 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="qt5 +qt6"
+IUSE="greetwl qt5 +qt6"
 REQUIRED_USE="^^ ( qt5 qt6 )"
 
 CDEPEND="
 	dev-libs/json-c
 	dev-libs/wayland
-	>=gui-libs/wlroots-0.17.0:=
 	media-video/mpv:=
 	x11-libs/libxkbcommon:=
+	greetwl? ( gui-libs/wlroots:0/18= )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -66,6 +66,7 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
+		"$(meson_use greetwl build_greetwl)"
 		"-Duse_qt_version=$(usex qt5 qt5 qt6)"
 	)
 	meson_src_configure
