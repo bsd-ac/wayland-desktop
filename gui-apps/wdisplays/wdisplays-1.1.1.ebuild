@@ -22,7 +22,6 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-build/meson
 	>=dev-libs/wayland-protocols-1.17
 	dev-util/wayland-scanner
 	scour? ( media-gfx/scour )
