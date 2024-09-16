@@ -24,8 +24,6 @@ DEPEND="
 	"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-build/meson
-	dev-build/ninja
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 	"
