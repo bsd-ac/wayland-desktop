@@ -28,7 +28,7 @@ CDEPEND="
 	dev-libs/wayland
 	media-video/mpv:=
 	x11-libs/libxkbcommon:=
-	greetwl? ( gui-libs/wlroots:0/18= )
+	greetwl? ( gui-libs/wlroots:0/18 )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
