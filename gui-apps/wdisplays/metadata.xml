@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>jason@gantner.pw</email>
+	<name>Jason André Charles Gantner</name>
+</maintainer>
+<use>
+<flag name="scour">Optimize SVG data using <pkg>media-gfx/scour</pkg></flag>
+</use>
+<upstream>
+<remote-id type="github">artizirk/wdisplays</remote-id>
+</upstream>
+</pkgmetadata>
