@@ -4,7 +4,7 @@
 
 EAPI=8
 
-inherit meson
+inherit meson optfeature
 
 DESCRIPTION="Sway app that shows schemas for all workspaces to make navigation in sway easier"
 HOMEPAGE="https://github.com/milgra/sov"
@@ -29,5 +29,5 @@ BDEPEND="
 	"
 
 pkg_postinst(){
-	elog "upstream lists media-fonts/terminus-font as dependency but it seems optionnal to me"
+	optfeature "upstream recommends installing this font" media-fonts/terminus-font
 }
