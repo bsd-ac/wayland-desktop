@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+nls +svg +X"
+IUSE="icons +nls +svg +X"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -31,6 +31,7 @@ RDEPEND="
 	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pango[X?]
 	x11-libs/pixman
+	icons? ( >=gui-libs/libsfdo-0.1.3 )
 	nls? ( sys-devel/gettext )
 	svg? ( >=gnome-base/librsvg-2.46 )
 	X? ( x11-libs/libxcb:0= )
@@ -48,6 +49,7 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature icons icon)
 		$(meson_feature X xwayland)
 		$(meson_feature nls)
 		$(meson_feature svg)
