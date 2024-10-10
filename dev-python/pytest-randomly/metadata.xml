@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jason@gantner.pw</email>
+		<name>Jason André Charles Gantner</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">pytest-randomly</remote-id>
+		<remote-id type="github">pytest-dev/pytest-randomly</remote-id>
+	</upstream>
+</pkgmetadata>
