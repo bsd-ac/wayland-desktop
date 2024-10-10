@@ -33,6 +33,7 @@ DEPEND="
 	dev-python/pygobject
 	dev-python/tinycss2
 	gui-libs/gtksourceview
+	gui-libs/libadwaita
 	${PYTHON_DEPS}
 	doc? (
 		dev-python/sphinx
