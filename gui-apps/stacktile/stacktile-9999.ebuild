@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3
+inherit git-r3 edo
 
 DESCRIPTION="stacktile is a layout generator for the river Wayland compositor."
 HOMEPAGE="https://git.sr.ht/~leon_plickat/stacktile"
@@ -20,7 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-EZIG_VISION="0.10*"
+EZIG_VISION="0.13*"
 
 BDEPEND="
 	|| ( =dev-lang/zig-${EZIG_VISION} =dev-lang/zig-bin-${EZIG_VISION} )
@@ -43,7 +43,7 @@ ezig() {
 src_compile() {
 	local zigoptions=(
 		--verbose
-		-Drelease-safe
+		-Doptimize=ReleaseSafe
 		${ZIG_FLAGS[@]}
 	)
 
