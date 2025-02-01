@@ -9,7 +9,7 @@ SRC_URI="https://git.sr.ht/~leon_plickat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 S="${WORKDIR}"/${PN}-v${PV}
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~arm64 ~amd64"
 
