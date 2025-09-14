@@ -1,10 +1,11 @@
+# Copyright 2025 James Dominy
 # Copyright 2021-2023 Aisha Tammy
 # Copyright 2021 Ichika Zou
 # Distributed under the terms of the ISC License
 
 EAPI=8
 
-inherit meson
+inherit meson xdg-utils
 
 DESCRIPTION="QT based greeter for greetd"
 HOMEPAGE="https://gitlab.com/marcusbritanicus/QtGreet"
@@ -27,6 +28,7 @@ CDEPEND="
 	dev-libs/json-c
 	dev-libs/wayland
 	media-video/mpv:=
+	x11-misc/lightdm
 	x11-libs/libxkbcommon:=
 	greetwl? ( gui-libs/wlroots:0/18 )
 	qt5? (
@@ -75,4 +77,12 @@ src_configure() {
 src_install() {
 	meson_src_install
 	keepdir "/var/lib/qtgreet"
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
