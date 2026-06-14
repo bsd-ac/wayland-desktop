@@ -40,7 +40,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-libs/wayland-protocols
-	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
 
